@@ -3,9 +3,9 @@
 
 
 "@1kinlabs/packages@0.x":
-  version "0.0.11"
-  resolved "https://npm.pkg.github.com/download/@1kinlabs/packages/0.0.11/cbb5c839befc7906623b6e712f2eb6f947241ebd#cbb5c839befc7906623b6e712f2eb6f947241ebd"
-  integrity sha512-doDqV2RXlUJtQoniVMWb/FZHQud0ge1xkQwy6iHNTWWC8LTV70CPzoubGiYuSx33WMCL97TiXZsStZVfyP5zOQ==
+  version "0.0.12"
+  resolved "https://npm.pkg.github.com/download/@1kinlabs/packages/0.0.12/a2fa541ba8c1364886b77c1b9088201917245a73#a2fa541ba8c1364886b77c1b9088201917245a73"
+  integrity sha512-LxAHu1K0zOpV1BBVevcZiwkhlnRqxWlV1vOMXcJp8//mtlLnhx8n7MIwsyCy0oM23Nw3p/UwJrNVKtVRa6YT3Q==
   dependencies:
     "@1kinlabs/tsconfig" "1.0.0"
     typescript "^5.1.6"
