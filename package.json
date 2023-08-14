@@ -1,14 +1,14 @@
 {
-  "name": "ui-packages",
+  "name": "@1kinlabs/ui-core",
   "version": "0.0.4",
-  "description": "Shared package.json for all front-end repositories",
+  "description": "Shared components, styles and logic for all front-end projects",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/1kinlabs/ui-packages.git"
+    "url": "https://github.com/1kinlabs/ui-core.git"
   },
   "dependencies": {
     "@1kinlabs/packages": "0.x",
