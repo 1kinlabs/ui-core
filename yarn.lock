@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@1kinlabs/packages@0.0.1":
+"@1kinlabs/packages@0.x":
   version "0.0.11"
   resolved "https://npm.pkg.github.com/download/@1kinlabs/packages/0.0.11/cbb5c839befc7906623b6e712f2eb6f947241ebd#cbb5c839befc7906623b6e712f2eb6f947241ebd"
   integrity sha512-doDqV2RXlUJtQoniVMWb/FZHQud0ge1xkQwy6iHNTWWC8LTV70CPzoubGiYuSx33WMCL97TiXZsStZVfyP5zOQ==
