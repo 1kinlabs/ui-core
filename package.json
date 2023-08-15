@@ -10,9 +10,6 @@
     "type": "git",
     "url": "https://github.com/1kinlabs/ui-core.git"
   },
-  "files": [
-    "tsconfig.json"
-  ],
   "dependencies": {
     "@1kinlabs/tsconfig": "1.0.3",
     "@emotion/cache": "11.6.0",
