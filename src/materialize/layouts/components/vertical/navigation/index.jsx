@@ -8,7 +8,7 @@ import { styled, useTheme } from '@mui/material/styles'
 
 // ** Third Party Components
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'materialize/theme/config'
 
 // ** Component Imports
 import Drawer from './Drawer'

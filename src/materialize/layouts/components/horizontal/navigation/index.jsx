@@ -2,7 +2,7 @@
 import Box from '@mui/material/Box'
 
 // ** Config Import
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'materialize/theme/config'
 
 // ** Utils
 // import { hexToRGBA } from 'materialize/utils/hex-to-rgba'
