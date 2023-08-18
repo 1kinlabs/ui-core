@@ -2,7 +2,7 @@
 import { createContext, useState, useEffect } from 'react'
 
 // ** ThemeConfig Import
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'materialize/theme/config'
 
 const initialSettings = {
   themeColor: 'primary',

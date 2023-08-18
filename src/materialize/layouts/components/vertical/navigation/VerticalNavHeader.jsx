@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography'
 import Close from 'mdi-material-ui/Close'
 
 // ** Configs
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'materialize/theme/config'
 
 // ** Styled Components
 const MenuHeaderWrapper = styled(Box)(({ theme }) => ({
