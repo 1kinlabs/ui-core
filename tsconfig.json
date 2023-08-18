@@ -1,3 +1,10 @@
 {
-  "extends": "@1kinlabs/tsconfig"
+  "extends": "@1kinlabs/tsconfig",
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    },
+  }
 }
