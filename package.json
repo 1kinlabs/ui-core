@@ -2,7 +2,15 @@
   "name": "@1kinlabs/ui-core",
   "version": "0.0.14",
   "description": "Shared components, styles and logic for all front-end projects",
+  "version": "0.0.9",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/ui-core.umd.cjs",
+  "module": "./dist/ui-core.js",
   "scripts": {
+    "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "ISC",
@@ -11,7 +19,8 @@
     "url": "https://github.com/1kinlabs/ui-core.git"
   },
   "dependencies": {
-    "@1kinlabs/tsconfig": "1.0.3",
+    "@1kinlabs/tsconfig": "../tsconfig/",
+    "@casl/ability": "^6.5.0",
     "@emotion/cache": "11.6.0",
     "@emotion/react": "11.7.0",
     "@emotion/server": "11.4.0",
@@ -21,7 +30,21 @@
     "@mui/material": "5.6.4",
     "@mui/x-data-grid": "5.10.0",
     "axios": "1.4.0",
+    "clipboard-copy": "^4.0.1",
+    "date-fns": "^2.30.0",
+    "keen-slider": "^6.8.6",
+    "mdi-material-ui": "7.1.0",
     "moment": "2.29.4",
-    "react": "18.2.0"
+    "react": "18.2.0",
+    "react-apexcharts": "^1.4.1",
+    "react-draft-wysiwyg": "^1.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "@vitejs/plugin-react": "^4.0.4",
+    "fast-glob": "^3.3.1",
+    "glob": "^10.3.3",
+    "vite": "^4.4.9",
+    "vite-tsconfig-paths": "^4.2.0"
   }
 }
