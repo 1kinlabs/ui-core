@@ -12,7 +12,7 @@ import { styled, useTheme } from '@mui/material/styles'
 import ListItemButton from '@mui/material/ListItemButton'
 
 // ** Configs Import
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'materialize/theme/config'
 
 // ** Custom Components Imports
 import UserIcon from 'src/layouts/components/UserIcon'

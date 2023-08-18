@@ -26,7 +26,7 @@ import ChevronLeft from 'mdi-material-ui/ChevronLeft'
 import ChevronRight from 'mdi-material-ui/ChevronRight'
 
 // ** Theme Config Import
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'materialize/theme/config'
 
 // ** Custom Components Imports
 import HorizontalNavItems from './HorizontalNavItems'
