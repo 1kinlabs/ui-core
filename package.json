@@ -2,7 +2,7 @@
   "name": "@1kinlabs/ui-core",
   "version": "0.0.14",
   "description": "Shared components, styles and logic for all front-end projects",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "type": "module",
   "files": [
     "dist"
