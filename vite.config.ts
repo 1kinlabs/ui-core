@@ -6,6 +6,7 @@ import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
+  appType: 'custom',
   plugins: [react(), tsconfigPaths()],
   build: {
     sourcemap: 'inline',
@@ -13,10 +14,11 @@ export default defineConfig({
       // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'ui-core',
+      formats: ['es', 'cjs'],
     },
     rollupOptions: {
       input: Object.fromEntries(
-        glob.sync('src/**/*.js').map(file => [
+        glob.sync('src/**/*.js').map((file: string) => [
           // This remove `src/` as well as the file extension from each
           // file, so e.g. src/nested/foo.js becomes nested/foo
           relative(
@@ -35,6 +37,7 @@ export default defineConfig({
         globals: {
           react: 'React',
         },
+        inlineDynamicImports: false,
       },
     },
   },
