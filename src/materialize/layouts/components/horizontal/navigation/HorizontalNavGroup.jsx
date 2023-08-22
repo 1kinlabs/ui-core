@@ -32,7 +32,7 @@ import themeConfig from 'materialize/theme/config'
 import HorizontalNavItems from './HorizontalNavItems'
 import UserIcon from 'materialize/components/UserIcon'
 import Translations from 'materialize/components/Translations'
-import CanViewNavGroup from 'src/layouts/components/acl/CanViewNavGroup'
+import CanViewNavGroup from 'components/acl/CanViewNavGroup'
 
 // ** Utils
 import { hexToRGBA } from 'materialize/utils/hex-to-rgba'

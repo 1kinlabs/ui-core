@@ -6,7 +6,7 @@ import MuiListSubheader from '@mui/material/ListSubheader'
 
 // ** Custom Components Imports
 import Translations from 'materialize/components/Translations'
-import CanViewNavSectionTitle from 'src/layouts/components/acl/CanViewNavSectionTitle'
+import CanViewNavSectionTitle from 'components/acl/CanViewNavSectionTitle'
 
 // ** Styled Components
 const ListSubheader = styled(props => <MuiListSubheader component='li' {...props} />)(({ theme }) => ({
