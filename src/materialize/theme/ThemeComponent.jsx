@@ -5,10 +5,10 @@ import GlobalStyles from '@mui/material/GlobalStyles'
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles'
 
 // ** Theme Config
-import themeConfig from 'materialize/themes/config'
+import themeConfig from 'materialize/theme/config'
 
 // ** Direction component for LTR or RTL
-import Direction from 'src/layouts/components/Direction'
+import { TextDirection } from 'components/TextDirection'
 
 // ** Theme Override Imports
 import overrides from './overrides'
@@ -16,7 +16,6 @@ import typography from './typography'
 
 // ** Theme
 import themeOptions from './ThemeOptions'
-import UserThemeOptions from 'src/layouts/UserThemeOptions'
 
 // ** Global Styles
 import GlobalStyling from './globalStyles'
@@ -33,10 +32,10 @@ const ThemeComponent = props => {
 
   // ** Deep Merge Component overrides of core and user
   const mergeComponentOverrides = (theme, settings) =>
-    deepmerge({ ...overrides(theme, settings) }, UserThemeOptions()?.components)
+    deepmerge({ ...overrides(theme, settings) }, {})
 
   // ** Deep Merge Typography of core and user
-  const mergeTypography = theme => deepmerge(typography(theme), UserThemeOptions()?.typography)
+  const mergeTypography = theme => deepmerge(typography(theme), {})
 
   // ** Continue theme creation and pass merged component overrides to CreateTheme function
   theme = createTheme(theme, {
@@ -51,11 +50,11 @@ const ThemeComponent = props => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Direction direction={settings.direction}>
+      <TextDirection direction={settings.direction}>
         <CssBaseline />
         <GlobalStyles styles={() => GlobalStyling(theme, settings)} />
         {children}
-      </Direction>
+      </TextDirection>
     </ThemeProvider>
   )
 }
