@@ -15,7 +15,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import themeConfig from 'materialize/theme/config'
 
 // ** Custom Components Imports
-import UserIcon from 'src/layouts/components/UserIcon'
+import UserIcon from 'materialize/components/UserIcon'
 import Translations from 'src/layouts/components/Translations'
 import CanViewNavLink from 'src/layouts/components/acl/CanViewNavLink'
 
