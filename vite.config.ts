@@ -18,7 +18,7 @@ export default defineConfig({
     },
     rollupOptions: {
       input: Object.fromEntries(
-        glob.sync('src/**/*.js').map((file: string) => [
+        glob.sync('src/**/*.*').map((file: string) => [
           // This remove `src/` as well as the file extension from each
           // file, so e.g. src/nested/foo.js becomes nested/foo
           relative(
