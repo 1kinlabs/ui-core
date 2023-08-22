@@ -17,7 +17,7 @@ import themeConfig from 'materialize/theme/config'
 // ** Custom Components Imports
 import UserIcon from 'materialize/components/UserIcon'
 import Translations from 'materialize/components/Translations'
-import CanViewNavLink from 'src/layouts/components/acl/CanViewNavLink'
+import CanViewNavLink from 'components/acl/CanViewNavLink'
 
 // ** Utils
 import { handleURLQueries } from 'materialize/layouts/utils'

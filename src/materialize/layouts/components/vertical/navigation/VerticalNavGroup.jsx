@@ -31,7 +31,7 @@ import { hasActiveChild, removeChildren } from 'materialize/layouts/utils'
 import VerticalNavItems from './VerticalNavItems'
 import UserIcon from 'materialize/components/UserIcon'
 import Translations from 'materialize/components/Translations'
-import CanViewNavGroup from 'src/layouts/components/acl/CanViewNavGroup'
+import CanViewNavGroup from 'components/acl/CanViewNavGroup'
 
 const MenuItemTextWrapper = styled(Box)(() => ({
   width: '100%',
