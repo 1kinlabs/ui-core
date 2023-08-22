@@ -5,7 +5,7 @@ import { styled, useTheme } from '@mui/material/styles'
 import MuiListSubheader from '@mui/material/ListSubheader'
 
 // ** Custom Components Imports
-import Translations from 'src/layouts/components/Translations'
+import Translations from 'materialize/components/Translations'
 import CanViewNavSectionTitle from 'src/layouts/components/acl/CanViewNavSectionTitle'
 
 // ** Styled Components
