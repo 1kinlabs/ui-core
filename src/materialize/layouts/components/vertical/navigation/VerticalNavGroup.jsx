@@ -29,7 +29,7 @@ import { hasActiveChild, removeChildren } from 'materialize/layouts/utils'
 
 // ** Custom Components Imports
 import VerticalNavItems from './VerticalNavItems'
-import UserIcon from 'src/layouts/components/UserIcon'
+import UserIcon from 'materialize/components/UserIcon'
 import Translations from 'src/layouts/components/Translations'
 import CanViewNavGroup from 'src/layouts/components/acl/CanViewNavGroup'
 
