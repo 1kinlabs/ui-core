@@ -4,10 +4,11 @@ import { defineConfig } from 'vite'
 import glob from 'fast-glob'
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import noBundlePlugin from 'vite-plugin-no-bundle'
 
 export default defineConfig({
   appType: 'custom',
-  plugins: [react(), tsconfigPaths()],
+  plugins: [react(), tsconfigPaths(), noBundlePlugin()],
   build: {
     sourcemap: 'inline',
     lib: {
@@ -17,19 +18,20 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      input: Object.fromEntries(
-        glob.sync('src/**/*.*').map((file: string) => [
+      input: glob.sync('src/**/*.*').reduce((memo: Record<string, string>, file: string) => {
           // This remove `src/` as well as the file extension from each
           // file, so e.g. src/nested/foo.js becomes nested/foo
-          relative(
+          const name = relative(
             'src',
             file.slice(0, file.length - extname(file).length)
-          ),
+          )
+
           // This expands the relative paths to absolute paths, so e.g.
           // src/nested/foo becomes /project/src/nested/foo.js
-          fileURLToPath(new URL(file, import.meta.url))
-        ])
-      ),
+          const path = fileURLToPath(new URL(file, import.meta.url))
+
+          return { ...memo, [name]: path }
+        }, {}),
       external: ['react'],
       output: {
         // Provide global variables to use in the UMD build
@@ -37,6 +39,7 @@ export default defineConfig({
         globals: {
           react: 'React',
         },
+        exports: 'named',
         inlineDynamicImports: false,
       },
     },

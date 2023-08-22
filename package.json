@@ -6,8 +6,8 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/ui-core.umd.cjs",
-  "module": "./dist/ui-core.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "scripts": {
     "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -55,6 +55,7 @@
     "@vitejs/plugin-react": "^4.0.4",
     "fast-glob": "^3.3.1",
     "vite": "^4.4.9",
+    "vite-plugin-no-bundle": "^3.0.0",
     "vite-tsconfig-paths": "^4.2.0"
   }
 }
