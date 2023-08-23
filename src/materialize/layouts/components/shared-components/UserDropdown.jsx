@@ -1,6 +1,9 @@
 // ** React Imports
 import { useState, Fragment } from 'react'
 
+// ** Next Import
+import { useRouter } from 'next/router'
+
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Menu from '@mui/material/Menu'
@@ -22,6 +25,9 @@ import CustomAvatar from 'materialize/components/mui/avatar'
 // ** Utils Import
 import { getInitials } from 'materialize/utils/get-initials'
 
+// ** Context
+import { useAuth } from 'src/hooks/useAuth'
+
 // ** Styled Components
 const BadgeContentSpan = styled('span')(({ theme }) => ({
   width: 8,
@@ -33,10 +39,14 @@ const BadgeContentSpan = styled('span')(({ theme }) => ({
 
 const UserDropdown = props => {
   // ** Props
-  const { onRouteChange, onLogout, user, settings } = props
+  const { settings } = props
 
   // ** States
   const [anchorEl, setAnchorEl] = useState(null)
+
+  // ** Hooks
+  const router = useRouter()
+  const { logout, user } = useAuth()
 
   // ** Vars
   const { direction } = settings
@@ -47,7 +57,7 @@ const UserDropdown = props => {
 
   const handleDropdownClose = url => {
     if (url) {
-      onRouteChange(url)
+      router.push(url)
     }
     setAnchorEl(null)
   }
@@ -104,7 +114,7 @@ const UserDropdown = props => {
   }
 
   const handleLogout = () => {
-    onLogout()
+    logout()
     handleDropdownClose()
   }
 
