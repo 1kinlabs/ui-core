@@ -25,9 +25,6 @@ import CustomAvatar from 'materialize/components/mui/avatar'
 // ** Utils Import
 import { getInitials } from 'materialize/utils/get-initials'
 
-// ** Context
-import { useAuth } from 'src/hooks/useAuth'
-
 // ** Styled Components
 const BadgeContentSpan = styled('span')(({ theme }) => ({
   width: 8,
@@ -39,14 +36,13 @@ const BadgeContentSpan = styled('span')(({ theme }) => ({
 
 const UserDropdown = props => {
   // ** Props
-  const { settings } = props
+  const { settings, logout, user } = props
 
   // ** States
   const [anchorEl, setAnchorEl] = useState(null)
 
   // ** Hooks
   const router = useRouter()
-  const { logout, user } = useAuth()
 
   // ** Vars
   const { direction } = settings
