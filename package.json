@@ -18,7 +18,7 @@
     "url": "https://github.com/1kinlabs/ui-core.git"
   },
   "dependencies": {
-    "@1kinlabs/tsconfig": "../tsconfig/",
+    "@1kinlabs/tsconfig": "^1.0.6",
     "@casl/ability": "^6.5.0",
     "@casl/react": "^3.1.0",
     "@emotion/cache": "11.6.0",

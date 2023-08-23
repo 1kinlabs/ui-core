@@ -2,8 +2,10 @@
 # yarn lockfile v1
 
 
-"@1kinlabs/tsconfig@../tsconfig/":
-  version "1.0.5"
+"@1kinlabs/tsconfig@^1.0.6":
+  version "1.0.6"
+  resolved "https://npm.pkg.github.com/download/@1kinlabs/tsconfig/1.0.6/fda11a36b8bf73fd9bb5137d2277e6f80f9d17e3#fda11a36b8bf73fd9bb5137d2277e6f80f9d17e3"
+  integrity sha512-53tyaRENQHA+hTYttbnsbrWI0TbpFVaeEySyYTBAPaG/qyW33lB0z7qdco1VzVN9AH2MaBG5NovkU9cs+OOSnA==
   dependencies:
     typescript "5.1.6"
 
