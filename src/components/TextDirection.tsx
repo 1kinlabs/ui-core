@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 
 // ** Emotion Imports
-import createCache from '@emotion/cache'
+import createCache, { StylisPlugin } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 
 // ** RTL Plugin
@@ -10,10 +10,10 @@ import stylisRTLPlugin from 'stylis-plugin-rtl'
 
 const styleCache = () =>
   createCache({
-  key: 'rtl',
-  prepend: true,
-  stylisPlugins: [stylisRTLPlugin]
-})
+    key: 'rtl',
+    prepend: true,
+    stylisPlugins: [stylisRTLPlugin as unknown as StylisPlugin]
+  })
 
 type Props = {
   direction: string
