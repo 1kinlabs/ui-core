@@ -1,15 +1,20 @@
 {
   "name": "@1kinlabs/ui-core",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Shared components, styles and logic for all front-end projects",
   "type": "module",
   "files": [
-    "dist"
+    "materialize/",
+    "components/",
+    "context/",
+    "utils/"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "index.cjs",
+  "module": "index.js",
+  "types": "types/index.d.ts",
   "scripts": {
-    "build": "vite build",
+    "build": "tspc",
+    "postbuild": "cp package.json dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "ISC",
@@ -18,10 +23,10 @@
     "url": "https://github.com/1kinlabs/ui-core.git"
   },
   "dependencies": {
-    "@1kinlabs/tsconfig": "^1.0.6",
+    "@1kinlabs/tsconfig": "^1.0.7",
     "@casl/ability": "^6.5.0",
     "@casl/react": "^3.1.0",
-    "@emotion/cache": "11.6.0",
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "11.7.0",
     "@emotion/server": "11.4.0",
     "@emotion/styled": "11.6.0",
@@ -52,10 +57,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.5.0",
-    "@vitejs/plugin-react": "^4.0.4",
     "fast-glob": "^3.3.1",
-    "vite": "^4.4.9",
-    "vite-plugin-no-bundle": "^3.0.0",
-    "vite-tsconfig-paths": "^4.2.0"
+    "typescript-transform-paths": "^3.4.6"
   }
 }
