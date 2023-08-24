@@ -2,7 +2,6 @@
   "name": "@1kinlabs/ui-core",
   "version": "0.0.15",
   "description": "Shared components, styles and logic for all front-end projects",
-  "type": "module",
   "files": [
     "materialize/",
     "components/",
@@ -58,6 +57,7 @@
   "devDependencies": {
     "@types/node": "^20.5.0",
     "fast-glob": "^3.3.1",
+    "ts-patch": "^3.0.2",
     "typescript-transform-paths": "^3.4.6"
   }
 }
