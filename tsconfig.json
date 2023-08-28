@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "commonjs",
+    "module": "nodenext",
     "moduleResolution": "nodenext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "rootDir": "src",
@@ -28,7 +28,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "sourceMap": true,
     "declaration": true,
     "declarationDir": "dist/types"
