@@ -1,15 +1,12 @@
-// ** React Imports
-import { useContext } from 'react'
-
 // ** Component Imports
-import { AbilityContext } from 'context/acl'
+import { useAbility } from 'context/acl'
 
 const CanViewNavLink = props => {
   // ** Props
   const { children, navLink } = props
 
   // ** Hook
-  const ability = useContext(AbilityContext)
+  const ability = useAbility()
 
   return ability && ability.can(navLink?.action, navLink?.subject) ? <>{children}</> : null
 }

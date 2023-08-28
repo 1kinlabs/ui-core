@@ -69,8 +69,8 @@ const VerticalLayout = props => {
     '@media (min-width:1440px)': { maxWidth: 1440 },
     '@media (min-width:1200px)': { maxWidth: '100%' }
   }
-  
-return (
+
+  return (
     <>
       <VerticalLayoutWrapper className='layout-wrapper'>
         {navHidden &&

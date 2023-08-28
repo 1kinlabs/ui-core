@@ -14,13 +14,11 @@ const VerticalNavItems = props => {
   // ** Props
   const { verticalNavItems } = props
 
-  const RenderMenuItems = verticalNavItems?.map((item, index) => {
+  return verticalNavItems?.map((item, index) => {
     const TagName = resolveNavItemComponent(item)
 
     return <TagName {...props} key={index} item={item} />
-  })
-
-  return <>{RenderMenuItems}</>
+  }) || null
 }
 
 export default VerticalNavItems
