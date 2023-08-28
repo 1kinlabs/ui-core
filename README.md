@@ -13,6 +13,72 @@ The core library for all front-end repos. This library contains all components, 
 * Include `feat:` or `feature:` in your commit message to increment the minor version
 * Any other commit not containing the above keywords will increment the patch version
 
+## Development
+### Building
+You can do either of the following to build `ui-core`.
+* Rebuild on file changes
+    ```
+    yarn start
+    ```
+    - This starts up tsc in watch mode, recompiling after every change
+    - [File Watching Configuration docs](https://www.typescriptlang.org/docs/handbook/configuring-watch.html)
+    - The package.json file is copied to the dist directory only once before build starts.
+* Manually build
+    ```
+    yarn build
+    ```
+    - This will build once.
+    - After building, the package.json will be copied into the dist directory.
+
+### Installing
+#### a. Linking Method
+You may experience multiple copies of React issues using `yarn link`,
+but it's the easiest way to use a local module.
+
+These issues typically manifest by saying something along the lines of
+> TypeError: Cannot read properties of null (reading 'useEffect')
+
+If this happens to you, try the manual method instead.
+
+* From `ui-core`'s directory, run
+    ```
+    cd dist/
+    yarn link
+    ```
+* From the directory you'd like to test your changes in, run
+    ```
+    yarn link @1kinlabs/ui-core
+    ```
+* Now, any changes made in your local `ui-core` will appear in the linked project.
+* To unlink run this in the linked project
+    ```
+    yarn unlink @1kinlabs/ui-core
+    ```
+    - Note: you'll want to run this after you're done testing changes, otherwise your directories will stay linked
+* If you'd like to remove the ui-core link for whatever reason, run this in `ui-core`
+    ```
+    yarn unlink
+    ```
+    - Note: you shouldn't need to do this unless you mess something up
+        (like, if you forget to `cd dist`)
+
+#### b. Manual Method
+* From `ui-core`, run
+    ```
+    yarn build
+    cd dist
+    ```
+* (Optional?) You may need to increment the version number in `dist/package.json` to an unused version so Yarn doesn't installed an old cached version.
+* Create the package
+    ```
+    yarn pack
+    ```
+* Note the filepath of the created tgz file
+* From the consuming project's directory, run
+    ```
+    yarn add --force @1kinlabs/ui-core@../ui-core/dist/<name-of-file>.tgz
+    ```
+
 ## Deploying
 ### Vercel
 * Create a [Github Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
