@@ -39,6 +39,7 @@ jobs:
       - run: echo $(ls dist)
 
       - name: Publish
-        run: npm publish ./dist/
+        working-directory: dist
+        run: npm publish ./
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
