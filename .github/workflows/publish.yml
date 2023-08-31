@@ -36,7 +36,8 @@ jobs:
       - name: Pack and Publish
         working-directory: ./dist
         run: |
-          yarn pack
-          yarn publish 1kinlabs-ui-core.*.tgz
+          echo $(ls -l)
+          yarn pack --filename ui-core.tgz
+          yarn publish ./ui-core.tgz
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
