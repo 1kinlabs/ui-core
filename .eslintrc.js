@@ -23,6 +23,11 @@ module.exports = {
     }
   },
 
+  globals: {
+    React: 'readonly',
+    JSX: 'readonly',
+  },
+
   plugins: ['import', '@typescript-eslint', 'react'],
   root: true,
 
@@ -30,5 +35,6 @@ module.exports = {
     semi: ['error', 'never'],
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
+    'react/jsx-filename-extension': 'off',
   },
 }
