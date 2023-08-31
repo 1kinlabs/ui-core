@@ -26,18 +26,23 @@ jobs:
         with:
           tag-prefix: 'v'
 
-      - name: Install Deps and Build
-        run: |
-          yarn
-          yarn build
+      - name: Install Dependencies
+        run: yarn
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Pack and Publish
+      - name: Build
+        run: yarn build
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pack
         working-directory: ./dist
-        run: |
-          echo $(ls -l)
-          yarn pack --filename ui-core.tgz
-          yarn publish ./ui-core.tgz
+        run: yarn pack --filename ui-core.tgz
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish
+        run: yarn publish ./dist/ui-core.tgz
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
