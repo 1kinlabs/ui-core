@@ -34,23 +34,8 @@ jobs:
       - name: Build
         run: yarn build
 
-      - run: echo $(ls dist)
-
-      - name: Pack
-        working-directory: ./dist
-        run: yarn pack --filename ui-core.tgz
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: ui-core
-          path: dist/ui-core.tgz
-
       - name: Publish
         working-directory: ./dist
-        run: |
-          echo "In dist??"
-          echo $(ls .)
-          npm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
