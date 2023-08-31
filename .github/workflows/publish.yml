@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ui-core
-          path: ui-core.tgz
+          path: dist/ui-core.tgz
 
       - name: Publish
         working-directory: ./dist
