@@ -26,6 +26,7 @@ module.exports = {
   globals: {
     React: 'readonly',
     JSX: 'readonly',
+    window: 'readonly',
   },
 
   plugins: ['import', '@typescript-eslint', 'react'],
