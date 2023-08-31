@@ -36,13 +36,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Pack
-        working-directory: ./dist
-        run: yarn pack --filename ui-core.tgz
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo $(ls dist)
 
       - name: Publish
-        run: yarn publish ./dist/ui-core.tgz
+        run: yarn publish ./dist/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
