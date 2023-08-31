@@ -39,6 +39,6 @@ jobs:
       - run: echo $(ls dist)
 
       - name: Publish
-        run: yarn publish ./dist/
+        run: npm publish ./dist/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
