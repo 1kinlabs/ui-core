@@ -1,8 +1,5 @@
 import { useState } from 'react'
-<<<<<<< HEAD
-=======
 import { localStorage } from 'utils/localStorage'
->>>>>>> d496d8f (fix issues preventing ThemeProvider from working)
 
 const keyPrefix = '1kin:'
 

@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-import { Theme, ColorMap, SupportedTheme, themeEvents } from './types'
-=======
 import { useTheme } from '@emotion/react'
 import {
   Theme, ColorMap, SupportedTheme, themeEvents,
 } from './types'
->>>>>>> d496d8f (fix issues preventing ThemeProvider from working)
 
 export const setTheme = (newTheme: SupportedTheme) => (
   window.dispatchEvent(new CustomEvent(themeEvents.change, { detail: newTheme }))
@@ -13,11 +9,7 @@ export const setTheme = (newTheme: SupportedTheme) => (
 
 export const getTheme = ({
   neutral, primary, tertiary,
-<<<<<<< HEAD
-  success, warning, error, info
-=======
   success, warning, error, info,
->>>>>>> d496d8f (fix issues preventing ThemeProvider from working)
 }: ColorMap): Theme => ({
   text: {
     primary: neutral.lighter,
@@ -54,27 +46,16 @@ export const getTheme = ({
       active: tertiary.medium,
       hover: neutral.light,
       default: neutral.medium,
-<<<<<<< HEAD
-      disabled: neutral.dark
-=======
       disabled: neutral.dark,
->>>>>>> d496d8f (fix issues preventing ThemeProvider from working)
     },
     secondary: {
       focus: primary.medium,
       active: tertiary.medium,
       hover: tertiary.light,
       default: tertiary.dark,
-<<<<<<< HEAD
-      disabled: tertiary.darker
-    }
-  }
-})
-=======
       disabled: tertiary.darker,
     },
   },
 })
 
 export { useTheme }
->>>>>>> d496d8f (fix issues preventing ThemeProvider from working)
