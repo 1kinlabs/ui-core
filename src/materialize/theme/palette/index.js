@@ -7,11 +7,11 @@ const DefaultPalette = (mode, skin) => {
   const defaultBgColor = () => {
     if (skin === 'bordered' && mode === 'light') {
       return '#FFF'
-    } else if (skin === 'bordered' && mode === 'dark') {
+    } if (skin === 'bordered' && mode === 'dark') {
       return '#30334E'
-    } else if (mode === 'light') {
+    } if (mode === 'light') {
       return '#F7F7F9'
-    } else return '#282A42'
+    } return '#282A42'
   }
 
   return {
@@ -23,48 +23,48 @@ const DefaultPalette = (mode, skin) => {
       lightBg: '#F7F7F9',
       bodyBg: mode === 'light' ? '#F7F7F9' : '#282A42',
       tooltipBg: mode === 'light' ? '#262732' : '#464A65',
-      tableHeaderBg: mode === 'light' ? '#F5F5F7' : '#3A3E5B'
+      tableHeaderBg: mode === 'light' ? '#F5F5F7' : '#3A3E5B',
     },
     common: {
       black: '#000',
-      white: '#FFF'
+      white: '#FFF',
     },
-    mode: mode,
+    mode,
     primary: {
       light: '#787EFF',
       main: '#666CFF',
       dark: '#5A5FE0',
-      contrastText: '#FFF'
+      contrastText: '#FFF',
     },
     secondary: {
       light: '#7F889B',
       main: '#6D788D',
       dark: '#606A7C',
-      contrastText: '#FFF'
+      contrastText: '#FFF',
     },
     success: {
       light: '#83E542',
       main: '#72E128',
       dark: '#64C623',
-      contrastText: '#FFF'
+      contrastText: '#FFF',
     },
     error: {
       light: '#FF625F',
       main: '#FF4D49',
       dark: '#E04440',
-      contrastText: '#FFF'
+      contrastText: '#FFF',
     },
     warning: {
       light: '#FDBE42',
       main: '#FDB528',
       dark: '#DF9F23',
-      contrastText: '#FFF'
+      contrastText: '#FFF',
     },
     info: {
       light: '#40CDFA',
       main: '#26C6F9',
       dark: '#21AEDB',
-      contrastText: '#FFF'
+      contrastText: '#FFF',
     },
     grey: {
       50: '#FAFAFA',
@@ -80,17 +80,17 @@ const DefaultPalette = (mode, skin) => {
       A100: '#D5D5D5',
       A200: '#AAAAAA',
       A400: '#616161',
-      A700: '#303030'
+      A700: '#303030',
     },
     text: {
       primary: `rgba(${mainColor}, 0.87)`,
       secondary: `rgba(${mainColor}, 0.68)`,
-      disabled: `rgba(${mainColor}, 0.38)`
+      disabled: `rgba(${mainColor}, 0.38)`,
     },
     divider: `rgba(${mainColor}, 0.12)`,
     background: {
       paper: mode === 'light' ? '#FFF' : '#30334E',
-      default: defaultBgColor()
+      default: defaultBgColor(),
     },
     action: {
       active: `rgba(${mainColor}, 0.54)`,
@@ -99,12 +99,12 @@ const DefaultPalette = (mode, skin) => {
       selected: `rgba(${mainColor}, 0.08)`,
       disabled: `rgba(${mainColor}, 0.26)`,
       disabledBackground: `rgba(${mainColor}, 0.12)`,
-      focus: `rgba(${mainColor}, 0.12)`
+      focus: `rgba(${mainColor}, 0.12)`,
     },
     faq: {
       dark: '#101121',
-      light: '#30334E'
-    }
+      light: '#30334E',
+    },
   }
 }
 
