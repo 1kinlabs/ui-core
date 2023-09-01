@@ -3,13 +3,14 @@ import { localStorage } from 'utils/localStorage'
 
 const keyPrefix = '1kin:'
 
-type Return = [string | null, (newValue: string) => void]
+type Return<T extends string> = [T | null, (newValue: T) => void]
 
-export function useStorage(key: string): Return {
+export function useStorage<T extends string>(key: string, defaultValue: T): Return<T> {
   const effectiveKey = keyPrefix + key
 
-  const [value, setValue] = useState(localStorage.getItem(effectiveKey))
-  const set = (newValue: string) => {
+  const initialValue = localStorage.getItem(effectiveKey) as T || defaultValue
+  const [value, setValue] = useState<T>(initialValue)
+  const set = (newValue: T) => {
     localStorage.setItem(effectiveKey, newValue)
     setValue(newValue)
   }

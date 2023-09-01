@@ -14,6 +14,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "start": "yarn postbuild && tspc --watch",
+    "prebuild": "rm -rf dist/*",
     "build": "tspc",
     "postbuild": "cp package.json dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
