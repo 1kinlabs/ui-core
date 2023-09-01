@@ -1,13 +1,13 @@
 export const colors = {
-  neutral100: '#D9E3EE',
-  neutral200: '#C7D8E9',
-  neutral300: '#BDCFE7',
-  neutral400: '#AFC1DA',
-  neutral500: '#99AECC',
-  neutral600: '#7690B0',
-  neutral700: '#32527D',
-  neutral800: '#24344E',
-  neutral900: '#19212F',
+  neutral100: '#FFFFFF',
+  neutral200: '#D9E3EE',
+  neutral300: '#AFC1DA',
+  neutral400: '#7690B0',
+  neutral500: '#39517A',
+  neutral600: '#24344E',
+  neutral700: '#19212F',
+  neutral800: '#0B1119',
+  neutral900: '#000000',
 
   cyan100: '#CAEEFF',
   cyan200: '#8EDBFF',
@@ -43,5 +43,5 @@ export const colors = {
   yellow200: '#FFD178',
   yellow300: '#FDB528',
   yellow400: '#CF7F33',
-  yellow500: '#854100'
+  yellow500: '#854100',
 }
