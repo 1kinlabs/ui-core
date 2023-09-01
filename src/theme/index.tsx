@@ -1,5 +1,7 @@
-import { useTheme, ThemeProvider as EmotionThemeProvider } from '@emotion/react'
-import { useEffect, useState } from 'react'
+import { useTheme, ThemeProvider as StyledThemeProvider } from 'styled-components'
+import styled from '@emotion/styled'
+import { useEffect, useState, useMemo } from 'react'
+import { ValueOf } from 'types/ValueOf'
 import { useStorage } from 'hooks/useStorage'
 import { usePromise } from 'hooks/usePromise'
 import {
@@ -81,9 +83,24 @@ type ThemeProviderProps = {
   children: React.ReactNode
 }
 
+// this is what we call a hack :)
+// it allows us to access theme vars using dot notation
+// without blowing up when things aren't defined
+const themeProxyHandler = {
+  get: (target: Theme, prop: string): ValueOf<Theme> => {
+    if (Object.hasOwn(target, prop)) {
+      return target[prop as keyof Theme]
+    }
+    return new Proxy({} as Theme, themeProxyHandler) as unknown as ValueOf<Theme>
+  },
+}
+
 export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   const [themeName, setThemeName] = useStorage<SupportedTheme>('currentTheme', 'default')
   const [activeTheme, setActiveTheme] = useState<Theme | null>(null)
+  const themeProxy = useMemo(() => (
+    new Proxy<Theme>(activeTheme || {} as Theme, themeProxyHandler)
+  ), [activeTheme])
 
   usePromise(async () => {
     const theme = await getTheme(themeName || 'default')
@@ -101,10 +118,10 @@ export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   }, [])
 
   return (
-    <EmotionThemeProvider theme={activeTheme || {}}>
+    <StyledThemeProvider theme={themeProxy}>
       {children}
-    </EmotionThemeProvider>
+    </StyledThemeProvider>
   )
 }
 
-export { useTheme }
+export { useTheme, styled }
