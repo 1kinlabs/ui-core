@@ -20,7 +20,7 @@ import themeOptions from './ThemeOptions'
 // ** Global Styles
 import GlobalStyling from './globalStyles'
 
-const ThemeComponent = props => {
+function ThemeComponent(props) {
   // ** Props
   const { settings, children } = props
 
@@ -31,16 +31,15 @@ const ThemeComponent = props => {
   let theme = createTheme(coreThemeConfig)
 
   // ** Deep Merge Component overrides of core and user
-  const mergeComponentOverrides = (theme, settings) =>
-    deepmerge({ ...overrides(theme, settings) }, {})
+  const mergeComponentOverrides = (theme, settings) => deepmerge({ ...overrides(theme, settings) }, {})
 
   // ** Deep Merge Typography of core and user
-  const mergeTypography = theme => deepmerge(typography(theme), {})
+  const mergeTypography = (theme) => deepmerge(typography(theme), {})
 
   // ** Continue theme creation and pass merged component overrides to CreateTheme function
   theme = createTheme(theme, {
     components: { ...mergeComponentOverrides(theme, settings) },
-    typography: { ...mergeTypography(theme) }
+    typography: { ...mergeTypography(theme) },
   })
 
   // ** Set responsive font sizes to true
