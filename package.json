@@ -7,7 +7,8 @@
     "components/",
     "context/",
     "utils/",
-    "theme/"
+    "theme/",
+    "hooks/"
   ],
   "main": "index.cjs",
   "module": "index.js",
