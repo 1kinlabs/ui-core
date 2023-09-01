@@ -93,5 +93,8 @@ If this happens to you, try the manual method instead.
 
 
 ## FAQs
-### I added a new folder under src/... Why isn't it building?!
-Make sure you update the `files` section in `package.json`!
+### WHY AREN'T MY CHANGES BEING REFLECTED IN THE INSTALLED PACKAGE?!?!?!? OMG?!?!!!1
+I'm sorry you're going through this. Try this:
+```
+rm -rf node_modules && yarn cache clean && yarn
+```
