@@ -33,10 +33,10 @@ const MenuNavLink = styled(ListItemButton)(({ theme }) => ({
     },
     '& .MuiTypography-root': {
       fontWeight: 500,
-      color: `${theme.palette.common.white} !important`
+      color: `${theme.palette.background.default} !important`
     },
     '& .MuiListItemIcon-root': {
-      color: `${theme.palette.common.white} !important`
+      color: `${theme.palette.background.default} !important`
     }
   }
 }))

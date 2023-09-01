@@ -1,6 +1,4 @@
-import {
-  ColorMap,
-} from './types'
+import { ColorMap } from './types'
 
 export const getVariables = ({
   neutral, primary, tertiary,
