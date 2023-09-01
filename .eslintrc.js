@@ -39,5 +39,7 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': 'error'
   },
 }
