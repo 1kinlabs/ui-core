@@ -1,5 +1,4 @@
-import { useTheme, ThemeProvider as StyledThemeProvider } from 'styled-components'
-import styled from '@emotion/styled'
+import { useTheme, ThemeProvider as StyledThemeProvider, styled } from 'styled-components'
 import { useEffect, useState, useMemo } from 'react'
 import { ValueOf } from 'types/ValueOf'
 import { useStorage } from 'hooks/useStorage'
