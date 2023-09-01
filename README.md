@@ -90,3 +90,8 @@ If this happens to you, try the manual method instead.
 
 ### AWS
 * TODO!
+
+
+## FAQs
+### I added a new folder under src/... Why isn't it building?!
+Make sure you update the `files` section in `package.json`!

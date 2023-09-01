@@ -6,7 +6,8 @@
     "materialize/",
     "components/",
     "context/",
-    "utils/"
+    "utils/",
+    "theme/"
   ],
   "main": "index.cjs",
   "module": "index.js",
