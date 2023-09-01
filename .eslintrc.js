@@ -1,7 +1,7 @@
 module.exports = {
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-type-checked',
     'eslint-config-airbnb',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
@@ -40,6 +40,8 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': 'error'
+    '@typescript-eslint/no-shadow': 'error',
+    'react/prop-types': 'off',
+    'react/require-default-props': 'off',
   },
 }

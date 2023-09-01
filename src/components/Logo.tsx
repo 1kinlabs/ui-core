@@ -1,5 +1,13 @@
 import { Logo as SVGLogo } from 'svg/Logo'
 
-export function Logo() {
-  return <SVGLogo />
+type Props = {
+  className?: string
+}
+
+export function Logo({ className }: Props) {
+  return (
+    <div className={className}>
+      <SVGLogo />
+    </div>
+  )
 }
