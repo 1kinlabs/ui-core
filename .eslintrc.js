@@ -44,4 +44,14 @@ module.exports = {
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
   },
+
+  overrides: [
+    {
+      files: ['*.js', '*.jsx'],
+      rules: {
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+      }
+    }
+  ]
 }

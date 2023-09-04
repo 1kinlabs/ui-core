@@ -5,18 +5,22 @@ import { useStorage } from 'hooks/useStorage'
 import { usePromise } from 'hooks/usePromise'
 import { getVariables } from './variables'
 import {
-  supportedThemes, SupportedTheme, themeEvents,
+  supportedThemes, SupportedTheme, themeEvents, ColorMap,
 } from './types'
 
 // Just redefining this here to avoid circular deps
 type Theme = ReturnType<typeof getVariables>
 
+type ThemeImport = Promise<{
+  map: ColorMap
+}>
+
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-const loadTheme = (theme: SupportedTheme): Promise<any> => {
-  if (!supportedThemes[theme as SupportedTheme]) {
-    return import(`./${supportedThemes.default}`)
+const loadTheme = (theme: SupportedTheme): ThemeImport => {
+  if (!supportedThemes[theme]) {
+    return import(`./${supportedThemes.default}`) as ThemeImport
   }
-  return import(`./${theme}`)
+  return import(`./${theme}`) as ThemeImport
 }
 
 const getTheme = async (theme: SupportedTheme): Promise<Theme> => {
@@ -54,8 +58,8 @@ export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
 
   useEffect(() => {
     const changeHandler = (e: CustomEvent) => {
-      if (Object.hasOwn(supportedThemes, e.detail)) {
-        setThemeName(e.detail)
+      if (Object.hasOwn(supportedThemes, e.detail as SupportedTheme)) {
+        setThemeName(e.detail as SupportedTheme)
       }
     }
     window.addEventListener(themeEvents.change, changeHandler)

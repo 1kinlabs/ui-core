@@ -1,5 +1,4 @@
 // ** MUI Imports
-import { deepmerge } from '@mui/utils'
 import CssBaseline from '@mui/material/CssBaseline'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles'
@@ -30,16 +29,12 @@ function ThemeComponent(props) {
   // ** Pass ThemeOptions to CreateTheme Function to create partial theme without component overrides
   let theme = createTheme(coreThemeConfig)
 
-  // ** Deep Merge Component overrides of core and user
-  const mergeComponentOverrides = (theme, settings) => deepmerge({ ...overrides(theme, settings) }, {})
-
-  // ** Deep Merge Typography of core and user
-  const mergeTypography = (theme) => deepmerge(typography(theme), {})
+  const components = overrides(theme, settings)
 
   // ** Continue theme creation and pass merged component overrides to CreateTheme function
   theme = createTheme(theme, {
-    components: { ...mergeComponentOverrides(theme, settings) },
-    typography: { ...mergeTypography(theme) },
+    components,
+    typography
   })
 
   // ** Set responsive font sizes to true

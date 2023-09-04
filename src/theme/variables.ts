@@ -6,7 +6,7 @@ export const getVariables = ({
 }: ColorMap) => ({
   text: {
     primary: neutral.lighter,
-    secondary: neutral.dark,
+    secondary: neutral.light,
     disabled: neutral.medium,
     error: error.medium,
     success: success.medium,
