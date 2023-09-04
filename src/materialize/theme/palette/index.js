@@ -1,4 +1,7 @@
 import { map } from 'theme/default'
+import { getVariables } from 'theme/variables'
+
+const theme = getVariables(map)
 
 const DefaultPalette = (mode) => {
   // ** Vars
@@ -11,9 +14,9 @@ const DefaultPalette = (mode) => {
       dark: darkColor,
       main: mainColor,
       light: lightColor,
-      darkBg: map.neutral.darker,
-      lightBg: map.neutral.dark,
-      bodyBg: map.neutral.darker,
+      darkBg: theme.surface.paper,
+      lightBg: theme.surface.paperLight,
+      bodyBg: theme.surface.paper,
       tooltipBg: mode === 'light' ? '#262732' : '#464A65',
       tableHeaderBg: mode === 'light' ? '#F5F5F7' : '#3A3E5B',
     },
@@ -75,27 +78,27 @@ const DefaultPalette = (mode) => {
       A700: map.neutral.darkest,
     },
     text: {
-      primary: map.neutral.lighter,
-      secondary: map.neutral.dark,
-      disabled: map.neutral.medium,
+      primary: theme.text.primary,
+      secondary: theme.text.secondary,
+      disabled: theme.text.disabled,
     },
     divider: `rgba(${mainColor}, 0.12)`,
     background: {
-      paper: map.neutral.darker,
-      default: map.neutral.darkest,
+      paper: theme.surface.paper,
+      default: theme.surface.body,
     },
     action: {
-      active: `rgba(${mainColor}, 0.54)`,
-      hover: `rgba(${mainColor}, 0.05)`,
+      active: theme.action.active,
+      hover: theme.action.hover,
       hoverOpacity: 0.05,
-      selected: `rgba(${mainColor}, 0.08)`,
-      disabled: `rgba(${mainColor}, 0.26)`,
+      selected: theme.action.selected,
+      disabled: theme.action.disabled,
       disabledBackground: `rgba(${mainColor}, 0.12)`,
       focus: `rgba(${mainColor}, 0.12)`,
     },
     faq: {
-      dark: '#101121',
-      light: '#30334E',
+      dark: theme.surface.paper,
+      light: theme.surface.paperLight,
     },
   }
 }
