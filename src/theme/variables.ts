@@ -1,3 +1,4 @@
+import { hexToRGBA } from 'utils/hexToRGBA'
 import { ColorMap } from './types'
 
 export const getVariables = ({
@@ -24,6 +25,7 @@ export const getVariables = ({
   surface: {
     paperLight: neutral.dark,
     paper: neutral.darker,
+    paperAlpha: hexToRGBA(neutral.darkest, 0.8),
     body: neutral.darkest,
     error: error.darker,
     success: success.darker,
