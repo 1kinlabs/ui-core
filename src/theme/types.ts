@@ -34,4 +34,9 @@ export type ColorMap = {
   warning: Intensity
   error: Intensity
   info: Intensity
+  brand: {
+    google: Intensity
+    twitter: Intensity
+    discord: Intensity
+  }
 }
