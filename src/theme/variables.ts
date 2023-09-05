@@ -4,6 +4,7 @@ import { ColorMap } from './types'
 export const getVariables = ({
   neutral, primary, tertiary,
   success, warning, error, info,
+  brand,
 }: ColorMap) => ({
   text: {
     primary: neutral.lighter,
@@ -50,6 +51,21 @@ export const getVariables = ({
       hover: tertiary.light,
       default: tertiary.dark,
       disabled: tertiary.darker,
+    },
+  },
+  button: {
+    text: neutral.darkest,
+    google: {
+      primary: brand.google.medium,
+      hover: brand.google.dark,
+    },
+    twitter: {
+      primary: brand.twitter.medium,
+      hover: brand.twitter.dark,
+    },
+    discord: {
+      primary: brand.discord.medium,
+      hover: brand.discord.dark,
     },
   },
 })

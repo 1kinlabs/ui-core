@@ -69,4 +69,27 @@ export const map: ColorMap = {
     dark: colors.cyan400,
     darker: colors.cyan500,
   },
+  brand: {
+    google: {
+      lighter: colors.red100,
+      light: colors.red200,
+      medium: colors.red300,
+      dark: colors.red400,
+      darker: colors.red500,
+    },
+    twitter: {
+      lighter: colors.cyan100,
+      light: colors.cyan200,
+      medium: colors.cyan300,
+      dark: colors.cyan400,
+      darker: colors.cyan500,
+    },
+    discord: {
+      lighter: colors.purple100,
+      light: colors.purple200,
+      medium: colors.purple300,
+      dark: colors.purple400,
+      darker: colors.purple500,
+    },
+  },
 }
