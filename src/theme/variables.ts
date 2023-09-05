@@ -7,6 +7,7 @@ export const getVariables = ({
   brand,
 }: ColorMap) => ({
   text: {
+    light: neutral.lightest,
     primary: neutral.lighter,
     secondary: neutral.light,
     disabled: neutral.medium,
@@ -30,10 +31,11 @@ export const getVariables = ({
     body: neutral.darkest,
     error: error.darker,
     success: success.darker,
-    warning: warning.darker,
+    warning: warning.dark,
     info: info.darker,
   },
   border: {
+    radius: '5px',
     error: error.dark,
     success: success.dark,
     warning: warning.dark,
@@ -55,6 +57,9 @@ export const getVariables = ({
   },
   button: {
     text: neutral.darkest,
+    disabled: {
+      text: neutral.light,
+    },
     google: {
       primary: brand.google.medium,
       hover: brand.google.dark,
