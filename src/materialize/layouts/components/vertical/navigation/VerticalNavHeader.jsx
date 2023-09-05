@@ -71,7 +71,7 @@ const VerticalNavHeader = props => {
         </StyledLink>
       )}
 
-      {!hidden && (
+      {hidden && (
         <IconButton
           disableRipple
           disableFocusRipple
