@@ -1,16 +1,26 @@
 // ** Next Import
 import Link from 'next/link'
 
+import { styled } from 'theme'
+import { Logo as BaseLogo } from 'components/Logo'
+
 // ** MUI Imports
 import IconButton from '@mui/material/IconButton'
 import Box from '@mui/material/Box'
-import { styled } from '@mui/material/styles'
+import { styled as muiStyled } from '@mui/material/styles'
 
 // ** Icons
 import Close from 'mdi-material-ui/Close'
 
+const Logo = styled(BaseLogo)`
+  svg {
+    width: 64px;
+    height: 24px;
+  }
+`
+
 // ** Styled Components
-const MenuHeaderWrapper = styled(Box)(({ theme }) => ({
+const MenuHeaderWrapper = muiStyled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   paddingRight: theme.spacing(4),
@@ -19,7 +29,7 @@ const MenuHeaderWrapper = styled(Box)(({ theme }) => ({
   minHeight: theme.mixins.toolbar.minHeight
 }))
 
-const StyledLink = styled(Link)({
+const StyledLink = muiStyled(Link)({
   display: 'flex',
   alignItems: 'center',
   textDecoration: 'none'
@@ -57,7 +67,7 @@ const VerticalNavHeader = props => {
         userVerticalNavMenuBranding(props)
       ) : (
         <StyledLink href='/'>
-          <img width={64} height={24} alt={`logo`} src={`/images/1kin-full-white.svg`} />
+          <Logo />
         </StyledLink>
       )}
 
