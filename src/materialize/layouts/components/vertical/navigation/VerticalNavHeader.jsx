@@ -57,7 +57,7 @@ const VerticalNavHeader = props => {
         userVerticalNavMenuBranding(props)
       ) : (
         <StyledLink href='/'>
-          <img width={107} height={40} alt={`logo`} src={`/images/1kin-full-white.svg`} />
+          <img width={64} height={24} alt={`logo`} src={`/images/1kin-full-white.svg`} />
         </StyledLink>
       )}
 
