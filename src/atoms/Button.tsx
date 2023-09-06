@@ -1,2 +1,4 @@
-import Button from '@mui/material/Button'
-export { Button }
+import BaseButton from '@mui/material/Button'
+import { styled } from 'theme'
+
+export const Button = styled(BaseButton)``
