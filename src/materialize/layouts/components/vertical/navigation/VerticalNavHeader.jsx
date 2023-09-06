@@ -13,10 +13,8 @@ import { styled as muiStyled } from '@mui/material/styles'
 import Close from 'mdi-material-ui/Close'
 
 const Logo = styled(BaseLogo)`
-  svg {
-    width: 64px;
-    height: 24px;
-  }
+  width: 64px;
+  height: 24px;
 `
 
 // ** Styled Components
