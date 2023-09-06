@@ -1,8 +1,15 @@
 // ** MUI Import
 import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
+import { styled } from 'theme'
+import { Logo as BaseLogo } from 'components/Logo'
 
-const Spinner = () => {
+const Logo = styled(BaseLogo)`
+  width: 80px;
+  height: 80px;
+`
+
+function Spinner() {
   return (
     <Box
       sx={{
@@ -10,10 +17,10 @@ const Spinner = () => {
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',
       }}
     >
-      <img width={80} height={80} alt={`logo`} src={`/images/1kin-symbol-white.svg`} />
+      <Logo small />
       <CircularProgress disableShrink sx={{ mt: 6 }} />
     </Box>
   )
