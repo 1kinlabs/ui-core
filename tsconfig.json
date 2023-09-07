@@ -30,8 +30,7 @@
     "resolveJsonModule": true,
     "jsx": "preserve",
     "sourceMap": false,
-    "declaration": true,
-    "declarationDir": "dist/types"
+    "declaration": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
   "exclude": ["node_modules"]
