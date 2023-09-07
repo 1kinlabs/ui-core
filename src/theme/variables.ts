@@ -7,6 +7,7 @@ export const getVariables = ({
   brand,
 }: ColorMap) => ({
   text: {
+    white: neutral.white,
     light: neutral.lightest,
     primary: neutral.lighter,
     secondary: neutral.light,
