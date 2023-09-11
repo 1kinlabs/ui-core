@@ -2,15 +2,16 @@ import { hexToRGBA } from 'utils/hexToRGBA'
 import { ColorMap } from './types'
 
 export const getVariables = ({
-  neutral, primary, tertiary,
+  neutral, primary, secondary, tertiary,
   success, warning, error, info,
   brand,
 }: ColorMap) => ({
   text: {
     light: neutral.lightest,
-    primary: neutral.lighter,
-    secondary: neutral.light,
-    disabled: neutral.medium,
+    primary: neutral.lightest,
+    secondary: neutral.lighter,
+    hover: neutral.white,
+    disabled: neutral.light,
     error: error.medium,
     success: success.medium,
     warning: warning.medium,
@@ -18,10 +19,10 @@ export const getVariables = ({
     link: primary.medium,
   },
   action: {
-    focus: primary.medium,
-    selected: neutral.light,
-    active: neutral.medium,
-    hover: neutral.dark,
+    focus: tertiary.medium,
+    selected: primary.medium,
+    active: neutral.light,
+    hover: neutral.lighter,
     disabled: neutral.medium,
   },
   surface: {
@@ -33,6 +34,7 @@ export const getVariables = ({
     success: success.darker,
     warning: warning.dark,
     info: info.darker,
+    callout: secondary.medium,
   },
   border: {
     radius: '5px',
@@ -41,11 +43,11 @@ export const getVariables = ({
     warning: warning.dark,
     info: info.dark,
     primary: {
-      focus: primary.medium,
-      active: tertiary.medium,
-      hover: neutral.light,
-      default: neutral.medium,
-      disabled: neutral.dark,
+      focus: tertiary.medium,
+      active: primary.medium,
+      hover: neutral.lighter,
+      default: neutral.light,
+      disabled: neutral.medium,
     },
     secondary: {
       focus: primary.medium,
@@ -57,6 +59,8 @@ export const getVariables = ({
   },
   button: {
     text: neutral.darkest,
+
+    // Deprecated: DO NOT USE! Use text.disabled instead
     disabled: {
       text: neutral.light,
     },
