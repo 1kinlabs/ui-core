@@ -59,11 +59,6 @@ export const getVariables = ({
   },
   button: {
     text: neutral.darkest,
-
-    // Deprecated: DO NOT USE! Use text.disabled instead
-    disabled: {
-      text: neutral.light,
-    },
     google: {
       primary: brand.google.medium,
       hover: brand.google.dark,
