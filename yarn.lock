@@ -2,6 +2,21 @@
 # yarn lockfile v1
 
 
+"@1kinlabs/eslint-config@^0.0.4":
+  version "0.0.4"
+  resolved "https://npm.pkg.github.com/download/@1kinlabs/eslint-config/0.0.4/72ceae8d49721a6176b9ce0f7a013ec76232720a#72ceae8d49721a6176b9ce0f7a013ec76232720a"
+  integrity sha512-IMRn0xSdZBLO6Yi8WiS4LtUxHgpl9eqkowSVDJfdvj/LNkXFGOGrHpeM6BXe6n2fYFwdnMz5ZUciveTjhXfvLw==
+  dependencies:
+    "@typescript-eslint/eslint-plugin" "^6.5.0"
+    "@typescript-eslint/parser" "^6.5.0"
+    eslint "^8.2.0"
+    eslint-config-airbnb "19.0.4"
+    eslint-import-resolver-typescript "^3.6.0"
+    eslint-plugin-import "^2.25.3"
+    eslint-plugin-jsx-a11y "^6.5.1"
+    eslint-plugin-react "^7.33.2"
+    eslint-plugin-react-hooks "^4.3.0"
+
 "@1kinlabs/tsconfig@1.0.7":
   version "1.0.7"
   resolved "https://npm.pkg.github.com/download/@1kinlabs/tsconfig/1.0.7/41d21eba3526328acb432b5269cbdd724c3dd366#41d21eba3526328acb432b5269cbdd724c3dd366"
