@@ -32,6 +32,6 @@
     "sourceMap": false,
     "declaration": true
   },
-  "include": [".eslintrc.js", "src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
   "exclude": ["node_modules"]
 }
