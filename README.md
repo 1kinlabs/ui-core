@@ -31,6 +31,13 @@ You can do either of the following to build `ui-core`.
     - After building, the package.json will be copied into the dist directory.
 
 ### Installing
+### Git hooks
+We use a pre-commit hook to run `eslint --fix` on all changed files.
+To set it up, run
+```
+yarn git-hooks
+```
+
 #### a. Linking Method
 You may experience multiple copies of React issues using `yarn link`,
 but it's the easiest way to use a local module.

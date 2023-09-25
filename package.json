@@ -10,7 +10,8 @@
     "prebuild": "rm -rf dist/*",
     "build": "tspc",
     "postbuild": "cp package.json dist/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "git-hooks": "cp .git-hooks/pre-commit ./.git/hooks/pre-commit"
   },
   "license": "ISC",
   "repository": {
@@ -41,6 +42,7 @@
     "stylis-plugin-rtl": "2.1.1"
   },
   "devDependencies": {
+    "@1kinlabs/eslint-config": "^0.0.6",
     "@emotion/cache": "11.11.0",
     "@emotion/react": "11.11.1",
     "@emotion/server": "11.11.0",
@@ -51,16 +53,7 @@
     "@mui/x-data-grid": "5.10.0",
     "@types/node": "^20.5.0",
     "@types/styled-components": "^5.1.26",
-    "@typescript-eslint/eslint-plugin": "^6.5.0",
-    "@typescript-eslint/parser": "^6.5.0",
     "apexcharts": "^3.42.0",
-    "eslint": "^8.2.0",
-    "eslint-config-airbnb": "19.0.4",
-    "eslint-import-resolver-typescript": "^3.6.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.3.0",
     "fast-glob": "^3.3.1",
     "mdi-material-ui": "7.1.0",
     "next": "13.4.19",
