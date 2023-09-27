@@ -195,7 +195,7 @@ const UserDropdown = props => {
             Pricing
           </Box>
         </MenuItem> */}
-        <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/faq')}>
+        <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/faq')}>
           <Box sx={styles}>
             <HelpCircleOutline sx={{ mr: 2 }} />
             FAQ
