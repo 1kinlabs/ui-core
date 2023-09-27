@@ -8,19 +8,18 @@ import { CacheProvider } from '@emotion/react'
 // ** RTL Plugin
 import stylisRTLPlugin from 'stylis-plugin-rtl'
 
-const styleCache = () =>
-  createCache({
-    key: 'rtl',
-    prepend: true,
-    stylisPlugins: [stylisRTLPlugin as unknown as StylisPlugin]
-  })
+const styleCache = () => createCache({
+  key: 'rtl',
+  prepend: true,
+  stylisPlugins: [stylisRTLPlugin as unknown as StylisPlugin],
+})
 
 type Props = {
   direction: string
   children: React.ReactNode
 }
 
-export const TextDirection = (props: Props) => {
+export function TextDirection(props: Props) {
   const { children, direction } = props
   useEffect(() => {
     document.dir = direction

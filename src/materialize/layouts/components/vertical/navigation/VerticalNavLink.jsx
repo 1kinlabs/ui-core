@@ -29,16 +29,16 @@ const MenuNavLink = styled(ListItemButton)(({ theme }) => ({
   transition: 'padding-left .25s ease-in-out',
   '&.active': {
     '&, &:hover': {
-      backgroundColor: theme.palette.primary.light
+      backgroundColor: theme.palette.primary.light,
     },
     '& .MuiTypography-root': {
       fontWeight: 500,
-      color: `${theme.palette.background.default} !important`
+      color: `${theme.palette.background.default} !important`,
     },
     '& .MuiListItemIcon-root': {
-      color: `${theme.palette.background.default} !important`
-    }
-  }
+      color: `${theme.palette.background.default} !important`,
+    },
+  },
 }))
 
 const MenuItemTextMetaWrapper = styled(Box)({
@@ -47,10 +47,10 @@ const MenuItemTextMetaWrapper = styled(Box)({
   alignItems: 'center',
   justifyContent: 'space-between',
   transition: 'opacity .25s ease-in-out',
-  ...(themeConfig.menuTextTruncate && { overflow: 'hidden' })
+  ...(themeConfig.menuTextTruncate && { overflow: 'hidden' }),
 })
 
-const VerticalNavLink = ({
+function VerticalNavLink({
   item,
   parent,
   navHover,
@@ -59,8 +59,8 @@ const VerticalNavLink = ({
   isSubToSub,
   collapsedNavWidth,
   toggleNavVisibility,
-  navigationBorderWidth
-}) => {
+  navigationBorderWidth,
+}) {
   // ** Hooks
   const theme = useTheme()
   const router = useRouter()
@@ -72,60 +72,58 @@ const VerticalNavLink = ({
   const conditionalIconColor = () => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
       return {
-        color: `rgba(${theme.palette.customColors.dark}, ${parent ? 0.68 : 0.87})`
+        color: `rgba(${theme.palette.customColors.dark}, ${parent ? 0.68 : 0.87})`,
       }
-    } else if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
+    } if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
       return {
-        color: `rgba(${theme.palette.customColors.light}, ${parent ? 0.68 : 0.87})`
+        color: `rgba(${theme.palette.customColors.light}, ${parent ? 0.68 : 0.87})`,
       }
-    } else
-      return {
-        color: parent ? theme.palette.text.secondary : theme.palette.text.primary
-      }
+    } return {
+      color: parent ? theme.palette.text.secondary : theme.palette.text.primary,
+    }
   }
 
   const conditionalBgColor = () => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
       return {
         '&:hover': {
-          backgroundColor: `rgba(${theme.palette.customColors.dark}, 0.05)`
-        }
+          backgroundColor: `rgba(${theme.palette.customColors.dark}, 0.05)`,
+        },
       }
-    } else if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
+    } if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
       return {
         '&:hover': {
-          backgroundColor: `rgba(${theme.palette.customColors.light}, 0.05)`
-        }
+          backgroundColor: `rgba(${theme.palette.customColors.light}, 0.05)`,
+        },
       }
-    } else return {}
+    } return {}
   }
 
   const isNavLinkActive = () => {
     if (router.pathname === item.path || handleURLQueries(router, item.path)) {
       return true
-    } else {
-      return false
     }
+    return false
   }
 
   return (
     <CanViewNavLink navLink={item}>
       <ListItem
         disablePadding
-        className='nav-link'
+        className="nav-link"
         disabled={item.disabled || false}
         sx={{
           mt: 1.5,
           transition: 'padding .25s ease-in-out',
-          px: parent ? '0 !important' : `${theme.spacing(navCollapsed && !navHover ? 2 : 3)} !important`
+          px: parent ? '0 !important' : `${theme.spacing(navCollapsed && !navHover ? 2 : 3)} !important`,
         }}
       >
         <Link passHref legacyBehavior href={item.path === undefined ? '/' : `${item.path}`}>
           <MenuNavLink
-            component={'a'}
+            component="a"
             className={isNavLinkActive() ? 'active' : ''}
             {...(item.openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : null)}
-            onClick={e => {
+            onClick={(e) => {
               if (item.path === undefined) {
                 e.preventDefault()
                 e.stopPropagation()
@@ -139,7 +137,7 @@ const VerticalNavLink = ({
               ...conditionalBgColor(),
               ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
               pr: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 24 - 16) / 8 : 3,
-              pl: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 24 - 16) / 8 : 4
+              pl: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 24 - 16) / 8 : 4,
             }}
           >
             {isSubToSub ? null : (
@@ -148,17 +146,17 @@ const VerticalNavLink = ({
                   ...conditionalIconColor(),
                   transition: 'margin .25s ease-in-out',
                   ...(navCollapsed && !navHover ? { mr: 0 } : { mr: 2 }),
-                  ...(parent ? { ml: 2, mr: 4 } : {}) // This line should be after (navCollapsed && !navHover) condition for proper styling
+                  ...(parent ? { ml: 2, mr: 4 } : {}), // This line should be after (navCollapsed && !navHover) condition for proper styling
                 }}
               >
                 <UserIcon
                   icon={IconTag}
-                  componentType='vertical-menu'
+                  componentType="vertical-menu"
                   iconProps={{
                     sx: {
                       ...(!parent ? { fontSize: '1.5rem' } : { fontSize: '0.5rem' }),
-                      ...(parent && item.icon ? { fontSize: '0.875rem' } : {})
-                    }
+                      ...(parent && item.icon ? { fontSize: '0.875rem' } : {}),
+                    },
                   }}
                 />
               </ListItemIcon>
@@ -167,19 +165,19 @@ const VerticalNavLink = ({
             <MenuItemTextMetaWrapper
               sx={{
                 ...(isSubToSub ? { ml: 8 } : {}),
-                ...(navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 })
+                ...(navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 }),
               }}
             >
               <Typography
                 {...((themeConfig.menuTextTruncate || (!themeConfig.menuTextTruncate && navCollapsed && !navHover)) && {
-                  noWrap: true
+                  noWrap: true,
                 })}
               >
                 <Translations text={item.title} />
               </Typography>
               {item.badgeContent ? (
                 <Chip
-                  size='small'
+                  size="small"
                   label={item.badgeContent}
                   color={item.badgeColor || 'primary'}
                   sx={{ ml: 1.5, '& .MuiChip-label': { px: 2.5, lineHeight: 1.385, textTransform: 'capitalize' } }}

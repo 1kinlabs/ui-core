@@ -1,7 +1,7 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 
-const PageHeader = props => {
+function PageHeader(props) {
   // ** Props
   const { title, subtitle } = props
 

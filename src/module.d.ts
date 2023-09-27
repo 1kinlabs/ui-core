@@ -1,1 +1,1 @@
-declare module "materialize/components/spinner"
+declare module 'materialize/components/spinner'

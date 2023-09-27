@@ -1,4 +1,4 @@
-const Repeater = props => {
+function Repeater(props) {
   // ** Props
   const { count, tag, children } = props
 

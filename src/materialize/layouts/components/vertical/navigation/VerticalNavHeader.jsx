@@ -24,16 +24,16 @@ const MenuHeaderWrapper = muiStyled(Box)(({ theme }) => ({
   paddingRight: theme.spacing(4),
   justifyContent: 'space-between',
   transition: 'padding .25s ease-in-out',
-  minHeight: theme.mixins.toolbar.minHeight
+  minHeight: theme.mixins.toolbar.minHeight,
 }))
 
 const StyledLink = muiStyled(Link)({
   display: 'flex',
   alignItems: 'center',
-  textDecoration: 'none'
+  textDecoration: 'none',
 })
 
-const VerticalNavHeader = props => {
+function VerticalNavHeader(props) {
   // ** Props
   const {
     hidden,
@@ -42,7 +42,7 @@ const VerticalNavHeader = props => {
     collapsedNavWidth,
     toggleNavVisibility,
     navigationBorderWidth,
-    verticalNavMenuBranding: userVerticalNavMenuBranding
+    verticalNavMenuBranding: userVerticalNavMenuBranding,
   } = props
 
   const { navCollapsed } = settings
@@ -51,20 +51,18 @@ const VerticalNavHeader = props => {
     if (navCollapsed && !navHover) {
       if (userVerticalNavMenuBranding) {
         return 0
-      } else {
-        return (collapsedNavWidth - navigationBorderWidth - 40) / 8
       }
-    } else {
-      return 5.5
+      return (collapsedNavWidth - navigationBorderWidth - 40) / 8
     }
+    return 5.5
   }
 
   return (
-    <MenuHeaderWrapper className='nav-header' sx={{ pl: menuHeaderPaddingLeft() }}>
+    <MenuHeaderWrapper className="nav-header" sx={{ pl: menuHeaderPaddingLeft() }}>
       {userVerticalNavMenuBranding ? (
         userVerticalNavMenuBranding(props)
       ) : (
-        <StyledLink href='/'>
+        <StyledLink href="/">
           <Logo />
         </StyledLink>
       )}
@@ -76,7 +74,7 @@ const VerticalNavHeader = props => {
           onClick={toggleNavVisibility}
           sx={{ p: 0, backgroundColor: 'transparent !important' }}
         >
-          <Close fontSize='small' />
+          <Close fontSize="small" />
         </IconButton>
       )}
     </MenuHeaderWrapper>

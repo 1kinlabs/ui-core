@@ -15,7 +15,7 @@ const ReactHotToast = styled(Box)(({ theme }) => {
       left: `${theme.spacing(6)} !important`,
       right: `${theme.spacing(6)} !important`,
       bottom: `${theme.spacing(6)} !important`,
-      top: layout === 'horizontal' && !navHidden ? '139px !important' : '75px !important'
+      top: layout === 'horizontal' && !navHidden ? '139px !important' : '75px !important',
     },
     '& .react-hot-toast': {
       fontWeight: 400,
@@ -28,9 +28,9 @@ const ReactHotToast = styled(Box)(({ theme }) => {
       background: theme.palette.background.paper,
       '&>:first-of-type:not([role])>:first-of-type': {
         width: 14,
-        height: 14
-      }
-    }
+        height: 14,
+      },
+    },
   }
 })
 

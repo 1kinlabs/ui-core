@@ -17,8 +17,8 @@ const AppBar = styled(MuiAppBar)(({ theme }) => ({
   minHeight: theme.mixins.toolbar.minHeight,
   [theme.breakpoints.down('sm')]: {
     paddingLeft: theme.spacing(0),
-    paddingRight: theme.spacing(0)
-  }
+    paddingRight: theme.spacing(0),
+  },
 }))
 
 const Toolbar = styled(MuiToolbar)(({ theme }) => ({
@@ -31,43 +31,43 @@ const Toolbar = styled(MuiToolbar)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     backgroundColor: theme.palette.background.paper,
     paddingLeft: `${theme.spacing(4)} !important`,
-    paddingRight: `${theme.spacing(4)} !important`
-  }
+    paddingRight: `${theme.spacing(4)} !important`,
+  },
 }))
 
-const LayoutAppBar = props => {
+function LayoutAppBar(props) {
   // ** Props
-  const { settings,verticalAppBarContent: userVerticalAppBarContent } = props
+  const { settings, verticalAppBarContent: userVerticalAppBarContent } = props
 
   // ** Hooks
   const theme = useTheme()
   const scrollTrigger = useScrollTrigger({ threshold: 0, disableHysteresis: true })
 
   // ** Vars
-  const { skin, appBar, appBarBlur, contentWidth } = settings
+  const {
+    skin, appBar, appBarBlur, contentWidth,
+  } = settings
 
-  const appBarFixedStyles = () => {
-    return {
-      px: `${theme.spacing(6)} !important`,
-      ...(appBarBlur && { backdropFilter: 'blur(8px)' }),
-      boxShadow: theme.shadows[skin === 'bordered' ? 0 : 3],
-      backgroundColor: hexToRGBA(theme.palette.background.paper, appBarBlur ? 0.9 : 1),
-      ...(skin === 'bordered' && { border: `1px solid ${theme.palette.divider}`, borderTopWidth: 0 })
-    }
-  }
+  const appBarFixedStyles = () => ({
+    px: `${theme.spacing(6)} !important`,
+    ...(appBarBlur && { backdropFilter: 'blur(8px)' }),
+    boxShadow: theme.shadows[skin === 'bordered' ? 0 : 3],
+    backgroundColor: hexToRGBA(theme.palette.background.paper, appBarBlur ? 0.9 : 1),
+    ...(skin === 'bordered' && { border: `1px solid ${theme.palette.divider}`, borderTopWidth: 0 }),
+  })
   if (appBar === 'hidden') {
     return null
   }
 
   return (
-    <AppBar elevation={0} color='default' className='layout-navbar' position={appBar === 'fixed' ? 'sticky' : 'static'}>
+    <AppBar elevation={0} color="default" className="layout-navbar" position={appBar === 'fixed' ? 'sticky' : 'static'}>
       <Toolbar
-        className='navbar-content-container'
+        className="navbar-content-container"
         sx={{
           ...(appBar === 'fixed' && scrollTrigger && { ...appBarFixedStyles() }),
           ...((contentWidth === 'boxed') && {
-            '@media (min-width:1440px)': { maxWidth: `calc(1440px - ${theme.spacing(6)} * 2)` }
-          })
+            '@media (min-width:1440px)': { maxWidth: `calc(1440px - ${theme.spacing(6)} * 2)` },
+          }),
         }}
       >
         {(userVerticalAppBarContent && userVerticalAppBarContent(props)) || null}

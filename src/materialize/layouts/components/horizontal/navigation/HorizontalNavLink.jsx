@@ -34,17 +34,17 @@ const ListItem = styled(MuiListItem)(({ theme }) => ({
   color: theme.palette.text.primary,
   paddingBottom: theme.spacing(2.25),
   '&:hover': {
-    backgroundColor: theme.palette.action.hover
+    backgroundColor: theme.palette.action.hover,
   },
   '&.active, &.active:hover': {
-    backgroundColor: hexToRGBA(theme.palette.primary.main, 0.08)
+    backgroundColor: hexToRGBA(theme.palette.primary.main, 0.08),
   },
   '&.active .MuiTypography-root, &.active .MuiListItemIcon-root': {
-    color: theme.palette.primary.main
-  }
+    color: theme.palette.primary.main,
+  },
 }))
 
-const HorizontalNavLink = props => {
+function HorizontalNavLink(props) {
   // ** Props
   const { item, settings, hasParent } = props
 
@@ -65,9 +65,8 @@ const HorizontalNavLink = props => {
   const isNavLinkActive = () => {
     if (router.pathname === item.path || handleURLQueries()) {
       return true
-    } else {
-      return false
     }
+    return false
   }
 
   return (
@@ -75,11 +74,11 @@ const HorizontalNavLink = props => {
       <Wrapper {...(!hasParent ? { component: 'div', sx: { py: settings.skin === 'bordered' ? 2.625 : 2.75 } } : {})}>
         <Link href={`${item.path}`} passHref>
           <ListItem
-            component={'a'}
+            component="a"
             disabled={item.disabled}
             className={clsx({ active: isNavLinkActive() })}
             target={item.openInNewTab ? '_blank' : undefined}
-            onClick={e => {
+            onClick={(e) => {
               if (item.path === undefined) {
                 e.preventDefault()
                 e.stopPropagation()
@@ -89,29 +88,32 @@ const HorizontalNavLink = props => {
               ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
               ...(!hasParent
                 ? {
-                    borderRadius: '8px',
-                    '&.active, &.active:hover': {
-                      backgroundColor: theme => theme.palette.primary.main,
-                      '& .MuiTypography-root, & .MuiListItemIcon-root': {
-                        color: 'common.white'
-                      }
-                    }
-                  }
-                : {})
+                  borderRadius: '8px',
+                  '&.active, &.active:hover': {
+                    backgroundColor: (theme) => theme.palette.primary.main,
+                    '& .MuiTypography-root, & .MuiListItemIcon-root': {
+                      color: 'common.white',
+                    },
+                  },
+                }
+                : {}),
             }}
           >
-            <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Box sx={{
+              width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            }}
+            >
               <Box
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  ...(menuTextTruncate && { overflow: 'hidden' })
+                  ...(menuTextTruncate && { overflow: 'hidden' }),
                 }}
               >
                 <ListItemIcon sx={{ mr: hasParent ? 3 : 2.5, color: 'text.primary' }}>
                   <UserIcon
                     icon={IconTag}
-                    componentType='horizontal-menu'
+                    componentType="horizontal-menu"
                     iconProps={{ sx: IconTag === navSubItemIcon ? { fontSize: '0.5rem' } : {} }}
                   />
                 </ListItemIcon>
@@ -121,7 +123,7 @@ const HorizontalNavLink = props => {
               </Box>
               {item.badgeContent ? (
                 <Chip
-                  size='small'
+                  size="small"
                   label={item.badgeContent}
                   color={item.badgeColor || 'primary'}
                   sx={{ ml: 1.5, '& .MuiChip-label': { px: 2.5, lineHeight: 1.385, textTransform: 'capitalize' } }}

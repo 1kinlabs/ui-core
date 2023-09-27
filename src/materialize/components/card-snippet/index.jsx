@@ -27,9 +27,11 @@ import toast from 'react-hot-toast'
 // ** Hooks
 import useClipboard from 'materialize/hooks/useClipboard'
 
-const CardSnippet = props => {
+function CardSnippet(props) {
   // ** Props
-  const { id, sx, code, title, children, className } = props
+  const {
+    id, sx, code, title, children, className,
+  } = props
 
   // ** States
   const [showCode, setShowCode] = useState(false)
@@ -37,7 +39,7 @@ const CardSnippet = props => {
 
   // ** Hooks
   const clipboard = useClipboard()
-  const hidden = useMediaQuery(theme => theme.breakpoints.down('md'))
+  const hidden = useMediaQuery((theme) => theme.breakpoints.down('md'))
 
   // ** Highlight code on mount
   useEffect(() => {
@@ -47,26 +49,24 @@ const CardSnippet = props => {
   const codeToCopy = () => {
     if (code.tsx !== null && tabValue === 'tsx') {
       return code.tsx.props.children.props.children
-    } else if (code.jsx !== null && tabValue === 'jsx') {
+    } if (code.jsx !== null && tabValue === 'jsx') {
       return code.jsx.props.children.props.children
-    } else {
-      return ''
     }
+    return ''
   }
 
   const handleClick = () => {
     clipboard.copy(codeToCopy())
     toast.success('The source code has been copied to your clipboard.', {
-      duration: 2000
+      duration: 2000,
     })
   }
 
   const renderCode = () => {
     if (code[tabValue] !== null) {
       return code[tabValue]
-    } else {
-      return null
     }
+    return null
   }
 
   return (
@@ -81,12 +81,12 @@ const CardSnippet = props => {
         {...(hidden
           ? {}
           : {
-              action: (
-                <IconButton onClick={() => setShowCode(!showCode)}>
-                  <CodeTags fontSize='small' />
-                </IconButton>
-              )
-            })}
+            action: (
+              <IconButton onClick={() => setShowCode(!showCode)}>
+                <CodeTags fontSize="small" />
+              </IconButton>
+            ),
+          })}
       />
       <CardContent>{children}</CardContent>
       {hidden ? null : (
@@ -94,37 +94,40 @@ const CardSnippet = props => {
           <Divider sx={{ my: 0 }} />
 
           <CardContent sx={{ position: 'relative', '& pre': { m: '0 !important', maxHeight: 500 } }}>
-            <Box sx={{ mb: 4, display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+            <Box sx={{
+              mb: 4, display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
+            }}
+            >
               <ToggleButtonGroup
                 exclusive
-                size='small'
-                color='primary'
+                size="small"
+                color="primary"
                 value={tabValue}
                 onChange={(e, newValue) => (newValue !== null ? setTabValue(newValue) : null)}
               >
                 {code.tsx !== null ? (
-                  <ToggleButton value='tsx'>
-                    <LanguageTypescript fontSize='small' />
+                  <ToggleButton value="tsx">
+                    <LanguageTypescript fontSize="small" />
                   </ToggleButton>
                 ) : null}
                 {code.jsx !== null ? (
-                  <ToggleButton value='jsx'>
-                    <LanguageJavascript fontSize='small' />
+                  <ToggleButton value="jsx">
+                    <LanguageJavascript fontSize="small" />
                   </ToggleButton>
                 ) : null}
               </ToggleButtonGroup>
             </Box>
-            <Tooltip title='Copy the source' placement='top'>
+            <Tooltip title="Copy the source" placement="top">
               <IconButton
                 onClick={handleClick}
                 sx={{
                   top: '5rem',
                   right: '2.5625rem',
                   position: 'absolute',
-                  color: theme => theme.palette.grey[100]
+                  color: (theme) => theme.palette.grey[100],
                 }}
               >
-                <ContentCopy fontSize='small' />
+                <ContentCopy fontSize="small" />
               </IconButton>
             </Tooltip>
             <Box>{renderCode()}</Box>

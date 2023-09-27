@@ -2,9 +2,9 @@ const Menu = (theme, skin) => {
   const boxShadow = () => {
     if (skin === 'bordered') {
       return theme.shadows[0]
-    } else if (theme.palette.mode === 'light') {
+    } if (theme.palette.mode === 'light') {
       return theme.shadows[8]
-    } else return theme.shadows[9]
+    } return theme.shadows[9]
   }
 
   return {
@@ -14,11 +14,11 @@ const Menu = (theme, skin) => {
           '& .MuiMenu-paper': {
             borderRadius: 5,
             boxShadow: boxShadow(),
-            ...(skin === 'bordered' && { border: `1px solid ${theme.palette.divider}` })
-          }
-        }
-      }
-    }
+            ...(skin === 'bordered' && { border: `1px solid ${theme.palette.divider}` }),
+          },
+        },
+      },
+    },
   }
 }
 

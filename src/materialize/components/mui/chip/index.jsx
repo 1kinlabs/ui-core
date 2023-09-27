@@ -4,7 +4,7 @@ import MuiChip from '@mui/material/Chip'
 // ** Hooks Imports
 import useBgColor from 'materialize/hooks/useBgColor'
 
-const Chip = props => {
+function Chip(props) {
   // ** Props
   const { sx, skin, color } = props
 
@@ -17,13 +17,13 @@ const Chip = props => {
     success: { ...bgColors.successLight },
     error: { ...bgColors.errorLight },
     warning: { ...bgColors.warningLight },
-    info: { ...bgColors.infoLight }
+    info: { ...bgColors.infoLight },
   }
 
   return (
     <MuiChip
       {...props}
-      variant='filled'
+      variant="filled"
       {...(skin === 'light' && { className: 'MuiChip-light' })}
       sx={skin === 'light' && color ? Object.assign(colors[color], sx) : sx}
     />

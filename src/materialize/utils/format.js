@@ -6,13 +6,13 @@
  * @param {Object} formatting Intl object to format with
  */
 // ** Checks if the passed date is today
-const isToday = date => {
+const isToday = (date) => {
   const today = new Date()
 
   return (
-    new Date(date).getDate() === today.getDate() &&
-    new Date(date).getMonth() === today.getMonth() &&
-    new Date(date).getFullYear() === today.getFullYear()
+    new Date(date).getDate() === today.getDate()
+    && new Date(date).getMonth() === today.getMonth()
+    && new Date(date).getFullYear() === today.getFullYear()
   )
 }
 
@@ -35,9 +35,7 @@ export const formatDateToMonthShort = (value, toTimeForCurrentDay = true) => {
 
 // ? The following functions are taken from https://codesandbox.io/s/ovvwzkzry9?file=/utils.js for formatting credit card details
 // Get only numbers from the input value
-const clearNumber = (value = '') => {
-  return value.replace(/\D+/g, '')
-}
+const clearNumber = (value = '') => value.replace(/\D+/g, '')
 
 // Format credit cards according to their types
 export const formatCreditCardNumber = (value, Payment) => {
@@ -57,7 +55,7 @@ export const formatCreditCardNumber = (value, Payment) => {
     default:
       nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(4, 8)} ${clearValue.slice(8, 12)} ${clearValue.slice(
         12,
-        19
+        19,
       )}`
       break
   }
@@ -66,7 +64,7 @@ export const formatCreditCardNumber = (value, Payment) => {
 }
 
 // Format expiration date in any credit card
-export const formatExpirationDate = value => {
+export const formatExpirationDate = (value) => {
   const finalValue = value
     .replace(/^([1-9]\/|[2-9])$/g, '0$1/') // 3 > 03/
     .replace(/^(0[1-9]|1[0-2])$/g, '$1/') // 11 > 11/

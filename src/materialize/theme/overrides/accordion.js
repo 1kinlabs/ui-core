@@ -1,51 +1,49 @@
-const Accordion = theme => {
-  return {
-    MuiAccordion: {
-      styleOverrides: {
-        root: {
-          '&:first-of-type': {
-            borderTopLeftRadius: 8,
-            borderTopRightRadius: 8
-          },
-          '&:last-of-type': {
-            borderBottomLeftRadius: 8,
-            borderBottomRightRadius: 8
-          },
-          '&.Mui-disabled': {
-            backgroundColor: `rgba(${theme.palette.customColors.main}, 0.12)`
-          },
-          '&.Mui-expanded': {
-            boxShadow: theme.shadows[3]
-          }
-        }
-      }
-    },
-    MuiAccordionSummary: {
-      styleOverrides: {
-        root: {
-          padding: `0 ${theme.spacing(5)}`,
-          '& + .MuiCollapse-root': {
-            '& .MuiAccordionDetails-root:first-child': {
-              paddingTop: 0
-            }
-          }
+const Accordion = (theme) => ({
+  MuiAccordion: {
+    styleOverrides: {
+      root: {
+        '&:first-of-type': {
+          borderTopLeftRadius: 8,
+          borderTopRightRadius: 8,
         },
-        content: {
-          margin: `${theme.spacing(3.25)} 0`
-        }
-      }
+        '&:last-of-type': {
+          borderBottomLeftRadius: 8,
+          borderBottomRightRadius: 8,
+        },
+        '&.Mui-disabled': {
+          backgroundColor: `rgba(${theme.palette.customColors.main}, 0.12)`,
+        },
+        '&.Mui-expanded': {
+          boxShadow: theme.shadows[3],
+        },
+      },
     },
-    MuiAccordionDetails: {
-      styleOverrides: {
-        root: {
-          padding: theme.spacing(5),
-          '& + .MuiAccordionDetails-root': {
-            paddingTop: 0
-          }
-        }
-      }
-    }
-  }
-}
+  },
+  MuiAccordionSummary: {
+    styleOverrides: {
+      root: {
+        padding: `0 ${theme.spacing(5)}`,
+        '& + .MuiCollapse-root': {
+          '& .MuiAccordionDetails-root:first-child': {
+            paddingTop: 0,
+          },
+        },
+      },
+      content: {
+        margin: `${theme.spacing(3.25)} 0`,
+      },
+    },
+  },
+  MuiAccordionDetails: {
+    styleOverrides: {
+      root: {
+        padding: theme.spacing(5),
+        '& + .MuiAccordionDetails-root': {
+          paddingTop: 0,
+        },
+      },
+    },
+  },
+})
 
 export default Accordion

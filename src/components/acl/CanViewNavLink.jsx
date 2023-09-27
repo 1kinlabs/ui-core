@@ -1,7 +1,7 @@
 // ** Component Imports
 import { useAbility } from 'context/acl'
 
-const CanViewNavLink = props => {
+function CanViewNavLink(props) {
   // ** Props
   const { children, navLink } = props
 

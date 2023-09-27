@@ -5,7 +5,7 @@
  * ! To clear local storage, you may refer https://www.leadshook.com/help/how-to-clear-local-storage-in-google-chrome-browser/.
  */
 // ** Icon Import
-import { Circle }  from 'mdi-material-ui'
+import { Circle } from 'mdi-material-ui'
 
 const themeConfig = {
   // ** Layout Configs
@@ -37,7 +37,7 @@ const themeConfig = {
   responsiveFontSizes: true /* true | false */,
   disableRipple: false /* true | false */,
   disableCustomizer: true /* true | false */,
-  toastPosition: 'top-right' /* top-left | top-center | top-right | bottom-left | bottom-center | bottom-right */
+  toastPosition: 'top-right', /* top-left | top-center | top-right | bottom-left | bottom-center | bottom-right */
 }
 
 export default themeConfig

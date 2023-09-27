@@ -1,4 +1,4 @@
-const UserIcon = props => {
+function UserIcon(props) {
   // ** Props
   const { icon, iconProps, componentType } = props
   const IconTag = icon
@@ -15,17 +15,17 @@ fontSize: '2rem'
 color: 'red',
 fontSize: '1.5rem'
 } */
-} else if (componentType === 'horizontal-menu') {
+  } else if (componentType === 'horizontal-menu') {
   // Conditional Props based on component type, like have different font size or icon color
   /* styles = {
 color: 'green',
 fontSize: '1rem'
 } */
-} else {
-  return null
-}
-
-    return <IconTag {...iconProps} style={{ ...styles }} />
+  } else {
+    return null
   }
 
-  export default UserIcon
+  return <IconTag {...iconProps} style={{ ...styles }} />
+}
+
+export default UserIcon

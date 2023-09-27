@@ -9,7 +9,7 @@ import Translations from 'materialize/components/Translations'
 import CanViewNavSectionTitle from 'components/acl/CanViewNavSectionTitle'
 
 // ** Styled Components
-const ListSubheader = styled(props => <MuiListSubheader component='li' {...props} />)(({ theme }) => ({
+const ListSubheader = styled((props) => <MuiListSubheader component="li" {...props} />)(({ theme }) => ({
   lineHeight: 1,
   display: 'flex',
   position: 'static',
@@ -17,12 +17,14 @@ const ListSubheader = styled(props => <MuiListSubheader component='li' {...props
   marginTop: theme.spacing(6.25),
   backgroundColor: 'transparent',
   color: theme.palette.text.disabled,
-  transition: 'padding-left .25s ease-in-out'
+  transition: 'padding-left .25s ease-in-out',
 }))
 
-const VerticalNavSectionTitle = props => {
+function VerticalNavSectionTitle(props) {
   // ** Props
-  const { item, navHover, settings, collapsedNavWidth, navigationBorderWidth } = props
+  const {
+    item, navHover, settings, collapsedNavWidth, navigationBorderWidth,
+  } = props
 
   // ** Hook
   const theme = useTheme()
@@ -34,46 +36,45 @@ const VerticalNavSectionTitle = props => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
       return {
         '&, &:before': {
-          borderColor: `rgba(${theme.palette.customColors.dark}, 0.12)`
-        }
+          borderColor: `rgba(${theme.palette.customColors.dark}, 0.12)`,
+        },
       }
-    } else if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
+    } if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
       return {
         '&, &:before': {
-          borderColor: `rgba(${theme.palette.customColors.light}, 0.12)`
-        }
+          borderColor: `rgba(${theme.palette.customColors.light}, 0.12)`,
+        },
       }
-    } else return {}
+    } return {}
   }
 
   const conditionalColor = () => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
       return {
-        color: `rgba(${theme.palette.customColors.dark}, 0.38) !important`
+        color: `rgba(${theme.palette.customColors.dark}, 0.38) !important`,
       }
-    } else if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
+    } if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
       return {
-        color: `rgba(${theme.palette.customColors.light}, 0.38) !important`
+        color: `rgba(${theme.palette.customColors.light}, 0.38) !important`,
       }
-    } else {
-      return {
-        color: theme.palette.text.disabled
-      }
+    }
+    return {
+      color: theme.palette.text.disabled,
     }
   }
 
   return (
     <CanViewNavSectionTitle navTitle={item}>
       <ListSubheader
-        className='nav-section-title'
+        className="nav-section-title"
         sx={{
           ...(navCollapsed && !navHover
             ? { py: 4.75, px: (collapsedNavWidth - navigationBorderWidth - 22) / 8 }
-            : { pl: 0 })
+            : { pl: 0 }),
         }}
       >
         <Divider
-          textAlign='left'
+          textAlign="left"
           sx={{
             m: 0,
             lineHeight: 'normal',
@@ -82,14 +83,14 @@ const VerticalNavSectionTitle = props => {
             ...(navCollapsed && !navHover
               ? { width: 22 }
               : {
-                  width: '100%',
-                  '&:before': { top: 7, transform: 'none', width: theme.spacing(4) },
-                  '& .MuiDivider-wrapper': { px: 4, fontSize: '0.75rem', letterSpacing: '0.21px' }
-                })
+                width: '100%',
+                '&:before': { top: 7, transform: 'none', width: theme.spacing(4) },
+                '& .MuiDivider-wrapper': { px: 4, fontSize: '0.75rem', letterSpacing: '0.21px' },
+              }),
           }}
         >
           {navCollapsed && !navHover ? null : (
-            <Typography noWrap variant='caption' sx={{ ...conditionalColor() }}>
+            <Typography noWrap variant="caption" sx={{ ...conditionalColor() }}>
               <Translations text={item.sectionTitle} />
             </Typography>
           )}

@@ -12,7 +12,7 @@ import Translate from 'mdi-material-ui/Translate'
 // ** Third Party Import
 import { useTranslation } from 'react-i18next'
 
-const LanguageDropdown = ({ settings, saveSettings }) => {
+function LanguageDropdown({ settings, saveSettings }) {
   // ** State
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -32,7 +32,7 @@ const LanguageDropdown = ({ settings, saveSettings }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language, direction])
 
-  const handleLangDropdownOpen = event => {
+  const handleLangDropdownOpen = (event) => {
     setAnchorEl(event.currentTarget)
   }
 
@@ -40,14 +40,14 @@ const LanguageDropdown = ({ settings, saveSettings }) => {
     setAnchorEl(null)
   }
 
-  const handleLangItemClick = lang => {
+  const handleLangItemClick = (lang) => {
     i18n.changeLanguage(lang)
     handleLangDropdownClose()
   }
 
   return (
-    <Fragment>
-      <IconButton color='inherit' aria-haspopup='true' aria-controls='customized-menu' onClick={handleLangDropdownOpen}>
+    <>
+      <IconButton color="inherit" aria-haspopup="true" aria-controls="customized-menu" onClick={handleLangDropdownOpen}>
         <Translate />
       </IconButton>
       <Menu
@@ -89,7 +89,7 @@ const LanguageDropdown = ({ settings, saveSettings }) => {
           Arabic
         </MenuItem>
       </Menu>
-    </Fragment>
+    </>
   )
 }
 

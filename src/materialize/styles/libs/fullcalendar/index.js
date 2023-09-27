@@ -17,7 +17,7 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
       flexWrap: 'wrap',
       flexDirection: 'row !important',
       '&.fc-header-toolbar': {
-        marginBottom: theme.spacing(6)
+        marginBottom: theme.spacing(6),
       },
       '.fc-prev-button, & .fc-next-button': {
         display: 'inline-block',
@@ -25,16 +25,16 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
         backgroundColor: 'transparent',
         '& .fc-icon': {
           fontSize: '1.15rem',
-          color: theme.palette.text.primary
+          color: theme.palette.text.primary,
         },
         '&:hover, &:active, &:focus': {
           boxShadow: 'none !important',
           borderColor: 'transparent !important',
-          backgroundColor: 'transparent !important'
-        }
+          backgroundColor: 'transparent !important',
+        },
       },
       '& .fc-prev-button': {
-        paddingLeft: '0 !important'
+        paddingLeft: '0 !important',
       },
       '& .fc-toolbar-chunk:first-of-type': {
         display: 'flex',
@@ -43,22 +43,22 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
         [theme.breakpoints.down('md')]: {
           '& div:first-of-type': {
             display: 'flex',
-            alignItems: 'center'
-          }
-        }
+            alignItems: 'center',
+          },
+        },
       },
       '& .fc-button': {
         padding: theme.spacing(),
         '&:active, .&:focus': {
-          boxShadow: 'none'
-        }
+          boxShadow: 'none',
+        },
       },
       '& .fc-button-group': {
         '& .fc-button': {
           textTransform: 'capitalize',
           '&:focus': {
-            boxShadow: 'none'
-          }
+            boxShadow: 'none',
+          },
         },
         '& .fc-button-primary': {
           fontWeight: 500,
@@ -72,9 +72,9 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
             borderColor: hexToRGBA(theme.palette.primary.main, 0.5),
             '&.fc-button-active, &:hover': {
               borderColor: hexToRGBA(theme.palette.primary.main, 0.5),
-              backgroundColor: hexToRGBA(theme.palette.primary.main, 0.05)
-            }
-          }
+              backgroundColor: hexToRGBA(theme.palette.primary.main, 0.05),
+            },
+          },
         },
         '& .fc-sidebarToggle-button': {
           border: 0,
@@ -87,43 +87,43 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
           color: `${theme.palette.text.primary} !important`,
           '&:focus': {
             outline: 0,
-            boxShadow: 'none'
+            boxShadow: 'none',
           },
           '&:not(.fc-prev-button):not(.fc-next-button):hover': {
-            backgroundColor: 'transparent !important'
+            backgroundColor: 'transparent !important',
           },
           '& + div': {
-            marginLeft: 0
-          }
+            marginLeft: 0,
+          },
         },
         '.fc-dayGridMonth-button, .fc-timeGridWeek-button, .fc-timeGridDay-button, & .fc-listMonth-button': {
           padding: theme.spacing(2.2, 6),
           '&:last-of-type, &:first-of-type': {
-            borderRadius: theme.shape.borderRadius
+            borderRadius: theme.shape.borderRadius,
           },
           '&:first-of-type': {
             borderTopRightRadius: 0,
-            borderBottomRightRadius: 0
+            borderBottomRightRadius: 0,
           },
           '&:last-of-type': {
             borderTopLeftRadius: 0,
-            borderBottomLeftRadius: 0
-          }
-        }
+            borderBottomLeftRadius: 0,
+          },
+        },
       },
       '& > * > :not(:first-of-type)': {
-        marginLeft: 0
+        marginLeft: 0,
       },
       '& .fc-toolbar-title': {
         fontWeight: 500,
         lineHeight: '2rem',
         marginRight: theme.spacing(4),
         marginLeft: theme.spacing(2.5),
-        fontSize: theme.typography.h5.fontSize
+        fontSize: theme.typography.h5.fontSize,
       },
       '.fc-button:empty, & .fc-toolbar-chunk:empty': {
-        display: 'none'
-      }
+        display: 'none',
+      },
     },
 
     // ** Calendar head & body common
@@ -131,8 +131,8 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
       borderColor: theme.palette.divider,
       '&.fc-col-header-cell': {
         borderLeft: 0,
-        borderRight: 0
-      }
+        borderRight: 0,
+      },
     },
 
     // ** Event Colors
@@ -144,96 +144,96 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
           color: theme.palette.primary.main,
           backgroundColor: hexToRGBA(theme.palette.primary.main, 0.12),
           '& .fc-event-title, & .fc-event-time': {
-            color: theme.palette.primary.main
-          }
+            color: theme.palette.primary.main,
+          },
         },
         '&.bg-success': {
           borderColor: 'transparent',
           color: theme.palette.success.main,
           backgroundColor: hexToRGBA(theme.palette.success.main, 0.12),
           '& .fc-event-title, & .fc-event-time': {
-            color: theme.palette.success.main
-          }
+            color: theme.palette.success.main,
+          },
         },
         '&.bg-error': {
           borderColor: 'transparent',
           color: theme.palette.error.main,
           backgroundColor: hexToRGBA(theme.palette.error.main, 0.12),
           '& .fc-event-title, & .fc-event-time': {
-            color: theme.palette.error.main
-          }
+            color: theme.palette.error.main,
+          },
         },
         '&.bg-warning': {
           borderColor: 'transparent',
           color: theme.palette.warning.main,
           backgroundColor: hexToRGBA(theme.palette.warning.main, 0.12),
           '& .fc-event-title, & .fc-event-time': {
-            color: theme.palette.warning.main
-          }
+            color: theme.palette.warning.main,
+          },
         },
         '&.bg-info': {
           borderColor: 'transparent',
           color: theme.palette.info.main,
           backgroundColor: hexToRGBA(theme.palette.info.main, 0.12),
           '& .fc-event-title, & .fc-event-time': {
-            color: theme.palette.info.main
-          }
-        }
+            color: theme.palette.info.main,
+          },
+        },
       },
       '&.bg-primary': {
         '& .fc-list-event-dot': {
           borderColor: theme.palette.primary.main,
-          backgroundColor: theme.palette.primary.main
+          backgroundColor: theme.palette.primary.main,
         },
         '&:hover td': {
-          backgroundColor: hexToRGBA(theme.palette.primary.light, 0.1)
-        }
+          backgroundColor: hexToRGBA(theme.palette.primary.light, 0.1),
+        },
       },
       '&.bg-success': {
         '& .fc-list-event-dot': {
           borderColor: theme.palette.success.main,
-          backgroundColor: theme.palette.success.main
+          backgroundColor: theme.palette.success.main,
         },
         '&:hover td': {
-          backgroundColor: hexToRGBA(theme.palette.success.light, 0.1)
-        }
+          backgroundColor: hexToRGBA(theme.palette.success.light, 0.1),
+        },
       },
       '&.bg-error': {
         '& .fc-list-event-dot': {
           borderColor: theme.palette.error.main,
-          backgroundColor: theme.palette.error.main
+          backgroundColor: theme.palette.error.main,
         },
         '&:hover td': {
-          backgroundColor: hexToRGBA(theme.palette.error.light, 0.1)
-        }
+          backgroundColor: hexToRGBA(theme.palette.error.light, 0.1),
+        },
       },
       '&.bg-warning': {
         '& .fc-list-event-dot': {
           borderColor: theme.palette.warning.main,
-          backgroundColor: theme.palette.warning.main
+          backgroundColor: theme.palette.warning.main,
         },
         '&:hover td': {
-          backgroundColor: hexToRGBA(theme.palette.warning.light, 0.1)
-        }
+          backgroundColor: hexToRGBA(theme.palette.warning.light, 0.1),
+        },
       },
       '&.bg-info': {
         '& .fc-list-event-dot': {
           borderColor: theme.palette.info.main,
-          backgroundColor: theme.palette.info.main
+          backgroundColor: theme.palette.info.main,
         },
         '&:hover td': {
-          backgroundColor: hexToRGBA(theme.palette.info.light, 0.1)
-        }
+          backgroundColor: hexToRGBA(theme.palette.info.light, 0.1),
+        },
       },
       '&.fc-daygrid-event': {
         marginLeft: '4px',
-        marginRight: '4px'
-      }
+        marginRight: '4px',
+      },
     },
     '& .fc-view-harness': {
       minHeight: '650px',
       width: 'calc(100% + 44px)',
-      margin: theme.spacing(0, -6)
+      margin: theme.spacing(0, -6),
     },
 
     // ** Calendar Head
@@ -245,14 +245,14 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
         color: theme.palette.text.primary,
         '& .fc-col-header-cell-cushion': {
           padding: theme.spacing(2),
-          textDecoration: 'none !important'
-        }
-      }
+          textDecoration: 'none !important',
+        },
+      },
     },
 
     // ** Daygrid
     '& .fc-scrollgrid-section-liquid > td': {
-      borderBottom: 0
+      borderBottom: 0,
     },
     '& .fc-daygrid-event-harness': {
       lineHeight: 1.25,
@@ -261,59 +261,59 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
         fontSize: '0.75rem',
         padding: theme.spacing(0, 1),
         '& .fc-event-time': {
-          fontWeight: 500
-        }
+          fontWeight: 500,
+        },
       },
       '&:not(:last-of-type)': {
-        marginBottom: theme.spacing(1.2)
-      }
+        marginBottom: theme.spacing(1.2),
+      },
     },
     '& .fc-daygrid-day-bottom': {
-      marginTop: theme.spacing(1.2)
+      marginTop: theme.spacing(1.2),
     },
     '& .fc-daygrid-day': {
       padding: '5px',
       '& .fc-daygrid-day-top': {
-        flexDirection: 'row'
+        flexDirection: 'row',
       },
       '&.fc-day-other': {
         '& .fc-daygrid-day-top': {
           opacity: 1,
           '& .fc-daygrid-day-number': {
-            color: `${theme.palette.text.disabled} !important`
-          }
-        }
+            color: `${theme.palette.text.disabled} !important`,
+          },
+        },
       },
       '&.fc-day-past:not(.fc-day-other)': {
         '& .fc-daygrid-day-number': {
-          color: `${theme.palette.text.secondary} !important`
-        }
-      }
+          color: `${theme.palette.text.secondary} !important`,
+        },
+      },
     },
     '& .fc-scrollgrid': {
-      borderColor: theme.palette.divider
+      borderColor: theme.palette.divider,
     },
     '& .fc-day-past, & .fc-day-future': {
       '&.fc-daygrid-day-number': {
-        color: theme.palette.text.disabled
-      }
+        color: theme.palette.text.disabled,
+      },
     },
 
     // ** All Views Event
     '& .fc-daygrid-day-number': {
       fontSize: '1rem',
       paddingTop: 0,
-      paddingLeft: theme.spacing(2)
+      paddingLeft: theme.spacing(2),
     },
     '& .fc-daygrid-day-number, & .fc-timegrid-slot-label-cushion, & .fc-list-event-time': {
       textDecoration: 'none !important',
-      color: `${theme.palette.text.primary} !important`
+      color: `${theme.palette.text.primary} !important`,
     },
     '& .fc-day-today': {
       '&:not(.fc-col-header-cell)': {
         background: `${theme.palette.background.default} !important`,
-        backgroundColor: `${theme.palette.action.hover} !important`
-      }
+        backgroundColor: `${theme.palette.action.hover} !important`,
+      },
     },
 
     // ** WeekView
@@ -322,11 +322,11 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
         '& .fc-col-header-cell, & .fc-timegrid-axis': {
           borderLeft: 0,
           borderRight: 0,
-          borderColor: theme.palette.divider
+          borderColor: theme.palette.divider,
         },
         '& .fc-timegrid-axis': {
-          borderColor: theme.palette.divider
-        }
+          borderColor: theme.palette.divider,
+        },
       },
       '& .fc-timegrid-axis': {
         '&.fc-scrollgrid-shrink': {
@@ -335,9 +335,9 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
             lineHeight: '15px',
             letterSpacing: '0.4px',
             textTransform: 'capitalize',
-            color: theme.palette.text.disabled
-          }
-        }
+            color: theme.palette.text.disabled,
+          },
+        },
       },
       '& .fc-timegrid-slots': {
         '& .fc-timegrid-slot': {
@@ -349,13 +349,13 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
               fontSize: '.75rem',
               lineHeight: '15px',
               letterSpacing: '0.4px',
-              textTransform: 'uppercase'
-            }
-          }
-        }
+              textTransform: 'uppercase',
+            },
+          },
+        },
       },
       '& .fc-timegrid-divider': {
-        display: 'none'
+        display: 'none',
       },
       '& .fc-timegrid-event': {
         borderRadius: 0,
@@ -363,63 +363,63 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
         paddingTop: theme.spacing(2),
         paddingLeft: theme.spacing(2),
         '& .fc-event-time': {
-          marginBottom: '2px'
+          marginBottom: '2px',
         },
         '& .fc-event-time, & .fc-event-title': {
           fontSize: '.75rem',
           lineHeight: '15px',
-          letterSpacing: '0.4px'
-        }
-      }
+          letterSpacing: '0.4px',
+        },
+      },
     },
 
     // ** List View
     '& .fc-list': {
       border: 'none',
       '& th[colspan="3"]': {
-        position: 'relative'
+        position: 'relative',
       },
       '& .fc-list-day-cushion': {
         paddingLeft: theme.spacing(4),
         paddingRight: theme.spacing(4),
         background: theme.palette.background.default,
         '& .fc-list-day-text, & .fc-list-day-side-text': {
-          fontWeight: 600
-        }
+          fontWeight: 600,
+        },
       },
       '.fc-list-event': {
         cursor: 'pointer',
         '&:hover': {
           '& td': {
-            backgroundColor: theme.palette.action.hover
-          }
+            backgroundColor: theme.palette.action.hover,
+          },
         },
         '& td': {
-          borderColor: theme.palette.divider
-        }
+          borderColor: theme.palette.divider,
+        },
       },
       '& .fc-list-day': {
         backgroundColor: theme.palette.customColors.lightBg,
         '& .fc-list-day-text, & .fc-list-day-side-text': {
           fontSize: '.875rem',
-          textDecoration: 'none'
+          textDecoration: 'none',
         },
         '&  >  *': {
           background: 'none',
-          borderColor: theme.palette.divider
-        }
+          borderColor: theme.palette.divider,
+        },
       },
       '& .fc-list-event-title': {
         fontSize: '.875rem',
         verticalAlign: 'middle',
         paddingLeft: theme.spacing(2.5),
-        color: theme.palette.text.secondary
+        color: theme.palette.text.secondary,
       },
       '& .fc-list-event-time': {
         fontSize: '.875rem',
         paddingLeft: theme.spacing(4),
-        color: `${theme.palette.text.secondary} !important`
-      }
+        color: `${theme.palette.text.secondary} !important`,
+      },
     },
 
     // ** Popover
@@ -431,31 +431,31 @@ const CalendarWrapper = styled(Box)(({ theme }) => ({
         padding: theme.spacing(2),
         background: theme.palette.action.hover,
         '& .fc-popover-title, & .fc-popover-close': {
-          color: theme.palette.text.primary
-        }
+          color: theme.palette.text.primary,
+        },
       },
       '& .fc-popover-body': {
         '& *:not(:last-of-type)': {
-          marginBottom: theme.spacing(1.2)
-        }
-      }
+          marginBottom: theme.spacing(1.2),
+        },
+      },
     },
 
     // ** Media Queries
     [theme.breakpoints.up('md')]: {
       '& .fc-sidebarToggle-button': {
-        display: 'none'
+        display: 'none',
       },
       '& .fc-toolbar-title': {
-        marginLeft: 0
-      }
+        marginLeft: 0,
+      },
     },
     '@media (max-width:610px)': {
       '& .fc-header-toolbar .fc-toolbar-chunk:last-of-type': {
-        marginTop: theme.spacing(4)
-      }
-    }
-  }
+        marginTop: theme.spacing(4),
+      },
+    },
+  },
 }))
 
 export default CalendarWrapper

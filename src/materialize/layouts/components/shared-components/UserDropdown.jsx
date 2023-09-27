@@ -31,10 +31,10 @@ const BadgeContentSpan = styled('span')(({ theme }) => ({
   height: 8,
   borderRadius: '50%',
   backgroundColor: theme.palette.success.main,
-  boxShadow: `0 0 0 2px ${theme.palette.background.paper}`
+  boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
 }))
 
-const UserDropdown = props => {
+function UserDropdown(props) {
   // ** Props
   const { settings, logout, user } = props
 
@@ -47,11 +47,11 @@ const UserDropdown = props => {
   // ** Vars
   const { direction } = settings
 
-  const handleDropdownOpen = event => {
+  const handleDropdownOpen = (event) => {
     setAnchorEl(event.currentTarget)
   }
 
-  const handleDropdownClose = url => {
+  const handleDropdownClose = (url) => {
     if (url) {
       router.push(url)
     }
@@ -68,8 +68,8 @@ const UserDropdown = props => {
     textDecoration: 'none',
     '& svg': {
       fontSize: '1.375rem',
-      color: 'text.secondary'
-    }
+      color: 'text.secondary',
+    },
   }
 
   const renderUserAvatar = () => {
@@ -77,36 +77,36 @@ const UserDropdown = props => {
       if (user.image) {
         return (
           <Avatar
-            alt='User Image'
+            alt="User Image"
             src={user.image}
-            variant='rounded'
+            variant="rounded"
             sx={{ width: 40, height: 40, borderRadius: '50%' }}
           />
         )
-      } else if (user.username) {
+      } if (user.username) {
         return (
           <CustomAvatar
-            skin='light'
-            variant='rounded'
+            skin="light"
+            variant="rounded"
             color={user.avatarColor}
-            sx={{ width: 40, height: 40, fontWeight: 600, fontSize: '1rem', borderRadius: '50%' }}
+            sx={{
+              width: 40, height: 40, fontWeight: 600, fontSize: '1rem', borderRadius: '50%',
+            }}
           >
             {getInitials(user.username)}
           </CustomAvatar>
         )
-      } else {
-        return (
-          <Avatar
-            alt='Anonymous'
-            src={'/images/avatars/1.png'}
-            variant='rounded'
-            sx={{ width: 40, height: 40 }}
-          />
-        )
       }
-    } else {
-      return null
+      return (
+        <Avatar
+          alt="Anonymous"
+          src="/images/avatars/1.png"
+          variant="rounded"
+          sx={{ width: 40, height: 40 }}
+        />
+      )
     }
+    return null
   }
 
   const handleLogout = () => {
@@ -115,15 +115,15 @@ const UserDropdown = props => {
   }
 
   return (
-    <Fragment>
+    <>
       <Badge
-        overlap='circular'
+        overlap="circular"
         onClick={handleDropdownOpen}
         sx={{ ml: 2, cursor: 'pointer' }}
         badgeContent={<BadgeContentSpan />}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'right'
+          horizontal: 'right',
         }}
       >
         {/* <Avatar
@@ -145,17 +145,20 @@ const UserDropdown = props => {
         <Box sx={{ pt: 2, pb: 3, px: 4 }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Badge
-              overlap='circular'
+              overlap="circular"
               badgeContent={<BadgeContentSpan />}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'right'
+                horizontal: 'right',
               }}
             >
               {/* <Avatar alt={user.username||'Anonymous'} src={user.image||'/images/avatars/1.png'} sx={{ width: '2.5rem', height: '2.5rem' }} /> */}
               {renderUserAvatar()}
             </Badge>
-            <Box sx={{ display: 'flex', ml: 3, alignItems: 'flex-start', flexDirection: 'column' }}>
+            <Box sx={{
+              display: 'flex', ml: 3, alignItems: 'flex-start', flexDirection: 'column',
+            }}
+            >
               <Typography sx={{ fontWeight: 600 }}>{user?.username}</Typography>
               {/* <Typography variant='body2' sx={{ fontSize: '0.8rem', color: 'text.disabled' }}>
                 Admin
@@ -164,7 +167,7 @@ const UserDropdown = props => {
           </Box>
         </Box>
         <Divider sx={{ mt: 0, mb: 1 }} />
-        <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose(`/profile`)}>
+        <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/profile')}>
           <Box sx={styles}>
             <AccountOutline sx={{ mr: 2 }} />
             Profile
@@ -207,7 +210,7 @@ const UserDropdown = props => {
           Logout
         </MenuItem>
       </Menu>
-    </Fragment>
+    </>
   )
 }
 

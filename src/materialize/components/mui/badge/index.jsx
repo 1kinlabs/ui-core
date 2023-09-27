@@ -4,7 +4,7 @@ import MuiBadge from '@mui/material/Badge'
 // ** Hooks Imports
 import useBgColor from 'materialize/hooks/useBgColor'
 
-const Badge = props => {
+function Badge(props) {
   // ** Props
   const { sx, skin, color } = props
 
@@ -17,13 +17,13 @@ const Badge = props => {
     success: { ...bgColors.successLight },
     error: { ...bgColors.errorLight },
     warning: { ...bgColors.warningLight },
-    info: { ...bgColors.infoLight }
+    info: { ...bgColors.infoLight },
   }
 
   return (
     <MuiBadge
       {...props}
-      sx={skin === 'light' && color ? Object.assign({ '& .MuiBadge-badge': colors[color] }, sx) : sx}
+      sx={skin === 'light' && color ? ({ '& .MuiBadge-badge': colors[color], ...sx }) : sx}
     />
   )
 }

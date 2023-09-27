@@ -2,13 +2,13 @@
 import HorizontalNavLink from './HorizontalNavLink'
 import HorizontalNavGroup from './HorizontalNavGroup'
 
-const resolveComponent = item => {
+const resolveComponent = (item) => {
   if (item.children) return HorizontalNavGroup
 
   return HorizontalNavLink
 }
 
-const HorizontalNavItems = props => {
+function HorizontalNavItems(props) {
   const RenderMenuItems = props.horizontalNavItems?.map((item, index) => {
     const TagName = resolveComponent(item)
 

@@ -29,7 +29,6 @@ import ChevronRight from 'mdi-material-ui/ChevronRight'
 import themeConfig from 'materialize/theme/config'
 
 // ** Custom Components Imports
-import HorizontalNavItems from './HorizontalNavItems'
 import UserIcon from 'materialize/components/UserIcon'
 import Translations from 'materialize/components/Translations'
 import CanViewNavGroup from 'components/acl/CanViewNavGroup'
@@ -37,6 +36,7 @@ import CanViewNavGroup from 'components/acl/CanViewNavGroup'
 // ** Utils
 import { hexToRGBA } from 'materialize/utils/hex-to-rgba'
 import { hasActiveChild } from 'materialize/layouts/utils'
+import HorizontalNavItems from './HorizontalNavItems'
 
 // ** Styled Components
 const ListItem = styled(MuiListItem)(({ theme }) => ({
@@ -44,8 +44,8 @@ const ListItem = styled(MuiListItem)(({ theme }) => ({
   paddingTop: theme.spacing(2.25),
   paddingBottom: theme.spacing(2.25),
   '&:hover': {
-    background: theme.palette.action.hover
-  }
+    background: theme.palette.action.hover,
+  },
 }))
 
 const NavigationMenu = styled(Paper)(({ theme }) => ({
@@ -54,27 +54,27 @@ const NavigationMenu = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   ...(themeConfig.menuTextTruncate ? { width: 300 } : { minWidth: 300 }),
   '&::-webkit-scrollbar': {
-    width: 6
+    width: 6,
   },
   '&::-webkit-scrollbar-thumb': {
     borderRadius: 20,
-    background: hexToRGBA(theme.palette.mode === 'light' ? '#BFBFD5' : '#57596C', 0.6)
+    background: hexToRGBA(theme.palette.mode === 'light' ? '#BFBFD5' : '#57596C', 0.6),
   },
   '&::-webkit-scrollbar-track': {
     borderRadius: 20,
-    background: 'transparent'
+    background: 'transparent',
   },
   '& .MuiList-root': {
     paddingTop: 0,
-    paddingBottom: 0
+    paddingBottom: 0,
   },
   '& .menu-group.Mui-selected': {
     borderRadius: 0,
-    backgroundColor: theme.palette.action.hover
-  }
+    backgroundColor: theme.palette.action.hover,
+  },
 }))
 
-const HorizontalNavGroup = props => {
+function HorizontalNavGroup(props) {
   // ** Props
   const { item, hasParent, settings } = props
 
@@ -83,7 +83,9 @@ const HorizontalNavGroup = props => {
   const router = useRouter()
   const currentURL = router.pathname
   const { skin, direction } = settings
-  const { navSubItemIcon, menuTextTruncate, horizontalMenuToggle, horizontalMenuAnimation } = themeConfig
+  const {
+    navSubItemIcon, menuTextTruncate, horizontalMenuToggle, horizontalMenuAnimation,
+  } = themeConfig
   const popperOffsetHorizontal = direction === 'rtl' ? 16 : -16
   const popperPlacement = direction === 'rtl' ? 'bottom-end' : 'bottom-start'
   const popperPlacementSubMenu = direction === 'rtl' ? 'left-start' : 'right-start'
@@ -101,13 +103,13 @@ const HorizontalNavGroup = props => {
         enabled: true,
         name: 'offset',
         options: {
-          offset: hasParent ? [-8, 15] : [popperOffsetHorizontal, 5]
-        }
-      }
-    ]
+          offset: hasParent ? [-8, 15] : [popperOffsetHorizontal, 5],
+        },
+      },
+    ],
   })
 
-  const handleGroupOpen = event => {
+  const handleGroupOpen = (event) => {
     setAnchorEl(event.currentTarget)
     setMenuOpen(true)
     update ? update() : null
@@ -118,7 +120,7 @@ const HorizontalNavGroup = props => {
     setMenuOpen(false)
   }
 
-  const handleMenuToggleOnClick = event => {
+  const handleMenuToggleOnClick = (event) => {
     if (anchorEl) {
       handleGroupClose()
     } else {
@@ -160,9 +162,9 @@ const HorizontalNavGroup = props => {
     <CanViewNavGroup navGroup={item}>
       <MainWrapper {...(WrapperCondition ? { onClickAway: handleGroupClose } : { onMouseLeave: handleGroupClose })}>
         <ChildWrapper>
-          <List component='div' sx={{ py: skin === 'bordered' ? 2.625 : 2.75 }}>
+          <List component="div" sx={{ py: skin === 'bordered' ? 2.625 : 2.75 }}>
             <ListItem
-              aria-haspopup='true'
+              aria-haspopup="true"
               {...(WrapperCondition ? {} : { onMouseEnter: handleGroupOpen })}
               className={clsx('menu-group', { 'Mui-selected': hasActiveChild(item, currentURL) })}
               {...(horizontalMenuToggle === 'click' ? { onClick: handleMenuToggleOnClick } : {})}
@@ -170,15 +172,15 @@ const HorizontalNavGroup = props => {
                 ...(menuOpen ? { backgroundColor: theme.palette.action.hover } : {}),
                 ...(!hasParent
                   ? {
-                      borderRadius: '8px',
-                      '&.Mui-selected': {
-                        backgroundColor: theme.palette.primary.main,
-                        '& .MuiTypography-root, & .MuiListItemIcon-root, & .MuiSvgIcon-root': {
-                          color: 'common.white'
-                        }
-                      }
-                    }
-                  : {})
+                    borderRadius: '8px',
+                    '&.Mui-selected': {
+                      backgroundColor: theme.palette.primary.main,
+                      '& .MuiTypography-root, & .MuiListItemIcon-root, & .MuiSvgIcon-root': {
+                        color: 'common.white',
+                      },
+                    },
+                  }
+                  : {}),
               }}
             >
               <Box
@@ -187,7 +189,7 @@ const HorizontalNavGroup = props => {
                   display: 'flex',
                   flexDirection: 'row',
                   alignItems: 'center',
-                  justifyContent: 'space-between'
+                  justifyContent: 'space-between',
                 }}
                 ref={setReferenceElement}
               >
@@ -196,13 +198,13 @@ const HorizontalNavGroup = props => {
                     display: 'flex',
                     alignItems: 'center',
                     flexDirection: 'row',
-                    ...(menuTextTruncate && { overflow: 'hidden' })
+                    ...(menuTextTruncate && { overflow: 'hidden' }),
                   }}
                 >
                   <ListItemIcon sx={{ mr: hasParent ? 3 : 2.5, color: 'text.primary' }}>
                     <UserIcon
                       icon={IconTag}
-                      componentType='horizontal-menu'
+                      componentType="horizontal-menu"
                       iconProps={{ sx: IconTag === navSubItemIcon ? { fontSize: '0.5rem' } : {} }}
                     />
                   </ListItemIcon>
@@ -213,7 +215,7 @@ const HorizontalNavGroup = props => {
                 <Box sx={{ ml: 1.5, display: 'flex', alignItems: 'center' }}>
                   {item.badgeContent ? (
                     <Chip
-                      size='small'
+                      size="small"
                       label={item.badgeContent}
                       color={item.badgeColor || 'primary'}
                       sx={{ mr: 0.75, '& .MuiChip-label': { px: 2.5, lineHeight: 1.385, textTransform: 'capitalize' } }}
@@ -237,7 +239,7 @@ const HorizontalNavGroup = props => {
                   ...(!horizontalMenuAnimation && { display: menuOpen ? 'block' : 'none' }),
                   pl: childMenuGroupStyles() === 'left' ? (skin === 'bordered' ? 1.5 : 1.25) : 0,
                   pr: childMenuGroupStyles() === 'right' ? (skin === 'bordered' ? 1.5 : 1.25) : 0,
-                  ...(hasParent ? { position: 'fixed !important' } : { pt: skin === 'bordered' ? 5.25 : 5.5 })
+                  ...(hasParent ? { position: 'fixed !important' } : { pt: skin === 'bordered' ? 5.25 : 5.5 }),
                 }}
               >
                 <NavigationMenu
@@ -247,7 +249,7 @@ const HorizontalNavGroup = props => {
                       : { maxHeight: 'calc(100vh - 13rem)' }),
                     ...(skin === 'bordered'
                       ? { boxShadow: theme.shadows[0], border: `1px solid ${theme.palette.divider}` }
-                      : { boxShadow: theme.shadows[4] })
+                      : { boxShadow: theme.shadows[4] }),
                   }}
                 >
                   <HorizontalNavItems {...props} hasParent horizontalNavItems={item.children} />

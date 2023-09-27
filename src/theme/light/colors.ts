@@ -43,5 +43,5 @@ export const colors = {
   yellow200: '#FFD178',
   yellow300: '#FDB528',
   yellow400: '#CF7F33',
-  yellow500: '#854100'
+  yellow500: '#854100',
 }

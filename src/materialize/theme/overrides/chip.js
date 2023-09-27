@@ -1,72 +1,70 @@
 // ** Util Imports
 import { hexToRGBA } from 'materialize/utils/hex-to-rgba'
 
-const Chip = theme => {
-  return {
-    MuiChip: {
-      styleOverrides: {
-        outlined: {
-          '&.MuiChip-colorDefault': {
-            borderColor: `rgba(${theme.palette.customColors.main}, 0.22)`
-          }
+const Chip = (theme) => ({
+  MuiChip: {
+    styleOverrides: {
+      outlined: {
+        '&.MuiChip-colorDefault': {
+          borderColor: `rgba(${theme.palette.customColors.main}, 0.22)`,
         },
-        avatar: {
-          color: theme.palette.text.primary
+      },
+      avatar: {
+        color: theme.palette.text.primary,
+      },
+      iconColorDefault: {
+        color: theme.palette.text.primary,
+      },
+      deletableColorPrimary: {
+        '&.MuiChip-light .MuiChip-deleteIcon': {
+          color: hexToRGBA(theme.palette.primary.main, 0.7),
+          '&:hover': {
+            color: theme.palette.primary.main,
+          },
         },
-        iconColorDefault: {
-          color: theme.palette.text.primary
+      },
+      deletableColorSecondary: {
+        '&.MuiChip-light .MuiChip-deleteIcon': {
+          color: hexToRGBA(theme.palette.secondary.main, 0.7),
+          '&:hover': {
+            color: theme.palette.secondary.main,
+          },
         },
-        deletableColorPrimary: {
-          '&.MuiChip-light .MuiChip-deleteIcon': {
-            color: hexToRGBA(theme.palette.primary.main, 0.7),
-            '&:hover': {
-              color: theme.palette.primary.main
-            }
-          }
+      },
+      deletableColorSuccess: {
+        '&.MuiChip-light .MuiChip-deleteIcon': {
+          color: hexToRGBA(theme.palette.success.main, 0.7),
+          '&:hover': {
+            color: theme.palette.success.main,
+          },
         },
-        deletableColorSecondary: {
-          '&.MuiChip-light .MuiChip-deleteIcon': {
-            color: hexToRGBA(theme.palette.secondary.main, 0.7),
-            '&:hover': {
-              color: theme.palette.secondary.main
-            }
-          }
+      },
+      deletableColorError: {
+        '&.MuiChip-light .MuiChip-deleteIcon': {
+          color: hexToRGBA(theme.palette.error.main, 0.7),
+          '&:hover': {
+            color: theme.palette.error.main,
+          },
         },
-        deletableColorSuccess: {
-          '&.MuiChip-light .MuiChip-deleteIcon': {
-            color: hexToRGBA(theme.palette.success.main, 0.7),
-            '&:hover': {
-              color: theme.palette.success.main
-            }
-          }
+      },
+      deletableColorWarning: {
+        '&.MuiChip-light .MuiChip-deleteIcon': {
+          color: hexToRGBA(theme.palette.warning.main, 0.7),
+          '&:hover': {
+            color: theme.palette.warning.main,
+          },
         },
-        deletableColorError: {
-          '&.MuiChip-light .MuiChip-deleteIcon': {
-            color: hexToRGBA(theme.palette.error.main, 0.7),
-            '&:hover': {
-              color: theme.palette.error.main
-            }
-          }
+      },
+      deletableColorInfo: {
+        '&.MuiChip-light .MuiChip-deleteIcon': {
+          color: hexToRGBA(theme.palette.info.main, 0.7),
+          '&:hover': {
+            color: theme.palette.info.main,
+          },
         },
-        deletableColorWarning: {
-          '&.MuiChip-light .MuiChip-deleteIcon': {
-            color: hexToRGBA(theme.palette.warning.main, 0.7),
-            '&:hover': {
-              color: theme.palette.warning.main
-            }
-          }
-        },
-        deletableColorInfo: {
-          '&.MuiChip-light .MuiChip-deleteIcon': {
-            color: hexToRGBA(theme.palette.info.main, 0.7),
-            '&:hover': {
-              color: theme.palette.info.main
-            }
-          }
-        }
-      }
-    }
-  }
-}
+      },
+    },
+  },
+})
 
 export default Chip
