@@ -16,6 +16,7 @@ jobs:
         with:
           node-version-file: '.node-version'
           registry-url: 'https://npm.pkg.github.com'
+          persist-credentials: false
           # Defaults to the user or organization that owns the workflow file
           always-auth: true
           scope: '@1kinlabs'
