@@ -22,12 +22,12 @@ const CleaveWrapper = styled(Box)(({ theme }) => ({
       outline: 0,
       borderWidth: 2,
       padding: theme.spacing(3.75),
-      borderColor: `${theme.palette.primary.main} !important`
+      borderColor: `${theme.palette.primary.main} !important`,
     },
     '&::-webkit-input-placeholder': {
-      color: theme.palette.text.secondary
-    }
-  }
+      color: theme.palette.text.secondary,
+    },
+  },
 }))
 
 export default CleaveWrapper

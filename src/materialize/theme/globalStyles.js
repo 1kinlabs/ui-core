@@ -5,13 +5,12 @@ const GlobalStyles = (theme, settings) => {
   const perfectScrollbarThumbBgColor = () => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
       return '#57596C !important'
-    } else if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
+    } if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
       return '#BFBFD5 !important'
-    } else if (theme.palette.mode === 'light') {
+    } if (theme.palette.mode === 'light') {
       return '#BFBFD5 !important'
-    } else {
-      return '#57596C !important'
     }
+    return '#57596C !important'
   }
 
   return {
@@ -22,46 +21,46 @@ const GlobalStyles = (theme, settings) => {
       top: 0,
       height: '100%',
       backgroundColor: theme.palette.background.paper,
-      width: '30px'
+      width: '30px',
     },
     '.demo-space-x > *': {
       marginTop: '1rem !important',
       marginRight: '1rem !important',
       'body[dir="rtl"] &': {
         marginRight: '0 !important',
-        marginLeft: '1rem !important'
-      }
+        marginLeft: '1rem !important',
+      },
     },
     '.demo-space-y > *:not(:last-of-type)': {
-      marginBottom: '1rem'
+      marginBottom: '1rem',
     },
     '.MuiGrid-container.match-height .MuiCard-root': {
-      height: '100%'
+      height: '100%',
     },
     '.ps__rail-y': {
       zIndex: 1,
       right: '0 !important',
       left: 'auto !important',
       '&:hover, &:focus, &.ps--clicking': {
-        backgroundColor: theme.palette.mode === 'light' ? '#F3F3F8 !important' : '#393B51 !important'
+        backgroundColor: theme.palette.mode === 'light' ? '#F3F3F8 !important' : '#393B51 !important',
       },
       '& .ps__thumb-y': {
         right: '3px !important',
         left: 'auto !important',
-        backgroundColor: theme.palette.mode === 'light' ? '#BFBFD5 !important' : '#57596C !important'
+        backgroundColor: theme.palette.mode === 'light' ? '#BFBFD5 !important' : '#57596C !important',
       },
       '.layout-vertical-nav &': {
         '& .ps__thumb-y': {
           width: 4,
-          backgroundColor: perfectScrollbarThumbBgColor()
+          backgroundColor: perfectScrollbarThumbBgColor(),
         },
         '&:hover, &:focus, &.ps--clicking': {
           backgroundColor: 'transparent !important',
           '& .ps__thumb-y': {
-            width: 6
-          }
-        }
-      }
+            width: 6,
+          },
+        },
+      },
     },
     '#nprogress': {
       pointerEvents: 'none',
@@ -72,9 +71,9 @@ const GlobalStyles = (theme, settings) => {
         width: '100%',
         zIndex: 2000,
         position: 'fixed',
-        backgroundColor: theme.palette.primary.main
-      }
-    }
+        backgroundColor: theme.palette.primary.main,
+      },
+    },
   }
 }
 

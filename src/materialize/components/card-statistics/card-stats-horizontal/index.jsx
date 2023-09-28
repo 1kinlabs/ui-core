@@ -16,32 +16,34 @@ import ChevronDown from 'mdi-material-ui/ChevronDown'
 const Avatar = styled(CustomAvatar)(({ theme }) => ({
   width: 40,
   height: 40,
-  marginRight: theme.spacing(4)
+  marginRight: theme.spacing(4),
 }))
 
-const CardStatsHorizontal = props => {
+function CardStatsHorizontal(props) {
   // ** Props
-  const { title, color, icon, stats, trend, trendNumber } = props
+  const {
+    title, color, icon, stats, trend, trendNumber,
+  } = props
   const TrendIcon = trend === 'positive' ? ChevronUp : ChevronDown
 
   return (
     <Card>
-      <CardContent sx={{ py: theme => `${theme.spacing(4.125)} !important` }}>
+      <CardContent sx={{ py: (theme) => `${theme.spacing(4.125)} !important` }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Avatar skin='light' color={color} variant='rounded'>
+          <Avatar skin="light" color={color} variant="rounded">
             {icon}
           </Avatar>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
-              <Typography variant='h6'>{stats}</Typography>
+              <Typography variant="h6">{stats}</Typography>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <TrendIcon sx={{ color: trend === 'positive' ? 'success.main' : 'error.main' }} />
-                <Typography variant='caption' sx={{ color: trend === 'positive' ? 'success.main' : 'error.main' }}>
+                <Typography variant="caption" sx={{ color: trend === 'positive' ? 'success.main' : 'error.main' }}>
                   {trendNumber}
                 </Typography>
               </Box>
             </Box>
-            <Typography variant='caption'>{title}</Typography>
+            <Typography variant="caption">{title}</Typography>
           </Box>
         </Box>
       </CardContent>
@@ -53,5 +55,5 @@ export default CardStatsHorizontal
 
 CardStatsHorizontal.defaultProps = {
   color: 'primary',
-  trend: 'positive'
+  trend: 'positive',
 }

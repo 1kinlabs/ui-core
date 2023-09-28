@@ -9,18 +9,18 @@ import themeConfig from 'materialize/theme/config'
 // ** Menu Components
 import HorizontalNavItems from './HorizontalNavItems'
 
-const Navigation = props => {
+function Navigation(props) {
   return (
     <Box
-      className='menu-content'
+      className="menu-content"
       sx={{
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
         '& > *': {
           '&:not(:last-child)': { mr: 2 },
-          ...(themeConfig.menuTextTruncate && { maxWidth: 220 })
-        }
+          ...(themeConfig.menuTextTruncate && { maxWidth: 220 }),
+        },
       }}
     >
       <HorizontalNavItems {...props} />

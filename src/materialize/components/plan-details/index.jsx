@@ -17,7 +17,7 @@ import CustomChip from 'materialize/components/mui/chip'
 const BoxWrapper = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: theme.spacing(12, 6, 6),
-  borderRadius: theme.shape.borderRadius
+  borderRadius: theme.shape.borderRadius,
 }))
 
 // ** Styled Component for the wrapper of all the features of a plan
@@ -25,46 +25,43 @@ const BoxFeature = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(5),
   marginBottom: theme.spacing(5),
   '& > :not(:first-of-type)': {
-    marginTop: theme.spacing(4)
-  }
+    marginTop: theme.spacing(4),
+  },
 }))
 
-const PlanDetails = props => {
+function PlanDetails(props) {
   // ** Props
   const { plan, data } = props
 
-  const renderFeatures = () => {
-    return data?.planBenefits.map((item, index) => (
-      <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
-        <CircleOutline sx={{ mr: 2.5, fontSize: '0.875rem', color: 'text.secondary' }} />
-        <Typography variant='body2'>{item}</Typography>
-      </Box>
-    ))
-  }
+  const renderFeatures = () => data?.planBenefits.map((item, index) => (
+    <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
+      <CircleOutline sx={{ mr: 2.5, fontSize: '0.875rem', color: 'text.secondary' }} />
+      <Typography variant="body2">{item}</Typography>
+    </Box>
+  ))
 
   return (
     <BoxWrapper
       sx={{
-        border: theme =>
-          !data?.popularPlan
-            ? `1px solid ${theme.palette.divider}`
-            : `1px solid ${hexToRGBA(theme.palette.primary.main, 0.5)}`
+        border: (theme) => (!data?.popularPlan
+          ? `1px solid ${theme.palette.divider}`
+          : `1px solid ${hexToRGBA(theme.palette.primary.main, 0.5)}`),
       }}
     >
       {data?.popularPlan ? (
         <CustomChip
-          skin='light'
-          size='small'
-          label='Popular'
-          color='primary'
+          skin="light"
+          size="small"
+          label="Popular"
+          color="primary"
           sx={{
             top: 16,
             right: 24,
             position: 'absolute',
             '& .MuiChip-label': {
               px: 2.5,
-              fontSize: '0.8125rem'
-            }
+              fontSize: '0.8125rem',
+            },
           }}
         />
       ) : null}
@@ -77,27 +74,29 @@ const PlanDetails = props => {
         />
       </Box>
       <Box sx={{ textAlign: 'center' }}>
-        <Typography variant='h5' sx={{ mb: 1.5 }}>
+        <Typography variant="h5" sx={{ mb: 1.5 }}>
           {data?.title}
         </Typography>
-        <Typography variant='body2'>{data?.subtitle}</Typography>
+        <Typography variant="body2">{data?.subtitle}</Typography>
         <Box sx={{ mt: 5, mb: 10, position: 'relative' }}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Typography variant='body2' sx={{ mt: 1.6, alignSelf: 'flex-start' }}>
+            <Typography variant="body2" sx={{ mt: 1.6, alignSelf: 'flex-start' }}>
               $
             </Typography>
-            <Typography variant='h3' sx={{ fontWeight: 500, color: 'primary.main', lineHeight: 1.17 }}>
+            <Typography variant="h3" sx={{ fontWeight: 500, color: 'primary.main', lineHeight: 1.17 }}>
               {plan === 'monthly' ? data?.monthlyPrice : data?.yearlyPlan.perMonth}
             </Typography>
-            <Typography variant='body2' sx={{ mb: 1.6, alignSelf: 'flex-end' }}>
+            <Typography variant="body2" sx={{ mb: 1.6, alignSelf: 'flex-end' }}>
               /month
             </Typography>
           </Box>
           {plan !== 'monthly' && data?.monthlyPrice !== 0 ? (
             <Typography
-              variant='body2'
+              variant="body2"
               sx={{ left: 0, right: 0, position: 'absolute' }}
-            >{`USD ${data?.yearlyPlan.totalAnnual}/year`}</Typography>
+            >
+              {`USD ${data?.yearlyPlan.totalAnnual}/year`}
+            </Typography>
           ) : null}
         </Box>
       </Box>

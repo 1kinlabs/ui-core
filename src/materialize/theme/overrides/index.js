@@ -96,7 +96,7 @@ const Overrides = (theme, settings) => {
     dateTimePicker,
     MuiBreadcrumbs,
     MuiButtonGroup,
-    MuiToggleButton
+    MuiToggleButton,
   )
 }
 

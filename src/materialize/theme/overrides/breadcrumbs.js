@@ -3,9 +3,9 @@ export default {
     styleOverrides: {
       li: {
         '& > .MuiLink-root': {
-          textDecoration: 'none'
-        }
-      }
-    }
-  }
+          textDecoration: 'none',
+        },
+      },
+    },
+  },
 }

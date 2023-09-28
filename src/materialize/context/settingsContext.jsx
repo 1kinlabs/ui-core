@@ -18,7 +18,7 @@ const initialSettings = {
   toastPosition: themeConfig.toastPosition,
   verticalNavToggleType: themeConfig.verticalNavToggleType,
   skin: themeConfig.layout === 'horizontal' && themeConfig.skin === 'semi-dark' ? 'default' : themeConfig.skin,
-  appBar: themeConfig.layout === 'horizontal' && themeConfig.appBar === 'hidden' ? 'fixed' : themeConfig.appBar
+  appBar: themeConfig.layout === 'horizontal' && themeConfig.appBar === 'hidden' ? 'fixed' : themeConfig.appBar,
 }
 
 const staticSettings = {
@@ -27,7 +27,7 @@ const staticSettings = {
   layout: initialSettings.layout,
   navHidden: initialSettings.navHidden,
   lastLayout: initialSettings.lastLayout,
-  toastPosition: initialSettings.toastPosition
+  toastPosition: initialSettings.toastPosition,
 }
 
 const restoreSettings = () => {
@@ -47,8 +47,8 @@ const restoreSettings = () => {
 }
 
 // set settings in localStorage
-const storeSettings = settings => {
-  const initSettings = Object.assign({}, settings)
+const storeSettings = (settings) => {
+  const initSettings = { ...settings }
   delete initSettings.appBar
   delete initSettings.footer
   delete initSettings.layout
@@ -61,10 +61,10 @@ const storeSettings = settings => {
 // ** Create Context
 export const SettingsContext = createContext({
   saveSettings: () => null,
-  settings: initialSettings
+  settings: initialSettings,
 })
 
-export const SettingsProvider = ({ children, pageSettings }) => {
+export function SettingsProvider({ children, pageSettings }) {
   // ** State
   const [settings, setSettings] = useState({ ...initialSettings })
   useEffect(() => {
@@ -87,7 +87,7 @@ export const SettingsProvider = ({ children, pageSettings }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings.layout])
 
-  const saveSettings = updatedSettings => {
+  const saveSettings = (updatedSettings) => {
     storeSettings(updatedSettings)
     setSettings(updatedSettings)
   }

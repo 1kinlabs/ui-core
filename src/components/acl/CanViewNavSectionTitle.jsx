@@ -4,7 +4,7 @@ import { useContext } from 'react'
 // ** Component Imports
 import { AbilityContext } from 'context/acl'
 
-const CanViewNavSectionTitle = props => {
+function CanViewNavSectionTitle(props) {
   // ** Props
   const { children, navTitle } = props
 

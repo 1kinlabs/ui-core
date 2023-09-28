@@ -37,10 +37,10 @@ export const hasActiveChild = (item, currentURL) => {
 
     // Check if the child has a link and is active
     if (
-      child &&
-      childPath &&
-      currentURL &&
-      (childPath === currentURL || (currentURL.includes(childPath) && childPath !== '/'))
+      child
+      && childPath
+      && currentURL
+      && (childPath === currentURL || (currentURL.includes(childPath) && childPath !== '/'))
     ) {
       return true
     }
@@ -58,7 +58,7 @@ export const hasActiveChild = (item, currentURL) => {
  * @param currentActiveGroup
  */
 export const removeChildren = (children, openGroup, currentActiveGroup) => {
-  children.forEach(child => {
+  children.forEach((child) => {
     if (!currentActiveGroup.includes(child.title)) {
       const index = openGroup.indexOf(child.title)
       if (index > -1) openGroup.splice(index, 1)

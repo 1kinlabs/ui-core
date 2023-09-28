@@ -13,18 +13,18 @@ import ArrowUp from 'mdi-material-ui/ArrowUp'
 import themeConfig from 'materialize/theme/config'
 
 // ** Components
-import AppBar from './components/vertical/appBar'
 import Customizer from 'materialize/components/customizer'
+import ScrollToTop from 'materialize/components/scroll-to-top'
+import DatePickerWrapper from 'materialize/styles/libs/react-datepicker'
+import AppBar from './components/vertical/appBar'
 import Navigation from './components/vertical/navigation'
 import Footer from './components/shared-components/footer'
-import ScrollToTop from 'materialize/components/scroll-to-top'
 
 // ** Styled Component
-import DatePickerWrapper from 'materialize/styles/libs/react-datepicker'
 
 const VerticalLayoutWrapper = styled('div')({
   height: '100%',
-  display: 'flex'
+  display: 'flex',
 })
 
 const MainContentWrapper = styled(Box)({
@@ -32,7 +32,7 @@ const MainContentWrapper = styled(Box)({
   minWidth: 0,
   display: 'flex',
   minHeight: '100vh',
-  flexDirection: 'column'
+  flexDirection: 'column',
 })
 
 const ContentWrapper = styled('main')(({ theme }) => ({
@@ -42,13 +42,15 @@ const ContentWrapper = styled('main')(({ theme }) => ({
   transition: 'padding .25s ease-in-out',
   [theme.breakpoints.down('sm')]: {
     paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4)
-  }
+    paddingRight: theme.spacing(4),
+  },
 }))
 
-const VerticalLayout = props => {
+function VerticalLayout(props) {
   // ** Props
-  const { hidden, settings, children, scrollToTop } = props
+  const {
+    hidden, settings, children, scrollToTop,
+  } = props
 
   // ** Vars
   const { skin, navHidden, contentWidth } = settings
@@ -64,18 +66,18 @@ const VerticalLayout = props => {
   // ** Toggle Functions
   const toggleNavVisibility = () => setNavVisible(!navVisible)
 
-  const mediaSx={
+  const mediaSx = {
     mx: 'auto',
     '@media (min-width:1440px)': { maxWidth: 1440 },
-    '@media (min-width:1200px)': { maxWidth: '100%' }
+    '@media (min-width:1200px)': { maxWidth: '100%' },
   }
 
   return (
     <>
-      <VerticalLayoutWrapper className='layout-wrapper'>
-        {navHidden &&
-        themeConfig.layout === 'vertical' &&
-        !(navHidden && settings.lastLayout === 'horizontal') ? null : (
+      <VerticalLayoutWrapper className="layout-wrapper">
+        {navHidden
+        && themeConfig.layout === 'vertical'
+        && !(navHidden && settings.lastLayout === 'horizontal') ? null : (
           <Navigation
             navWidth={navWidth}
             navHover={navHover}
@@ -87,14 +89,14 @@ const VerticalLayout = props => {
             navigationBorderWidth={navigationBorderWidth}
             {...props}
           />
-        )}
-        <MainContentWrapper className='layout-content-wrapper'>
+          )}
+        <MainContentWrapper className="layout-content-wrapper">
           <AppBar toggleNavVisibility={toggleNavVisibility} {...props} />
 
           <ContentWrapper
-            className='layout-page-content'
+            className="layout-page-content"
             sx={{
-              ...(contentWidth === 'boxed' && mediaSx)
+              ...(contentWidth === 'boxed' && mediaSx),
             }}
           >
             {children}
@@ -103,7 +105,7 @@ const VerticalLayout = props => {
           <Footer {...props} />
 
           <DatePickerWrapper sx={{ zIndex: 11 }}>
-            <Box id='react-datepicker-portal'></Box>
+            <Box id="react-datepicker-portal" />
           </DatePickerWrapper>
         </MainContentWrapper>
       </VerticalLayoutWrapper>
@@ -113,8 +115,8 @@ const VerticalLayout = props => {
       {scrollToTop ? (
         scrollToTop(props)
       ) : (
-        <ScrollToTop className='mui-fixed'>
-          <Fab color='primary' size='small' aria-label='scroll back to top'>
+        <ScrollToTop className="mui-fixed">
+          <Fab color="primary" size="small" aria-label="scroll back to top">
             <ArrowUp />
           </Fab>
         </ScrollToTop>

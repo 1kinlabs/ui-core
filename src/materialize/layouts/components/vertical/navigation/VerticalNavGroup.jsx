@@ -28,30 +28,30 @@ import themeConfig from 'materialize/theme/config'
 import { hasActiveChild, removeChildren } from 'materialize/layouts/utils'
 
 // ** Custom Components Imports
-import VerticalNavItems from './VerticalNavItems'
 import UserIcon from 'materialize/components/UserIcon'
 import Translations from 'materialize/components/Translations'
 import CanViewNavGroup from 'components/acl/CanViewNavGroup'
+import VerticalNavItems from './VerticalNavItems'
 
 const MenuItemTextWrapper = styled(Box)(() => ({
   width: '100%',
   display: 'flex',
   justifyContent: 'space-between',
   transition: 'opacity .25s ease-in-out',
-  ...(themeConfig.menuTextTruncate && { overflow: 'hidden' })
+  ...(themeConfig.menuTextTruncate && { overflow: 'hidden' }),
 }))
 
 const MenuGroupToggleRightIcon = styled(ChevronRight)(({ theme }) => ({
   color: theme.palette.text.secondary,
-  transition: 'transform .25s ease-in-out'
+  transition: 'transform .25s ease-in-out',
 }))
 
 const MenuGroupToggleLeftIcon = styled(ChevronLeft)(({ theme }) => ({
   color: theme.palette.text.secondary,
-  transition: 'transform .25s ease-in-out'
+  transition: 'transform .25s ease-in-out',
 }))
 
-const VerticalNavGroup = props => {
+function VerticalNavGroup(props) {
   // ** Props
   const {
     item,
@@ -65,14 +65,16 @@ const VerticalNavGroup = props => {
     collapsedNavWidth,
     currentActiveGroup,
     setCurrentActiveGroup,
-    navigationBorderWidth
+    navigationBorderWidth,
   } = props
 
   // ** Hooks & Vars
   const theme = useTheme()
   const router = useRouter()
   const currentURL = router.pathname
-  const { skin, direction, navCollapsed, verticalNavToggleType } = settings
+  const {
+    skin, direction, navCollapsed, verticalNavToggleType,
+  } = settings
 
   // ** Accordion menu group open toggle
   const toggleActiveGroup = (item, parent) => {
@@ -102,7 +104,7 @@ const VerticalNavGroup = props => {
       openGroup = []
 
       // ** push Current Active Group To Open Group array
-      if (currentActiveGroup.every(elem => groupActive.includes(elem))) {
+      if (currentActiveGroup.every((elem) => groupActive.includes(elem))) {
         openGroup.push(...currentActiveGroup)
       }
 
@@ -165,73 +167,71 @@ const VerticalNavGroup = props => {
   const conditionalIconColor = () => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
       return {
-        color: `rgba(${theme.palette.customColors.dark}, ${parent && item.children ? 0.68 : 0.87})`
+        color: `rgba(${theme.palette.customColors.dark}, ${parent && item.children ? 0.68 : 0.87})`,
       }
-    } else if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
+    } if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
       return {
-        color: `rgba(${theme.palette.customColors.light}, ${parent && item.children ? 0.68 : 0.87})`
+        color: `rgba(${theme.palette.customColors.light}, ${parent && item.children ? 0.68 : 0.87})`,
       }
-    } else
-      return {
-        color: parent && item.children ? theme.palette.text.secondary : theme.palette.text.primary
-      }
+    } return {
+      color: parent && item.children ? theme.palette.text.secondary : theme.palette.text.primary,
+    }
   }
 
   const conditionalArrowIconColor = () => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
       return {
-        color: `rgba(${theme.palette.customColors.dark}, 0.68)`
+        color: `rgba(${theme.palette.customColors.dark}, 0.68)`,
       }
-    } else if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
+    } if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
       return {
-        color: `rgba(${theme.palette.customColors.light}, 0.68)`
+        color: `rgba(${theme.palette.customColors.light}, 0.68)`,
       }
-    } else return {}
+    } return {}
   }
 
   const conditionalBgColor = () => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
       return {
         '&:hover': {
-          backgroundColor: `rgba(${theme.palette.customColors.dark}, 0.05)`
+          backgroundColor: `rgba(${theme.palette.customColors.dark}, 0.05)`,
         },
         '&.Mui-selected': {
           backgroundColor: `rgba(${theme.palette.customColors.dark}, 0.08)`,
           '&:hover': {
-            backgroundColor: `rgba(${theme.palette.customColors.dark}, 0.08)`
-          }
-        }
+            backgroundColor: `rgba(${theme.palette.customColors.dark}, 0.08)`,
+          },
+        },
       }
-    } else if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
+    } if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
       return {
         '&:hover': {
-          backgroundColor: `rgba(${theme.palette.customColors.light}, 0.05)`
+          backgroundColor: `rgba(${theme.palette.customColors.light}, 0.05)`,
         },
         '&.Mui-selected': {
           backgroundColor: `rgba(${theme.palette.customColors.light}, 0.08)`,
           '&:hover': {
-            backgroundColor: `rgba(${theme.palette.customColors.light}, 0.08)`
-          }
-        }
+            backgroundColor: `rgba(${theme.palette.customColors.light}, 0.08)`,
+          },
+        },
       }
-    } else {
-      return {
-        '&.Mui-selected': {
+    }
+    return {
+      '&.Mui-selected': {
+        backgroundColor: theme.palette.action.selected,
+        '&:hover': {
           backgroundColor: theme.palette.action.selected,
-          '&:hover': {
-            backgroundColor: theme.palette.action.selected
-          }
-        }
-      }
+        },
+      },
     }
   }
 
   return (
     <CanViewNavGroup navGroup={item}>
-      <Fragment>
+      <>
         <ListItem
           disablePadding
-          className='nav-group'
+          className="nav-group"
           onClick={handleGroupClick}
           sx={{
             mt: 1.5,
@@ -240,12 +240,12 @@ const VerticalNavGroup = props => {
             px:
               parent && item.children
                 ? '0 !important'
-                : `${theme.spacing(navCollapsed && !navHover ? 2 : 3)} !important`
+                : `${theme.spacing(navCollapsed && !navHover ? 2 : 3)} !important`,
           }}
         >
           <ListItemButton
             className={clsx({
-              'Mui-selected': groupActive.includes(item.title) || currentActiveGroup.includes(item.title)
+              'Mui-selected': groupActive.includes(item.title) || currentActiveGroup.includes(item.title),
             })}
             sx={{
               py: 2.25,
@@ -254,7 +254,7 @@ const VerticalNavGroup = props => {
               ...conditionalBgColor(),
               transition: 'padding-left .25s ease-in-out',
               pr: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 24 - 16) / 8 : 3,
-              pl: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 24 - 16) / 8 : 4
+              pl: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 24 - 16) / 8 : 4,
             }}
           >
             {isSubToSub ? null : (
@@ -264,12 +264,12 @@ const VerticalNavGroup = props => {
                   transition: 'margin .25s ease-in-out',
                   ...(parent && navCollapsed && !navHover ? {} : { mr: 2 }),
                   ...(navCollapsed && !navHover ? { mr: 0 } : {}),
-                  ...(parent && item.children ? { ml: 2, mr: 4 } : {})
+                  ...(parent && item.children ? { ml: 2, mr: 4 } : {}),
                 }}
               >
                 <UserIcon
                   icon={IconTag}
-                  componentType='vertical-menu'
+                  componentType="vertical-menu"
                   iconProps={{ sx: { ...(parent ? { fontSize: '0.5rem' } : {}) } }}
                 />
               </ListItemIcon>
@@ -277,15 +277,15 @@ const VerticalNavGroup = props => {
             <MenuItemTextWrapper sx={{ ...menuGroupCollapsedStyles, ...(isSubToSub ? { ml: 8 } : {}) }}>
               <Typography
                 {...((themeConfig.menuTextTruncate || (!themeConfig.menuTextTruncate && navCollapsed && !navHover)) && {
-                  noWrap: true
+                  noWrap: true,
                 })}
               >
                 <Translations text={item.title} />
               </Typography>
-              <Box className='menu-item-meta' sx={{ ml: 1.5, display: 'flex', alignItems: 'center' }}>
+              <Box className="menu-item-meta" sx={{ ml: 1.5, display: 'flex', alignItems: 'center' }}>
                 {item.badgeContent ? (
                   <Chip
-                    size='small'
+                    size="small"
                     label={item.badgeContent}
                     color={item.badgeColor || 'primary'}
                     sx={{ mr: 0.75, '& .MuiChip-label': { px: 2.5, lineHeight: 1.385, textTransform: 'capitalize' } }}
@@ -295,14 +295,14 @@ const VerticalNavGroup = props => {
                   <MenuGroupToggleRightIcon
                     sx={{
                       ...conditionalArrowIconColor(),
-                      ...(groupActive.includes(item.title) ? { transform: 'rotate(90deg)' } : {})
+                      ...(groupActive.includes(item.title) ? { transform: 'rotate(90deg)' } : {}),
                     }}
                   />
                 ) : (
                   <MenuGroupToggleLeftIcon
                     sx={{
                       ...conditionalArrowIconColor(),
-                      ...(groupActive.includes(item.title) ? { transform: 'rotate(-90deg)' } : {})
+                      ...(groupActive.includes(item.title) ? { transform: 'rotate(-90deg)' } : {}),
                     }}
                   />
                 )}
@@ -310,14 +310,14 @@ const VerticalNavGroup = props => {
             </MenuItemTextWrapper>
           </ListItemButton>
           <Collapse
-            component='ul'
-            onClick={e => e.stopPropagation()}
+            component="ul"
+            onClick={(e) => e.stopPropagation()}
             in={groupActive.includes(item.title)}
             sx={{
               pl: 0,
               width: '100%',
               ...menuGroupCollapsedStyles,
-              transition: 'all .25s ease-in-out'
+              transition: 'all .25s ease-in-out',
             }}
           >
             <VerticalNavItems
@@ -329,7 +329,7 @@ const VerticalNavGroup = props => {
             />
           </Collapse>
         </ListItem>
-      </Fragment>
+      </>
     </CanViewNavGroup>
   )
 }

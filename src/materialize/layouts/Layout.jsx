@@ -5,9 +5,11 @@ import { useEffect, useRef } from 'react'
 import VerticalLayout from './VerticalLayout'
 import HorizontalLayout from './HorizontalLayout'
 
-const Layout = props => {
+function Layout(props) {
   // ** Props
-  const { hidden, children, settings, saveSettings } = props
+  const {
+    hidden, children, settings, saveSettings,
+  } = props
 
   // ** Ref
   const isCollapsed = useRef(settings.navCollapsed)
@@ -19,13 +21,11 @@ const Layout = props => {
       } else {
         saveSettings({ ...settings, layout: 'vertical' })
       }
+    } else if (isCollapsed.current) {
+      saveSettings({ ...settings, navCollapsed: true, layout: settings.lastLayout })
+      isCollapsed.current = false
     } else {
-      if (isCollapsed.current) {
-        saveSettings({ ...settings, navCollapsed: true, layout: settings.lastLayout })
-        isCollapsed.current = false
-      } else {
-        saveSettings({ ...settings, layout: settings.lastLayout })
-      }
+      saveSettings({ ...settings, layout: settings.lastLayout })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hidden])

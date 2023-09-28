@@ -1,3 +1,1 @@
-export const isFloat = n => {
-  return typeof n === 'number' && n % 1 !== 0
-}
+export const isFloat = (n) => typeof n === 'number' && n % 1 !== 0

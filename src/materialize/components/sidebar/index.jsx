@@ -5,9 +5,11 @@ import { Fragment, useEffect } from 'react'
 import Backdrop from '@mui/material/Backdrop'
 import Box from '@mui/material/Box'
 
-const Sidebar = props => {
+function Sidebar(props) {
   // ** Props
-  const { sx, show, direction, children, hideBackdrop, onOpen, onClose, backDropClick } = props
+  const {
+    sx, show, direction, children, hideBackdrop, onOpen, onClose, backDropClick,
+  } = props
 
   const handleBackdropClick = () => {
     if (backDropClick) {
@@ -24,7 +26,7 @@ const Sidebar = props => {
   }, [onClose, onOpen, show])
 
   return (
-    <Fragment>
+    <>
       <Box
         {...props}
         sx={{
@@ -38,7 +40,7 @@ const Sidebar = props => {
           ...(direction === 'right'
             ? { left: 'auto', right: show ? 0 : '-100%' }
             : { right: 'auto', left: show ? 0 : '-100%' }),
-          ...sx
+          ...sx,
         }}
       >
         {children}
@@ -48,15 +50,15 @@ const Sidebar = props => {
           open={show}
           transitionDuration={250}
           onClick={handleBackdropClick}
-          sx={{ position: 'absolute', zIndex: theme => theme.zIndex.drawer - 1 }}
+          sx={{ position: 'absolute', zIndex: (theme) => theme.zIndex.drawer - 1 }}
         />
       )}
-    </Fragment>
+    </>
   )
 }
 
 export default Sidebar
 
 Sidebar.defaultProps = {
-  direction: 'left'
+  direction: 'left',
 }
