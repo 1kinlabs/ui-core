@@ -1,5 +1,5 @@
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import { ValueOf } from 'types/ValueOf'
 import { useStorage } from 'hooks/useStorage'
 import { usePromise } from 'hooks/usePromise'
