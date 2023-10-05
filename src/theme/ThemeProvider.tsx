@@ -1,5 +1,5 @@
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import { ValueOf } from 'types/ValueOf'
 import { useStorage } from 'hooks/useStorage'
 import { usePromise } from 'hooks/usePromise'
@@ -47,9 +47,6 @@ type ThemeProviderProps = {
 export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   const [themeName, setThemeName] = useStorage<SupportedTheme>('currentTheme', 'default')
   const [activeTheme, setActiveTheme] = useState<Theme | null>(null)
-  const themeProxy = useMemo(() => (
-    new Proxy<Theme>(activeTheme || {} as Theme, themeProxyHandler)
-  ), [activeTheme])
 
   usePromise(async () => {
     const theme = await getTheme(themeName || 'default')
@@ -67,7 +64,7 @@ export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   }, [])
 
   return (
-    <StyledThemeProvider theme={themeProxy}>
+    <StyledThemeProvider theme={activeTheme || {}}>
       {children}
     </StyledThemeProvider>
   )
