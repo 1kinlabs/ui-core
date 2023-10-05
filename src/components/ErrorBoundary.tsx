@@ -8,8 +8,10 @@ type State = {
 
 type Props = React.PropsWithChildren
 
+// This hardcoded color is only here in case the theme fails to load
+// it has been blessed for this use case, but don't do this anywhere else.
 const ErrorMessage = styled.p`
-  color: ${({ theme }) => theme.text.error};
+  color: ${({ theme }) => theme?.text?.error || '#FF4D49'};
 `
 
 export class ErrorBoundary extends React.Component<Props, State> {
