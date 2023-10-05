@@ -63,8 +63,12 @@ export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
     return () => window.removeEventListener(themeEvents.change, changeHandler)
   }, [])
 
+  if (!activeTheme) {
+    return <div />
+  }
+
   return (
-    <StyledThemeProvider theme={activeTheme || {}}>
+    <StyledThemeProvider theme={activeTheme}>
       {children}
     </StyledThemeProvider>
   )
