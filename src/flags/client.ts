@@ -16,7 +16,7 @@ const parseJSON = (stringToParse : string | null) : AppFlags => {
   try {
     return JSON.parse(stringToParse || '') as AppFlags
   } catch {
-    return {}
+    return {} as AppFlags
   }
 }
 
@@ -33,5 +33,5 @@ export const useFlags = (params : UseFlagsOptions) : AppFlags => {
     window.setFeatureFlag = (featureFlags : AppFlags) => setOverride(JSON.stringify(featureFlags) || '')
   }, [])
 
-  return { ...flags, ...overrideJSON } as AppFlags
+  return { ...flags, ...overrideJSON }
 }
