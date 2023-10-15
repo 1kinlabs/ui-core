@@ -17,5 +17,6 @@ declare global {
     ): void
     dispatchEvent<K extends keyof CustomEvents>(ev: CustomEvents[K]): void
     setFeatureFlag(featureFlags : AppFlags) : void
+    clearFeatureFlags() : void
   }
 }
