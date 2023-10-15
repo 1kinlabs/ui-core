@@ -1,5 +1,7 @@
 // eslint-ignore @typescript-eslint/no-unsafe-assignment
-import { useMemo, useEffect } from 'react'
+import {
+  useMemo, useEffect, createContext, useContext, ReactNode,
+} from 'react'
 import {
   createUseFlags,
   type InitialFlagState as GenericInitialFlagState,
@@ -12,6 +14,9 @@ import { type AppFlags, config } from './config'
 export type InitialFlagState = GenericInitialFlagState<AppFlags>;
 export const useFlagBag = createUseFlagBag<AppFlags>()
 
+const FlagContext = createContext<AppFlags>({})
+export const useFlags = (): AppFlags => useContext(FlagContext)
+
 const parseJSON = (stringToParse : string | null) : AppFlags => {
   try {
     return JSON.parse(stringToParse || '') as AppFlags
@@ -20,18 +25,26 @@ const parseJSON = (stringToParse : string | null) : AppFlags => {
   }
 }
 
-export const useFlags = (params : UseFlagsOptions) : AppFlags => {
-  const useHappykit = useMemo(() => createUseFlags<AppFlags>(config), [])
+export function FlagProvider({ happykitParams, children }
+  : { happykitParams: UseFlagsOptions, children: ReactNode}) {
+  const useHappykit = createUseFlags<AppFlags>(config)
 
   const [override, setOverride] = useStorage<string>('flags', '')
 
   const overrideJSON = parseJSON(override)
 
-  const { flags } = useHappykit(params)
+  const { flags } = useHappykit(happykitParams)
 
   useEffect(() => {
     window.setFeatureFlag = (featureFlags : AppFlags) => setOverride(JSON.stringify(featureFlags) || '')
+    window.clearFeatureFlags = () => setOverride('')
   }, [])
 
-  return { ...flags, ...overrideJSON }
+  const finalFlags = useMemo(() => ({ ...flags, ...overrideJSON }), [flags, overrideJSON])
+
+  return (
+    <FlagContext.Provider value={finalFlags}>
+      {children}
+    </FlagContext.Provider>
+  )
 }
