@@ -8,6 +8,9 @@ import {
   supportedThemes, SupportedTheme, themeEvents, ColorMap,
 } from './types'
 
+import ThemeComponent from 'materialize/theme/ThemeComponent'
+import { SettingsProvider, SettingsConsumer } from 'materialize/context/settingsContext'
+
 // Just redefining this here to avoid circular deps
 type Theme = ReturnType<typeof getVariables>
 
@@ -41,10 +44,11 @@ const themeProxyHandler = {
 }
 
 type ThemeProviderProps = {
-  children: React.ReactNode
+  children: React.ReactNode,
+  pageSettings?: any
 }
 
-export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
+export function ThemeProvider({ children, pageSettings = {} }: ThemeProviderProps): JSX.Element {
   const [themeName, setThemeName] = useStorage<SupportedTheme>('currentTheme', 'default')
   const [activeTheme, setActiveTheme] = useState<Theme | null>(null)
 
@@ -69,7 +73,15 @@ export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
 
   return (
     <StyledThemeProvider theme={activeTheme}>
-      {children}
+      <SettingsProvider pageSettings={pageSettings}>
+        <SettingsConsumer>
+          {({ settings }) => (
+            <ThemeComponent settings={settings}>
+              {children}
+            </ThemeComponent>
+          )}
+        </SettingsConsumer>
+      </SettingsProvider>
     </StyledThemeProvider>
   )
 }

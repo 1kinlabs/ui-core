@@ -2,3 +2,5 @@ node_modules/
 dist/
 *.tsbuildinfo
 yarn-error.log
+.yarn
+.yarnrc.yml
