@@ -1,7 +1,31 @@
-import { Nullable } from "./Nullable";
+import { Nullable } from './Nullable'
+
+type Faq = {
+    answer: string,
+    question: string
+}
+
+type Media = {
+    src1x: string,
+    src2x: string
+}
+
+type DefaultMedia = {
+    defaultMedia: Media
+}
+
+type Assets = {
+    featureImage: string,
+    cardMedia: DefaultMedia,
+    heroMedia: DefaultMedia,
+    detailImage: DefaultMedia,
+    thumbnailImage: DefaultMedia,
+    additionalMedia: string[]
+}
 
 export type Collectible = {
     id: number;
+    assets: Assets;
 } & Partial<Nullable<{
     title: string;
     description: string;
@@ -10,10 +34,9 @@ export type Collectible = {
     end_date: string;
     short_description: string;
     claim_instructions: string;
-    item_details: any;
+    item_details: string[];
     start_date: string;
-    faq_list: any;
-    assets: any;
+    faq_list: Faq[];
     require_complete_by_client: boolean;
     claimed_count: number;
     game_collectible_id: string;
@@ -30,6 +53,6 @@ export type Collectible = {
     claim_type: string;
     is_collectible: boolean;
     asset_type: string;
-    game_engine_support: any;
+    game_engine_support: string[];
     available_codes: number;
   }>>
