@@ -1,5 +1,5 @@
 import { Collectible } from 'types/Collectible'
-import { zeroIfNull } from './zeroIfNull'
+import { zeroIfNull } from './zero-if-null'
 
 export const isSoldOut = (collectible: Collectible) : boolean => {
   const areCodesAvailable = zeroIfNull(collectible.available_codes) > 0

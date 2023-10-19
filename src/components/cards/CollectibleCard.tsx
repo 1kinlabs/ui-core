@@ -8,7 +8,7 @@ import { useTheme, styled } from 'theme'
 import { Collectible } from 'types/Collectible'
 import { CollectibleStatus } from 'enums/CollectibleStatus'
 import { ClaimStatus } from 'enums/ClaimStatus'
-import { isSoldOut as isSoldOutUtil } from 'utils/isSoldOut'
+import { isSoldOut as isSoldOutUtil } from 'utils/collectible'
 
 type CardProps = {
   inProgress: boolean
