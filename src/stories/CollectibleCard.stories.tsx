@@ -52,3 +52,13 @@ export const Expired: Story = {
     collectible: { ...pineapplePizzaHeroCard, status: CollectibleStatus.ARCHIVED },
   },
 }
+
+export const Focused: Story = {
+  args: {
+    collectible: pineapplePizzaHeroCard,
+    claimStatus: ClaimStatus.COMPLETED,
+  },
+  parameters: {
+    pseudo: { focus: true },
+  },
+}
