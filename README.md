@@ -1,9 +1,12 @@
 # @1kinlabs/ui-core
 The core library for all front-end repos. This library contains all components, colors, hooks, and any other shared logic required by front-end repos.
 
+## Requirements
+Please use `Yarn 3` in order to use Storybook without any errors. 
+
 ## Authenticating
 * In order to use a project using this package, you will need to authenticate with Github's NPM Registry.
-* [Follow these steps to set up authentication](https://1kin.atlassian.net/wiki/spaces/SD/pages/2686990/Github+NPM+Registry+Setup)
+* [Follow these steps to set up authentication (follow the "For using Yarn 3" step)](https://1kin.atlassian.net/wiki/spaces/SD/pages/2686990/Github+NPM+Registry+Setup)
 * You only need to do this once for all private packages.
 
 ## Building the Package
@@ -37,6 +40,9 @@ To set it up, run
 ```
 yarn git-hooks
 ```
+
+### Storybook
+To run storybook tests locally run `yarn storybook`
 
 #### a. Linking Method
 You may experience multiple copies of React issues using `yarn link`,

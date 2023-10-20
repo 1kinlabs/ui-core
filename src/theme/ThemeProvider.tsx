@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { ValueOf } from 'types/ValueOf'
 import { useStorage } from 'hooks/useStorage'
 import { usePromise } from 'hooks/usePromise'
+import ThemeComponent from 'materialize/theme/ThemeComponent'
+import { SettingsProvider, SettingsConsumer } from 'materialize/context/settingsContext'
 import { getVariables } from './variables'
 import {
   supportedThemes, SupportedTheme, themeEvents, ColorMap,
@@ -41,7 +43,7 @@ const themeProxyHandler = {
 }
 
 type ThemeProviderProps = {
-  children: React.ReactNode
+  children: React.ReactNode,
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
@@ -69,7 +71,15 @@ export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
 
   return (
     <StyledThemeProvider theme={activeTheme}>
-      {children}
+      <SettingsProvider pageSettings={null}>
+        <SettingsConsumer>
+          {({ settings }) => (
+            <ThemeComponent settings={settings}>
+              {children}
+            </ThemeComponent>
+          )}
+        </SettingsConsumer>
+      </SettingsProvider>
     </StyledThemeProvider>
   )
 }
