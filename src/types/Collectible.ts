@@ -1,18 +1,6 @@
 import { Nullable } from './Nullable'
-
-type Faq = {
-    answer: string,
-    question: string
-}
-
-type Media = {
-    src1x: string,
-    src2x: string
-}
-
-type DefaultMedia = {
-    defaultMedia: Media
-}
+import { DefaultMedia } from './Media'
+import { FaqList } from './Faq'
 
 type Assets = {
     featureImage: string,
@@ -36,7 +24,7 @@ export type Collectible = {
     claim_instructions: string;
     item_details: string[];
     start_date: string;
-    faq_list: Faq[];
+    faq_list: FaqList;
     require_complete_by_client: boolean;
     claimed_count: number;
     game_collectible_id: string;
