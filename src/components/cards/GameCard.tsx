@@ -61,6 +61,8 @@ export type Props = {
 }
 
 function GameCard({ game }: Props) {
+  const liveContentClaimedProgress = Math.round((game.claims.liveContent / game.liveContent) * 100)
+
   return (
     <StyledCard tabIndex={0} key={game.id}>
       <StyledCardMedia
@@ -87,7 +89,7 @@ function GameCard({ game }: Props) {
             </Typography>
           </AvailableNowContainer>
 
-          <LinearProgress variant="determinate" value={Math.round((game.claims.liveContent / game.liveContent) * 100)} />
+          <LinearProgress variant="determinate" value={liveContentClaimedProgress} />
         </AvailableContentContainer>
       </CardContentStyled>
     </StyledCard>

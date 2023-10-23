@@ -24,6 +24,6 @@ export enum Genre {
 
 export enum GameMode {
     SINGLE_PLAYER = 'Single Player',
-    MULTIPLE_PLAYER = 'Multiple Player',
-    MASSIVELY_MULTIPLE_ONLINE = 'Massively Multiple Online'
+    MULTIPLAYER = 'Multiple Player',
+    MMO = 'Massively Multiple Online'
 }
