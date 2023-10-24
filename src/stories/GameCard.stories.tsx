@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { pineapplePizzaTrivia } from 'mock-data/game'
+import { pineapplePizzaHero } from 'mock-data/game'
 import GameCard from 'components/cards/GameCard'
 
 const meta = {
@@ -17,13 +17,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    game: pineapplePizzaTrivia,
+    game: pineapplePizzaHero,
   },
 }
 
 export const Focused: Story = {
   args: {
-    game: pineapplePizzaTrivia,
+    game: pineapplePizzaHero,
   },
   parameters: {
     pseudo: { focus: true },

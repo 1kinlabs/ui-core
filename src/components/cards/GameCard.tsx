@@ -10,11 +10,12 @@ import { CollectibleTotal as CollectibleTotalIcon } from 'svg/CollectibleTotal'
 import { IconSize } from 'enums/IconSize'
 
 const StyledCard = styled(BaseCard)`
-  box-sizing: content-box;
+  box-sizing: border-box;
   width: 300px;
 
   &:focus, &:active {
-    border: 5px solid ${({ theme }) => theme.border.primary.active};
+    box-shadow: 0 0 0 5px ${({ theme }) => theme.border.primary.active};
+    transition: box-shadow 0.3s ease;
   }
 `
 

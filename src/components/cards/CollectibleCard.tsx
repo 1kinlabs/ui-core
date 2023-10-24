@@ -15,36 +15,53 @@ type CardProps = {
 }
 
 const Card = styled(BaseCard)<CardProps>`
+  && {
+    box-sizing: border-box;
+    width: 200px;
+    ${({ inProgress, theme }) => inProgress && `border: 2px solid ${theme.border.warning}`};
 
-  ${({ inProgress, theme }) => inProgress && `border: 2px solid ${theme.border.warning}`};
-
-  &:focus, &:active {
-    border: 5px solid ${({ theme }) => theme.border.primary.active};
+    &:focus, &:active {
+      box-shadow: 0 0 0 5px ${({ theme }) => theme.border.primary.active};
+      transition: box-shadow 0.3s ease;
+    }
   }
 `
 
 const TypographyOverline = styled(Typography)`
-  line-height: 1.5;
+  && {
+    line-height: 1.5;
+  }
 `
 
 const CardContentStyled = styled(CardContent)`
-  background: ${({ theme }) => theme.surface.paperLight};
-  position: relative;
+  && {
+    height: 100%;
+    background: ${({ theme }) => theme.surface.paperLight};
+    position: relative;
+    padding: 20px 16px 16px 16px;
+  }
 `
 
 const Chip = styled(BaseChip)`
   position: absolute;
-  top: -13px;
+  top: -20px;
 `
 
 type ExtendedCardMediaProps = CardMediaProps & {
   isAvailable?: boolean
   isExpired?: boolean
   isSoldOut?: boolean
+  isClaimCompleted?: boolean
 }
 
 const StyledCardMedia = styled(CardMedia)<ExtendedCardMediaProps>`
-  filter: ${({ isAvailable, isExpired, isSoldOut }) => {
+  filter: ${({
+    isAvailable, isExpired, isSoldOut, isClaimCompleted,
+  }) => {
+    if (isClaimCompleted) {
+      return 'none'
+    }
+
     if (isAvailable || isSoldOut) {
       return 'grayscale(75%) brightness(70%)'
     }
@@ -56,7 +73,10 @@ const StyledCardMedia = styled(CardMedia)<ExtendedCardMediaProps>`
   height: 140px;
 `
 
-function ConditionalChip({ inProgress, isSoldOut } : { inProgress: boolean, isSoldOut: boolean}) {
+function ConditionalChip({ inProgress, isSoldOut, isClaimCompleted } :
+  { inProgress: boolean, isSoldOut: boolean, isClaimCompleted: boolean }) {
+  if (isClaimCompleted) return null
+
   if (inProgress) return <Chip type={TypeKey.IN_PROGRESS} />
 
   if (isSoldOut) return <Chip type={TypeKey.SOLD_OUT} />
@@ -84,11 +104,7 @@ function ConditionalTitle({ isAvailable, isExpired }
     )
   }
 
-  return (
-    <TypographyOverline variant="overline">
-      &nbsp;
-    </TypographyOverline>
-  )
+  return null
 }
 
 export type Props = {
@@ -102,6 +118,7 @@ function CollectibleCard({
 } : Props) {
   const theme = useTheme()
 
+  const isClaimCompleted = claimStatus === ClaimStatus.COMPLETED
   const inProgress = claimStatus === ClaimStatus.IN_PROGRESS
   const isExpired = collectible.status !== CollectibleStatus.LIVE
   const isSoldOut = isSoldOutUtil(collectible)
@@ -111,10 +128,10 @@ function CollectibleCard({
     <Card
       tabIndex={0}
       onClick={() => onClick(collectible)}
-      key={collectible.id}
       inProgress={inProgress}
     >
       <StyledCardMedia
+        isClaimCompleted={isClaimCompleted}
         isAvailable={isAvailable}
         isExpired={isExpired}
         isSoldOut={isSoldOut}
@@ -122,7 +139,11 @@ function CollectibleCard({
         title={`collectible image for ${collectible.title}`}
       />
       <CardContentStyled>
-        <ConditionalChip isSoldOut={isSoldOut} inProgress={inProgress} />
+        <ConditionalChip
+          isSoldOut={isSoldOut}
+          inProgress={inProgress}
+          isClaimCompleted={isClaimCompleted}
+        />
         <ConditionalTitle isAvailable={isAvailable} isExpired={isExpired} />
         <Typography align="left" sx={{ fontSize: '12px', fontWeight: 700, color: isExpired ? theme.text.disabled : 'inherit' }}>
           {collectible.title}
