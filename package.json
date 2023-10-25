@@ -9,7 +9,7 @@
     "start": "yarn postbuild && tspc --watch",
     "prebuild": "rm -rf dist/*",
     "build": "tspc",
-    "postbuild": "cp package.json dist/",
+    "postbuild": "cp package.json dist/ && touch dist/yarn.lock",
     "test": "echo \"Error: no test specified\" && exit 1",
     "git-hooks": "cp .git-hooks/pre-commit ./.git/hooks/pre-commit",
     "storybook": "storybook dev -p 6006",
