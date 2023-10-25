@@ -4,25 +4,44 @@ import CardMedia, { CardMediaProps } from '@mui/material/CardMedia'
 
 import BaseChip, { TypeKey } from 'atoms/Chip'
 import Typography from '@mui/material/Typography'
-import { useTheme, styled } from 'theme'
+import { styled } from 'theme'
 import { Collectible } from 'types/Collectible'
 import { CollectibleStatus } from 'enums/CollectibleStatus'
 import { ClaimStatus } from 'enums/ClaimStatus'
 import { isSoldOut as isSoldOutUtil } from 'utils/collectible'
 
 type CardProps = {
-  inProgress: boolean
+  inProgress: boolean,
+  isAvailable: boolean
 }
 
 const Card = styled(BaseCard)<CardProps>`
   && {
+    @keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 15px rgba(1, 197, 249, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(1, 197, 249, 1);
+    }
+    100% {
+      box-shadow: 0 0 15px rgba(1, 197, 249, 0.2);
+    }
+}
+
+  animation: ${({
+    isAvailable,
+  }) => (isAvailable ? 'pulseGlow ease-in-out 3s infinite' : 'none')};
+
     box-sizing: border-box;
     width: 200px;
     ${({ inProgress, theme }) => inProgress && `border: 2px solid ${theme.border.warning}`};
 
     &:focus, &:active {
+      animation: none;
       box-shadow: 0 0 0 5px ${({ theme }) => theme.border.primary.active};
       transition: box-shadow 0.3s ease;
+      transform: scale(1.04);
     }
   }
 `
@@ -33,10 +52,14 @@ const TypographyOverline = styled(Typography)`
   }
 `
 
-const CardContentStyled = styled(CardContent)`
+type CardContentStyledProps = {
+  isExpired: boolean,
+}
+
+const CardContentStyled = styled(CardContent)<CardContentStyledProps>`
   && {
     height: 100%;
-    background: ${({ theme }) => theme.surface.paperLight};
+    background: ${({ theme, isExpired }) => (isExpired ? theme.surface.paper : theme.surface.paperLight)};
     position: relative;
     padding: 20px 16px 16px 16px;
   }
@@ -63,10 +86,10 @@ const StyledCardMedia = styled(CardMedia)<ExtendedCardMediaProps>`
     }
 
     if (isAvailable || isSoldOut) {
-      return 'grayscale(75%) brightness(70%)'
+      return 'grayscale(75%)'
     }
     if (isExpired) {
-      return 'grayscale(100%) brightness(20%) contrast(130%)'
+      return 'grayscale(100%) brightness(75%) contrast(130%)'
     }
     return 'none'
   }};
@@ -86,8 +109,6 @@ function ConditionalChip({ inProgress, isSoldOut, isClaimCompleted } :
 
 function ConditionalTitle({ isAvailable, isExpired }
   : { isAvailable: boolean, isExpired: boolean}) {
-  const theme = useTheme()
-
   if (isAvailable) {
     return (
       <TypographyOverline variant="overline">
@@ -98,7 +119,7 @@ function ConditionalTitle({ isAvailable, isExpired }
 
   if (isExpired) {
     return (
-      <TypographyOverline variant="overline" sx={{ color: theme.text.disabled }}>
+      <TypographyOverline variant="overline">
         Expired
       </TypographyOverline>
     )
@@ -116,8 +137,6 @@ export type Props = {
 function CollectibleCard({
   collectible, claimStatus, onClick = () => {},
 } : Props) {
-  const theme = useTheme()
-
   const isClaimCompleted = claimStatus === ClaimStatus.COMPLETED
   const inProgress = claimStatus === ClaimStatus.IN_PROGRESS
   const isExpired = collectible.status !== CollectibleStatus.LIVE
@@ -129,6 +148,7 @@ function CollectibleCard({
       tabIndex={0}
       onClick={() => onClick(collectible)}
       inProgress={inProgress}
+      isAvailable={isAvailable}
     >
       <StyledCardMedia
         isClaimCompleted={isClaimCompleted}
@@ -138,14 +158,14 @@ function CollectibleCard({
         image={collectible.assets.cardMedia.defaultMedia.src1x}
         title={`collectible image for ${collectible.title}`}
       />
-      <CardContentStyled>
+      <CardContentStyled isExpired={isExpired}>
         <ConditionalChip
           isSoldOut={isSoldOut}
           inProgress={inProgress}
           isClaimCompleted={isClaimCompleted}
         />
         <ConditionalTitle isAvailable={isAvailable} isExpired={isExpired} />
-        <Typography align="left" sx={{ fontSize: '12px', fontWeight: 700, color: isExpired ? theme.text.disabled : 'inherit' }}>
+        <Typography align="left" sx={{ fontSize: '12px', fontWeight: 700 }}>
           {collectible.title}
         </Typography>
       </CardContentStyled>

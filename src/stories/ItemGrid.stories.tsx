@@ -90,7 +90,6 @@ export const Default: Story = {
       <CollectibleCard
         collectible={cloakOfTheAges}
         key={cloakOfTheAges.id}
-        claimStatus={ClaimStatus.COMPLETED}
       />,
       <CollectibleCard collectible={shieldOfTheAncients} key={shieldOfTheAncients.id} />,
       <CollectibleCard
