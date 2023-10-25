@@ -2,6 +2,7 @@ import { ReactElement } from 'react'
 import Grid from '@mui/material/Grid'
 import { styled } from '@mui/material/styles'
 import { Typography } from '@mui/material'
+import { mobileSmall } from 'css/media'
 import CollectibleCard from './cards/CollectibleCard'
 import GameCard from './cards/GameCard'
 
@@ -10,7 +11,7 @@ const ItemGridContainer = styled(Grid)`
   flex-wrap: wrap;
   gap: 24px;
   padding: 24px;
-  @media (max-width: 525px) {
+  ${mobileSmall} {
     justify-content: space-around;
   }
 `
@@ -21,7 +22,7 @@ const ItemsContainer = styled(Grid)`
     flex-wrap: wrap;
     gap: 24px;
     padding: 0;
-    @media (max-width: 525px) {
+    ${mobileSmall} {
       justify-content: space-around;
     }
   }
@@ -38,13 +39,12 @@ function ItemGrid({ children, title } : Props) {
   return (
     <ItemGridContainer container spacing={6}>
       {
-            title && (
-            <Typography variant="h5">
-              {title}
-            </Typography>
-            )
-        }
-
+        title && (
+          <Typography variant="h5">
+            {title}
+          </Typography>
+        )
+      }
       <ItemsContainer item xs={12}>
         {children}
       </ItemsContainer>
