@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
 import Grid from '@mui/material/Grid'
 import { styled } from '@mui/material/styles'
+import { Typography } from '@mui/material'
 import CollectibleCard from './cards/CollectibleCard'
 import GameCard from './cards/GameCard'
 
@@ -14,18 +15,39 @@ const ItemGridContainer = styled(Grid)`
   }
 `
 
+const ItemsContainer = styled(Grid)`
+  && {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 0;
+    @media (max-width: 525px) {
+      justify-content: space-around;
+    }
+  }
+`
+
 type AllowedCardElement = ReactElement<typeof CollectibleCard> | ReactElement<typeof GameCard>
 
 type Props = {
-    children: AllowedCardElement[]
+    children: AllowedCardElement[],
+    title?: string
 }
 
-function ItemGrid({ children } : Props) {
+function ItemGrid({ children, title } : Props) {
   return (
     <ItemGridContainer container spacing={6}>
-      <ItemGridContainer item xs={12}>
+      {
+            title && (
+            <Typography variant="h5">
+              {title}
+            </Typography>
+            )
+        }
+
+      <ItemsContainer item xs={12}>
         {children}
-      </ItemGridContainer>
+      </ItemsContainer>
     </ItemGridContainer>
   )
 }

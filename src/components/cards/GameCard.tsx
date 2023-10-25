@@ -58,14 +58,15 @@ const AvailableNowContainer = styled.div`
 `
 
 export type Props = {
-  game: Game
+  game: Game,
+  onClick?: (event: Game) => void,
 }
 
-function GameCard({ game }: Props) {
+function GameCard({ game, onClick = () => {} }: Props) {
   const liveContentClaimedProgress = Math.round((game.claims.liveContent / game.liveContent) * 100)
 
   return (
-    <StyledCard tabIndex={0} key={game.id}>
+    <StyledCard tabIndex={0} key={game.id} onClick={() => onClick(game)}>
       <StyledCardMedia
         image={game.cover_art.defaultMedia.src1x}
         title={`game image for ${game.title}`}

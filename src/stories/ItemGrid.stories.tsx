@@ -17,9 +17,6 @@ import { pineapplePizzaHero, pineapplePizzaTrivia } from 'mock-data/game'
 const meta = {
   title: 'components/ItemGrid',
   component: ItemGrid,
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
 } satisfies Meta<typeof ItemGrid>
 
@@ -27,6 +24,7 @@ export default meta
 type Story = StoryObj<typeof meta>;
 
 const longListArgs = {
+  title: 'A long list of collectibles',
   children: [
     <CollectibleCard
       collectible={pineapplePizzaHeroCard}
@@ -82,6 +80,7 @@ const longListArgs = {
 
 export const Default: Story = {
   args: {
+    title: 'Pineapple Pizza Hero Collectibles',
     children: [
       <CollectibleCard
         collectible={pineapplePizzaHeroCard}
@@ -130,6 +129,7 @@ export const MobileCollectibleCard: Story = {
     },
   },
   args: {
+    title: 'A list of collectibles',
     children: [
       <CollectibleCard
         collectible={pineapplePizzaHeroCard}
