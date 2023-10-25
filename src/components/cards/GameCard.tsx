@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import BasePaper from '@mui/material/Paper'
 import { styled } from 'theme'
 import { Game } from 'types/Game'
-import { CollectibleTotal as CollectibleTotalIcon } from 'svg/CollectibleTotal'
+import { StarCoin } from 'icons/StarCoin'
 import { IconSize } from 'enums/IconSize'
 
 const StyledCard = styled(BaseCard)`
@@ -76,7 +76,7 @@ function GameCard({ game, onClick = () => {} }: Props) {
           {game.title}
         </Typography>
         <TotalContentContainer elevation={3}>
-          <CollectibleTotalIcon size={IconSize.M} />
+          <StarCoin size={IconSize.M} />
           <Typography variant="body1">
             { `Total Content Claimed: ${game.claims.totalContent}`}
           </Typography>
