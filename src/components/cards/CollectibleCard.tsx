@@ -4,34 +4,33 @@ import CardMedia, { CardMediaProps } from '@mui/material/CardMedia'
 
 import BaseChip, { TypeKey } from 'atoms/Chip'
 import Typography from '@mui/material/Typography'
-import { styled } from 'theme'
+import { styled, Theme } from 'theme'
 import { Collectible } from 'types/Collectible'
 import { CollectibleStatus } from 'enums/CollectibleStatus'
 import { ClaimStatus } from 'enums/ClaimStatus'
 import { isSoldOut as isSoldOutUtil } from 'utils/collectible'
+import { keyframes, css } from 'styled-components'
 
 type CardProps = {
   inProgress: boolean,
   isAvailable: boolean
 }
 
+const pulseGlow = ({ theme } : { theme: Theme }) => keyframes`
+  0% {
+    box-shadow: 0 0 15px ${theme.surface.paper};
+  }
+  50% {
+    box-shadow: 0 0 25px ${theme.action.selected};
+  }
+  100% {
+    box-shadow: 0 0 15px ${theme.surface.paper};
+  }
+`
+
 const Card = styled(BaseCard)<CardProps>`
   && {
-    @keyframes pulseGlow {
-    0% {
-        box-shadow: 0 0 15px rgba(1, 197, 249, 0.2);
-    }
-    50% {
-        box-shadow: 0 0 25px rgba(1, 197, 249, 1);
-    }
-    100% {
-      box-shadow: 0 0 15px rgba(1, 197, 249, 0.2);
-    }
-}
-
-  animation: ${({
-    isAvailable,
-  }) => (isAvailable ? 'pulseGlow ease-in-out 3s infinite' : 'none')};
+    animation: ${({ isAvailable }) => (isAvailable ? css`${pulseGlow} ease-in-out 5s infinite` : 'none')};
 
     box-sizing: border-box;
     width: 200px;
@@ -39,7 +38,7 @@ const Card = styled(BaseCard)<CardProps>`
 
     &:focus, &:active {
       animation: none;
-      box-shadow: 0 0 0 5px ${({ theme }) => theme.border.primary.active};
+      box-shadow: 0 0 0 5px ${({ theme }) => theme.action.selected};
       transition: box-shadow 0.3s ease;
       transform: scale(1.04);
     }
