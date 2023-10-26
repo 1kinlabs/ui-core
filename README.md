@@ -53,27 +53,20 @@ These issues typically manifest by saying something along the lines of
 
 If this happens to you, try the manual method instead.
 
-* From `ui-core`'s directory, run
-    ```
-    cd dist/
-    yarn link
-    ```
 * From the directory you'd like to test your changes in, run
     ```
-    yarn link @1kinlabs/ui-core
+    yarn link ../ui-core/dist
     ```
 * Now, any changes made in your local `ui-core` will appear in the linked project.
 * To unlink run this in the linked project
     ```
-    yarn unlink @1kinlabs/ui-core
+    yarn unlink ../ui-core/dist
+    ```
+    or
+    ```
+    yarn unlink --all
     ```
     - Note: you'll want to run this after you're done testing changes, otherwise your directories will stay linked
-* If you'd like to remove the ui-core link for whatever reason, run this in `ui-core`
-    ```
-    yarn unlink
-    ```
-    - Note: you shouldn't need to do this unless you mess something up
-        (like, if you forget to `cd dist`)
 
 #### b. Manual Method
 * From `ui-core`, run
