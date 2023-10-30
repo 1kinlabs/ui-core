@@ -1,3 +1,4 @@
+import { ClaimStatus } from 'enums/ClaimStatus'
 import { Nullable } from './Nullable'
 import { DefaultMedia } from './Media'
 import { FaqList } from './Faq'
@@ -14,6 +15,7 @@ type Assets = {
 export type Collectible = {
     id: number;
     assets: Assets;
+    claimStatus: ClaimStatus
 } & Partial<Nullable<{
     title: string;
     description: string;

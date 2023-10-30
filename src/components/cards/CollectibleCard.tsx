@@ -6,14 +6,11 @@ import BaseChip, { TypeKey } from 'atoms/Chip'
 import Typography from '@mui/material/Typography'
 import { styled, Theme } from 'theme'
 import { Collectible } from 'types/Collectible'
-import { CollectibleStatus } from 'enums/CollectibleStatus'
 import { ClaimStatus } from 'enums/ClaimStatus'
-import { isSoldOut as isSoldOutUtil } from 'utils/collectible'
 import { keyframes, css } from 'styled-components'
 
 type CardProps = {
-  inProgress: boolean,
-  isAvailable: boolean
+  claimStatus: ClaimStatus
 }
 
 const pulseGlow = ({ theme } : { theme: Theme }) => keyframes`
@@ -30,11 +27,11 @@ const pulseGlow = ({ theme } : { theme: Theme }) => keyframes`
 
 const Card = styled(BaseCard)<CardProps>`
   && {
-    animation: ${({ isAvailable }) => (isAvailable ? css`${pulseGlow} ease-in-out 5s infinite` : 'none')};
+    animation: ${({ claimStatus }) => (claimStatus === ClaimStatus.AVAILABLE ? css`${pulseGlow} ease-in-out 5s infinite` : 'none')};
 
     box-sizing: border-box;
     width: 200px;
-    ${({ inProgress, theme }) => inProgress && `border: 2px solid ${theme.border.warning}`};
+    ${({ claimStatus, theme }) => claimStatus === ClaimStatus.IN_PROGRESS && `border: 2px solid ${theme.border.warning}`};
 
     &:focus, &:active {
       animation: none;
@@ -52,13 +49,13 @@ const TypographyOverline = styled(Typography)`
 `
 
 type CardContentStyledProps = {
-  isExpired: boolean,
+  claimStatus: ClaimStatus,
 }
 
 const CardContentStyled = styled(CardContent)<CardContentStyledProps>`
   && {
     height: 100%;
-    background: ${({ theme, isExpired }) => (isExpired ? theme.surface.paper : theme.surface.paperLight)};
+    background: ${({ theme, claimStatus }) => (claimStatus === ClaimStatus.EXPIRED ? theme.surface.paper : theme.surface.paperLight)};
     position: relative;
     padding: 20px 16px 16px 16px;
   }
@@ -70,24 +67,21 @@ const Chip = styled(BaseChip)`
 `
 
 type ExtendedCardMediaProps = CardMediaProps & {
-  isAvailable?: boolean
-  isExpired?: boolean
-  isSoldOut?: boolean
-  isClaimCompleted?: boolean
+  claimStatus: ClaimStatus
 }
 
 const StyledCardMedia = styled(CardMedia)<ExtendedCardMediaProps>`
   filter: ${({
-    isAvailable, isExpired, isSoldOut, isClaimCompleted,
+    claimStatus,
   }) => {
-    if (isClaimCompleted) {
+    if (claimStatus === ClaimStatus.COMPLETED) {
       return 'none'
     }
 
-    if (isAvailable || isSoldOut) {
+    if (claimStatus === ClaimStatus.AVAILABLE || claimStatus === ClaimStatus.SOLD_OUT) {
       return 'grayscale(75%)'
     }
-    if (isExpired) {
+    if (claimStatus === ClaimStatus.EXPIRED) {
       return 'grayscale(100%) brightness(75%) contrast(130%)'
     }
     return 'none'
@@ -95,20 +89,20 @@ const StyledCardMedia = styled(CardMedia)<ExtendedCardMediaProps>`
   height: 140px;
 `
 
-function ConditionalChip({ inProgress, isSoldOut, isClaimCompleted } :
-  { inProgress: boolean, isSoldOut: boolean, isClaimCompleted: boolean }) {
-  if (isClaimCompleted) return null
+function ConditionalChip({ claimStatus } :
+  { claimStatus : ClaimStatus }) {
+  if (claimStatus === ClaimStatus.COMPLETED) return null
 
-  if (inProgress) return <Chip type={TypeKey.IN_PROGRESS} />
+  if (claimStatus === ClaimStatus.IN_PROGRESS) return <Chip type={TypeKey.IN_PROGRESS} />
 
-  if (isSoldOut) return <Chip type={TypeKey.SOLD_OUT} />
+  if (claimStatus === ClaimStatus.SOLD_OUT) return <Chip type={TypeKey.SOLD_OUT} />
 
   return null
 }
 
-function ConditionalTitle({ isAvailable, isExpired }
-  : { isAvailable: boolean, isExpired: boolean}) {
-  if (isAvailable) {
+function ConditionalTitle({ claimStatus }
+  : { claimStatus: ClaimStatus }) {
+  if (claimStatus === ClaimStatus.AVAILABLE) {
     return (
       <TypographyOverline variant="overline">
         Available
@@ -116,7 +110,7 @@ function ConditionalTitle({ isAvailable, isExpired }
     )
   }
 
-  if (isExpired) {
+  if (claimStatus === ClaimStatus.EXPIRED) {
     return (
       <TypographyOverline variant="overline">
         Expired
@@ -129,41 +123,28 @@ function ConditionalTitle({ isAvailable, isExpired }
 
 export type Props = {
   collectible: Collectible,
-  claimStatus?: ClaimStatus
   onClick?: (event: Collectible) => void,
 }
 
 function CollectibleCard({
-  collectible, claimStatus, onClick = () => {},
+  collectible, onClick = () => {},
 } : Props) {
-  const isClaimCompleted = claimStatus === ClaimStatus.COMPLETED
-  const inProgress = claimStatus === ClaimStatus.IN_PROGRESS
-  const isExpired = collectible.status !== CollectibleStatus.LIVE
-  const isSoldOut = isSoldOutUtil(collectible)
-  const isAvailable = !claimStatus && !isExpired && !isSoldOut
-
   return (
     <Card
       tabIndex={0}
       onClick={() => onClick(collectible)}
-      inProgress={inProgress}
-      isAvailable={isAvailable}
+      claimStatus={collectible.claimStatus}
     >
       <StyledCardMedia
-        isClaimCompleted={isClaimCompleted}
-        isAvailable={isAvailable}
-        isExpired={isExpired}
-        isSoldOut={isSoldOut}
+        claimStatus={collectible.claimStatus}
         image={collectible.assets.cardMedia.defaultMedia.src1x}
         title={`collectible image for ${collectible.title}`}
       />
-      <CardContentStyled isExpired={isExpired}>
+      <CardContentStyled claimStatus={collectible.claimStatus}>
         <ConditionalChip
-          isSoldOut={isSoldOut}
-          inProgress={inProgress}
-          isClaimCompleted={isClaimCompleted}
+          claimStatus={collectible.claimStatus}
         />
-        <ConditionalTitle isAvailable={isAvailable} isExpired={isExpired} />
+        <ConditionalTitle claimStatus={collectible.claimStatus} />
         <Typography align="left" sx={{ fontSize: '12px', fontWeight: 700 }}>
           {collectible.title}
         </Typography>
