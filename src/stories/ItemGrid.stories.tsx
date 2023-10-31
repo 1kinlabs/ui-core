@@ -29,30 +29,26 @@ const longListArgs = {
     <CollectibleCard
       collectible={pineapplePizzaHeroCard}
       key={pineapplePizzaHeroCard.id}
-      claimStatus={ClaimStatus.COMPLETED}
     />,
     <CollectibleCard collectible={shieldOfTheAncients} key={shieldOfTheAncients.id} />,
     <CollectibleCard
-      collectible={{ ...sidekickHopple, available_codes: 0, auto_generate_claim_code: false }}
+      collectible={{ ...sidekickHopple, claimStatus: ClaimStatus.SOLD_OUT }}
       key={sidekickHopple.id}
-      claimStatus={ClaimStatus.COMPLETED}
     />,
     <CollectibleCard
-      collectible={{ ...pineapplePizzaHeroCard, title: 'Pineapple Pizza Hero' }}
+      collectible={{ ...pineapplePizzaHeroCard, title: 'Pineapple Pizza Hero', claimStatus: ClaimStatus.IN_PROGRESS }}
       key={pineapplePizzaHeroCard.id}
-      claimStatus={ClaimStatus.IN_PROGRESS}
     />,
 
     <CollectibleCard
       collectible={{
-        ...shiningSword, title: 'Sword of Living', status: 'Live', available_codes: 0, auto_generate_claim_code: false,
+        ...shiningSword, title: 'Sword of Living', status: 'Live', claimStatus: ClaimStatus.SOLD_OUT,
       }}
       key={shiningSword.id}
     />,
     <CollectibleCard
       collectible={pipTheEnchantress}
       key={pipTheEnchantress.id}
-      claimStatus={ClaimStatus.IN_PROGRESS}
     />,
     <CollectibleCard
       collectible={cloakOfTheAges}
@@ -62,18 +58,16 @@ const longListArgs = {
     <CollectibleCard
       collectible={pipTheEnchantress}
       key={pipTheEnchantress.id}
-      claimStatus={ClaimStatus.IN_PROGRESS}
     />,
     <CollectibleCard
       collectible={sidekickHopple}
       key={sidekickHopple.id}
-      claimStatus={ClaimStatus.COMPLETED}
     />,
     <CollectibleCard
-      collectible={{ ...pipTheEnchantress, title: 'Esmerelda the Wizard', status: 'Archived' }}
+      collectible={{ ...pipTheEnchantress, title: 'Esmerelda the Wizard', claimStatus: ClaimStatus.EXPIRED }}
       key={pipTheEnchantress.id}
     />,
-    <CollectibleCard collectible={{ ...shieldOfTheAncients, title: 'Shield of the Ancients - Legacy', status: 'Archived' }} key={shieldOfTheAncients.id} />,
+    <CollectibleCard collectible={{ ...shieldOfTheAncients, title: 'Shield of the Ancients - Legacy', claimStatus: ClaimStatus.EXPIRED }} key={shieldOfTheAncients.id} />,
     <CollectibleCard collectible={shiningSword} key={shiningSword.id} />,
   ],
 }
@@ -85,7 +79,6 @@ export const Default: Story = {
       <CollectibleCard
         collectible={pineapplePizzaHeroCard}
         key={pineapplePizzaHeroCard.id}
-        claimStatus={ClaimStatus.COMPLETED}
       />,
       <CollectibleCard
         collectible={cloakOfTheAges}
@@ -95,12 +88,10 @@ export const Default: Story = {
       <CollectibleCard
         collectible={pipTheEnchantress}
         key={pipTheEnchantress.id}
-        claimStatus={ClaimStatus.IN_PROGRESS}
       />,
       <CollectibleCard
         collectible={{ ...sidekickHopple, available_codes: 0, auto_generate_claim_code: false }}
         key={sidekickHopple.id}
-        claimStatus={ClaimStatus.COMPLETED}
       />,
       <CollectibleCard collectible={shiningSword} key={shiningSword.id} />,
 
@@ -133,23 +124,19 @@ export const MobileCollectibleCard: Story = {
       <CollectibleCard
         collectible={pineapplePizzaHeroCard}
         key={pineapplePizzaHeroCard.id}
-        claimStatus={ClaimStatus.COMPLETED}
       />,
       <CollectibleCard
         collectible={cloakOfTheAges}
         key={cloakOfTheAges.id}
-        claimStatus={ClaimStatus.COMPLETED}
       />,
       <CollectibleCard collectible={shieldOfTheAncients} key={shieldOfTheAncients.id} />,
       <CollectibleCard
         collectible={pipTheEnchantress}
         key={pipTheEnchantress.id}
-        claimStatus={ClaimStatus.IN_PROGRESS}
       />,
       <CollectibleCard
         collectible={{ ...sidekickHopple, available_codes: 0, auto_generate_claim_code: false }}
         key={sidekickHopple.id}
-        claimStatus={ClaimStatus.COMPLETED}
       />,
       <CollectibleCard collectible={shiningSword} key={shiningSword.id} />,
     ],

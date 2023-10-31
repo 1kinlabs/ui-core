@@ -11,11 +11,13 @@ import { IconSize } from 'enums/IconSize'
 
 const StyledCard = styled(BaseCard)`
   box-sizing: border-box;
-  width: 300px;
+  width: 310px;
 
   &:focus, &:active {
-    box-shadow: 0 0 0 5px ${({ theme }) => theme.border.primary.active};
-    transition: box-shadow 0.3s ease;
+    animation: none;
+      box-shadow: 0 0 0 5px ${({ theme }) => theme.action.selected};
+      transition: box-shadow 0.3s ease;
+      transform: scale(1.04);
   }
 `
 
@@ -68,7 +70,7 @@ function GameCard({ game, onClick = () => {} }: Props) {
   return (
     <StyledCard tabIndex={0} key={game.id} onClick={() => onClick(game)}>
       <StyledCardMedia
-        image={game.cover_art.defaultMedia.src1x}
+        image={game.cover_art?.defaultMedia?.src1x}
         title={`game image for ${game.title}`}
       />
       <CardContentStyled>

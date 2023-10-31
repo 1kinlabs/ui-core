@@ -1,3 +1,4 @@
+import { ClaimStatus } from 'enums/ClaimStatus'
 import { Collectible } from 'types/Collectible'
 
 export const pineapplePizzaHeroCard : Collectible = {
@@ -75,6 +76,7 @@ export const pineapplePizzaHeroCard : Collectible = {
   asset_type: null,
   game_engine_support: null,
   available_codes: 10,
+  claimStatus: ClaimStatus.COMPLETED,
 }
 
 export const shieldOfTheAncients : Collectible = {
@@ -140,6 +142,7 @@ export const shieldOfTheAncients : Collectible = {
   asset_type: null,
   game_engine_support: [],
   available_codes: 0,
+  claimStatus: ClaimStatus.AVAILABLE,
 }
 
 export const cloakOfTheAges : Collectible = {
@@ -205,6 +208,7 @@ export const cloakOfTheAges : Collectible = {
   asset_type: null,
   game_engine_support: [],
   available_codes: 0,
+  claimStatus: ClaimStatus.SOLD_OUT,
 }
 
 export const pipTheEnchantress : Collectible = {
@@ -270,6 +274,7 @@ export const pipTheEnchantress : Collectible = {
   asset_type: null,
   game_engine_support: [],
   available_codes: 20,
+  claimStatus: ClaimStatus.IN_PROGRESS,
 }
 
 export const sidekickHopple : Collectible = {
@@ -339,6 +344,7 @@ export const sidekickHopple : Collectible = {
   asset_type: null,
   game_engine_support: [],
   available_codes: 0,
+  claimStatus: ClaimStatus.COMPLETED,
 }
 
 export const shiningSword : Collectible = {
@@ -399,4 +405,5 @@ export const shiningSword : Collectible = {
   asset_type: null,
   game_engine_support: [],
   available_codes: 0,
+  claimStatus: ClaimStatus.EXPIRED,
 }
