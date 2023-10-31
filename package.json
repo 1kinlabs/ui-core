@@ -6,10 +6,8 @@
   "module": "index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "start": "yarn postbuild && tspc --watch",
-    "prebuild": "rm -rf dist/*",
-    "build": "tspc",
-    "postbuild": "cp package.json dist/ && touch dist/yarn.lock",
+    "start": "bin/prebuild && bin/postbuild && tspc --watch",
+    "build": "bin/prebuild && tspc && bin/postbuild",
     "test": "echo \"Error: no test specified\" && exit 1",
     "git-hooks": "cp .git-hooks/pre-commit ./.git/hooks/pre-commit",
     "storybook": "storybook dev -p 6006",
@@ -41,7 +39,6 @@
     "react-popper": "2.3.0",
     "react-rangeslider": "2.2.0",
     "react-webcam": "7.1.1",
-    "styled-components": "6.0.7",
     "stylis-plugin-rtl": "2.1.1"
   },
   "devDependencies": {
@@ -75,6 +72,7 @@
     "react-dom": "18.2.0",
     "storybook": "^7.4.6",
     "storybook-addon-pseudo-states": "^2.1.2",
+    "styled-components": "6.0.7",
     "ts-patch": "^3.0.2",
     "typescript": "^5.2.2",
     "typescript-transform-paths": "^3.4.6"
