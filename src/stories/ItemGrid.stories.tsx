@@ -23,14 +23,17 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>;
 
-const longListArgs = {
+const longListOfCollectibles = {
   title: 'A long list of collectibles',
   children: [
     <CollectibleCard
       collectible={pineapplePizzaHeroCard}
       key={pineapplePizzaHeroCard.id}
     />,
-    <CollectibleCard collectible={shieldOfTheAncients} key={shieldOfTheAncients.id} />,
+    <CollectibleCard
+      collectible={{ ...shieldOfTheAncients, claimStatus: ClaimStatus.IN_PROGRESS }}
+      key={shieldOfTheAncients.id}
+    />,
     <CollectibleCard
       collectible={{ ...sidekickHopple, claimStatus: ClaimStatus.SOLD_OUT }}
       key={sidekickHopple.id}
@@ -100,11 +103,11 @@ export const Default: Story = {
 }
 
 export const LongList: Story = {
-  args: longListArgs,
+  args: longListOfCollectibles,
 }
 
 export const LongListTablet: Story = {
-  args: longListArgs,
+  args: longListOfCollectibles,
   parameters: {
     viewport: {
       defaultViewport: 'tablet',
