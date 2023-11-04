@@ -10,15 +10,15 @@ import IconButton from '@mui/material/IconButton'
 import { useKeenSlider } from 'keen-slider/react'
 import KeenSliderWrapper from 'materialize/styles/libs/keen-slider'
 
-const GameBox = styled(Box)(() => ({
-  position: 'relative',
-  borderRadius: 18,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}))
+const GameBox = styled(Box)`
+  position: relative;
+  borderRadius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
-const ModalContent = styled(Box)(() => css`
+const ModalContent = styled(Box)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -29,13 +29,13 @@ const ModalContent = styled(Box)(() => css`
   padding: 36px;
   width: 100%;
   height: 100%;
-`)
+`
 
-const Image = styled('img')(() => css`
+const Image = styled('img')`
   width: 80%;
   height: 70%;
   object-fit: contain;
-`)
+`
 
 const sharedIconStyles = css`
   cursor: pointer;
@@ -60,22 +60,22 @@ type CloseButtonProps = {
   onClose?: () => void
 }
 
-const CloseButtonContainer = styled.div`
-  position: absolute;
-  top: 30px;
-  right: 50px;
-  z-index: 10;
+const IconButtonStyled = styled(IconButton)`
+  && {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    z-index: 10;
+  }
 `
 
 function CloseButton({ onClose } : CloseButtonProps) {
   return (
-    <CloseButtonContainer>
-      <IconButton
-        onClick={onClose}
-      >
-        <CloseIconStyled />
-      </IconButton>
-    </CloseButtonContainer>
+    <IconButtonStyled
+      onClick={onClose}
+    >
+      <CloseIconStyled />
+    </IconButtonStyled>
   )
 }
 
@@ -87,15 +87,13 @@ export type Props = {
 }
 
 function MediaSlider({
-  open, onClose, images, startIndex = 1,
+  open, onClose, images, startIndex,
 }: Props) {
-  const initialIndex = startIndex || 1
-
   const { settings: { direction } } = useSettings()
 
   const [sliderRef, instanceRef] = useKeenSlider(
     {
-      initial: initialIndex,
+      initial: startIndex ?? 0,
       loop: true,
       rtl: direction === 'rtl',
       slides: {

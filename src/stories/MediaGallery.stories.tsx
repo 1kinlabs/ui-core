@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import MediaGrid from 'components/media/MediaGallery'
+import MediaGallery from 'components/media/MediaGallery'
 
 const meta = {
   title: 'components/MediaGallery',
-  component: MediaGrid,
+  component: MediaGallery,
   tags: ['autodocs'],
-} satisfies Meta<typeof MediaGrid>
+} satisfies Meta<typeof MediaGallery>
 
 export default meta
   type Story = StoryObj<typeof meta>;

@@ -31,12 +31,17 @@ function MediaGallery({ images } : Props) {
           )
         }
       </ItemGrid>
-      <MediaSlider
-        open={!!selectedIndex}
-        startIndex={selectedIndex}
-        images={images}
-        onClose={() => setSelectedIndex(null)}
-      />
+      {
+        selectedIndex !== null && (
+          <MediaSlider
+            open={selectedIndex !== null}
+            startIndex={selectedIndex}
+            images={images}
+            onClose={() => setSelectedIndex(null)}
+          />
+        )
+      }
+
     </>
   )
 }

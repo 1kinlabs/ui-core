@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import type { Meta, StoryObj } from '@storybook/react'
 import MediaSlider from 'components/media/MediaSlider'
 
