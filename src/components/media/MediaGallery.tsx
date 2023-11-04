@@ -1,11 +1,15 @@
 import ItemGrid from 'components/ItemGrid'
-import Image from 'next/image'
 import { useState } from 'react'
 import { styled } from 'theme'
 import MediaSlider from './MediaSlider'
 
-const ImageStyled = styled(Image)`
+const ImageStyled = styled.img`
   cursor: pointer;
+  min-width: 220px;
+  max-width: 22%;
+  max-height: 280px;
+  border-radius: 8px;
+  object-fit: cover;
 
   &:focus, &:active {
     animation: none;
@@ -27,7 +31,7 @@ function MediaGallery({ images } : Props) {
       <ItemGrid title="Media Gallery">
         {
           images.map(
-            (image, index) => <ImageStyled tabIndex={0} width={200} height={200} src={image} key={image} alt={`Media number ${index}`} onClick={() => setSelectedIndex(index)} />,
+            (image, index) => <ImageStyled tabIndex={0} src={image} key={image} alt={`Media number ${index}`} onClick={() => setSelectedIndex(index)} />,
           )
         }
       </ItemGrid>
