@@ -1,0 +1,22 @@
+#!/bin/bash
+
+SCRIPT_DIR=$(dirname "$0")
+
+"$SCRIPT_DIR/prebuild"
+
+"$SCRIPT_DIR/postbuild"
+
+# Start tspc in the background
+tspc --watch &
+TSPC_PID=$!
+
+# Define a cleanup function
+cleanup() {
+  echo "Killing tspc with PID $TSPC_PID"
+  kill $TSPC_PID
+}
+
+# Trap EXIT signal to gracefully handle script termination
+trap cleanup EXIT
+
+storybook dev -p 6006
