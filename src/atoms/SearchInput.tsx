@@ -1,7 +1,6 @@
 import TextField from '@mui/material/TextField'
 import { styled } from 'theme'
 import { Search } from 'icons/Search'
-import { spacing } from 'css/spacing'
 
 type Props = {
   className?: string
