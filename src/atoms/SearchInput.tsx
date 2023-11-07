@@ -17,6 +17,6 @@ export const SearchInput = styled(({ className }: Props) => (
   />
 ))`
   input {
-    padding-left: ${spacing[2]};
+    padding-left: 8px;
   }
 `
