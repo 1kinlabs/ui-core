@@ -106,6 +106,10 @@ export const LongList: Story = {
   args: longListOfCollectibles,
 }
 
+export const LongListCompact: Story = {
+  args: { ...longListOfCollectibles, compact: true },
+}
+
 export const LongListTablet: Story = {
   args: longListOfCollectibles,
   parameters: {

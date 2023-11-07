@@ -32,6 +32,6 @@
     "sourceMap": false,
     "declaration": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx", "src/**/*.svg"],
   "exclude": ["node_modules"]
 }
