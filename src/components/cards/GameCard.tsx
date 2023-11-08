@@ -8,6 +8,7 @@ import { styled } from 'theme'
 import { Game } from 'types/Game'
 import { StarCoin } from 'icons/StarCoin'
 import { IconSize } from 'enums/IconSize'
+import { calculateProgressPercentage } from 'utils/calculate-progress-percentage'
 
 const StyledCard = styled(BaseCard)`
   box-sizing: border-box;
@@ -56,7 +57,7 @@ const AvailableContentContainer = styled(BasePaper)`
 
 const AvailableNowContainer = styled.div`
   display: flex;
-  gap: 8px;  
+  gap: 8px;
 `
 
 export type Props = {
@@ -65,8 +66,6 @@ export type Props = {
 }
 
 function GameCard({ game, onClick = () => {} }: Props) {
-  const liveContentClaimedProgress = Math.round((game.claims.liveContent / game.liveContent) * 100)
-
   return (
     <StyledCard tabIndex={0} key={game.id} onClick={() => onClick(game)}>
       <StyledCardMedia
@@ -92,8 +91,7 @@ function GameCard({ game, onClick = () => {} }: Props) {
               {game.liveContent - game.claims.liveContent}
             </Typography>
           </AvailableNowContainer>
-
-          <LinearProgress variant="determinate" value={liveContentClaimedProgress} />
+          <LinearProgress variant="determinate" value={calculateProgressPercentage(game.claims.liveContent, game.liveContent)} />
         </AvailableContentContainer>
       </CardContentStyled>
     </StyledCard>
