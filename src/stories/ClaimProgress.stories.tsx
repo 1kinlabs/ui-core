@@ -6,7 +6,7 @@ const meta = {
   title: 'components/collectible/ClaimProgress',
   component: ClaimProgress,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
   },
   tags: ['autodocs'],
 } satisfies Meta<typeof ClaimProgress>

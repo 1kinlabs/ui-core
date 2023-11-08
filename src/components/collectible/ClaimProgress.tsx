@@ -21,6 +21,7 @@ const ClaimProgress = styled(({ className, claimed, totalAvailable } : Props) =>
     display: flex;
     flex-direction: column;
     gap: 8px;
+    max-width: 400px;
 `
 
 export default ClaimProgress
