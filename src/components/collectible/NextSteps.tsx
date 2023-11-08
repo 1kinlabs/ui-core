@@ -2,6 +2,7 @@ import { styled } from 'theme'
 import Section from 'atoms/Section'
 import { Typography } from '@mui/material'
 import { replaceLinkWithHyperlink } from 'utils/replace-link-with-hyperlink'
+import sanitizeHTML from 'sanitize-html'
 import ClaimCode from './ClaimCode'
 
 export type Props = {
@@ -14,13 +15,17 @@ const ClaimInstructions = styled.div`
   white-space: pre-line;
 `
 
+const sanitizeHTMLWithOptions = (dirtyText: string) => sanitizeHTML(dirtyText, {
+  allowedTags: sanitizeHTML.defaults.allowedTags.concat(['img']),
+})
+
 const NextSteps = styled(({ className, claimCode, claimInstructions } : Props) => (
   <Section className={className} title="Next Steps">
     <Typography variant="body2" fontWeight={600}>
       {"You've claimed your content, but you're not finished yet! Follow the instructions below in order to complete the process."}
     </Typography>
     <ClaimCode code={claimCode} />
-    <ClaimInstructions dangerouslySetInnerHTML={{ __html: replaceLinkWithHyperlink(claimInstructions) }} />
+    <ClaimInstructions dangerouslySetInnerHTML={{ __html: replaceLinkWithHyperlink(sanitizeHTMLWithOptions(claimInstructions)) }} />
   </Section>
 ))`
   display: flex;
