@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import GridCell from './GridCell'
 
 type Props = {
-    publisher: string,
-    className?: string
+  publisher: string,
+  className?: string
 }
 
 const Publisher = styled(({ publisher, className } : Props) => (

@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import GridCell from './GridCell'
 
 type Props = {
-    genres: Genre[],
-    className?: string
+  genres: Genre[],
+  className?: string
 }
 
 const GameGenres = styled(({ genres, className } : Props) => (

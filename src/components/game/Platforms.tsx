@@ -25,9 +25,9 @@ const platformIconMap : Record<Platform, string> = {
 }
 
 type Props = {
-    platforms: Platform[],
-    compact?: boolean
-    small?: boolean
+  platforms: Platform[],
+  compact?: boolean
+  small?: boolean
 }
 
 function Platforms({ platforms, compact, small }: Props) {

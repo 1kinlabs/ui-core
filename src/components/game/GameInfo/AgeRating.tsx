@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import GridCell from './GridCell'
 
 type Props = {
-    age: number,
-    className?: string
+  age: number,
+  className?: string
 }
 
 const AgeRating = styled(({ age, className } : Props) => (

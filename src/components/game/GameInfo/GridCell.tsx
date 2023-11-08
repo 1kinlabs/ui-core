@@ -3,9 +3,9 @@ import { Typography } from '@mui/material'
 import styled from 'styled-components'
 
 type Props = {
-    title: string,
-    children: string | ReactElement | ReactElement[]
-    className?: string
+  title: string,
+  children: string | ReactElement | ReactElement[]
+  className?: string
 }
 
 const GridCell = styled(({

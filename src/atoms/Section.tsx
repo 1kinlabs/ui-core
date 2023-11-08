@@ -3,8 +3,8 @@ import { ReactElement } from 'react'
 import { styled } from 'styled-components'
 
 type Props = {
-    children: string | ReactElement | ReactElement[],
-    className?: string
+  children: string | ReactElement | ReactElement[],
+  className?: string
 }
 
 const Section = styled(({ children, className } : Props) => (

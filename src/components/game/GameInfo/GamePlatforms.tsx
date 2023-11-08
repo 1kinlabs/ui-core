@@ -4,8 +4,8 @@ import GridCell from './GridCell'
 import Platforms from '../Platforms'
 
 type Props = {
-    platforms: Platform[],
-    className?: string
+  platforms: Platform[],
+  className?: string
 }
 
 const GamePlatforms = styled(({ platforms, className } : Props) => (

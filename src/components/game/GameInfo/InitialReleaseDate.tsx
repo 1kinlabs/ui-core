@@ -3,8 +3,8 @@ import { format } from 'formatters/date'
 import GridCell from './GridCell'
 
 type Props = {
-    date: string,
-    className?: string
+  date: string,
+  className?: string
 }
 
 const InitialReleaseDate = styled(({ date, className } : Props) => (
