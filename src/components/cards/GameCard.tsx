@@ -85,7 +85,7 @@ function GameCard({ game, onClick = () => {} }: Props) {
         <AvailableContentContainer elevation={3}>
           <AvailableNowContainer>
             <Typography variant="body1">
-              Available Now:
+              {'Available Now:'}
             </Typography>
             <Typography variant="body1" sx={{ fontWeight: 700 }}>
               {game.liveContent - game.claims.liveContent}
