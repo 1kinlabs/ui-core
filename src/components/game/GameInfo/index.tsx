@@ -38,7 +38,7 @@ const GameInfo = styled(({ game, className } : Props) => (
       "genres modes platforms"
       "release-date age developer"
       "publisher official-website .";
-    
+
     ${mobileSmall} {
       grid-template-columns: 1fr;
       grid-template-areas:
