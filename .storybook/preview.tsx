@@ -3,6 +3,7 @@ import React from 'react';
 import { map as theme } from '../src/theme/default';
 
 import type { Preview } from "@storybook/react";
+import { themes } from '@storybook/theming'
 
 import { ThemeProvider } from '../src/theme'
 
@@ -15,6 +16,9 @@ const preview: Preview = {
     )
   ],
   parameters: {
+    docs: {
+      theme: themes.dark
+    },
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
