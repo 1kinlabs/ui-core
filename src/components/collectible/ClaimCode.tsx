@@ -6,9 +6,9 @@ import {
 import styled from 'styled-components'
 import { useState } from 'react'
 
-type Props = {
-    className?: string,
-    code?: string,
+export type Props = {
+  className?: string,
+  code?: string,
 }
 
 const ClaimCode = styled(({ className, code = '' } : Props) => {
