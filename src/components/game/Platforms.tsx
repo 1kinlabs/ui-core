@@ -25,11 +25,12 @@ const platformIconMap : Record<Platform, string> = {
 }
 
 type Props = {
-    platforms: Platform[],
-    compact?: boolean
+  platforms: Platform[],
+  compact?: boolean
+  small?: boolean
 }
 
-function Platforms({ platforms, compact }: Props) {
+function Platforms({ platforms, compact, small }: Props) {
   return (
     <ItemGrid compact={compact}>
       {
@@ -38,8 +39,8 @@ function Platforms({ platforms, compact }: Props) {
             <NextImage
               alt={platform}
               src={platformIconMap[platform]}
-              width={compact ? 16 : 24}
-              height={compact ? 16 : 24}
+              width={small ? 16 : 24}
+              height={small ? 16 : 24}
             />
           </Tooltip>
         ))

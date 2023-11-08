@@ -16,15 +16,14 @@ export default meta
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+
   args: {
-    children: (
-      <>
-        <Typography variant="h6">About the Game</Typography>
-        <Typography variant="body2">
-          {pineapplePizzaHero.description}
-        </Typography>
-      </>
-    ),
+    children: [
+      <Typography variant="h6" key="About the game">About the Game</Typography>,
+      <Typography variant="body2" key="Game Description">
+        {pineapplePizzaHero.description}
+      </Typography>,
+    ],
   },
 }
 
