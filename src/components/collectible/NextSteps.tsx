@@ -1,6 +1,7 @@
 import { styled } from 'theme'
 import Section from 'atoms/Section'
 import { Typography } from '@mui/material'
+import { replaceLinkWithHyperlink } from 'utils/replace-link-with-hyperlink'
 import ClaimCode from './ClaimCode'
 
 export type Props = {
@@ -19,7 +20,7 @@ const NextSteps = styled(({ className, claimCode, claimInstructions } : Props) =
       {"You've claimed your content, but you're not finished yet! Follow the instructions below in order to complete the process."}
     </Typography>
     <ClaimCode code={claimCode} />
-    <ClaimInstructions dangerouslySetInnerHTML={{ __html: claimInstructions }} />
+    <ClaimInstructions dangerouslySetInnerHTML={{ __html: replaceLinkWithHyperlink(claimInstructions) }} />
   </Section>
 ))`
   display: flex;
