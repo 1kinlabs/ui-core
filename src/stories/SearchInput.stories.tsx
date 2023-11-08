@@ -7,10 +7,11 @@ const meta: Meta = {
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
   argTypes: {
-    placeholder: {
+    label: {
       control: 'text',
-      description: 'The placeholder text for the search input',
+      description: 'The label text for the search input',
     },
   },
 }
@@ -20,8 +21,18 @@ export default meta
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {},
+}
+
+export const WithLabel: Story = {
   args: {
-    placeholder: 'Search...',
+    label: 'Search Collection',
   },
-  render: () => <SearchInput />,
+}
+
+export const Compact: Story = {
+  args: {
+    compact: true,
+    label: 'Search Label',
+  },
 }
