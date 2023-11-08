@@ -40,11 +40,10 @@
     "react-popper": "2.3.0",
     "react-rangeslider": "2.2.0",
     "react-webcam": "7.1.1",
-    "strip-ansi": "6",
     "stylis-plugin-rtl": "2.1.1"
   },
   "devDependencies": {
-    "@1kinlabs/eslint-config": "^0.0.6",
+    "@1kinlabs/eslint-config": "0.0.12",
     "@emotion/cache": "11.11.0",
     "@emotion/react": "11.11.1",
     "@emotion/server": "11.11.0",
@@ -102,6 +101,7 @@
     "styled-components": "^6",
     "string-width": "^4",
     "jackspeak": "^2",
-    "strip-ansi": "^6"
+    "strip-ansi": "^6",
+    "strip-ansi-cjs": "npm:strip-ansi@^6"
   }
 }
