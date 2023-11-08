@@ -43,7 +43,7 @@
     "stylis-plugin-rtl": "2.1.1"
   },
   "devDependencies": {
-    "@1kinlabs/eslint-config": "0.0.12",
+    "@1kinlabs/eslint-config": "0.0.10",
     "@emotion/cache": "11.11.0",
     "@emotion/react": "11.11.1",
     "@emotion/server": "11.11.0",
