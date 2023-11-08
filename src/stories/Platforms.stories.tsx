@@ -51,6 +51,21 @@ export const Compact: Story = {
   },
 }
 
+export const Small: Story = {
+  args: {
+    small: true,
+    platforms: fullListPlatforms,
+  },
+}
+
+export const CompactAndSmall: Story = {
+  args: {
+    compact: true,
+    small: true,
+    platforms: fullListPlatforms,
+  },
+}
+
 export const Mobile: Story = {
   args: {
     platforms: fullListPlatforms,

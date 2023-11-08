@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { pineapplePizzaHero } from 'mock-data/game'
-import GameInfoCompact from 'components/game/GameInfoCompact'
+import GameLauncher from 'components/game/GameLauncher'
 
 const meta = {
-  title: 'components/game/GameInfoCompact',
-  component: GameInfoCompact,
+  title: 'components/game/GameLauncher',
+  component: GameLauncher,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof GameInfoCompact>
+} satisfies Meta<typeof GameLauncher>
 
 export default meta
 type Story = StoryObj<typeof meta>;

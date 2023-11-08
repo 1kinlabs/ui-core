@@ -19,13 +19,13 @@ const GameInfoContainer = styled.div`
   gap: 16px;
 `
 
-function GameInfoCompact({ game } : Props) {
+function GameLauncher({ game } : Props) {
   return (
     <Section>
       <GameInfoContainer>
         <Typography variant="h6">{game.title}</Typography>
         <NextImageStyled width={280} height={120} src={game.cover_art?.defaultMedia?.src1x} alt={`Cover image for ${game.title}`} />
-        <Platforms platforms={game.platforms} compact />
+        <Platforms platforms={game.platforms} compact small />
         {
           game.account_link_config?.linkingUrl && (
             <Button
@@ -43,4 +43,4 @@ function GameInfoCompact({ game } : Props) {
   )
 }
 
-export default GameInfoCompact
+export default GameLauncher
