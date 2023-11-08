@@ -16,6 +16,7 @@ export type Collectible = {
     id: number;
     assets: Assets;
     claimStatus: ClaimStatus
+    claim_instructions: string;
 } & Partial<Nullable<{
     title: string;
     description: string;
@@ -23,7 +24,6 @@ export type Collectible = {
     total_count: number;
     end_date: string;
     short_description: string;
-    claim_instructions: string;
     item_details: string[];
     start_date: string;
     faq_list: FaqList;

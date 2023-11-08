@@ -44,6 +44,7 @@ const ClaimCode = styled(({ className, code } : Props) => {
 })`
     display: flex;
     gap: 8px;
+    margin-top: 8px;
 `
 
 export default ClaimCode

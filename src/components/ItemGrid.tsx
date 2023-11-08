@@ -3,11 +3,6 @@ import { styled } from 'theme'
 import { Typography } from '@mui/material'
 import { classNames } from 'utils/classNames'
 
-const ItemGridContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`
-
 const ItemsContainer = styled.div`
   && {
     display: flex;
@@ -31,10 +26,10 @@ type Props = {
 const ItemGrid = styled(({
   children, title, compact, className,
 } : Props) => (
-  <ItemGridContainer className={classNames(className, { compact })}>
+  <div className={classNames(className, { compact })}>
     {
         title && (
-          <Typography variant="h5">
+          <Typography variant="h6">
             {title}
           </Typography>
         )
@@ -42,8 +37,12 @@ const ItemGrid = styled(({
     <ItemsContainer className={classNames({ compact })}>
       {children}
     </ItemsContainer>
-  </ItemGridContainer>
+  </div>
 ))`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
   gap: 24px;
   &.compact {
     gap: 4px;

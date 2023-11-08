@@ -9,7 +9,7 @@ export const pineapplePizzaHeroCard : Collectible = {
   total_count: 50,
   end_date: '2023-10-01',
   short_description: 'In Game Consumable Pineapple',
-  claim_instructions: "<p>1. Visit the official Pineapple Pizza Hero website (https://pineapplepizzahero.1kin.io/).</p><p>2. Enter your unique code in the designated field (p.s. we'll email the code to you as well). Make sure to type it correctly to avoid any errors.</p><p>5. Double-check the code and click on the \"Redeem\" button.</p><p>6. If the code is valid and unused, you will be able to download your own copy of the \"Pineapple Pizza Hero\" immediately.</p><p><br></p><p>If you encounter any issues or have further questions, consult the game's support resources or reach out to their customer service for assistance.</p><p><br></p>",
+  claim_instructions: "To claim the \"Pineapple Pizza Hero\" item in Pineapple Pizza Trivia and redeem your code, follow these steps:\n\n1. Visit the official Pineapple Pizza Trivia website (https://pineapplepizza.1kin.io/).\n2. Enter your unique code in the designated field (p.s. we'll email the code to you as well). Make sure to type it correctly to avoid any errors.\n5. Double-check the code and click on the \"Redeem\" button.\n6. If the code is valid and unused, you will be able to download your own copy of the \"Pineapple Pizza Hero\" immediately. \n\nIf you encounter any issues or have further questions, consult the game's support resources or reach out to their customer service for assistance.\n\nEnjoy causing some virtual discomfort with the \"Pineapple Pizza Hero\" in your trivia battles!",
   item_details: [
     '1x Pineapple Pizza Hero',
   ],
@@ -153,7 +153,7 @@ export const cloakOfTheAges : Collectible = {
   total_count: 100,
   end_date: '2025-10-23',
   short_description: 'In-game cloak',
-  claim_instructions: "<p>&lt;p&gt;&amp;lt;p&amp;gt;1. Visit the official Pineapple Pizza Hero website (https://pineapplepizzahero.1kin.io/).&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;2. Enter your unique code in the designated field (p.s. we'll email the code to you as well). Make sure to type it correctly to avoid any errors.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;5. Double-check the code and click on the \\\\\\\"Redeem\\\\\\\" button.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;6. If the code is valid and unused, you will be able to download your own copy of the \\\\\\\"Cloak of the Ages\\\\\\\" immediately.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;If you encounter any issues or have further questions, consult the game's support resources or reach out to their customer service for assistance.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&lt;/p&gt;</p>",
+  claim_instructions: '<p>Copy your Battle Token claim code.</p><p><br></p><p>Go to Play.Bloomverse.io and create an account if you haven’t already, you’ll be automatically prompted to create an Avatar for your account.</p><p>&nbsp;</p><p>The process of creating an account will guide you through the tutorial to learn about your Phantom inventory, and how to use it.</p><p>Once done with the tutorial and in your account, go to the BLOOMVERSE marketplace.&nbsp;</p><p><br></p><p>Click on the tab that says Battle tokens.&nbsp;</p><p>Under the 1 Battle Token payment option, find and click on “I have a code”.&nbsp;</p><p><br></p><p>Paste the code that you copied from your 1Kin claims. Your Battle Token should now be visible in your Phantom inventory.</p>',
   item_details: [
     '1x Cloak of the Ages',
   ],
