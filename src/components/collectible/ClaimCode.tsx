@@ -1,6 +1,7 @@
 import TextField from 'atoms/TextField'
+import { Button } from 'atoms/Button'
 import {
-  Alert, Button, Snackbar, Typography,
+  Alert, Snackbar, Typography,
 } from '@mui/material'
 
 import styled from 'styled-components'
@@ -11,16 +12,20 @@ export type Props = {
   code?: string,
 }
 
-const ClaimCode = styled(({ className, code = '' } : Props) => {
+const ClaimCode = styled(({ className, code } : Props) => {
   const [openSnackbar, setOpenSnackbar] = useState(false)
 
-  const copyCode = () => {
+  const copyCode = async () => {
     if (!code) {
       return
     }
 
-    window.navigator.clipboard.writeText(code).catch(console.error)
-    setOpenSnackbar(true)
+    try {
+      await window.navigator.clipboard.writeText(code)
+      setOpenSnackbar(true)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   return (
