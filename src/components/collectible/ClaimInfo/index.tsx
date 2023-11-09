@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { viewports } from 'css/media'
 import { Collectible } from 'types/Collectible'
 import { Game } from 'types/Game'
 import ClaimCard from './ClaimCard'
@@ -23,6 +24,8 @@ const ClaimInfo = styled(({
   </div>
 ))`
   position: relative;
+  container: claim-info / inline-size;
+  width: 100%;
 `
 
 export default ClaimInfo
