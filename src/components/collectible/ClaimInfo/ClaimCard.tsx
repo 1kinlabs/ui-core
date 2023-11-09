@@ -10,6 +10,7 @@ import { Collectible } from 'types/Collectible'
 import { Game } from 'types/Game'
 
 import { mobile } from 'css/media'
+import Chip from 'atoms/Chip'
 import ClaimProgress from '../ClaimProgress'
 
 type Props = {
@@ -19,6 +20,13 @@ type Props = {
   onAddToCollection: (collectible: Collectible) => void
 }
 
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+`
+
 const ClaimCard = styled(({
   className,
   collectible,
@@ -27,7 +35,10 @@ const ClaimCard = styled(({
 }: Props) => (
   <Card className={className}>
     <CardContent>
-      <Typography variant="h6" component="h1">{game.title || 'Unknown Game'}</Typography>
+      <Header>
+        <Typography variant="h6" component="h1">{game.title || 'Unknown Game'}</Typography>
+        <Chip outline type={collectible.claimStatus} />
+      </Header>
       <Divider />
 
       <Typography variant="h4" component="h2">{collectible.title || 'Unknown Item'}</Typography>
