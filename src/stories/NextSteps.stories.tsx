@@ -39,7 +39,7 @@ export const ContainsImage: Story = {
 export const ContainsLink: Story = {
   args: {
     claimCode: '1234567',
-    claimInstructions: '<p>This should be wrapped in a link tag: https://www.google.com</p><p>This one should not be wrapped in a new link tag: <a href="https://www.google.com/tag">https://www.google.com/tag</a></p>',
+    claimInstructions: '<p>This should be wrapped in a link tag: https://www.google.com</p><p>This should also be wrapped in a link tag: www.google.com</p><p>This one should not be wrapped in a new link tag: <a href="https://www.google.com/tag">https://www.google.com/tag</a></p>',
   },
 }
 

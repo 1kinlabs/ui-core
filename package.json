@@ -29,6 +29,8 @@
     "clipboard-copy": "4.0.1",
     "date-fns": "2.30.0",
     "keen-slider": "6.8.6",
+    "linkify-html": "^4.1.1",
+    "linkifyjs": "^4.1.1",
     "luxon": "^3.4.3",
     "moment": "2.29.4",
     "prismjs": "1.29.0",
