@@ -2,17 +2,24 @@ export const viewports = {
   mobileSmall: 600,
   mobile: 900,
   tablet: 1200,
-  desktop: 3840,
 }
 
 type MediaQueries = {
   [Key in keyof typeof viewports]: string;
+} & {
+  desktop: string;
 }
-const mediaQueries: MediaQueries = Object.keys(viewports).reduce<MediaQueries>((acc, label) => {
+
+const maxWidthQueries = Object.keys(viewports).reduce<MediaQueries>((acc, label) => {
   const key = label as keyof typeof viewports
   acc[key] = `@media (max-width: ${viewports[key]}px)`
   return acc
 }, {} as MediaQueries)
+
+const mediaQueries: MediaQueries = {
+  ...maxWidthQueries,
+  desktop: '@media (min-width: 1200px)',
+}
 
 export default mediaQueries
 
