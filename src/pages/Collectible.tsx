@@ -33,8 +33,8 @@ const Collectible = styled(({ className, collectible, game } : Props) => {
       <GameLauncher game={game} className="launcher" />
       <Section className="gallery">
         {
-        collectible.assets?.additionalMedia && <MediaGallery images={collectible.assets.additionalMedia} />
-      }
+          collectible.assets?.additionalMedia && <MediaGallery images={collectible.assets.additionalMedia} />
+        }
       </Section>
       <GameInfo game={game} className="info" />
       {

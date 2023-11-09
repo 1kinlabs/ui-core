@@ -15,21 +15,21 @@ const FAQ = styled(({ faqs, className } : Props) => (faqs ? (
   <Section title="Frequently Asked Questions" className={className}>
     <div>
       {
-      faqs.map((faq) => (
-        <Accordion square key={faq.question} className="accordion">
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-          >
-            <Typography variant="body1">
-              {faq.question}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            {faq.answer}
-          </AccordionDetails>
-        </Accordion>
-      ))
-    }
+        faqs.map((faq) => (
+          <Accordion square key={faq.question} className="accordion">
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+            >
+              <Typography variant="body1">
+                {faq.question}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              {faq.answer}
+            </AccordionDetails>
+          </Accordion>
+        ))
+      }
     </div>
   </Section>
 ) : null))`

@@ -19,7 +19,7 @@ const ImageStyled = styled.img`
 `
 
 export type Props = {
-    images: string[]
+  images: string[]
 }
 
 function MediaGallery({ images } : Props) {

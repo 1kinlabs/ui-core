@@ -11,8 +11,8 @@ const StyledImg = styled.img`
 `
 
 type Props = {
-    game: Game,
-    className?: string
+  game: Game,
+  className?: string
 }
 
 const GameInfoContainer = styled.div`
@@ -28,16 +28,16 @@ const GameLauncher = styled(({ game, className } : Props) => (
       <StyledImg src={game.cover_art?.defaultMedia?.src1x} alt={`Cover image for ${game.title}`} />
       <Platforms platforms={game.platforms} compact small />
       {
-          game.account_link_config?.linkingUrl && (
-            <Button
-              variant="outlined"
-              target="blank"
-              href={game?.account_link_config?.linkingUrl}
-            >
-              {'PLAY GAME'}
-            </Button>
-          )
-        }
+        game.account_link_config?.linkingUrl && (
+          <Button
+            variant="outlined"
+            target="blank"
+            href={game?.account_link_config?.linkingUrl}
+          >
+            {'PLAY GAME'}
+          </Button>
+        )
+      }
 
     </GameInfoContainer>
   </Section>
