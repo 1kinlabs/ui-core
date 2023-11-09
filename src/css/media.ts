@@ -10,18 +10,21 @@ type MediaQueries = {
   desktop: string;
 }
 
-const maxWidthQueries = Object.keys(viewports).reduce<MediaQueries>((acc, label) => {
+const getMaxWidthQueries = (type: 'media' | 'container') => Object.keys(viewports).reduce<MediaQueries>((acc, label) => {
   const key = label as keyof typeof viewports
-  acc[key] = `@media (max-width: ${viewports[key]}px)`
+  acc[key] = `@${type} (max-width: ${viewports[key]}px)`
   return acc
 }, {} as MediaQueries)
 
 const mediaQueries: MediaQueries = {
-  ...maxWidthQueries,
+  ...getMaxWidthQueries('media'),
   desktop: '@media (min-width: 1201px)',
 }
 
-export default mediaQueries
+export const container: MediaQueries = {
+  ...getMaxWidthQueries('container'),
+  desktop: '@container (min-width: 1201px)',
+}
 
 const {
   mobileSmall, mobile, tablet, desktop,

@@ -9,7 +9,7 @@ import {
 import { Collectible } from 'types/Collectible'
 import { Game } from 'types/Game'
 
-import { mobile } from 'css/media'
+import { container } from 'css/media'
 import Chip from 'atoms/Chip'
 import ClaimProgress from '../ClaimProgress'
 
@@ -51,34 +51,35 @@ const ClaimCard = styled(({
     </CardContent>
   </Card>
 ))`
-  position: absolute;
-  top: 50%;
-  left: 48px;
-  transform: translate(0, -50%);
-  background-color: ${({ theme }) => theme.surface.paperAlpha};
-  backdrop-filter: blur(10px);
+  && {
+    position: absolute;
+    top: 50%;
+    left: 48px;
+    transform: translate(0, -50%);
+    background-color: ${({ theme }) => theme.surface.paperAlpha};
+    backdrop-filter: blur(10px);
 
-  ${mobile} {
-    position: static;
-    transform: none;
-  }
+    ${container.mobile} {
+      position: static;
+      transform: none;
+      background-color: ${({ theme }) => theme.surface.paper};
+    }
 
-  background-color: ${({ theme }) => theme.surface.paper};
+    h1 {
+      color: ${({ theme }) => theme.text.secondary};
+    }
 
-  h1 {
-    color: ${({ theme }) => theme.text.secondary};
-  }
+    h2 {
+      margin-top: 8px;
+    }
 
-  h2 {
-    margin-top: 8px;
-  }
+    button {
+      width: 100%;
+    }
 
-  button {
-    width: 100%;
-  }
-
-  ${ClaimProgress} {
-    margin: 24px 0;
+    ${ClaimProgress} {
+      margin: 24px 0;
+    }
   }
 `
 
