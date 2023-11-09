@@ -8,6 +8,8 @@ import {
 } from '@mui/material'
 import { Collectible } from 'types/Collectible'
 import { Game } from 'types/Game'
+
+import { mobile } from 'css/media'
 import ClaimProgress from '../ClaimProgress'
 
 type Props = {
@@ -38,6 +40,20 @@ const ClaimCard = styled(({
     </CardContent>
   </Card>
 ))`
+  position: absolute;
+  top: 50%;
+  left: 48px;
+  transform: translate(0, -50%);
+  background-color: ${({ theme }) => theme.surface.paperAlpha};
+  backdrop-filter: blur(10px);
+
+  ${mobile} {
+    position: static;
+    transform: none;
+  }
+
+  background-color: ${({ theme }) => theme.surface.paper};
+
   h1 {
     color: ${({ theme }) => theme.text.secondary};
   }
