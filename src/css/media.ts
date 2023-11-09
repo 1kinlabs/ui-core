@@ -18,7 +18,7 @@ const maxWidthQueries = Object.keys(viewports).reduce<MediaQueries>((acc, label)
 
 const mediaQueries: MediaQueries = {
   ...maxWidthQueries,
-  desktop: '@media (min-width: 1200px)',
+  desktop: '@media (min-width: 1201px)',
 }
 
 export default mediaQueries

@@ -28,8 +28,9 @@ export const getVariables = ({
   surface: {
     paperLight: neutral.dark,
     paper: neutral.darker,
-    paperAlpha: hexToRGBA(neutral.darkest, 0.8),
+    paperAlpha: hexToRGBA(neutral.darker, 0.8),
     body: neutral.darkest,
+    bodyAlpha: hexToRGBA(neutral.darkest, 0.8),
     error: error.darker,
     success: success.darker,
     warning: warning.dark,
