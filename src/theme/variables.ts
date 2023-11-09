@@ -72,4 +72,10 @@ export const getVariables = ({
       hover: brand.discord.dark,
     },
   },
+  progress: {
+    foreground: primary.medium,
+    urgent: {
+      foreground: error.dark,
+    },
+  },
 })
