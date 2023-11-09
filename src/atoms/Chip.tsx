@@ -2,14 +2,14 @@ import Box from '@mui/material/Box'
 import { useTheme, styled } from 'theme'
 
 type EntryType = {
-    backgroundColor: string;
-    color: string;
-    text: string;
+  backgroundColor: string;
+  color: string;
+  text: string;
 }
 
 export enum TypeKey {
-    IN_PROGRESS,
-    SOLD_OUT
+  IN_PROGRESS,
+  SOLD_OUT
 }
 
 const useTypeInfo = (type : TypeKey) : EntryType => {
@@ -24,8 +24,8 @@ const useTypeInfo = (type : TypeKey) : EntryType => {
 }
 
 export type Props = {
-    type: TypeKey,
-    className?: string
+  type: TypeKey,
+  className?: string
 }
 
 const Chip = styled(({ type, className } : Props) => {

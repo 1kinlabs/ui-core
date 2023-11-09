@@ -182,7 +182,7 @@ function EditProfilePhoto(props) {
                   sx={{ mr: 2 }}
                   onClick={handleUseCamera}
                 >
-                  Use Camera
+                  {'Use Camera'}
                 </Button>
                 <input
                   type="file"
@@ -196,7 +196,7 @@ function EditProfilePhoto(props) {
                   variant="contained"
                   sx={{ mr: 2 }}
                 >
-                  <label htmlFor="select-image">Upload Photo</label>
+                  <label htmlFor="select-image">{'Upload Photo'}</label>
                 </Button>
               </Box>
             </Box>
@@ -210,48 +210,48 @@ function EditProfilePhoto(props) {
           )}
 
         {picture.cropperOpen && (
-        <Box sx={{
-          display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', mt: 4,
-        }}
-        >
-          <AvatarEditor
-            ref={setEditorRef}
-            image={picture.img}
-            width={100}
-            height={100}
-            border={25}
-            color={[255, 255, 255, 0.6]}
-            rotate={0}
-            scale={picture.zoom}
-          />
-          <Box sx={{ width: '100%' }}>
-            <Slider
-              aria-label="raceSlider"
-              value={picture.zoom}
-              min={1}
-              max={10}
-              step={0.1}
-              onChange={handleSlider}
+          <Box sx={{
+            display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', mt: 4,
+          }}
+          >
+            <AvatarEditor
+              ref={setEditorRef}
+              image={picture.img}
+              width={100}
+              height={100}
+              border={25}
+              color={[255, 255, 255, 0.6]}
+              rotate={0}
+              scale={picture.zoom}
             />
+            <Box sx={{ width: '100%' }}>
+              <Slider
+                aria-label="raceSlider"
+                value={picture.zoom}
+                min={1}
+                max={10}
+                step={0.1}
+                onChange={handleSlider}
+              />
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Button
+                color="error"
+                variant="outlined"
+                sx={{ mr: 2 }}
+                onClick={handleCancel}
+              >
+                {'Close'}
+              </Button>
+              <Button
+                variant="contained"
+                sx={{ mr: 2 }}
+                onClick={handleSave}
+              >
+                {'Save'}
+              </Button>
+            </Box>
           </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Button
-              color="error"
-              variant="outlined"
-              sx={{ mr: 2 }}
-              onClick={handleCancel}
-            >
-              Close
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ mr: 2 }}
-              onClick={handleSave}
-            >
-              Save
-            </Button>
-          </Box>
-        </Box>
         )}
       </Box>
     </Modal>

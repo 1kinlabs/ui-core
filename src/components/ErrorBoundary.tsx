@@ -44,7 +44,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
     const { hasError } = this.state
     const { children } = this.props
     if (hasError) {
-      return <ErrorMessage>An error has occurred! Please try again.</ErrorMessage>
+      return <ErrorMessage>{'An error has occurred! Please try again.'}</ErrorMessage>
     }
 
     return children

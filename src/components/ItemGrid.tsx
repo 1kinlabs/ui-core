@@ -17,10 +17,10 @@ const ItemsContainer = styled.div`
 `
 
 type Props = {
-    children: ReactElement[],
-    title?: string,
-    compact?: boolean,
-    className?: string
+  children: ReactElement[],
+  title?: string,
+  compact?: boolean,
+  className?: string
 }
 
 const ItemGrid = styled(({
@@ -28,12 +28,12 @@ const ItemGrid = styled(({
 } : Props) => (
   <div className={classNames(className, { compact })}>
     {
-        title && (
-          <Typography variant="h6">
-            {title}
-          </Typography>
-        )
-      }
+      title && (
+        <Typography variant="h6">
+          {title}
+        </Typography>
+      )
+    }
     <ItemsContainer className={classNames({ compact })}>
       {children}
     </ItemsContainer>

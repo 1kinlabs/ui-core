@@ -5,9 +5,9 @@ import { calculateProgressPercentage } from 'utils/calculate-progress-percentage
 import styled from 'styled-components'
 
 type Props = {
-    className?: string,
-    claimed: number,
-    totalAvailable: number
+  className?: string,
+  claimed: number,
+  totalAvailable: number
 }
 
 const ClaimProgress = styled(({ className, claimed, totalAvailable } : Props) => (

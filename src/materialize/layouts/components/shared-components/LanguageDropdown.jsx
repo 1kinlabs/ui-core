@@ -66,7 +66,7 @@ function LanguageDropdown({ settings, saveSettings }) {
             saveSettings({ ...settings, direction: 'ltr' })
           }}
         >
-          English
+          {'English'}
         </MenuItem>
         <MenuItem
           sx={{ py: 2 }}
@@ -76,7 +76,7 @@ function LanguageDropdown({ settings, saveSettings }) {
             saveSettings({ ...settings, direction: 'ltr' })
           }}
         >
-          French
+          {'French'}
         </MenuItem>
         <MenuItem
           sx={{ py: 2 }}
@@ -86,7 +86,7 @@ function LanguageDropdown({ settings, saveSettings }) {
             saveSettings({ ...settings, direction: 'rtl' })
           }}
         >
-          Arabic
+          {'Arabic'}
         </MenuItem>
       </Menu>
     </>

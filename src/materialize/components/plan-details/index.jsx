@@ -81,13 +81,13 @@ function PlanDetails(props) {
         <Box sx={{ mt: 5, mb: 10, position: 'relative' }}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Typography variant="body2" sx={{ mt: 1.6, alignSelf: 'flex-start' }}>
-              $
+              {'$'}
             </Typography>
             <Typography variant="h3" sx={{ fontWeight: 500, color: 'primary.main', lineHeight: 1.17 }}>
               {plan === 'monthly' ? data?.monthlyPrice : data?.yearlyPlan.perMonth}
             </Typography>
             <Typography variant="body2" sx={{ mb: 1.6, alignSelf: 'flex-end' }}>
-              /month
+              {'/month'}
             </Typography>
           </Box>
           {plan !== 'monthly' && data?.monthlyPrice !== 0 ? (

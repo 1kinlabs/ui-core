@@ -44,7 +44,7 @@ function Platforms({ platforms, compact, small }: Props) {
             />
           </Tooltip>
         ))
-    }
+      }
     </ItemGrid>
   )
 }
