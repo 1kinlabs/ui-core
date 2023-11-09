@@ -11,10 +11,15 @@ type Props = {
   addToCollection: (collectible: Collectible) => void
 }
 
-const ClaimInfo = styled(({ className, collectible, game }: Props) => (
+const ClaimInfo = styled(({
+  className,
+  collectible,
+  game,
+  addToCollection,
+}: Props) => (
   <div className={className}>
     <CollectibleImage collectible={collectible} />
-    <ClaimCard collectible={collectible} game={game} />
+    <ClaimCard collectible={collectible} game={game} addToCollection={addToCollection} />
   </div>
 ))`
 `
