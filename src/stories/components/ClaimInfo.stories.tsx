@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import ClaimInfo from 'components/collectible/ClaimInfo'
 import { pineapplePizzaHeroCard } from 'mock-data/collectible'
 import { pineapplePizzaHero } from 'mock-data/game'
-import { Collectible } from 'types/Collectible'
 import { ClaimStatus } from 'enums/ClaimStatus'
 
 const meta: Meta<typeof ClaimInfo> = {
