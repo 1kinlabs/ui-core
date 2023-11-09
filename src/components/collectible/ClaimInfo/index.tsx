@@ -8,6 +8,7 @@ type Props = {
   className?: string
   collectible: Collectible
   game: Game
+  addToCollection: (collectible: Collectible) => void
 }
 
 const ClaimInfo = styled(({ className, collectible, game }: Props) => (
