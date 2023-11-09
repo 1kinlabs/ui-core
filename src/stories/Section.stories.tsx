@@ -16,7 +16,6 @@ export default meta
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-
   args: {
     children: [
       <Typography variant="h6" key="About the game">{'About the Game'}</Typography>,
@@ -28,7 +27,6 @@ export const Default: Story = {
 }
 
 export const WithTitle: Story = {
-
   args: {
     title: 'About the Game',
     children: [
@@ -44,9 +42,25 @@ export const WithTitle: Story = {
 }
 
 export const Collapsible: Story = {
-
   args: {
     collapsible: true,
+    title: 'About the Game',
+    children: [
+      <Typography variant="body2" key="Title">
+        {pineapplePizzaHero.title}
+      </Typography>,
+      <Typography variant="body2" key="Game Description">
+        {pineapplePizzaHero.description}
+      </Typography>,
+
+    ],
+  },
+}
+
+export const CollapsibleDefaultClosed: Story = {
+  args: {
+    collapsible: true,
+    defaultExpanded: false,
     title: 'About the Game',
     children: [
       <Typography variant="body2" key="Title">
