@@ -2,10 +2,6 @@
 
 SCRIPT_DIR=$(dirname "$0")
 
-"$SCRIPT_DIR/prebuild"
-
-"$SCRIPT_DIR/postbuild"
-
 # Start tspc in the background
 tspc --watch &
 TSPC_PID=$!

@@ -1,3 +1,4 @@
 #!/bin/bash
 cp package.json dist/
+cp src/svg/*.svg dist/svg
 touch dist/yarn.lock
