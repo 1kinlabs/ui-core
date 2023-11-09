@@ -1,9 +1,6 @@
 import { Card, CardContent as BaseCardContent, Typography } from '@mui/material'
 import { styled } from 'styled-components'
-import { NonCollapsibleProps, CollapsibleProps } from 'types/Section'
-import CollapsibleSection from './CollapsibleSection'
-
-export type Props = NonCollapsibleProps | CollapsibleProps;
+import { NonCollapsibleProps } from 'types/Section'
 
 const CardContent = styled(BaseCardContent)`
   display: flex;
@@ -19,13 +16,9 @@ function Title({ title } : { title?: string}) {
   ) : null
 }
 
-const Section = styled(({
-  children, className, title, collapsible, defaultExpanded = true,
-} : Props) => (collapsible ? (
-  <CollapsibleSection title={title} className={className} defaultExpanded={defaultExpanded}>
-    {children}
-  </CollapsibleSection>
-) : (
+const NonCollapsibleSection = styled(({
+  children, className, title,
+} : NonCollapsibleProps) => (
   <Card>
     <CardContent>
       <Title title={title} />
@@ -34,6 +27,6 @@ const Section = styled(({
       </div>
     </CardContent>
   </Card>
-)))``
+))``
 
-export default Section
+export default NonCollapsibleSection
