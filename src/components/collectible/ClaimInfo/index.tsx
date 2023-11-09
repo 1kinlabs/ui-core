@@ -22,6 +22,7 @@ const ClaimInfo = styled(({
     <ClaimCard collectible={collectible} game={game} onAddToCollection={onAddToCollection} />
   </div>
 ))`
+  position: relative;
 `
 
 export default ClaimInfo
