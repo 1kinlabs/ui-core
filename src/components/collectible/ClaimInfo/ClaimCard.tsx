@@ -14,14 +14,14 @@ type Props = {
   className?: string
   collectible: Collectible
   game: Game
-  addToCollection: (collectible: Collectible) => void
+  onAddToCollection: (collectible: Collectible) => void
 }
 
 const ClaimCard = styled(({
   className,
   collectible,
   game,
-  addToCollection,
+  onAddToCollection,
 }: Props) => (
   <Card className={className}>
     <CardContent>
@@ -34,7 +34,7 @@ const ClaimCard = styled(({
       )}
 
       <ClaimProgress collectible={collectible} />
-      <Button variant="contained" onClick={() => addToCollection(collectible)}>{'Add to My Collection'}</Button>
+      <Button variant="contained" onClick={() => onAddToCollection(collectible)}>{'Add to My Collection'}</Button>
     </CardContent>
   </Card>
 ))`
