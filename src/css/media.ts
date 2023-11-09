@@ -2,7 +2,7 @@ export const viewports = {
   mobileSmall: 600,
   mobile: 900,
   tablet: 1200,
-  desktop: 1200,
+  desktop: 3840,
 }
 
 type MediaQueries = {
