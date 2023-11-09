@@ -7,7 +7,7 @@ export type Props = TextFieldProps & {
 
 const TextField = styled(BaseTextField)<Props>`
   div {
-    ${({ compact }) => (compact ? 'height: 38px;' : '')}
+    ${({ compact }) => (compact && 'height: 38px;')}
   }
 `
 

@@ -23,3 +23,14 @@ export const Default: Story = {
 export const NoCode: Story = {
   args: {},
 }
+
+export const Mobile: Story = {
+  args: {
+    code: '1234567',
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+}
