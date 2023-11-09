@@ -19,17 +19,20 @@ type Props = {
 
 const GameInfo = styled(({ game, className } : Props) => (
   <Section className={className}>
-    <AboutTheGame description={game.description} />
-    <GameGenres genres={game.genres} />
-    <GameModes modes={game.game_modes} />
-    <GamePlatforms platforms={game.platforms} />
-    <InitialReleaseDate date={game.release_date} />
-    <AgeRating age={game.min_age} />
-    <Developer developer={game.primary_developer} />
-    <Publisher publisher={game.publisher} />
-    <OfficialWebsite website={game.official_website} />
+    <div className="gameInfoContainer">
+      <AboutTheGame description={game.description} />
+      <GameGenres genres={game.genres} />
+      <GameModes modes={game.game_modes} />
+      <GamePlatforms platforms={game.platforms} />
+      <InitialReleaseDate date={game.release_date} />
+      <AgeRating age={game.min_age} />
+      <Developer developer={game.primary_developer} />
+      <Publisher publisher={game.publisher} />
+      <OfficialWebsite website={game.official_website} />
+    </div>
   </Section>
 ))`
+  .gameInfoContainer {
     display: grid;
     gap: 16px 16px;
     grid-template-columns: 1fr 1fr 1fr;
@@ -52,6 +55,7 @@ const GameInfo = styled(({ game, className } : Props) => (
       "publisher"
       "official-website"
     }
+  }
 `
 
 export default GameInfo

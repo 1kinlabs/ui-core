@@ -12,10 +12,11 @@ export type Props = {
 }
 
 const FAQ = styled(({ faqs, className } : Props) => (faqs ? (
-  <Section title="Frequently Asked Questions">
-    {
+  <Section title="Frequently Asked Questions" className={className}>
+    <div>
+      {
       faqs.map((faq) => (
-        <Accordion square key={faq.question} className={className}>
+        <Accordion square key={faq.question} className="accordion">
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
           >
@@ -29,11 +30,13 @@ const FAQ = styled(({ faqs, className } : Props) => (faqs ? (
         </Accordion>
       ))
     }
-
+    </div>
   </Section>
 ) : null))`
   && {
-    background-color: ${({ theme }) => theme.surface.body};
+    .accordion {
+      background-color: ${({ theme }) => theme.surface.body};
+    }
   }
 `
 

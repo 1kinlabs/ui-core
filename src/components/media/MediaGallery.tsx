@@ -7,7 +7,6 @@ const ImageStyled = styled.img`
   cursor: pointer;
   min-width: 220px;
   max-width: 22%;
-  max-height: 280px;
   border-radius: 8px;
   object-fit: cover;
 

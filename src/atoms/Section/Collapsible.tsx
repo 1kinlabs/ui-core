@@ -12,7 +12,7 @@ export type Props = BaseProps & AccordionProps & {
 const CollapsibleSection = styled(({
   children, className, title, defaultExpanded = true,
 } : Props) => (
-  <Accordion defaultExpanded={defaultExpanded}>
+  <Accordion defaultExpanded={defaultExpanded} className={className}>
     <AccordionSummary
       expandIcon={<ExpandMoreIcon />}
     >
@@ -20,7 +20,7 @@ const CollapsibleSection = styled(({
         {title}
       </Typography>
     </AccordionSummary>
-    <AccordionDetails className={className}>
+    <AccordionDetails>
       {children}
     </AccordionDetails>
   </Accordion>
