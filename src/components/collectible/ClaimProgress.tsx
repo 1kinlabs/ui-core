@@ -32,8 +32,6 @@ const ClaimProgress = styled<React.FC<Props>>(({ className, collectible } : Prop
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-width: 400px;
-
 
   .urgent {
     .MuiLinearProgress-bar {
