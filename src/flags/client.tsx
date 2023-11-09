@@ -26,7 +26,7 @@ const parseJSON = (stringToParse : string | null) : AppFlags => {
 }
 
 export function FlagProvider({ happykitParams, children }
-  : { happykitParams: UseFlagsOptions, children: ReactNode}) {
+: { happykitParams: UseFlagsOptions, children: ReactNode}) {
   const useHappykit = createUseFlags<AppFlags>(config)
 
   const [override, setOverride] = useStorage<string>('flags', '')

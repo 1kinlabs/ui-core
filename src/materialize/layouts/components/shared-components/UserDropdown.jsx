@@ -170,7 +170,7 @@ function UserDropdown(props) {
         <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/profile')}>
           <Box sx={styles}>
             <AccountOutline sx={{ mr: 2 }} />
-            Profile
+            {'Profile'}
           </Box>
         </MenuItem>
         {/* <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/apps/email')}>
@@ -201,13 +201,13 @@ function UserDropdown(props) {
         <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/faq')}>
           <Box sx={styles}>
             <HelpCircleOutline sx={{ mr: 2 }} />
-            FAQ
+            {'FAQ'}
           </Box>
         </MenuItem>
         <Divider />
         <MenuItem sx={{ py: 2 }} onClick={handleLogout}>
           <LogoutVariant sx={{ mr: 2, fontSize: '1.375rem', color: 'text.secondary' }} />
-          Logout
+          {'Logout'}
         </MenuItem>
       </Menu>
     </>

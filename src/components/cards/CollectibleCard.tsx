@@ -90,7 +90,7 @@ const StyledCardMedia = styled(CardMedia)<ExtendedCardMediaProps>`
 `
 
 function ConditionalChip({ claimStatus } :
-  { claimStatus : ClaimStatus }) {
+{ claimStatus : ClaimStatus }) {
   if (claimStatus === ClaimStatus.COMPLETED) return null
 
   if (claimStatus === ClaimStatus.IN_PROGRESS) return <Chip type={TypeKey.IN_PROGRESS} />
@@ -101,11 +101,11 @@ function ConditionalChip({ claimStatus } :
 }
 
 function ConditionalTitle({ claimStatus }
-  : { claimStatus: ClaimStatus }) {
+: { claimStatus: ClaimStatus }) {
   if (claimStatus === ClaimStatus.AVAILABLE) {
     return (
       <TypographyOverline variant="overline">
-        Available
+        {'Available'}
       </TypographyOverline>
     )
   }
@@ -113,7 +113,7 @@ function ConditionalTitle({ claimStatus }
   if (claimStatus === ClaimStatus.EXPIRED) {
     return (
       <TypographyOverline variant="overline">
-        Expired
+        {'Expired'}
       </TypographyOverline>
     )
   }

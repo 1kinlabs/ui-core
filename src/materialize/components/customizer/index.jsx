@@ -112,9 +112,9 @@ function Customizer() {
           }}
         >
           <Typography variant="h6" sx={{ fontWeight: 600, textTransform: 'uppercase' }}>
-            Theme Customizer
+            {'Theme Customizer'}
           </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>Customize & Preview in Real Time</Typography>
+          <Typography sx={{ color: 'text.secondary' }}>{'Customize & Preview in Real Time'}</Typography>
           <IconButton
             onClick={() => setOpen(false)}
             sx={{
@@ -135,11 +135,11 @@ function Customizer() {
               variant="caption"
               sx={{ mb: 4, color: 'text.disabled', textTransform: 'uppercase' }}
             >
-              Theming
+              {'Theming'}
             </Typography>
 
             <Box sx={{ mb: 4 }}>
-              <Typography>Skin</Typography>
+              <Typography>{'Skin'}</Typography>
               <RadioGroup
                 row
                 value={skin}
@@ -155,13 +155,13 @@ function Customizer() {
             </Box>
 
             <Box sx={{ mb: 4 }}>
-              <Typography>Mode</Typography>
+              <Typography>{'Mode'}</Typography>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <InputLabel
                   htmlFor="change-mode"
                   sx={{ cursor: 'pointer', fontSize: '0.875rem', color: 'text.secondary' }}
                 >
-                  Light
+                  {'Light'}
                 </InputLabel>
                 <Switch
                   id="change-mode"
@@ -173,13 +173,13 @@ function Customizer() {
                   htmlFor="change-mode"
                   sx={{ cursor: 'pointer', fontSize: '0.875rem', color: 'text.secondary' }}
                 >
-                  Dark
+                  {'Dark'}
                 </InputLabel>
               </Box>
             </Box>
 
             <Box>
-              <Typography sx={{ mb: 2.5 }}>Primary Color</Typography>
+              <Typography sx={{ mb: 2.5 }}>{'Primary Color'}</Typography>
               <Box sx={{ display: 'flex' }}>
                 <ColorBox
                   onClick={() => handleChange('themeColor', 'primary')}
@@ -249,11 +249,11 @@ function Customizer() {
               variant="caption"
               sx={{ mb: 4, color: 'text.disabled', textTransform: 'uppercase' }}
             >
-              Layout
+              {'Layout'}
             </Typography>
 
             <Box sx={{ mb: 4 }}>
-              <Typography>Content Width</Typography>
+              <Typography>{'Content Width'}</Typography>
               <RadioGroup
                 row
                 value={contentWidth}
@@ -266,7 +266,7 @@ function Customizer() {
             </Box>
 
             <Box sx={{ mb: 4 }}>
-              <Typography>AppBar Type</Typography>
+              <Typography>{'AppBar Type'}</Typography>
               <RadioGroup
                 row
                 value={appBar}
@@ -282,7 +282,7 @@ function Customizer() {
             </Box>
 
             <Box sx={{ mb: 4 }}>
-              <Typography>Footer Type</Typography>
+              <Typography>{'Footer Type'}</Typography>
               <RadioGroup
                 row
                 value={footer}
@@ -299,7 +299,7 @@ function Customizer() {
               mb: 4, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             }}
             >
-              <Typography>AppBar Blur</Typography>
+              <Typography>{'AppBar Blur'}</Typography>
               <Switch
                 name="appBarBlur"
                 checked={appBarBlur}
@@ -308,7 +308,7 @@ function Customizer() {
             </Box>
 
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Typography>RTL</Typography>
+              <Typography>{'RTL'}</Typography>
               <Switch
                 name="direction"
                 checked={direction === 'rtl'}
@@ -325,11 +325,11 @@ function Customizer() {
               variant="caption"
               sx={{ mb: 4, color: 'text.disabled', textTransform: 'uppercase' }}
             >
-              Menu
+              {'Menu'}
             </Typography>
 
             <Box sx={{ mb: layout === 'horizontal' && appBar === 'hidden' ? {} : 4 }}>
-              <Typography>Menu Layout</Typography>
+              <Typography>{'Menu Layout'}</Typography>
               <RadioGroup
                 row
                 value={layout}
@@ -349,7 +349,7 @@ function Customizer() {
 
             {navHidden || layout === 'horizontal' ? null : (
               <Box sx={{ mb: 4 }}>
-                <Typography>Menu Toggle</Typography>
+                <Typography>{'Menu Toggle'}</Typography>
                 <RadioGroup
                   row
                   value={verticalNavToggleType}
@@ -367,7 +367,7 @@ function Customizer() {
                 mb: 4, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               }}
               >
-                <Typography>Menu Collapsed</Typography>
+                <Typography>{'Menu Collapsed'}</Typography>
                 <Switch
                   name="navCollapsed"
                   checked={navCollapsed}
@@ -378,7 +378,7 @@ function Customizer() {
 
             {layout === 'horizontal' && appBar === 'hidden' ? null : (
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Typography>Menu Hidden</Typography>
+                <Typography>{'Menu Hidden'}</Typography>
                 <Switch
                   name="navHidden"
                   checked={navHidden}

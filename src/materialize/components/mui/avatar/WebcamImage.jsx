@@ -43,7 +43,7 @@ function WebcamImage(props) {
         display: 'flex', flexDirection: 'Row', alignItems: 'center', justifyContent: 'space-between', width: '100%',
       }}
       >
-        <Typography variant="h6">Take photo</Typography>
+        <Typography variant="h6">{'Take photo'}</Typography>
         <IconButton
           onClick={onCloseCamera}
           onMouseDown={handleMouseDownClosed}
@@ -75,7 +75,7 @@ function WebcamImage(props) {
           variant="outlined"
           onClick={onCloseCamera}
         >
-          Cancel
+          {'Cancel'}
         </Button>
         {img === null
           ? (
@@ -83,7 +83,7 @@ function WebcamImage(props) {
               variant="contained"
               onClick={capture}
             >
-              Capture photo
+              {'Capture photo'}
             </Button>
           )
           : (
@@ -91,7 +91,7 @@ function WebcamImage(props) {
               variant="contained"
               onClick={handleRetake}
             >
-              Retake
+              {'Retake'}
             </Button>
           )}
       </Box>

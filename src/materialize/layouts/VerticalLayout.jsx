@@ -79,16 +79,16 @@ function VerticalLayout(props) {
         && themeConfig.layout === 'vertical'
         && !(navHidden && settings.lastLayout === 'horizontal') ? null : (
           <Navigation
-            navWidth={navWidth}
-            navHover={navHover}
-            navVisible={navVisible}
-            setNavHover={setNavHover}
-            setNavVisible={setNavVisible}
-            collapsedNavWidth={collapsedNavWidth}
-            toggleNavVisibility={toggleNavVisibility}
-            navigationBorderWidth={navigationBorderWidth}
-            {...props}
-          />
+              navWidth={navWidth}
+              navHover={navHover}
+              navVisible={navVisible}
+              setNavHover={setNavHover}
+              setNavVisible={setNavVisible}
+              collapsedNavWidth={collapsedNavWidth}
+              toggleNavVisibility={toggleNavVisibility}
+              navigationBorderWidth={navigationBorderWidth}
+              {...props}
+            />
           )}
         <MainContentWrapper className="layout-content-wrapper">
           <AppBar toggleNavVisibility={toggleNavVisibility} {...props} />
