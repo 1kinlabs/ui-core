@@ -19,12 +19,10 @@ function Title({ title } : { title?: string}) {
 const NonCollapsibleSection = styled(({
   children, className, title,
 } : NonCollapsibleProps) => (
-  <Card>
+  <Card className={className}>
     <CardContent>
       <Title title={title} />
-      <div className={className}>
-        {children}
-      </div>
+      {children}
     </CardContent>
   </Card>
 ))``
