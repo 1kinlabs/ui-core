@@ -12,7 +12,7 @@ export type Props = {
 }
 
 const NextSteps = styled(({ className, claimCode, claimInstructions } : Props) => (
-  <Section className={className} title="Next Steps">
+  <Section className={className} title="Next Steps" collapsible>
     <Typography variant="body2" fontWeight={600}>
       {"You've claimed your content, but you're not finished yet! Follow the instructions below in order to complete the process."}
     </Typography>
