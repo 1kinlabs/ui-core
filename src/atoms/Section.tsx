@@ -1,12 +1,9 @@
 import { Card, CardContent as BaseCardContent, Typography } from '@mui/material'
-import { ReactElement } from 'react'
 import { styled } from 'styled-components'
+import { NonCollapsibleProps, CollapsibleProps } from 'types/Section'
+import CollapsibleSection from './CollapsibleSection'
 
-type Props = {
-  children: string | ReactElement | ReactElement[],
-  title?: string,
-  className?: string
-}
+export type Props = NonCollapsibleProps | CollapsibleProps;
 
 const CardContent = styled(BaseCardContent)`
   display: flex;
@@ -14,21 +11,29 @@ const CardContent = styled(BaseCardContent)`
   gap: 16px;
 `
 
-const Section = styled(({ children, className, title } : Props) => (
+function Title({ title } : { title?: string}) {
+  return title ? (
+    <Typography variant="h6" fontWeight={500}>
+      {title}
+    </Typography>
+  ) : null
+}
+
+const Section = styled(({
+  children, className, title, collapsible, defaultExpanded = true,
+} : Props) => (collapsible ? (
+  <CollapsibleSection title={title} className={className} defaultExpanded={defaultExpanded}>
+    {children}
+  </CollapsibleSection>
+) : (
   <Card>
     <CardContent>
-      {
-        title && (
-          <Typography variant="h6" fontWeight={500}>
-            {title}
-          </Typography>
-        )
-      }
+      <Title title={title} />
       <div className={className}>
         {children}
       </div>
     </CardContent>
   </Card>
-))``
+)))``
 
 export default Section

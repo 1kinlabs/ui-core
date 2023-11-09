@@ -43,6 +43,23 @@ export const WithTitle: Story = {
   },
 }
 
+export const Collapsible: Story = {
+
+  args: {
+    collapsible: true,
+    title: 'About the Game',
+    children: [
+      <Typography variant="body2" key="Title">
+        {pineapplePizzaHero.title}
+      </Typography>,
+      <Typography variant="body2" key="Game Description">
+        {pineapplePizzaHero.description}
+      </Typography>,
+
+    ],
+  },
+}
+
 export const Mobile: Story = {
   args: {
     children: (
