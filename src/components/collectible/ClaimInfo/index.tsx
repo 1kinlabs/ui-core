@@ -8,12 +8,18 @@ type Props = {
   className?: string
   collectible: Collectible
   game: Game
+  onAddToCollection: (collectible: Collectible) => void
 }
 
-const ClaimInfo = styled(({ className, collectible, game }: Props) => (
+const ClaimInfo = styled(({
+  className,
+  collectible,
+  game,
+  onAddToCollection,
+}: Props) => (
   <div className={className}>
     <CollectibleImage collectible={collectible} />
-    <ClaimCard collectible={collectible} game={game} />
+    <ClaimCard collectible={collectible} game={game} onAddToCollection={onAddToCollection} />
   </div>
 ))`
 `
