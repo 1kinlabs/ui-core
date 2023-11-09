@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box'
 import { useTheme, styled } from 'theme'
+import { ClaimStatus } from 'enums/ClaimStatus'
 
 type EntryType = {
   backgroundColor: string;
@@ -15,10 +16,18 @@ export enum TypeKey {
   EXPIRED
 }
 
-const useTypeInfo = (type : TypeKey) : EntryType => {
+type SupportedTypes = ClaimStatus | TypeKey
+
+const useTypeInfo = (type : SupportedTypes) : EntryType => {
   const theme = useTheme()
 
   const typeMap = {
+    [ClaimStatus.AVAILABLE]: { backgroundColor: theme.text.link, color: theme.surface.body, text: 'Available' },
+    [ClaimStatus.IN_PROGRESS]: { backgroundColor: theme.text.warning, color: theme.surface.body, text: 'In Progress' },
+    [ClaimStatus.COMPLETED]: { backgroundColor: theme.text.success, color: theme.surface.body, text: 'Completed' },
+    [ClaimStatus.SOLD_OUT]: { backgroundColor: theme.text.error, color: theme.text.primary, text: 'Sold Out' },
+    [ClaimStatus.EXPIRED]: { backgroundColor: theme.text.disabled, color: theme.surface.body, text: 'Expired' },
+
     [TypeKey.AVAILABLE]: { backgroundColor: theme.text.link, color: theme.surface.body, text: 'Available' },
     [TypeKey.IN_PROGRESS]: { backgroundColor: theme.text.warning, color: theme.surface.body, text: 'In Progress' },
     [TypeKey.COMPLETED]: { backgroundColor: theme.text.success, color: theme.surface.body, text: 'Completed' },
@@ -30,7 +39,7 @@ const useTypeInfo = (type : TypeKey) : EntryType => {
 }
 
 export type Props = {
-  type: TypeKey,
+  type: SupportedTypes,
   className?: string,
   outline?: boolean
 }
