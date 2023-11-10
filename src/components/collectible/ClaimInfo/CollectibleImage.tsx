@@ -17,7 +17,6 @@ const CollectibleImage = styled(({ className, collectible }: Props) => (
   border-radius: 8px;
   ${mobile} {
     height: auto;
-    border-radius: 10px 10px 0 0;
   }
 `
 

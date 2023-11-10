@@ -1,13 +1,30 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import type { Meta, StoryObj } from '@storybook/react'
+import { styled } from 'styled-components'
 
-import ClaimInfo from 'components/collectible/ClaimInfo'
+import ClaimInfo, { Props } from 'components/collectible/ClaimInfo'
 import { pineapplePizzaHeroCard } from 'mock-data/collectible'
 import { pineapplePizzaHero } from 'mock-data/game'
 import { ClaimStatus } from 'enums/ClaimStatus'
 
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+`
+
+function Component(props: Props) {
+  return (
+    <Wrapper>
+      <ClaimInfo {...props} />
+    </Wrapper>
+  )
+}
+
 const meta: Meta<typeof ClaimInfo> = {
   title: 'components/collectible/ClaimInfo',
-  component: ClaimInfo,
+  component: Component,
   parameters: {
     layout: 'centered',
     deepControls: { enabled: true },

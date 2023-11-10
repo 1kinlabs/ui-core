@@ -1,11 +1,10 @@
 import styled from 'styled-components'
-import { viewports } from 'css/media'
 import { Collectible } from 'types/Collectible'
 import { Game } from 'types/Game'
 import ClaimCard from './ClaimCard'
 import CollectibleImage from './CollectibleImage'
 
-type Props = {
+export type Props = {
   className?: string
   collectible: Collectible
   game: Game

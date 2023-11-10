@@ -59,7 +59,7 @@ const ClaimCard = styled(({
     background-color: ${({ theme }) => theme.surface.paperAlpha};
     backdrop-filter: blur(10px);
 
-    ${container.mobile} {
+    ${container.tablet} {
       position: static;
       transform: none;
       background-color: ${({ theme }) => theme.surface.paper};
