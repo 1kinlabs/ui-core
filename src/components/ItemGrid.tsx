@@ -5,6 +5,7 @@ import { classNames } from 'utils/classNames'
 
 const ItemsContainer = styled.div`
   && {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     padding: 0;

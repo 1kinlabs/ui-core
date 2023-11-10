@@ -5,7 +5,7 @@ import MediaSlider from './MediaSlider'
 
 const ImageStyled = styled.img`
   cursor: pointer;
-  min-width: 220px;
+  max-height: 280px;
   max-width: 22%;
   border-radius: 8px;
   object-fit: cover;

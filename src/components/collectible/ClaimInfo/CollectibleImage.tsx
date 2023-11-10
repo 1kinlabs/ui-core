@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Collectible } from 'types/Collectible'
 import Image from 'next/image'
-import { mobile } from 'css/media'
+import { container } from 'css/media'
 
 type Props = {
   className?: string
@@ -15,7 +15,7 @@ const CollectibleImage = styled(({ className, collectible }: Props) => (
   max-height: 480px;
   object-fit: cover;
   border-radius: 8px;
-  ${mobile} {
+  ${container.mobile} {
     height: auto;
   }
 `

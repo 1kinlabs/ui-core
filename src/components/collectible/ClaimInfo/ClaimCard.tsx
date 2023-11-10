@@ -11,6 +11,7 @@ import { Game } from 'types/Game'
 
 import { container } from 'css/media'
 import Chip from 'atoms/Chip'
+import { ClaimStatus } from 'enums/ClaimStatus'
 import ClaimProgress from '../ClaimProgress'
 
 type Props = {
@@ -25,6 +26,7 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+  gap: 16px;
 `
 
 const ClaimCard = styled(({
@@ -45,9 +47,21 @@ const ClaimCard = styled(({
       {collectible.short_description && (
         <Typography variant="body2">{collectible.short_description}</Typography>
       )}
-
-      <ClaimProgress collectible={collectible} />
-      <Button variant="contained" onClick={() => onAddToCollection(collectible)}>{'Add to My Collection'}</Button>
+      {
+        collectible.claimStatus !== ClaimStatus.EXPIRED && <ClaimProgress collectible={collectible} />
+      }
+      {
+        (collectible.claimStatus === ClaimStatus.AVAILABLE || collectible.claimStatus === ClaimStatus.SOLD_OUT)
+          && (
+            <Button
+              variant="contained"
+              onClick={() => onAddToCollection(collectible)}
+              disabled={collectible.claimStatus === ClaimStatus.SOLD_OUT}
+            >
+              {'Add to My Collection'}
+            </Button>
+          )
+      }
     </CardContent>
   </Card>
 ))`
