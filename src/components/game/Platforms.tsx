@@ -1,50 +1,40 @@
+import { ReactElement, cloneElement } from 'react'
 import ItemGrid from 'components/ItemGrid'
 import Tooltip from '@mui/material/Tooltip'
-import NextImage from 'next/image'
 import { Platform } from 'enums/Game'
-import AndroidSVG from 'svg/android.svg'
-import EpicSVG from 'svg/epic.svg'
-import iOSSVG from 'svg/ios.svg'
-import MacSVG from 'svg/mac.svg'
-import PcSVG from 'svg/pc.svg'
-import PlaystationSVG from 'svg/playstation.svg'
-import SteamSVG from 'svg/steam.svg'
-import WebBrowserSVG from 'svg/browser.svg'
-import XboxSVG from 'svg/xbox.svg'
+import {
+  Android, Epic, IOS, Mac, PC, Playstation, Steam, Web, Xbox,
+} from 'icons/Platforms'
+import { IconSize } from 'enums/IconSize'
 
-const platformIconMap : Record<Platform, string> = {
-  [Platform.ANDROID]: AndroidSVG,
-  [Platform.EPIC_GAME_STORE]: EpicSVG,
-  [Platform.IOS]: iOSSVG,
-  [Platform.MAC]: MacSVG,
-  [Platform.PC]: PcSVG,
-  [Platform.PLAYSTATION]: PlaystationSVG,
-  [Platform.STEAM]: SteamSVG,
-  [Platform.WEB_BROWSER]: WebBrowserSVG,
-  [Platform.XBOX]: XboxSVG,
+const platformIconMap: Record<Platform, ReactElement> = {
+  [Platform.ANDROID]: <Android />,
+  [Platform.EPIC_GAME_STORE]: <Epic />,
+  [Platform.IOS]: <IOS />,
+  [Platform.MAC]: <Mac />,
+  [Platform.PC]: <PC />,
+  [Platform.PLAYSTATION]: <Playstation />,
+  [Platform.STEAM]: <Steam />,
+  [Platform.WEB_BROWSER]: <Web />,
+  [Platform.XBOX]: <Xbox />,
 }
 
-type Props = {
-  platforms: Platform[],
-  compact?: boolean
-  small?: boolean
+interface Props {
+  platforms: Platform[];
+  compact?: boolean;
+  small?: boolean;
 }
 
-function Platforms({ platforms, compact, small }: Props) {
+function Platforms({ platforms, compact, small } : Props) {
+  const iconSize = small ? IconSize.XS : IconSize.S
+
   return (
     <ItemGrid compact={compact}>
-      {
-        platforms.map((platform) => (
-          <Tooltip title={platform} placement="top" key={platform}>
-            <NextImage
-              alt={platform}
-              src={platformIconMap[platform]}
-              width={small ? 16 : 24}
-              height={small ? 16 : 24}
-            />
-          </Tooltip>
-        ))
-      }
+      {platforms.map((platform) => (
+        <Tooltip title={platform} placement="top" key={platform}>
+          {cloneElement(platformIconMap[platform], { size: iconSize })}
+        </Tooltip>
+      ))}
     </ItemGrid>
   )
 }
