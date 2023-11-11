@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { pineapplePizzaHero } from 'mock-data/game'
-import { pineapplePizzaHeroCard } from 'mock-data/collectible'
+import {
+  pineapplePizzaHeroCard, shieldOfTheAncients, cloakOfTheAges, pipTheEnchantress, shiningSword,
+} from 'mock-data/collectible'
 import Collectible from 'pages/Collectible'
 import { ClaimStatus } from 'enums/ClaimStatus'
 import { completedClaim, inProgressClaim } from 'mock-data/claim'
@@ -24,13 +26,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Available: Story = {
   args: {
-    collectible: { ...pineapplePizzaHeroCard, claimStatus: ClaimStatus.AVAILABLE },
+    collectible: { ...shieldOfTheAncients, claimStatus: ClaimStatus.AVAILABLE },
   },
 }
 
 export const InProgress: Story = {
   args: {
-    collectible: { ...pineapplePizzaHeroCard, claimStatus: ClaimStatus.IN_PROGRESS },
+    collectible: { ...pipTheEnchantress, claimStatus: ClaimStatus.IN_PROGRESS },
     claim: inProgressClaim,
   },
 }
@@ -44,13 +46,13 @@ export const Completed: Story = {
 
 export const SoldOut: Story = {
   args: {
-    collectible: { ...pineapplePizzaHeroCard, claimStatus: ClaimStatus.SOLD_OUT },
+    collectible: { ...cloakOfTheAges, claimStatus: ClaimStatus.SOLD_OUT },
   },
 }
 
 export const Expired: Story = {
   args: {
-    collectible: { ...pineapplePizzaHeroCard, claimStatus: ClaimStatus.EXPIRED },
+    collectible: { ...shiningSword, claimStatus: ClaimStatus.EXPIRED },
   },
 }
 
@@ -65,7 +67,15 @@ export const Tablet: Story = {
 export const Mobile: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'mobile2',
+      defaultViewport: 'mobile',
+    },
+  },
+}
+
+export const MobileSmall: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobileSmall',
     },
   },
 }

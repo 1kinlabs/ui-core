@@ -1,7 +1,7 @@
 import Section from 'atoms/Section'
 import styled from 'styled-components'
 import { Game } from 'types/Game'
-import { mobileSmall } from 'css/media'
+import { container } from 'css/media'
 import AboutTheGame from './AboutTheGame'
 import GameGenres from './GameGenres'
 import GameModes from './GameModes'
@@ -32,6 +32,9 @@ const GameInfo = styled(({ game, className } : Props) => (
     </div>
   </Section>
 ))`
+  container: game-info / inline-size;
+  width: 100%;
+
   .gameInfoContainer {
     display: grid;
     gap: 16px 16px;
@@ -42,7 +45,17 @@ const GameInfo = styled(({ game, className } : Props) => (
       "release-date age developer"
       "publisher official-website .";
 
-    ${mobileSmall} {
+    ${container.mobile} {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+      "about about "
+      "genres modes"
+      "platforms release-date"
+      "age developer"
+      "publisher official-website";
+    }
+
+    ${container.mobileSmall} {
       grid-template-columns: 1fr;
       grid-template-areas:
       "about"
@@ -53,7 +66,7 @@ const GameInfo = styled(({ game, className } : Props) => (
       "age"
       "developer"
       "publisher"
-      "official-website"
+      "official-website";
     }
   }
 `

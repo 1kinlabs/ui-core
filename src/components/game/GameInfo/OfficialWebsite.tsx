@@ -9,7 +9,7 @@ type Props = {
 
 const OfficialWebsite = styled(({ website, className } : Props) => (
   <GridCell title="Official Website" className={className}>
-    <Link href={website}>{website}</Link>
+    <Link target="_blank" href={website}>{website}</Link>
   </GridCell>
 ))`
   grid-area: official-website;

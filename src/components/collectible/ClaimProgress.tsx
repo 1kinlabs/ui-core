@@ -13,19 +13,20 @@ type Props = {
 
 const ClaimProgress = styled<React.FC<Props>>(({ className, collectible } : Props) => {
   const availableCodes = getAvailableCodes(collectible)
+  const totalCount = collectible?.total_count || 0
 
   const text = availableCodes > 99
     ? '100+ Left'
     : `${Math.max(availableCodes, 0)} Left`
 
-  const progress = calculateProgressPercentage(availableCodes, collectible?.total_count || 0)
+  const progress = calculateProgressPercentage(totalCount - availableCodes, totalCount)
 
   return (
     <div className={className}>
       <Typography variant="h6">
         {text}
       </Typography>
-      <LinearProgress className={progress < 30 ? 'urgent' : ''} variant="determinate" value={progress} />
+      <LinearProgress className={progress > 70 ? 'urgent' : ''} variant="determinate" value={progress} />
     </div>
   )
 })`

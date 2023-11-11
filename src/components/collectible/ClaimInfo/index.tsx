@@ -22,6 +22,9 @@ const ClaimInfo = styled(({
     <ClaimCard collectible={collectible} game={game} onAddToCollection={onAddToCollection} />
   </div>
 ))`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   position: relative;
   container: claim-info / inline-size;
   width: 100%;

@@ -6,8 +6,16 @@ import type { Preview } from "@storybook/react";
 import { themes } from '@storybook/theming'
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
 import { viewports } from '../src/css/media'
+import styled from 'styled-components';
 
 import { ThemeProvider } from '../src/theme'
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+`
 
 const customViewports = Object.keys(viewports).reduce((acc, key) => {
   acc[key] = {
@@ -26,7 +34,9 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <Story />
+        <Wrapper>
+          <Story />
+        </Wrapper>
       </ThemeProvider>
     )
   ],
