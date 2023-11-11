@@ -45,7 +45,13 @@ export type Props = {
 }
 
 const Chip = styled(({ type, className, outline } : Props) => {
-  const { backgroundColor, color, text } = useTypeInfo(type)
+  const typeInfo = useTypeInfo(type)
+
+  if (!typeInfo) {
+    return null
+  }
+
+  const { backgroundColor, color, text } = typeInfo
 
   return (
     <Box
@@ -64,6 +70,7 @@ const Chip = styled(({ type, className, outline } : Props) => {
   font-size: 13px;
   width: fit-content;
   padding: 4px 8px;
+  text-wrap: nowrap;
   `
 
 export default Chip

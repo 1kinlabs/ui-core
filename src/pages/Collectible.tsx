@@ -12,19 +12,21 @@ import styled from 'styled-components'
 import { Claim } from 'types/Claim'
 import { Collectible as CollectibleType } from 'types/Collectible'
 import { Game } from 'types/Game'
+import { OnAddToCollection } from 'components/collectible/ClaimInfo/ClaimCard'
 
 export type Props = {
   className?: string,
   collectible: CollectibleType,
   game: Game
-  claim?: Claim,
-  onAddToCollection: (collectible: CollectibleType) => void
+  claim?: Claim | null,
+  onAddToCollection: OnAddToCollection
 }
 
 const Collectible = styled(({
   className, collectible, game, claim, onAddToCollection,
 } : Props) => {
   const faqList = [...(collectible.faq_list || []), ...(game.faq_list || [])]
+  const whatsIncludedList = collectible.item_details ? collectible.item_details.filter((i) => i !== '') : []
 
   return (
     <div className={className}>
@@ -41,27 +43,23 @@ const Collectible = styled(({
             {collectible.description}
           </Typography>
         </Section>
-        {
-          collectible.item_details?.length && (
-            <Section title="What's Included" className="included">
-              <List className="includedList">
-                {
-                  collectible.item_details.map((item) => (
-                    <ListItem
-                      disablePadding
-                      className="includedListItem"
-                      key={item}
-                    >
-                      <Typography variant="body2" sx={{ display: 'inline-block' }}>
-                        {item}
-                      </Typography>
-                    </ListItem>
-                  ))
-                }
-              </List>
-            </Section>
-          )
-        }
+        <Section title="What's Included" className="included">
+          <List className="includedList">
+            {
+              whatsIncludedList.map((item) => (
+                <ListItem
+                  disablePadding
+                  className="includedListItem"
+                  key={item}
+                >
+                  <Typography variant="body2" sx={{ display: 'inline' }}>
+                    {item}
+                  </Typography>
+                </ListItem>
+              ))
+            }
+          </List>
+        </Section>
         <GameLauncher game={game} className="launcher" />
         {
           !!collectible.assets?.additionalMedia?.length && (

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import {
   Card,
@@ -5,6 +6,7 @@ import {
   Button,
   Divider,
   Typography,
+  TypographyProps,
 } from '@mui/material'
 import { Collectible } from 'types/Collectible'
 import { Game } from 'types/Game'
@@ -14,11 +16,13 @@ import Chip from 'atoms/Chip'
 import { ClaimStatus } from 'enums/ClaimStatus'
 import ClaimProgress from '../ClaimProgress'
 
+export type OnAddToCollection = (collectible: Collectible, setIsLoading: (isLoading: boolean) => void) => Promise<void>
+
 type Props = {
   className?: string
   collectible: Collectible
   game: Game
-  onAddToCollection: (collectible: Collectible) => void
+  onAddToCollection: OnAddToCollection
 }
 
 const Header = styled.div`
@@ -29,42 +33,55 @@ const Header = styled.div`
   gap: 16px;
 `
 
+const GameTitle = styled(Typography)<TypographyProps>`
+  max-width: 215px;
+  color: ${({ theme }) => theme.text.secondary};
+
+  ${container.tablet} {
+    max-width: none;
+  }
+`
+
 const ClaimCard = styled(({
   className,
   collectible,
   game,
   onAddToCollection,
-}: Props) => (
-  <Card className={className}>
-    <CardContent>
-      <Header>
-        <Typography variant="h6" component="h1">{game.title || 'Unknown Game'}</Typography>
-        <Chip outline type={collectible.claimStatus} />
-      </Header>
-      <Divider />
+}: Props) => {
+  const [isLoading, setIsLoading] = useState(false)
 
-      <Typography variant="h4" component="h2">{collectible.title || 'Unknown Item'}</Typography>
-      {collectible.short_description && (
-        <Typography variant="body2">{collectible.short_description}</Typography>
-      )}
-      {
-        collectible.claimStatus !== ClaimStatus.EXPIRED && <ClaimProgress collectible={collectible} />
-      }
-      {
-        (collectible.claimStatus === ClaimStatus.AVAILABLE || collectible.claimStatus === ClaimStatus.SOLD_OUT)
+  return (
+    <Card className={className}>
+      <CardContent>
+        <Header>
+          <GameTitle variant="h6" component="h1">{game.title || 'Unknown Game'}</GameTitle>
+          <Chip outline type={collectible.claimStatus} />
+        </Header>
+        <Divider />
+
+        <Typography variant="h4" component="h2">{collectible.title || 'Unknown Item'}</Typography>
+        {collectible.short_description && (
+          <Typography variant="body2">{collectible.short_description}</Typography>
+        )}
+        {
+          collectible.claimStatus !== ClaimStatus.EXPIRED && <ClaimProgress collectible={collectible} />
+        }
+        {
+          (collectible.claimStatus === ClaimStatus.AVAILABLE || collectible.claimStatus === ClaimStatus.SOLD_OUT)
           && (
             <Button
               variant="contained"
-              onClick={() => onAddToCollection(collectible)}
-              disabled={collectible.claimStatus === ClaimStatus.SOLD_OUT}
+              onClick={() => onAddToCollection(collectible, setIsLoading)}
+              disabled={isLoading || collectible.claimStatus === ClaimStatus.SOLD_OUT}
             >
               {'Add to My Collection'}
             </Button>
           )
-      }
-    </CardContent>
-  </Card>
-))`
+        }
+      </CardContent>
+    </Card>
+  )
+})`
   && {
     position: absolute;
     top: 50%;
@@ -77,10 +94,6 @@ const ClaimCard = styled(({
       position: static;
       transform: none;
       background-color: ${({ theme }) => theme.surface.paper};
-    }
-
-    h1 {
-      color: ${({ theme }) => theme.text.secondary};
     }
 
     h2 {
