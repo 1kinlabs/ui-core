@@ -45,15 +45,9 @@ export type Props = {
 }
 
 const Chip = styled(({ type, className, outline } : Props) => {
-  const typeInfo = useTypeInfo(type)
+  const { backgroundColor, color, text } = useTypeInfo(type) || {}
 
-  if (!typeInfo) {
-    return null
-  }
-
-  const { backgroundColor, color, text } = typeInfo
-
-  return (
+  return color ? (
     <Box
       sx={{
         backgroundColor: outline ? 'transparent' : backgroundColor,
@@ -64,11 +58,10 @@ const Chip = styled(({ type, className, outline } : Props) => {
     >
       {text}
     </Box>
-  )
+  ) : null
 })`
   border-radius: 5px;
   font-size: 13px;
-  width: fit-content;
   padding: 4px 8px;
   text-wrap: nowrap;
   `

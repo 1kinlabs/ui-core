@@ -6,6 +6,8 @@ export type Props = Omit <ButtonProps, 'onClick'> & {
   onClick: () => unknown
 }
 
-export const Button = styled((props : Props) => (
+const Button = styled((props : Props) => (
   <BaseButton {...props} />
 ))``
+
+export default Button

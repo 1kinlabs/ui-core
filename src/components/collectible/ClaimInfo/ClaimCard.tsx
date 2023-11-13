@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import {
   Card,
   CardContent,
-  Button,
   Divider,
   Typography,
   TypographyProps,
@@ -12,6 +11,7 @@ import { Collectible } from 'types/Collectible'
 import { Game } from 'types/Game'
 
 import { container } from 'css/media'
+import Button from 'atoms/Button'
 import Chip from 'atoms/Chip'
 import { ClaimStatus } from 'enums/ClaimStatus'
 import ClaimProgress from '../ClaimProgress'
