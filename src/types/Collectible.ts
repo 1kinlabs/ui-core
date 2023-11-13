@@ -2,6 +2,8 @@ import { ClaimStatus } from 'enums/ClaimStatus'
 import { Nullable } from './Nullable'
 import { DefaultMedia } from './Media'
 import { FaqList } from './Faq'
+import { Claim } from './Claim'
+import { Game } from './Game'
 
 type Assets = {
   featureImage: string,
@@ -45,4 +47,6 @@ export type Collectible = {
   asset_type: string;
   game_engine_support: string[];
   available_codes: number;
+  claim: Claim;
+  game: Game;
 }>>

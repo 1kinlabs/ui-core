@@ -1,5 +1,5 @@
 import TextField from 'atoms/TextField'
-import { Button } from 'atoms/Button'
+import Button from 'atoms/Button'
 import {
   Alert, Snackbar, Typography,
 } from '@mui/material'
