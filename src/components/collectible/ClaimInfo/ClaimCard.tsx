@@ -49,6 +49,7 @@ const ClaimCard = styled(({
   onAddToCollection,
 }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
+  const isAvailableOrSoldOut = collectible.claimStatus === ClaimStatus.AVAILABLE || collectible.claimStatus === ClaimStatus.SOLD_OUT
 
   return (
     <Card className={className}>
@@ -64,10 +65,10 @@ const ClaimCard = styled(({
           <Typography variant="body2">{collectible.short_description}</Typography>
         )}
         {
-          collectible.claimStatus !== ClaimStatus.EXPIRED && <ClaimProgress collectible={collectible} />
+          isAvailableOrSoldOut && <ClaimProgress collectible={collectible} />
         }
         {
-          (collectible.claimStatus === ClaimStatus.AVAILABLE || collectible.claimStatus === ClaimStatus.SOLD_OUT)
+          isAvailableOrSoldOut
           && (
             <Button
               variant="contained"

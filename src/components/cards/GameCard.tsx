@@ -88,7 +88,7 @@ function GameCard({ game, onClick = () => {} }: Props) {
               {'Available Now:'}
             </Typography>
             <Typography variant="body1" sx={{ fontWeight: 700 }}>
-              {game.liveContent - game.claims.liveContent}
+              {Math.max(game.liveContent - game.claims.liveContent, 0)}
             </Typography>
           </AvailableNowContainer>
           <LinearProgress variant="determinate" value={calculateProgressPercentage(game.claims.liveContent, game.liveContent)} />

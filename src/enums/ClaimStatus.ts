@@ -1,5 +1,5 @@
 export enum ClaimStatus {
-  COMPLETED = 'complete',
+  COMPLETED = 'completed',
   IN_PROGRESS = 'pending',
   AVAILABLE = 'available',
   SOLD_OUT = 'sold_out',
