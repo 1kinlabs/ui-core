@@ -19,7 +19,7 @@ const convertHyperlinksWithStyling = (text: string) => {
     linkifyHtml has the ability to add properties but it will only add properties to the ones it modifies.
     So rather than using it, we just add it always to make sure link styles are consistent.
   */
-  return linkifyHtml(text).replace(/<a /g, `<a style="color:${theme.text.link}" `)
+  return linkifyHtml(text).replace(/<a /g, `<a target="_blank" style="color:${theme.text.link}" `)
 }
 
 const sanitizeHTMLWithOptions = (dirtyText: string) => sanitizeHTML(dirtyText, {
