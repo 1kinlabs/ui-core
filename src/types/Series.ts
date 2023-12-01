@@ -1,3 +1,5 @@
+import { Nullable } from './Nullable'
+
 export type Reward = {
   image: string,
   description: string
@@ -8,5 +10,6 @@ export type Series = {
   amazon_asin: string,
   logo: string,
   rewards: Reward[],
-  claim_instructions: string | null
-}
+} & Partial<Nullable<{
+  claim_instructions: string
+}>>
