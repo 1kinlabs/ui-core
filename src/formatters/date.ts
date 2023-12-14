@@ -1,3 +1,3 @@
-import { DateTime } from 'luxon'
+import { DateTime, DateTimeFormatOptions } from 'luxon'
 
-export const format = (date : string, formatString?: string) : string => DateTime.fromSQL(date).toFormat(formatString || 'MMM d, yyyy')
+export const format = (date : string, formatOption?: DateTimeFormatOptions) : string => DateTime.fromISO(date).toLocaleString(formatOption || DateTime.DATE_MED)
