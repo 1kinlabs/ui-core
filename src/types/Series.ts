@@ -6,6 +6,7 @@ export type Reward = {
 }
 
 export type Series = {
+  name: string,
   amazon_id: string,
   amazon_asin: string,
   logo: string,
