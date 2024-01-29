@@ -23,7 +23,6 @@ import themeConfig from 'materialize/theme/config'
 // ** Custom Components Imports
 import UserIcon from 'materialize/components/UserIcon'
 import Translations from 'materialize/components/Translations'
-import CanViewNavLink from 'components/acl/CanViewNavLink'
 
 // ** Util Import
 import { hexToRGBA } from 'materialize/utils/hex-to-rgba'

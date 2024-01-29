@@ -20,8 +20,6 @@
   },
   "dependencies": {
     "@1kinlabs/tsconfig": "1.0.7",
-    "@casl/ability": "6.5.0",
-    "@casl/react": "3.1.0",
     "@happykit/flags": "^3.3.0",
     "@mui/icons-material": "5.14.3",
     "axios": "1.4.0",

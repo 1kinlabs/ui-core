@@ -30,7 +30,6 @@ import { hasActiveChild, removeChildren } from 'materialize/layouts/utils'
 // ** Custom Components Imports
 import UserIcon from 'materialize/components/UserIcon'
 import Translations from 'materialize/components/Translations'
-import CanViewNavGroup from 'components/acl/CanViewNavGroup'
 import VerticalNavItems from './VerticalNavItems'
 
 const MenuItemTextWrapper = styled(Box)(() => ({
