@@ -105,8 +105,6 @@ function VerticalNavLink({
     return false
   }
 
-  console.log('nav link??')
-
   return (
     <ListItem
       disablePadding
