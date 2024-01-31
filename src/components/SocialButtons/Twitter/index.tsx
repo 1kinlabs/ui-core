@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import Button from './BaseButton'
-import TwitterIcon from './icons/Twitter'
+import Button from '../BaseButton'
+import TwitterIcon from './Icon'
 
 type Props = {
   className?: string
