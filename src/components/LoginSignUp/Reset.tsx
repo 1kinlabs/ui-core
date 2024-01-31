@@ -17,26 +17,27 @@ type Props = {
   onReset: () => void
 }
 
-const Login = styled(({
-  className, onLogin, onSignUp, onReset,
+const Reset = styled(({
+  className, onReset, onLogin, onSignUp,
 }: Props) => (
   <Container className={className}>
-    <Button variant="outlined" color="primary" fullWidth onClick={onLogin}>
-      {'Login'}
+    <Button variant="outlined" color="primary" fullWidth onClick={onReset}>
+      {'Send Email'}
     </Button>
-    <Button variant="text" color="primary" fullWidth onClick={onSignUp}>
-      {'Create an Account'}
+    <Button variant="text" color="primary" fullWidth onClick={onLogin}>
+      {'Back to Login'}
     </Button>
     <Footer>
       <T variant="body2">
-        {'Having trouble logging in? '}
+        {'Need to create an account? '}
       </T>
-      <ResetButton variant="text" onClick={onReset}>
-        {'Reset Password'}
+      <ResetButton variant="text" onClick={onSignUp}>
+        {'Sign Up'}
       </ResetButton>
     </Footer>
   </Container>
 ))`
+  
 `
 
-export default Login
+export default Reset

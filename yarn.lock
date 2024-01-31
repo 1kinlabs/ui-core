@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@1kinlabs/eslint-config@0.0.13":
-  version "0.0.13"
-  resolved "https://npm.pkg.github.com/download/@1kinlabs/eslint-config/0.0.13/c37271de269e1cccd13b9c877c5cfa5643cf1481#c37271de269e1cccd13b9c877c5cfa5643cf1481"
-  integrity sha512-CU0RdPIUm/t8xbpWNVc8KpsVu6/prSrKtK8xS7pvCo5UC6BvCKY4WpGo9XXQnM9LIfJche9kjDO8vuiOvVLd3A==
+"@1kinlabs/eslint-config@^0.0.14":
+  version "0.0.14"
+  resolved "https://npm.pkg.github.com/download/@1kinlabs/eslint-config/0.0.14/700332682e9eb0d7683d3f307ed6b85a99da3a58#700332682e9eb0d7683d3f307ed6b85a99da3a58"
+  integrity sha512-ewH6cePahaar6BJ59zCfyGZ/VBFOe5s/SuFdvhbFCopHKkjlzE4m8mmlGMmx+APYvr2Qs6AMzLbEqEXrSnQclQ==
   dependencies:
     "@stylistic/eslint-plugin" "^1.0.1"
     "@stylistic/eslint-plugin-migrate" "^1.0.1"
