@@ -73,6 +73,12 @@ export const getVariables = ({
       hover: brand.discord.dark,
     },
   },
+  brand: {
+    amazon: '#FFD235',
+    google: '#FF4D49',
+    twitter: '#FFF',
+    discord: '#925CFF',
+  },
   progress: {
     foreground: primary.medium,
     urgent: {

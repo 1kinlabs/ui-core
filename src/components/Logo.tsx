@@ -1,3 +1,4 @@
+import { styled } from 'theme'
 import { Logo as SVGLogo } from 'svg/Logo'
 import { LogoSmall } from 'svg/LogoSmall'
 
@@ -6,10 +7,12 @@ type Props = {
   small?: boolean
 }
 
-export function Logo({ className, small }: Props) {
+export const Logo = styled(({ className, small }: Props) => {
   if (small) {
     return <LogoSmall className={className} />
   }
 
   return <SVGLogo className={className} />
-}
+})``
+
+export default Logo
