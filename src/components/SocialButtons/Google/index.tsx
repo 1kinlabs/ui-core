@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import Button from './BaseButton'
-import GoogleIcon from './icons/Google'
+import Button from '../BaseButton'
+import GoogleIcon from './Icon'
 
 type Props = {
   className?: string

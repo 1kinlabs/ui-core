@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import Button from './BaseButton'
-import AmazonIcon from './icons/Amazon'
+import Button from '../BaseButton'
+import AmazonIcon from './Icon'
 
 type Props = {
   className?: string

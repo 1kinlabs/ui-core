@@ -98,6 +98,12 @@ const LoginSignUp = styled(({ className }: Props) => {
   gap: 16px;
   justify-content: center;
   padding: 16px;
+
+  ${TextField} {
+    svg {
+      cursor: pointer;
+    }
+  }
 `
 
 export default LoginSignUp

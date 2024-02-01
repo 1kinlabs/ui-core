@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import Button from './BaseButton'
-import DiscordIcon from './icons/Discord'
+import Button from '../BaseButton'
+import DiscordIcon from './Icon'
 
 type Props = {
   className?: string
