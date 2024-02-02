@@ -1,0 +1,30 @@
+export const BACKEND_BASE_URL = (
+  typeof window !== 'undefined' && window.localStorage.getItem('BACKEND_BASE_URL')
+) || process.env.NEXT_PUBLIC_BACKEND_URL
+
+export const BACKEND_BASE_API_URL = `${BACKEND_BASE_URL}/v1`
+
+export type Params = {
+  method: string
+  body?: Record<string, unknown>
+  headers?: Record<string, string>
+}
+
+export default async function request(url: string, params: Params = { method: 'get' }) {
+  const { method, body, headers } = params
+
+  const response = await fetch(BACKEND_BASE_API_URL + url, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      ...headers,
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  })
+
+  if (response.ok) {
+    return response.json()
+  }
+
+  throw new Error(`Error making request to ${url}: ${response.status} ${response.statusText} ${await response.text()}`)
+}

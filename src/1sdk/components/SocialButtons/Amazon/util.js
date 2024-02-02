@@ -1,4 +1,3 @@
-// @ts-nocheck
 let urlParser
 
 if (typeof window !== 'undefined') {

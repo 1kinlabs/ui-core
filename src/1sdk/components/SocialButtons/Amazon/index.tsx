@@ -18,6 +18,7 @@ type Props = {
 
 const Amazon = styled(({ className, scope = [Scopes.profile], onLogin }: Props) => {
   usePromise(async () => {
+    console.log('loading aws')
     await SDK.load({
       appId: process.env.NEXT_PUBLIC_AMAZON_APP_ID,
       scope,
@@ -26,9 +27,13 @@ const Amazon = styled(({ className, scope = [Scopes.profile], onLogin }: Props) 
 
   const loginWithAmazon = async () => {
     try {
+      console.log('logging in', scope)
       const response = await SDK.login(scope)
+
+      console.log('response', response)
       onLogin?.(response)
     } catch (error) {
+      console.log('error', error)
       captureException(error)
     }
   }

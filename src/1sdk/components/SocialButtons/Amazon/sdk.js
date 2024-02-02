@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { rslError, timestampFromNow } from './util'
 
 let defaultScopes = ['profile']
