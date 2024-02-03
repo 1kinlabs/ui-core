@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import LoginSignUp from '1sdk/components/LoginSignUp'
 
 const meta: Meta = {
-  title: '1sdk/components/LoginSignUp',
+  title: '1sdk/LoginSignUp',
   component: LoginSignUp,
   parameters: {
     layout: 'centered',

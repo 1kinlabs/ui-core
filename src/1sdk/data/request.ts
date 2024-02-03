@@ -10,7 +10,7 @@ export type Params = {
   headers?: Record<string, string>
 }
 
-export default async function request(url: string, params: Params = { method: 'get' }) {
+export async function requestPublic(url: string, params: Params = { method: 'GET' }) {
   const { method, body, headers } = params
 
   const response = await fetch(BACKEND_BASE_API_URL + url, {
@@ -27,4 +27,22 @@ export default async function request(url: string, params: Params = { method: 'g
   }
 
   throw new Error(`Error making request to ${url}: ${response.status} ${response.statusText} ${await response.text()}`)
+}
+
+export async function request(url: string, params: Params = { method: 'GET' }) {
+  const { method, body, headers } = params
+  const auth = window.localStorage.getItem(`${process.env.NEXT_PUBLIC_LS_KEY}`)
+
+  if (!auth) {
+    throw new Error('No auth token found')
+  }
+
+  return requestPublic(url, {
+    method,
+    headers: {
+      Authorization: auth,
+      ...headers,
+    },
+    body,
+  })
 }

@@ -4,8 +4,6 @@ let defaultScopes = ['profile']
 
 /**
  * Loads Amazon SDK.
- * @param {string} appId
- * @param {array|string} scope
  * @see https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/install_sdk_javascript.html
  */
 const load = ({ appId, scope }) => new Promise((resolve) => {

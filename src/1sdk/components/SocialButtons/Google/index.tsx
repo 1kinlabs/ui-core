@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { useGoogleLogin } from '@react-oauth/google'
+import { useAuth } from '1sdk/context/AuthContext'
 import Button from '../BaseButton'
 import GoogleIcon from './Icon'
 
@@ -6,15 +8,19 @@ type Props = {
   className?: string
 }
 
-const loginWithGoogle = () => {
-  console.log('login with Google')
-}
+const Google = styled(({ className }: Props) => {
+  const { loginByGoogle } = useAuth()
 
-const Google = styled(({ className }: Props) => (
-  <Button className={className} onClick={loginWithGoogle}>
-    <GoogleIcon />
-  </Button>
-))`
+  const onClick = useGoogleLogin({
+    onSuccess: loginByGoogle as (response: unknown) => void,
+  })
+
+  return (
+    <Button className={className} onClick={onClick}>
+      <GoogleIcon />
+    </Button>
+  )
+})`
 &&& {
   background-color: ${({ theme }) => theme.brand.google};
   &:hover {
