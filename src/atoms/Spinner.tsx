@@ -25,3 +25,5 @@ export function Spinner() {
     </Box>
   )
 }
+
+export default Spinner

@@ -2,7 +2,11 @@ import React from 'react'
 import { captureException, setContext } from '@sentry/nextjs'
 import { styled } from 'theme'
 import {
-  ErrorBoundary as ReactErrorBoundary, ErrorBoundaryContextType, ErrorBoundaryPropsWithFallback, useErrorBoundary, FallbackProps,
+  ErrorBoundary as ReactErrorBoundary,
+  ErrorBoundaryContextType,
+  ErrorBoundaryPropsWithFallback,
+  useErrorBoundary,
+  FallbackProps,
 } from 'react-error-boundary'
 
 const logError = (error: Error, info: React.ErrorInfo) => {
@@ -32,7 +36,10 @@ const defaultFallbackComponent = styled(({ className }: defaultFallbackComponent
 
 export function ErrorBoundary({ fallback, children } : ErrorBoundaryPropsWithFallback) {
   return (
-    <ReactErrorBoundary onError={logError} fallback={(fallback || defaultFallbackComponent) as React.ReactElement}>
+    <ReactErrorBoundary
+      onError={logError}
+      fallback={(fallback || defaultFallbackComponent) as React.ReactElement}
+    >
       {children}
     </ReactErrorBoundary>
   )
