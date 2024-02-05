@@ -2,9 +2,9 @@
 import BaseButton, { ButtonProps } from '@mui/material/Button'
 import { styled } from 'theme'
 
-export type Props = Omit <ButtonProps, 'onClick'> & {
-  onClick: () => unknown
-}
+export type Props = ButtonProps | (
+  Omit <ButtonProps, 'onClick'> & { onClick: () => void }
+)
 
 const Button = styled((props : Props) => (
   <BaseButton {...props} />
