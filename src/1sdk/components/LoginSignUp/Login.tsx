@@ -28,7 +28,6 @@ const Login = styled(({
   const { loginByEmail } = useAuth()
 
   const onLogin = async () => {
-    console.log('logging in with', email, password)
     await loginByEmail(email, password)
   }
 
