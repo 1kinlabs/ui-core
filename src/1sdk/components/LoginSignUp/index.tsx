@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { styled } from 'theme'
 import { Typography as T, Divider as BaseDivider } from '@mui/material'
-import { Visibility, VisibilityOff } from '@mui/icons-material'
 import Logo from 'components/Logo'
 import TextField from 'atoms/TextField'
 import SocialButtons from '../SocialButtons'
@@ -23,43 +22,18 @@ const Divider = styled(BaseDivider)`
   width: 100%;
 `
 
-function PasswordField() {
-  const [showPassword, setShowPassword] = useState<boolean>(false)
-
-  return (
-    <TextField
-      fullWidth
-      type={showPassword ? 'text' : 'password'}
-      label="Password"
-      InputProps={{
-        endAdornment: showPassword
-          ? <VisibilityOff onClick={() => setShowPassword(false)} />
-          : <Visibility onClick={() => setShowPassword(true)} />,
-      }}
-    />
-  )
-}
-
 const LoginSignUp = styled(({ className }: Props) => {
   const [view, setView] = useState<View>(View.login)
-
-  const onLogin = () => {
-    console.log('logged in')
-  }
 
   const renderView = () => {
     switch (view) {
       case View.signUp:
         return (
-          <SignUp
-            onSignUp={() => console.log('signed up')}
-            onLogin={() => setView(View.login)}
-          />
+          <SignUp onLogin={() => setView(View.login)} />
         )
       case View.reset:
         return (
           <Reset
-            onReset={() => console.log('reset')}
             onLogin={() => setView(View.login)}
             onSignUp={() => setView(View.signUp)}
           />
@@ -68,7 +42,6 @@ const LoginSignUp = styled(({ className }: Props) => {
       default:
         return (
           <Login
-            onLogin={onLogin}
             onSignUp={() => setView(View.signUp)}
             onReset={() => setView(View.reset)}
           />
@@ -84,8 +57,6 @@ const LoginSignUp = styled(({ className }: Props) => {
       <T variant="body2">{socialText}</T>
       <SocialButtons />
       <Divider><T variant="body2">{'or'}</T></Divider>
-      <TextField fullWidth label="Email" />
-      {view !== View.reset && <PasswordField />}
       {renderView()}
     </div>
   )

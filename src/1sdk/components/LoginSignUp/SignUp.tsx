@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useState } from 'react'
 import { Typography as T } from '@mui/material'
 import Link from 'atoms/Link'
 import Checkbox from 'atoms/Checkbox'
@@ -8,7 +9,6 @@ import Footer from './Footer'
 
 type Props = {
   className?: string
-  onSignUp: () => void
   onLogin: () => void
 }
 
@@ -21,23 +21,31 @@ function Label() {
   )
 }
 
-const SignUp = styled(({ className, onSignUp, onLogin }: Props) => (
-  <Container className={className}>
-    <Button variant="outlined" color="primary" fullWidth onClick={onSignUp}>
-      {'Sign Up'}
-    </Button>
-    <Button variant="text" color="primary" fullWidth onClick={onLogin}>
-      {'Back to Login'}
-    </Button>
-    <Footer>
-      <Checkbox
-        label={<Label />}
-        checked={false}
-        onChange={() => console.log('checked')}
-      />
-    </Footer>
-  </Container>
-))`
+const SignUp = styled(({ className, onLogin }: Props) => {
+  const [tocAccepted, setTocAccepted] = useState<boolean>(false)
+
+  const onSignUp = () => {
+    console.log('signed up')
+  }
+
+  return (
+    <Container className={className}>
+      <Button variant="outlined" color="primary" fullWidth onClick={onSignUp}>
+        {'Sign Up'}
+      </Button>
+      <Button variant="text" color="primary" fullWidth onClick={onLogin}>
+        {'Back to Login'}
+      </Button>
+      <Footer>
+        <Checkbox
+          label={<Label />}
+          checked={tocAccepted}
+          onChange={setTocAccepted}
+        />
+      </Footer>
+    </Container>
+  )
+})`
 `
 
 export default SignUp

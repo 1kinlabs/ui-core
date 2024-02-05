@@ -32,7 +32,7 @@ const defaultProvider = {
   setShowpasswordInput: () => Boolean,
   loginError: false,
   setUser: () => null,
-  setLoading: () => Boolean,
+  setLoading: (loading) => Boolean,
   isInitialized: false,
   showTwoStepModal: false,
   showRegisterSuccess: false,
@@ -45,7 +45,7 @@ const defaultProvider = {
   setShowTwoStepModal: () => Boolean,
   registerByEmail: () => Promise.resolve(),
   setupPassword: () => Promise.resolve(),
-  loginByEmail: () => Promise.resolve(),
+  loginByEmail: (email, password, withEmailLogin) => Promise.resolve(),
   loginByGoogle: () => Promise.resolve(),
   loginByDiscord: (eventData) => Promise.resolve(),
   loginByFacebook: () => Promise.resolve(),
@@ -576,6 +576,8 @@ function AuthContextProvider({ children }) {
     updateUser,
     refreshUser,
   }
+
+  console.log('values', values)
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
 }
