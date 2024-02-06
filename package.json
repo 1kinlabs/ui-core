@@ -74,6 +74,7 @@
     "@types/sanitize-html": "^2.9.4",
     "@types/styled-components": "^5.1.26",
     "apexcharts": "^3.42.0",
+    "bufferutil": "^4.0.8",
     "eslint-plugin-storybook": "^0.6.15",
     "fast-glob": "^3.3.1",
     "mdi-material-ui": "7.1.0",
@@ -87,7 +88,8 @@
     "styled-components": "6.0.7",
     "ts-patch": "^3.0.2",
     "typescript": "^5.2.2",
-    "typescript-transform-paths": "^3.4.6"
+    "typescript-transform-paths": "^3.4.6",
+    "utf-8-validate": "^6.0.3"
   },
   "peerDependencies": {
     "@emotion/cache": "11.11.0",

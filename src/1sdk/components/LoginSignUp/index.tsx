@@ -79,7 +79,7 @@ const LoginSignUp = styled(({ className }: Props) => {
   align-items: center;
   gap: 16px;
   justify-content: center;
-  padding: 16px;
+  padding: 32px;
 
   ${TextField} {
     svg {
