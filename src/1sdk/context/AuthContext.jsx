@@ -584,9 +584,9 @@ function AuthContextProvider({ children }) {
 
 export const useAuth = () => useContext(AuthContext)
 
-function AuthProvider({ children }) {
+function AuthProvider({ children, clientId }) {
   return (
-    <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
+    <GoogleOAuthProvider clientId={clientId || process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
       <AuthContextProvider>
         {children}
       </AuthContextProvider>
