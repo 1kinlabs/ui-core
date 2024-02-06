@@ -9,21 +9,27 @@ const Logo = styled(BaseLogo)`
   height: 80px;
 `
 
-export function Spinner() {
-  return (
-    <Box
-      sx={{
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column',
-        justifyContent: 'center',
-      }}
-    >
-      <Logo small />
-      <CircularProgress disableShrink sx={{ mt: 6 }} />
-    </Box>
-  )
+type Props = {
+  className?: string
+  noLogo?: boolean
 }
+
+const Spinner = styled(({ className, noLogo }: Props) => (
+  <Box
+    className={className}
+    sx={{
+      height: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+      justifyContent: 'center',
+    }}
+  >
+    {!noLogo && <Logo small />}
+    <CircularProgress disableShrink sx={{ mt: 6 }} />
+  </Box>
+))`
+  
+`
 
 export default Spinner

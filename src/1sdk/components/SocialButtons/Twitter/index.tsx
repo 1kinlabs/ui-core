@@ -23,7 +23,7 @@ const Twitter = styled(({ className }: Props) => {
   return (
     <Button
       className={className}
-      onClick={(e: React.MouseEvent<HTMLButtonElement>) => e.preventDefault()}
+      component="div"
     >
       <TwitterLogin
         loginUrl={`${BACKEND_BASE_API_URL}/end-users/auth/twitter`}
@@ -31,7 +31,6 @@ const Twitter = styled(({ className }: Props) => {
         onSuccess={loginWithTwitter}
         onFailure={() => {}}
         requestTokenUrl={`${BACKEND_BASE_API_URL}/end-users/auth/twitter/reverse`}
-        style={{ display: 'contents', cursor: 'pointer' }}
       >
         <TwitterIcon />
       </TwitterLogin>
@@ -39,6 +38,17 @@ const Twitter = styled(({ className }: Props) => {
   )
 })`
 &&& {
+  padding: 0;
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: 0;
+  }
   background-color: ${({ theme }) => theme.brand.twitter};
   &:hover {
     background-color: ${({ theme }) => theme.brand.twitter};
