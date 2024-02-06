@@ -8,7 +8,7 @@ import { useAuth } from '1sdk/context/AuthContext'
 import SocialButtons from '../SocialButtons'
 import Login from './Login'
 import SignUp from './SignUp'
-import Reset from './Reset'
+import Forgot from './Forgot'
 
 type Props = {
   className?: string
@@ -36,7 +36,7 @@ const LoginSignUp = styled(({ className }: Props) => {
         )
       case View.reset:
         return (
-          <Reset
+          <Forgot
             onLogin={() => setView(View.login)}
             onSignUp={() => setView(View.signUp)}
           />
@@ -56,6 +56,7 @@ const LoginSignUp = styled(({ className }: Props) => {
 
   const renderContent = () => (
     <>
+      <Logo />
       <T variant="body2">{socialText}</T>
       <SocialButtons />
       <Divider><T variant="body2">{'or'}</T></Divider>
@@ -67,7 +68,6 @@ const LoginSignUp = styled(({ className }: Props) => {
 
   return (
     <div className={className}>
-      <Logo />
       {isLoading ? <Spinner /> : renderContent()}
     </div>
   )

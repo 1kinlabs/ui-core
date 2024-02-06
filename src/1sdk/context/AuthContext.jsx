@@ -14,7 +14,7 @@ import axios from 'axios'
 import { connect } from 'socket.io-client'
 
 // ** Utils
-import * as api from '1sdk/data/login'
+import * as api from '1sdk/data/auth'
 import { BACKEND_BASE_URL } from '1sdk/data/request'
 
 // ** Defaults
