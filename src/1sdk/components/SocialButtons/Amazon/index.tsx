@@ -14,10 +14,18 @@ export enum Scopes {
 type Props = {
   className?: string
   scope?: Scopes[]
-  onLogin?: (response: unknown) => void
+  onLogin?: (response: unknown) => void | Promise<void>
+  full?: boolean
+  children?: React.ReactNode
 }
 
-const Amazon = styled(({ className, scope = [Scopes.profile], onLogin }: Props) => {
+const Amazon = styled(({
+  className,
+  scope = [Scopes.profile],
+  onLogin,
+  full,
+  children,
+}: Props) => {
   const { amazonLoginSuccess } = useAuth()
 
   usePromise(async () => {
@@ -37,7 +45,7 @@ const Amazon = styled(({ className, scope = [Scopes.profile], onLogin }: Props) 
       }
       await amazonLoginSuccess(user)
 
-      onLogin?.(response)
+      await onLogin?.(response)
     } catch (error) {
       console.error(error)
       captureException(error)
@@ -47,10 +55,14 @@ const Amazon = styled(({ className, scope = [Scopes.profile], onLogin }: Props) 
   return (
     <Button className={className} onClick={onClick}>
       <AmazonIcon />
+      {children || (full && 'Log in with Amazon')}
     </Button>
   )
 })`
   &&& {
+    ${({ full }) => full && `
+      width: 100%;
+    `}
     background-color: ${({ theme }) => theme.brand.amazon};
     &:hover {
       background-color: ${({ theme }) => theme.brand.amazon};

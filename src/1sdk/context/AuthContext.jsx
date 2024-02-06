@@ -43,7 +43,7 @@ const defaultProvider = {
   setShowRegisterSuccess: () => Boolean,
   setAuthErrorMessage: () => Boolean,
   setShowTwoStepModal: () => Boolean,
-  registerByEmail: () => Promise.resolve(),
+  registerByEmail: (obj) => Promise.resolve(),
   setupPassword: () => Promise.resolve(),
   loginByEmail: (email, password, withEmailLogin) => Promise.resolve(),
   loginByGoogle: () => Promise.resolve(),
@@ -146,14 +146,16 @@ function AuthContextProvider({ children }) {
 
   const handleRegisterByEmail = async ({ email, firstName, lastName }) => {
     try {
-      await api.register({ email, firstName, lastName })
+      const response = await api.register({ email, firstName, lastName })
       setShowRegisterSuccess(true)
+      return response
     } catch (e) {
-      if (e.status === 400) {
+      if (e.message) {
         setRegisterErrorMessage(e.message)
       } else {
         setRegisterErrorMessage('Something went wrong')
       }
+      return Promise.reject(e)
     }
   }
 
@@ -576,8 +578,6 @@ function AuthContextProvider({ children }) {
     updateUser,
     refreshUser,
   }
-
-  console.log('values', values)
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
 }

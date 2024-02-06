@@ -1,8 +1,10 @@
-import { Checkbox as BaseCheckbox, FormControlLabel } from '@mui/material'
+/* eslint-disable react/jsx-props-no-spreading */
+import BaseCheckbox, { CheckboxProps } from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
 
 import styled from 'styled-components'
 
-type Props = {
+type Props = Omit<CheckboxProps, 'onChange'> & {
   className?: string
   label: React.ReactNode
   checked: boolean
@@ -10,7 +12,7 @@ type Props = {
 }
 
 const Checkbox = styled(({
-  className, label, checked, onChange,
+  className, label, checked, onChange, ...props
 }: Props) => (
   <FormControlLabel
     className={className}
@@ -19,6 +21,7 @@ const Checkbox = styled(({
       <BaseCheckbox
         onChange={(evt) => onChange(evt.target.checked)}
         checked={checked}
+        {...props}
       />
     )}
   />

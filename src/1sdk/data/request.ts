@@ -25,8 +25,11 @@ export async function requestPublic(url: string, params: Params = { method: 'GET
   if (response.ok) {
     return response.json()
   }
-
-  throw new Error(`Error making request to ${url}: ${response.status} ${response.statusText} ${await response.text()}`)
+  try {
+    return (await response.json() as { error: Record<string, string> })?.error
+  } catch (e) {
+    throw new Error(`Error making request to ${url}: ${response.status} ${response.statusText}`)
+  }
 }
 
 export async function request(url: string, params: Params = { method: 'GET' }) {

@@ -50,7 +50,7 @@
     "ws": "^8.16.0"
   },
   "devDependencies": {
-    "@1kinlabs/eslint-config": "^0.0.15",
+    "@1kinlabs/eslint-config": "^0.0.17",
     "@emotion/cache": "11.11.0",
     "@emotion/react": "11.11.1",
     "@emotion/server": "11.11.0",
