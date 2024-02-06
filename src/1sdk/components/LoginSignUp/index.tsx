@@ -3,6 +3,8 @@ import { styled } from 'theme'
 import { Typography as T, Divider as BaseDivider } from '@mui/material'
 import Logo from 'components/Logo'
 import TextField from 'atoms/TextField'
+import Spinner from 'atoms/Spinner'
+import { useAuth } from '1sdk/context/AuthContext'
 import SocialButtons from '../SocialButtons'
 import Login from './Login'
 import SignUp from './SignUp'
@@ -24,6 +26,7 @@ const Divider = styled(BaseDivider)`
 
 const LoginSignUp = styled(({ className }: Props) => {
   const [view, setView] = useState<View>(View.login)
+  const { loading, emailLoading } = useAuth()
 
   const renderView = () => {
     switch (view) {
@@ -51,13 +54,21 @@ const LoginSignUp = styled(({ className }: Props) => {
 
   const socialText = view === View.signUp ? 'Sign up with Social' : 'Sign in with Social'
 
-  return (
-    <div className={className}>
-      <Logo />
+  const renderContent = () => (
+    <>
       <T variant="body2">{socialText}</T>
       <SocialButtons />
       <Divider><T variant="body2">{'or'}</T></Divider>
       {renderView()}
+    </>
+  )
+
+  const isLoading = loading || emailLoading
+
+  return (
+    <div className={className}>
+      <Logo />
+      {isLoading ? <Spinner /> : renderContent()}
     </div>
   )
 })`
