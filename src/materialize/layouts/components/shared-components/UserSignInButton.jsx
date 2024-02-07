@@ -14,7 +14,6 @@ export default function UserSignInButton() {
       <Dialog open={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)}>
         <LoginSignUp />
       </Dialog>
-
     </>
   )
 }
