@@ -159,7 +159,7 @@ function AuthContextProvider({ children }) {
     }
   }
 
-  const handleAuthResponse = async (res, redirect = true) => {
+  const handleAuthResponse = async (res) => {
     if (res) {
       const {
         // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -187,12 +187,6 @@ function AuthContextProvider({ children }) {
         setState({ auth: accessToken })
         await fetchUser()
         setLoading(false)
-
-        if (redirect) {
-          const { returnUrl } = router.query
-          const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
-          router.replace(redirectURL)
-        }
       }
     }
   }
@@ -494,8 +488,6 @@ function AuthContextProvider({ children }) {
     setState({ auth: undefined })
     setLoading(false)
     setIsInitialized(false)
-
-    router.push('/login')
   }
 
   const updateUser = async (userData) => {
@@ -503,7 +495,11 @@ function AuthContextProvider({ children }) {
       .then((response) => {
         if (response) {
           setUser({
-            ...user, ...userData, username: response.displayname, name: response.fullname, phone: response.contact,
+            ...user,
+            ...userData,
+            username: response.displayname,
+            name: response.fullname,
+            phone: response.contact,
           })
         }
       })
