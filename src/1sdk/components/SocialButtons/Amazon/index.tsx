@@ -5,6 +5,7 @@ import { useAuth } from '1sdk/context/AuthContext'
 import Button from '../BaseButton'
 import AmazonIcon from './Icon'
 import SDK from './sdk'
+import { AmazonUser } from './types'
 
 export enum Scopes {
   profile = 'profile',
@@ -14,7 +15,7 @@ export enum Scopes {
 type Props = {
   className?: string
   scope?: Scopes[]
-  onLogin?: (response: unknown) => void | Promise<void>
+  onLogin?: (response: AmazonUser) => void | Promise<void>
   full?: boolean
   children?: React.ReactNode
 }
@@ -37,7 +38,7 @@ const Amazon = styled(({
 
   const onClick = async () => {
     try {
-      const response: Record<string, unknown> = await SDK.login(scope) as Record<string, unknown>
+      const response: AmazonUser = await SDK.login(scope) as AmazonUser
       const { profile, token } = SDK.generateUser(response)
       const user = {
         ...profile,
@@ -71,3 +72,5 @@ const Amazon = styled(({
 `
 
 export default Amazon
+
+export * from './types'
