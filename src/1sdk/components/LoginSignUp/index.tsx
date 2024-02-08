@@ -17,6 +17,7 @@ type Props = {
 enum View {
   login,
   signUp,
+  forgot,
   reset
 }
 
@@ -32,9 +33,12 @@ const LoginSignUp = styled(({ className }: Props) => {
     switch (view) {
       case View.signUp:
         return (
-          <SignUp onLogin={() => setView(View.login)} />
+          <SignUp
+            onLogin={() => setView(View.login)}
+            onForgot={() => setView(View.forgot)}
+          />
         )
-      case View.reset:
+      case View.forgot:
         return (
           <Forgot
             onLogin={() => setView(View.login)}
@@ -46,7 +50,7 @@ const LoginSignUp = styled(({ className }: Props) => {
         return (
           <Login
             onSignUp={() => setView(View.signUp)}
-            onReset={() => setView(View.reset)}
+            onForgot={() => setView(View.forgot)}
           />
         )
     }

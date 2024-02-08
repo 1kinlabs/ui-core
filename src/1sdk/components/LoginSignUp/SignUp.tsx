@@ -7,6 +7,7 @@ import Link from 'atoms/Link'
 import TextField from 'atoms/TextField'
 import Checkbox from 'atoms/Checkbox'
 import Button from 'atoms/Button'
+import Spinner from 'atoms/Spinner'
 import { validateEmail } from 'utils/email'
 import Container from './Container'
 import Footer from './Footer'
@@ -14,6 +15,7 @@ import Footer from './Footer'
 type Props = {
   className?: string
   onLogin: () => void
+  onForgot: () => void
 }
 
 function Label() {
@@ -30,16 +32,26 @@ const Names = styled.div`
   gap: 16px;
 `
 
-const SignUp = styled(({ className, onLogin }: Props) => {
+const ErrorBox = styled.div`
+  span {
+    display: flex;
+  }
+  ${Button} {
+    text-transform: none;
+  }
+`
+
+const SignUp = styled(({ className, onLogin, onForgot }: Props) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [success, setSuccess] = useState<boolean | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string>('')
   const [validate, setValidate] = useState<boolean>(false)
 
   const [tocAccepted, setTocAccepted] = useState<boolean>(false)
   const [firstName, setFirstName] = useState<string>('')
   const [lastName, setLastName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
-  const { registerByEmail, registerErrorMessage } = useAuth()
+  const { registerByEmail } = useAuth()
 
   const firstNameValid = firstName.length > 0
   const lastNameValid = lastName.length > 0
@@ -53,9 +65,15 @@ const SignUp = styled(({ className, onLogin }: Props) => {
     }
     try {
       setLoading(true)
-      const response = await registerByEmail({ email, firstName, lastName })
-      console.log(response)
-      setSuccess(true)
+      const response = await registerByEmail(
+        { email, firstName, lastName },
+      ) as unknown as { status: number, message: string }
+      if (response.status > 299) {
+        setErrorMessage(response.message)
+        setSuccess(false)
+      } else {
+        setSuccess(true)
+      }
     } catch (error) {
       console.error(error)
       captureException(error)
@@ -64,17 +82,56 @@ const SignUp = styled(({ className, onLogin }: Props) => {
     setLoading(false)
   }
 
+  const getErrorMessage = () => {
+    if (errorMessage.includes('already registered')) {
+      return (
+        <>
+          {'This email is already registered. '}
+          <Button onClick={onForgot}>{'Did you forget your password?'}</Button>
+        </>
+      )
+    }
+    if (errorMessage.includes('invalid email')) {
+      return 'Invalid email'
+    }
+    if (errorMessage.length > 0) {
+      return 'An error occurred. Please try again later.'
+    }
+    return null
+  }
+
   const firstNameError = validate && !firstNameValid
   const lastNameError = validate && !lastNameValid
   const emailError = validate && !emailValid
 
+  if (success) {
+    return (
+      <Container className={className}>
+        <T variant="h4">
+          {'You\'re almost there!'}
+        </T>
+        <T variant="h6">
+          {'Check your email to complete your registration.'}
+        </T>
+      </Container>
+    )
+  }
+
+  if (loading) {
+    return (
+      <Container className={className}>
+        <Spinner noLogo />
+      </Container>
+    )
+  }
+
   return (
     <form onSubmit={onSignUp}>
       <Container className={className}>
-        {registerErrorMessage && (
-          <T color="error" variant="body2">
-            {registerErrorMessage}
-          </T>
+        {errorMessage.length > 0 && (
+          <ErrorBox>
+            {getErrorMessage()}
+          </ErrorBox>
         )}
         <Names>
           <TextField
@@ -117,6 +174,10 @@ const SignUp = styled(({ className, onLogin }: Props) => {
     </form>
   )
 })`
+  align-items: center;
+  ${Spinner} {
+    height: 100%;
+  }
 `
 
 export default SignUp
