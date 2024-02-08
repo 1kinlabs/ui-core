@@ -17,11 +17,11 @@ const ResetButton = styled(Button)`
 type Props = {
   className?: string
   onSignUp: () => void
-  onReset: () => void
+  onForgot: () => void
 }
 
 const Login = styled(({
-  className, onSignUp, onReset,
+  className, onSignUp, onForgot,
 }: Props) => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -45,7 +45,7 @@ const Login = styled(({
         <T variant="body2">
           {'Having trouble logging in? '}
         </T>
-        <ResetButton variant="text" onClick={onReset}>
+        <ResetButton variant="text" onClick={onForgot}>
           {'Reset Password'}
         </ResetButton>
       </Footer>
