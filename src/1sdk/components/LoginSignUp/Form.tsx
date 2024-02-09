@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-const Container = styled.div`
+const Form = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
 `
 
-export default Container
+export default Form

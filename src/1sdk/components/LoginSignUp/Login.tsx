@@ -5,7 +5,7 @@ import Button from 'atoms/Button'
 import { useAuth } from '1sdk/context/AuthContext'
 import TextField from 'atoms/TextField'
 import PasswordField from 'atoms/PasswordField'
-import Container from './Container'
+import Form from './Form'
 import Footer from './Footer'
 
 const ResetButton = styled(Button)`
@@ -32,10 +32,10 @@ const Login = styled(({
   }
 
   return (
-    <Container className={className}>
+    <Form className={className} onSubmit={onLogin}>
       <TextField fullWidth label="Email" onChange={setEmail} />
       <PasswordField onChange={setPassword} />
-      <Button variant="outlined" color="primary" fullWidth onClick={onLogin}>
+      <Button variant="outlined" color="primary" fullWidth type="submit">
         {'Login'}
       </Button>
       <Button variant="text" color="primary" fullWidth onClick={onSignUp}>
@@ -49,7 +49,7 @@ const Login = styled(({
           {'Reset Password'}
         </ResetButton>
       </Footer>
-    </Container>
+    </Form>
   )
 })``
 

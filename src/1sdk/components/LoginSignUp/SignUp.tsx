@@ -9,7 +9,7 @@ import Checkbox from 'atoms/Checkbox'
 import Button from 'atoms/Button'
 import Spinner from 'atoms/Spinner'
 import { validateEmail } from 'utils/email'
-import Container from './Container'
+import Form from './Form'
 import Footer from './Footer'
 
 type Props = {
@@ -106,72 +106,73 @@ const SignUp = styled(({ className, onLogin, onForgot }: Props) => {
 
   if (success) {
     return (
-      <Container className={className}>
+      <Form className={className}>
         <T variant="h4">
           {'You\'re almost there!'}
         </T>
         <T variant="h6">
           {'Check your email to complete your registration.'}
         </T>
-      </Container>
+        <Button variant="text" color="primary" fullWidth onClick={onLogin}>
+          {'Back to Login'}
+        </Button>
+      </Form>
     )
   }
 
   if (loading) {
     return (
-      <Container className={className}>
+      <Form className={className}>
         <Spinner noLogo />
-      </Container>
+      </Form>
     )
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <Container className={className}>
-        {errorMessage.length > 0 && (
-          <ErrorBox>
-            {getErrorMessage()}
-          </ErrorBox>
-        )}
-        <Names>
-          <TextField
-            fullWidth
-            label="First Name"
-            error={firstNameError}
-            helperText={firstNameError ? 'First name is required' : ''}
-            onChange={setFirstName}
-          />
-          <TextField
-            fullWidth
-            label="Last Name"
-            onChange={setLastName}
-            error={lastNameError}
-            helperText={lastNameError ? 'Last name is required' : ''}
-          />
-        </Names>
+    <Form className={className} onSubmit={onSignUp}>
+      {errorMessage.length > 0 && (
+        <ErrorBox>
+          {getErrorMessage()}
+        </ErrorBox>
+      )}
+      <Names>
         <TextField
           fullWidth
-          label="Email"
-          onChange={setEmail}
-          error={emailError}
-          helperText={emailError ? 'Invalid email' : ''}
+          label="First Name"
+          error={firstNameError}
+          helperText={firstNameError ? 'First name is required' : ''}
+          onChange={setFirstName}
         />
-        <Button variant="outlined" color="primary" fullWidth type="submit">
-          {'Sign Up'}
-        </Button>
-        <Button variant="text" color="primary" fullWidth onClick={onLogin}>
-          {'Back to Login'}
-        </Button>
-        <Footer>
-          <Checkbox
-            label={<Label />}
-            checked={tocAccepted}
-            onChange={setTocAccepted}
-            required
-          />
-        </Footer>
-      </Container>
-    </form>
+        <TextField
+          fullWidth
+          label="Last Name"
+          onChange={setLastName}
+          error={lastNameError}
+          helperText={lastNameError ? 'Last name is required' : ''}
+        />
+      </Names>
+      <TextField
+        fullWidth
+        label="Email"
+        onChange={setEmail}
+        error={emailError}
+        helperText={emailError ? 'Invalid email' : ''}
+      />
+      <Button variant="outlined" color="primary" fullWidth type="submit">
+        {'Sign Up'}
+      </Button>
+      <Button variant="text" color="primary" fullWidth onClick={onLogin}>
+        {'Back to Login'}
+      </Button>
+      <Footer>
+        <Checkbox
+          label={<Label />}
+          checked={tocAccepted}
+          onChange={setTocAccepted}
+          required
+        />
+      </Footer>
+    </Form>
   )
 })`
   align-items: center;
