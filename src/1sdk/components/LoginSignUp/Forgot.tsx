@@ -3,10 +3,11 @@ import styled from 'styled-components'
 import { Typography as T } from '@mui/material'
 import { captureException } from '@sentry/nextjs'
 import { forgotPassword } from '1sdk/data/auth'
+import { useAuth } from '1sdk/context/AuthContext'
 import Button from 'atoms/Button'
 import TextField from 'atoms/TextField'
 import Spinner from 'atoms/Spinner'
-import Container from './Container'
+import Form from './Form'
 import Footer from './Footer'
 
 const ResetButton = styled(Button)`
@@ -24,8 +25,8 @@ type Props = {
 const Forgot = styled(({
   className, onLogin, onSignUp,
 }: Props) => {
+  const { setLoading } = useAuth()
   const [email, setEmail] = useState<string>('')
-  const [loading, setLoading] = useState<boolean>(false)
   const [success, setSuccess] = useState<boolean | null>(null)
 
   const sendResetEmail = async () => {
@@ -44,29 +45,21 @@ const Forgot = styled(({
 
   if (success) {
     return (
-      <Container className={className}>
+      <Form className={className}>
         <T variant="h5" align="center">
           {'Check your email for a reset link!'}
         </T>
         <Button variant="text" color="primary" fullWidth onClick={onLogin}>
           {'Back to Login'}
         </Button>
-      </Container>
-    )
-  }
-
-  if (loading) {
-    return (
-      <Container className={className}>
-        <Spinner noLogo />
-      </Container>
+      </Form>
     )
   }
 
   return (
-    <Container className={className}>
+    <Form className={className} onSubmit={sendResetEmail}>
       <TextField fullWidth label="Email" onChange={setEmail} />
-      <Button variant="outlined" color="primary" fullWidth onClick={sendResetEmail}>
+      <Button variant="outlined" color="primary" fullWidth type="submit">
         {'Send Email'}
       </Button>
       <Button variant="text" color="primary" fullWidth onClick={onLogin}>
@@ -80,7 +73,7 @@ const Forgot = styled(({
           {'Sign Up'}
         </ResetButton>
       </Footer>
-    </Container>
+    </Form>
   )
 })`
   ${Spinner} {
