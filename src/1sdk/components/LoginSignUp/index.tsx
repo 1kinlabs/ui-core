@@ -85,6 +85,11 @@ const LoginSignUp = styled(({ className }: Props) => {
   justify-content: center;
   padding: 32px;
 
+  ${Spinner} {
+    height: 100%;
+    width: 100%;
+  }
+
   ${TextField} {
     svg {
       cursor: pointer;

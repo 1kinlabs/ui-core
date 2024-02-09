@@ -27,8 +27,10 @@ const Login = styled(({
   const [password, setPassword] = useState<string>('')
   const { loginByEmail } = useAuth()
 
+  const valid = email.length > 0 && password.length > 0
+
   const onLogin = async () => {
-    await loginByEmail(email, password)
+    if (valid) await loginByEmail(email, password)
   }
 
   return (

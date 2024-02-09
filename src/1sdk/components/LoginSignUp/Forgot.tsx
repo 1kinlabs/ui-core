@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Typography as T } from '@mui/material'
 import { captureException } from '@sentry/nextjs'
 import { forgotPassword } from '1sdk/data/auth'
+import { useAuth } from '1sdk/context/AuthContext'
 import Button from 'atoms/Button'
 import TextField from 'atoms/TextField'
 import Spinner from 'atoms/Spinner'
@@ -24,8 +25,8 @@ type Props = {
 const Forgot = styled(({
   className, onLogin, onSignUp,
 }: Props) => {
+  const { setLoading } = useAuth()
   const [email, setEmail] = useState<string>('')
-  const [loading, setLoading] = useState<boolean>(false)
   const [success, setSuccess] = useState<boolean | null>(null)
 
   const sendResetEmail = async () => {
@@ -51,14 +52,6 @@ const Forgot = styled(({
         <Button variant="text" color="primary" fullWidth onClick={onLogin}>
           {'Back to Login'}
         </Button>
-      </Form>
-    )
-  }
-
-  if (loading) {
-    return (
-      <Form className={className}>
-        <Spinner noLogo />
       </Form>
     )
   }

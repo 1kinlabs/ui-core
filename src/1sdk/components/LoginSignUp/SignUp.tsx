@@ -42,7 +42,6 @@ const ErrorBox = styled.div`
 `
 
 const SignUp = styled(({ className, onLogin, onForgot }: Props) => {
-  const [loading, setLoading] = useState<boolean>(false)
   const [success, setSuccess] = useState<boolean | null>(null)
   const [errorMessage, setErrorMessage] = useState<string>('')
   const [validate, setValidate] = useState<boolean>(false)
@@ -51,7 +50,7 @@ const SignUp = styled(({ className, onLogin, onForgot }: Props) => {
   const [firstName, setFirstName] = useState<string>('')
   const [lastName, setLastName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
-  const { registerByEmail } = useAuth()
+  const { registerByEmail, setLoading } = useAuth()
 
   const firstNameValid = firstName.length > 0
   const lastNameValid = lastName.length > 0
@@ -116,14 +115,6 @@ const SignUp = styled(({ className, onLogin, onForgot }: Props) => {
         <Button variant="text" color="primary" fullWidth onClick={onLogin}>
           {'Back to Login'}
         </Button>
-      </Form>
-    )
-  }
-
-  if (loading) {
-    return (
-      <Form className={className}>
-        <Spinner noLogo />
       </Form>
     )
   }
