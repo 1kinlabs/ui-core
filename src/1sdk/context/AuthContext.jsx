@@ -488,6 +488,9 @@ function AuthContextProvider({ children }) {
     setState({ auth: undefined })
     setLoading(false)
     setIsInitialized(false)
+
+    // Force routing to home page when logout
+    router.push('/')
   }
 
   const updateUser = async (userData) => {
