@@ -3,7 +3,7 @@ The core library for all front-end repos. This library contains all components, 
 
 ## Authenticating
 * In order to use a project using this package, you will need to authenticate with Github's NPM Registry.
-* [Follow these steps to set up authentication (follow the "For using Yarn 3" step)](https://1kin.atlassian.net/wiki/spaces/SD/pages/2686990/Github+NPM+Registry+Setup)
+* [Follow these steps to set up authentication](https://1kin.atlassian.net/wiki/spaces/SD/pages/2686990/Github+NPM+Registry+Setup)
 * You only need to do this once for all private packages.
 
 ## Building the Package
