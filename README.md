@@ -1,9 +1,6 @@
 # @1kinlabs/ui-core
 The core library for all front-end repos. This library contains all components, colors, hooks, and any other shared logic required by front-end repos.
 
-## Requirements
-Please use `Yarn 3` in order to use Storybook without any errors. 
-
 ## Authenticating
 * In order to use a project using this package, you will need to authenticate with Github's NPM Registry.
 * [Follow these steps to set up authentication (follow the "For using Yarn 3" step)](https://1kin.atlassian.net/wiki/spaces/SD/pages/2686990/Github+NPM+Registry+Setup)
@@ -33,7 +30,6 @@ You can do either of the following to build `ui-core`.
     - This will build once.
     - After building, the package.json will be copied into the dist directory.
 
-### Installing
 ### Git hooks
 We use a pre-commit hook to run `eslint --fix` on all changed files.
 To set it up, run
@@ -84,19 +80,6 @@ If this happens to you, try the manual method instead.
     ```
     yarn add --force @1kinlabs/ui-core@../ui-core/dist/<name-of-file>.tgz
     ```
-
-## Deploying
-### Vercel
-* Create a [Github Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-* Create an environment variable in Vercel named `NPM_RC` with the following content:
-    ```
-    //npm.pkg.github.com/:_authToken=<personal-access-token>
-    @1kinlabs:registry=https://npm.pkg.github.com/
-    ```
-
-### AWS
-* TODO!
-
 
 ## FAQs
 ### WHY AREN'T MY CHANGES BEING REFLECTED IN THE INSTALLED PACKAGE?!?!?!? OMG?!?!!!1
