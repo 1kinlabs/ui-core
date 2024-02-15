@@ -49,9 +49,17 @@ These issues typically manifest by saying something along the lines of
 
 If this happens to you, try the manual method instead.
 
-* From the directory you'd like to test your changes in, run
+* Build/start ui-core
+  ```
+  yarn start
+  ```
+* link dist directory
+  ```
+  cd dist && yarn link
+  ```
+* From the root directory of the project you'd like to test your changes in, run
     ```
-    yarn link ../ui-core/dist
+    yarn link @1kinlabs/ui-core
     ```
 * Now, any changes made in your local `ui-core` will appear in the linked project.
 * To unlink run this in the linked project
