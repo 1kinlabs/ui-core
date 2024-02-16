@@ -79,7 +79,10 @@ function AuthContextProvider({ children }) {
   const [authErrorMessage, setAuthErrorMessage] = useState()
   const [resendToken, setResendToken] = useState()
   const [last4, setLast4] = useState()
-  const [showLoginOptionModal, setShowLoginOptionModal] = useState(defaultProvider.showLoginOptionModal)
+  const [
+    showLoginOptionModal,
+    setShowLoginOptionModal,
+  ] = useState(defaultProvider.showLoginOptionModal)
   const [loginError, setLoginError] = useState(defaultProvider.loginError)
   const [emailLoading, setEmailLoading] = useState(false)
   const [signingInWithEmail, setSigningInWithEmail] = useState('')
@@ -88,6 +91,8 @@ function AuthContextProvider({ children }) {
 
   // ** Hooks
   const router = useRouter()
+  const { query } = router
+  const returnUrl = query?.returnUrl || '/'
 
   const fetchUser = async () => {
     setLoading(true)
@@ -187,6 +192,7 @@ function AuthContextProvider({ children }) {
         setState({ auth: accessToken })
         await fetchUser()
         setLoading(false)
+        router.replace(returnUrl)
       }
     }
   }
@@ -212,9 +218,7 @@ function AuthContextProvider({ children }) {
       setState({ auth: accessToken })
       await fetchUser()
 
-      const { returnUrl } = router.query
-      const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
-      router.replace(redirectURL)
+      router.replace(returnUrl)
     }
   }
 
