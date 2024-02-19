@@ -37,11 +37,11 @@ const Forgot = styled(({
         throw new Error((response as Record<string, string>).message)
       }
       setSuccess(true)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (e: any) {
+    } catch (e) {
       console.error(e)
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      setError(e?.message as string)
+      if (e instanceof Error) {
+        setError(e.message)
+      }
       captureException(e)
       setSuccess(false)
     }
