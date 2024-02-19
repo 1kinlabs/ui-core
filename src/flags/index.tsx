@@ -2,9 +2,10 @@ import { useState, ReactNode } from 'react'
 import { usePromise } from 'hooks/usePromise'
 import { EndUser } from 'types/EndUser'
 import {
-  asyncWithLDProvider, LDOptions, withLDConsumer, useFlags, useLDClient,
+  asyncWithLDProvider, LDOptions, withLDConsumer, useFlags as useFlagsBase, useLDClient,
 } from 'launchdarkly-react-client-sdk'
 import { PublicUser } from 'types/PublicUser'
+import { getLocalFeatureFlags } from './utils'
 
 type Props = {
   clientId: string,
@@ -15,6 +16,15 @@ type Props = {
 
 const defaultUser = {
   id: 'public',
+}
+
+const useFlags = () => {
+  const flags = useFlagsBase()
+  const localFlagOverrides = getLocalFeatureFlags()
+  return {
+    ...flags,
+    ...localFlagOverrides,
+  }
 }
 
 export function FlagProvider({
