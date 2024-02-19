@@ -63,7 +63,7 @@ export async function handleAmazonRedemption(benefitId: string, amazonToken: str
 }
 
 export async function forgotPassword(email: string) {
-  return requestPublic('/end-users/requestResetPassword', {
+  return requestPublic<{result: string}>('/end-users/requestResetPassword', {
     method: 'POST',
     body: { email },
   })
