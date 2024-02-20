@@ -1,4 +1,5 @@
 import { hexToRGBA } from 'utils/hexToRGBA'
+import { spacing } from 'css/spacing'
 import { ColorMap } from './types'
 
 export const getVariables = ({
@@ -6,6 +7,7 @@ export const getVariables = ({
   success, warning, error, info,
   brand,
 }: ColorMap) => ({
+  spacing: (i: number) => spacing[i] ?? '0px',
   text: {
     light: neutral.lightest,
     primary: neutral.lightest,

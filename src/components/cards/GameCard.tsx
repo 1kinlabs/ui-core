@@ -77,7 +77,7 @@ function GameCard({ game, onClick = () => {} }: Props) {
           {game.title}
         </Typography>
         <TotalContentContainer elevation={3}>
-          <StarCoin size={IconSize.M} />
+          <StarCoin size={IconSize.M} color="#FE00FC" />
           <Typography variant="body1">
             { `Total Content Claimed: ${game.claims.totalContent}`}
           </Typography>
