@@ -13,29 +13,40 @@ import { Claim } from 'types/Claim'
 import { Collectible as CollectibleType } from 'types/Collectible'
 import { Game } from 'types/Game'
 import { OnAddToCollection } from 'components/collectible/ClaimInfo/ClaimCard'
+import { useAuth } from '1sdk/context/AuthContext'
 
 export type Props = {
-  className?: string,
-  collectible: CollectibleType,
+  className?: string
+  collectible: CollectibleType
   game: Game
-  claim?: Claim | null,
+  claim?: Claim | null
   onAddToCollection: OnAddToCollection
 }
 
 const Collectible = styled(({
   className, collectible, game, claim, onAddToCollection,
 } : Props) => {
+  const { user } = useAuth()
   const faqList = [...(collectible.faq_list || []), ...(game.faq_list || [])]
   const whatsIncludedList = collectible.item_details ? collectible.item_details.filter((i) => i !== '') : []
 
   return (
     <div className={className}>
       <div className="content">
-        <ClaimInfo collectible={collectible} game={game} onAddToCollection={onAddToCollection} />
+        <ClaimInfo
+          collectible={collectible}
+          game={game}
+          user={user}
+          onAddToCollection={onAddToCollection}
+        />
         {
           (collectible.claimStatus === ClaimStatus.IN_PROGRESS
           || collectible.claimStatus === ClaimStatus.COMPLETED) && claim && (
-            <NextSteps claim={claim} collectible={collectible} defaultExpanded={collectible.claimStatus === ClaimStatus.IN_PROGRESS} />
+            <NextSteps
+              claim={claim}
+              collectible={collectible}
+              defaultExpanded={collectible.claimStatus === ClaimStatus.IN_PROGRESS}
+            />
           )
         }
         <Section title="Description" className="description">

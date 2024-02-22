@@ -10,7 +10,7 @@ const resetBackendBaseUrl = () => {
 }
 
 const setBackendBaseUrl = (env : Env) => {
-  const localUrl = 'http://localhost:1337'
+  const localUrl = 'http://127.0.0.1:1337'
   const stageUrl = 'https://api-staging.1kin.io'
   const prodUrl = 'https://api.1kin.io'
 
@@ -25,7 +25,7 @@ const setBackendBaseUrl = (env : Env) => {
     window.localStorage.setItem('BACKEND_BASE_URL', baseUrlMap[env])
   } else {
     window.devkin.resetBackendBaseUrl()
-    console.warn(`\n\n Could not find env ${env}. Resetting BACKEND_BASE_URL to default (${BACKEND_BASE_URL}). \n\n`)
+    console.warn(`\n\n Could no find env ${env}. Resetting BACKEND_BASE_URL to default (${BACKEND_BASE_URL}). \n\n`)
   }
 }
 

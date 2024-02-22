@@ -5,6 +5,7 @@ export type EndUser = {
 } & Partial<Nullable<{
   email: string;
   username: string;
+  availableCredits: number;
   nonce: string;
   token: string;
   image: string;
