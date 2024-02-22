@@ -14,14 +14,17 @@ import { container } from 'css/media'
 import Button from 'atoms/Button'
 import Chip from 'atoms/Chip'
 import { ClaimStatus } from 'enums/ClaimStatus'
+import { EndUser } from 'types/EndUser'
 import ClaimProgress from '../ClaimProgress'
 
-export type OnAddToCollection = (collectible: Collectible, setIsLoading: (isLoading: boolean) => void) => Promise<void>
+export type OnAddToCollection = (collectible: Collectible,
+  setIsLoading: (isLoading: boolean) => void) => Promise<void>
 
 type Props = {
-  className?: string
-  collectible: Collectible
-  game: Game
+  className?: string,
+  collectible: Collectible,
+  game: Game,
+  user: EndUser | null,
   onAddToCollection: OnAddToCollection
 }
 
@@ -42,14 +45,18 @@ const GameTitle = styled(Typography)<TypographyProps>`
   }
 `
 
+const CreditsAvailable = styled.div``
+
 const ClaimCard = styled(({
   className,
   collectible,
   game,
+  user,
   onAddToCollection,
 }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
-  const isAvailableOrSoldOut = collectible.claimStatus === ClaimStatus.AVAILABLE || collectible.claimStatus === ClaimStatus.SOLD_OUT
+  const isAvailableOrSoldOut = collectible.claimStatus === ClaimStatus.AVAILABLE
+    || collectible.claimStatus === ClaimStatus.SOLD_OUT
 
   return (
     <Card className={className}>
@@ -75,8 +82,17 @@ const ClaimCard = styled(({
               onClick={() => onAddToCollection(collectible, setIsLoading)}
               disabled={isLoading || collectible.claimStatus === ClaimStatus.SOLD_OUT}
             >
-              {'Add to My Collection'}
+              {user ? 'Claim for 1 credit' : 'Add to My Collection'}
             </Button>
+          )
+        }
+        {
+          user && isAvailableOrSoldOut && (
+            <CreditsAvailable>
+              <Typography variant="overline" fontWeight={600}>
+                {`Credits available: ${user.availableCredits}`}
+              </Typography>
+            </CreditsAvailable>
           )
         }
       </CardContent>
@@ -107,6 +123,11 @@ const ClaimCard = styled(({
 
     ${ClaimProgress} {
       margin: 24px 0;
+    }
+
+    ${CreditsAvailable} {
+      margin-top: 8px;
+      text-align: center;
     }
   }
 `

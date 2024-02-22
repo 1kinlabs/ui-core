@@ -19,6 +19,7 @@ import { BACKEND_BASE_URL } from '1sdk/data/request'
 
 // ** Defaults
 const defaultProvider = {
+  /** @type {import('types/EndUser').EndUser | null} */
   user: null,
   loading: true,
   emailLoading: false,
