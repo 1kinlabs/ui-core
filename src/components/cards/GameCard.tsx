@@ -9,6 +9,7 @@ import { Game } from 'types/Game'
 import { StarCoin } from 'icons/StarCoin'
 import { IconSize } from 'enums/IconSize'
 import { calculateProgressPercentage } from 'utils/calculate-progress-percentage'
+import { Icon } from 'atoms/Icon'
 
 const StyledCard = styled(BaseCard)`
   box-sizing: border-box;
@@ -65,37 +66,39 @@ export type Props = {
   onClick?: (event: Game) => void,
 }
 
-function GameCard({ game, onClick = () => {} }: Props) {
-  return (
-    <StyledCard tabIndex={0} key={game.id} onClick={() => onClick(game)}>
-      <StyledCardMedia
-        image={game.cover_art?.defaultMedia?.src1x}
-        title={`game image for ${game.title}`}
-      />
-      <CardContentStyled>
-        <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 700 }}>
-          {game.title}
+const GameCard = styled(({ game, onClick = () => {} }: Props) => (
+  <StyledCard tabIndex={0} key={game.id} onClick={() => onClick(game)}>
+    <StyledCardMedia
+      image={game.cover_art?.defaultMedia?.src1x}
+      title={`game image for ${game.title}`}
+    />
+    <CardContentStyled>
+      <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 700 }}>
+        {game.title}
+      </Typography>
+      <TotalContentContainer elevation={3}>
+        <StarCoin size={IconSize.M} />
+        <Typography variant="body1">
+          { `Total Content Claimed: ${game.claims.totalContent}`}
         </Typography>
-        <TotalContentContainer elevation={3}>
-          <StarCoin size={IconSize.M} />
+      </TotalContentContainer>
+      <AvailableContentContainer elevation={3}>
+        <AvailableNowContainer>
           <Typography variant="body1">
-            { `Total Content Claimed: ${game.claims.totalContent}`}
+            {'Available Now:'}
           </Typography>
-        </TotalContentContainer>
-        <AvailableContentContainer elevation={3}>
-          <AvailableNowContainer>
-            <Typography variant="body1">
-              {'Available Now:'}
-            </Typography>
-            <Typography variant="body1" sx={{ fontWeight: 700 }}>
-              {Math.max(game.liveContent - game.claims.liveContent, 0)}
-            </Typography>
-          </AvailableNowContainer>
-          <LinearProgress variant="determinate" value={calculateProgressPercentage(game.claims.liveContent, game.liveContent)} />
-        </AvailableContentContainer>
-      </CardContentStyled>
-    </StyledCard>
-  )
-}
+          <Typography variant="body1" sx={{ fontWeight: 700 }}>
+            {Math.max(game.liveContent - game.claims.liveContent, 0)}
+          </Typography>
+        </AvailableNowContainer>
+        <LinearProgress variant="determinate" value={calculateProgressPercentage(game.claims.liveContent, game.liveContent)} />
+      </AvailableContentContainer>
+    </CardContentStyled>
+  </StyledCard>
+))`
+  ${Icon} {
+    color: ${({ theme }) => theme.surface.callout};
+  }
+`
 
 export default GameCard

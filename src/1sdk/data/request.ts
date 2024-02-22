@@ -10,7 +10,7 @@ export type Params = {
   headers?: Record<string, string>
 }
 
-export async function requestPublic(url: string, params: Params = { method: 'GET' }) {
+export async function requestPublic<T = unknown>(url: string, params: Params = { method: 'GET' }) {
   const { method, body, headers } = params
 
   const response = await fetch(BACKEND_BASE_API_URL + url, {
@@ -23,7 +23,7 @@ export async function requestPublic(url: string, params: Params = { method: 'GET
   })
 
   if (response.ok) {
-    return response.json()
+    return response.json() as T
   }
   try {
     return (await response.json() as { error: Record<string, string> })?.error

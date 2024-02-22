@@ -1,12 +1,13 @@
 {
   "name": "@1kinlabs/ui-core",
-  "version": "0.2.70",
+  "version": "0.3.3",
   "description": "Shared components, styles and logic for all front-end projects",
   "main": "index.cjs",
   "module": "index.js",
   "types": "types/index.d.ts",
   "scripts": {
     "start": "yarn build && bin/start",
+    "dev": "yarn start",
     "build": "bin/prebuild && tspc && bin/postbuild",
     "test": "echo \"Error: no test specified\" && exit 1",
     "git-hooks": "cp .git-hooks/pre-commit ./.git/hooks/pre-commit",

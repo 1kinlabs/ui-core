@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { FormEventHandler } from 'react'
 import styled from 'styled-components'
 
 type Props = React.HTMLProps<HTMLFormElement> & {
   className?: string
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
+  onSubmit?: FormEventHandler<HTMLFormElement>
 }
 
 const Form = styled(({ className, onSubmit, ...props }: Props) => (
