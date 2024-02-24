@@ -14,6 +14,8 @@ import { Collectible as CollectibleType } from 'types/Collectible'
 import { Game } from 'types/Game'
 import { OnAddToCollection } from 'components/collectible/ClaimInfo/ClaimCard'
 import { useAuth } from '1sdk/context/AuthContext'
+import { useState } from 'react'
+import OnePassDialog from 'components/OnePassDialog'
 
 export type Props = {
   className?: string
@@ -27,17 +29,30 @@ const Collectible = styled(({
   className, collectible, game, claim, onAddToCollection,
 } : Props) => {
   const { user } = useAuth()
+  const [shouldDisplay1PassDialog, setShouldDisplay1PassDialog] = useState(false)
   const faqList = [...(collectible.faq_list || []), ...(game.faq_list || [])]
   const whatsIncludedList = collectible.item_details ? collectible.item_details.filter((i) => i !== '') : []
+
+  const onAddToCollectionBase : OnAddToCollection = async (c, setIsLoading) => {
+    if (user && user.availableCredits === 0) {
+      setShouldDisplay1PassDialog(true)
+    } else {
+      await onAddToCollection(c, setIsLoading)
+    }
+  }
 
   return (
     <div className={className}>
       <div className="content">
+        <OnePassDialog
+          open={shouldDisplay1PassDialog}
+          onClose={() => setShouldDisplay1PassDialog(false)}
+        />
         <ClaimInfo
           collectible={collectible}
           game={game}
           user={user}
-          onAddToCollection={onAddToCollection}
+          onAddToCollection={onAddToCollectionBase}
         />
         {
           (collectible.claimStatus === ClaimStatus.IN_PROGRESS

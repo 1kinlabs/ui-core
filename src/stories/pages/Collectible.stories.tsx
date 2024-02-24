@@ -22,7 +22,7 @@ const meta: Meta<typeof Collectible> = {
 } as Meta<typeof Collectible>
 
 export default meta
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 export const Available: Story = {
   args: {
