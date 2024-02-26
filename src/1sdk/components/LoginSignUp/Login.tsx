@@ -30,7 +30,12 @@ const Login = styled(({
   const valid = email.length > 0 && password.length > 0
 
   const onLogin = async () => {
-    if (valid) await loginByEmail(email, password)
+    if (valid) {
+      await loginByEmail(email, password)
+      if (window.location.pathname.startsWith('/login')) {
+        window.location.href = '/'
+      }
+    }
   }
 
   return (
