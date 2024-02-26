@@ -8,7 +8,7 @@ type Props = PropsWithChildren<{
 }>
 
 export const PricingCard = styled(({ className, children }: Props) => (
-  <Card className={className} sx={{ width: '350px' }}>
+  <Card className={className}>
     {children}
   </Card>
 ))`
