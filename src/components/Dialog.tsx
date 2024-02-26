@@ -4,7 +4,7 @@ import {
   Dialog as DialogBase, Card, CardContent, DialogProps,
 } from '@mui/material'
 
-import bannerImage1Kin from 'images/banners/1Kin_banner_compressed.jpg'
+import bannerImage1Kin from '../images/banners/1Kin_banner_compressed.jpg'
 
 export type Props = DialogProps & {
   className?: string,

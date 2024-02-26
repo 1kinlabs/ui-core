@@ -1,4 +1,5 @@
 #!/bin/bash
 cp package.json dist/
 cp src/svg/*.svg dist/svg
+cp -r src/images dist/images
 touch dist/yarn.lock
