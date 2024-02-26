@@ -4,7 +4,7 @@ export function StarCoin({ className, size }: Props) {
   return (
     <Icon size={size} className={className}>
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g filter="url(#filter0_d_4_3918)">
+        <g>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -12,18 +12,6 @@ export function StarCoin({ className, size }: Props) {
             fill="currentColor"
           />
         </g>
-        <defs>
-          <filter id="filter0_d_4_3918" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-            <feOffset />
-            <feGaussianBlur stdDeviation="2" />
-            <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix type="matrix" values="0 0 0 0 0.976471 0 0 0 0 0.403922 0 0 0 0 0.0392157 0 0 0 0.8 0" />
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_4_3918" />
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_4_3918" result="shape" />
-          </filter>
-        </defs>
       </svg>
     </Icon>
   )
