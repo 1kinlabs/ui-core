@@ -8,7 +8,12 @@ import { PricingCardHeaderTextContainer } from './PricingCardHeaderTextContainer
 import { PlanBenefitsListPaid } from './PlanBenefitsListPaid'
 import { PricingInfoSideBySide } from './PricingInfoSideBySide'
 
-export function PricingCardMonthly() {
+type Props = {
+  isCurrent: boolean
+}
+export function PricingCardMonthly({ isCurrent }: Props) {
+  const btnDisabled = isCurrent ?? false
+  const btnLabel = isCurrent ? 'Current' : 'Get Started'
   return (
     <PricingCard>
       <PricingCardHeader>
@@ -25,7 +30,9 @@ export function PricingCardMonthly() {
         <PricingInfoSideBySide price={4.99} billingFrequency="monthly" />
         <Typography variant="body2" fontSize={20}><s>{'Normally $9.99'}</s></Typography>
         <div>
-          <Button fullWidth variant="contained" color="primary">{'Get Started'}</Button>
+          <Button fullWidth variant="outlined" disabled={btnDisabled} color="primary">
+            {btnLabel}
+          </Button>
           <PlanBenefitsListPaid />
         </div>
       </PricingCardContent>

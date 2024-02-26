@@ -1,12 +1,19 @@
 import { OnePassLogo } from 'svg/1Pass'
 import { Box, Button, Typography } from '@mui/material'
+import { styled } from 'theme'
 import { PricingCard } from './PricingCard'
 import { PricingCardContent } from './PricingCardContent'
 import { PricingCardHeader } from './PricingCardHeader'
 import { PricingCardList, PricingCardListItem } from './PricingCardList'
 import { PricingCardPrice } from './PricingCardPrice'
 
-export function PricingCardFree() {
+type Props = {
+  isCurrent: boolean
+}
+export const PricingCardFree = styled(({ isCurrent }: Props) => {
+  const btnDisabled = isCurrent ?? false
+  const btnLabel = isCurrent ? 'Current' : 'Get Started'
+
   return (
     <PricingCard>
       <PricingCardHeader>
@@ -20,7 +27,9 @@ export function PricingCardFree() {
       </PricingCardHeader>
       <PricingCardContent>
         <PricingCardPrice>{'$0'}</PricingCardPrice>
-        <Button fullWidth variant="contained" color="primary">{'Get Started'}</Button>
+        <Button fullWidth variant="outlined" disabled={btnDisabled} color="primary">
+          {btnLabel}
+        </Button>
         <PricingCardList>
           <PricingCardListItem>
             {'7 day risk-free trial'}
@@ -32,4 +41,5 @@ export function PricingCardFree() {
       </PricingCardContent>
     </PricingCard>
   )
-}
+})`
+`

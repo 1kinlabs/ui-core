@@ -9,7 +9,13 @@ import { PricingCardHeaderTextContainer } from './PricingCardHeaderTextContainer
 import { PricingInfoSideBySide } from './PricingInfoSideBySide'
 import { PlanBenefitsListPaid } from './PlanBenefitsListPaid'
 
-export function PricingCardYearly() {
+type Props = {
+  isCurrent: boolean
+}
+export function PricingCardYearly({ isCurrent }: Props) {
+  const btnVariant = isCurrent ? 'outlined' : 'contained'
+  const btnDisabled = isCurrent ?? false
+  const btnLabel = isCurrent ? 'Current' : 'Get Started'
   return (
     <PricingCard>
       <PricingCardBadge>{'Best Value'}</PricingCardBadge>
@@ -27,7 +33,7 @@ export function PricingCardYearly() {
         <PricingInfoSideBySide price={2.49} billingFrequency="yearly" />
         <Typography variant="body2" fontSize={20}><s>{'Normally $9.99'}</s></Typography>
         <div>
-          <Button fullWidth variant="contained" color="primary">{'Get Started'}</Button>
+          <Button fullWidth variant={btnVariant} disabled={btnDisabled} color="primary">{btnLabel}</Button>
           <PlanBenefitsListPaid />
         </div>
       </PricingCardContent>
