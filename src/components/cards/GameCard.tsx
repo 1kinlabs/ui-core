@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import BasePaper from '@mui/material/Paper'
 import { styled } from 'theme'
 import { Game } from 'types/Game'
-import { StarCoin } from 'icons/StarCoin'
+import { StarCoin as StarCoinBase } from 'icons/StarCoin'
 import { IconSize } from 'enums/IconSize'
 import { calculateProgressPercentage } from 'utils/calculate-progress-percentage'
 
@@ -60,6 +60,10 @@ const AvailableNowContainer = styled.div`
   gap: 8px;
 `
 
+const StarCoin = styled(StarCoinBase)`
+  color: #FE00FC;
+`
+
 export type Props = {
   game: Game,
   onClick?: (event: Game) => void,
@@ -77,7 +81,7 @@ function GameCard({ game, onClick = () => {} }: Props) {
           {game.title}
         </Typography>
         <TotalContentContainer elevation={3}>
-          <StarCoin size={IconSize.M} color="#FE00FC" />
+          <StarCoin size={IconSize.M} />
           <Typography variant="body1">
             { `Total Content Claimed: ${game.claims.totalContent}`}
           </Typography>
