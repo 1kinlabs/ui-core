@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import BasePaper from '@mui/material/Paper'
 import { styled } from 'theme'
 import { Game } from 'types/Game'
-import { StarCoin } from 'icons/StarCoin'
+import { StarCoin as StarCoinBase } from 'icons/StarCoin'
 import { IconSize } from 'enums/IconSize'
 import { calculateProgressPercentage } from 'utils/calculate-progress-percentage'
 import { Icon } from 'atoms/Icon'
@@ -59,6 +59,10 @@ const AvailableContentContainer = styled(BasePaper)`
 const AvailableNowContainer = styled.div`
   display: flex;
   gap: 8px;
+`
+
+const StarCoin = styled(StarCoinBase)`
+  color: #FE00FC;
 `
 
 export type Props = {
