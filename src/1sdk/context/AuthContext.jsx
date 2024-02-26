@@ -19,6 +19,7 @@ import { BACKEND_BASE_URL } from '1sdk/data/request'
 
 // ** Defaults
 const defaultProvider = {
+  /** @type {import('types/EndUser').EndUser | null} */
   user: null,
   loading: true,
   emailLoading: false,
@@ -65,7 +66,7 @@ const defaultProvider = {
 
 const AuthContext = createContext(defaultProvider)
 
-function AuthContextProvider({ children }) {
+function AuthContextProvider({ children, initialValue }) {
   // ** States
   const [, setState] = useState({})
   const [user, setUser] = useState(defaultProvider.user)
@@ -79,7 +80,10 @@ function AuthContextProvider({ children }) {
   const [authErrorMessage, setAuthErrorMessage] = useState()
   const [resendToken, setResendToken] = useState()
   const [last4, setLast4] = useState()
-  const [showLoginOptionModal, setShowLoginOptionModal] = useState(defaultProvider.showLoginOptionModal)
+  const [
+    showLoginOptionModal,
+    setShowLoginOptionModal,
+  ] = useState(defaultProvider.showLoginOptionModal)
   const [loginError, setLoginError] = useState(defaultProvider.loginError)
   const [emailLoading, setEmailLoading] = useState(false)
   const [signingInWithEmail, setSigningInWithEmail] = useState('')
@@ -88,6 +92,8 @@ function AuthContextProvider({ children }) {
 
   // ** Hooks
   const router = useRouter()
+  const { query } = router
+  const returnUrl = query?.returnUrl || '/'
 
   const fetchUser = async () => {
     setLoading(true)
@@ -187,6 +193,7 @@ function AuthContextProvider({ children }) {
         setState({ auth: accessToken })
         await fetchUser()
         setLoading(false)
+        router.replace(returnUrl)
       }
     }
   }
@@ -212,9 +219,7 @@ function AuthContextProvider({ children }) {
       setState({ auth: accessToken })
       await fetchUser()
 
-      const { returnUrl } = router.query
-      const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
-      router.replace(redirectURL)
+      router.replace(returnUrl)
     }
   }
 
@@ -578,15 +583,29 @@ function AuthContextProvider({ children }) {
     refreshUser,
   }
 
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={initialValue || values}>{children}</AuthContext.Provider>
 }
 
 export const useAuth = () => useContext(AuthContext)
 
-function AuthProvider({ children, clientId }) {
+/**
+ * AuthProvider component to wrap the application or parts of it with an authentication context.
+ * Utilizes Google's OAuth for authentication, managing the auth state using an AuthContextProvider.
+ *
+ * @param {Object} props - The props object for AuthProvider component.
+ * @param {React.ReactNode} props.children - The child components to be wrapped by the AuthProvider.
+ * @param {?string} [props.clientId=null] - The client ID for Google OAuth. If not provided,
+ *                                          it falls back to `NEXT_PUBLIC_GOOGLE_CLIENT_ID`
+ *                                          from environment variables.
+ *                                          Can be null.
+ * @param {?any} [props.initialValue=null] - The initial value for the auth context.
+ *                                           Can be any type, including null.
+ * @returns {React.ReactNode} The GoogleOAuthProvider and AuthContextProvider wrapped components.
+ */
+function AuthProvider({ children, clientId, initialValue }) {
   return (
     <GoogleOAuthProvider clientId={clientId || process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
-      <AuthContextProvider>
+      <AuthContextProvider initialValue={initialValue}>
         {children}
       </AuthContextProvider>
     </GoogleOAuthProvider>

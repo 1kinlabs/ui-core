@@ -28,7 +28,7 @@ const meta: Meta<typeof ClaimInfo> = {
 } as Meta<typeof ClaimInfo>
 
 export default meta
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
 
@@ -68,12 +68,34 @@ export const AvailableForClaim: Story = {
 
 export const SoldOutClaim: Story = {
   args: {
-    collectible: { ...pineapplePizzaHeroCard, claimStatus: ClaimStatus.SOLD_OUT },
+    collectible: {
+      ...pineapplePizzaHeroCard,
+      claimStatus: ClaimStatus.SOLD_OUT,
+      available_codes: 0,
+    },
   },
 }
 
 export const ExpiredClaim: Story = {
   args: {
     collectible: { ...pineapplePizzaHeroCard, claimStatus: ClaimStatus.EXPIRED },
+  },
+}
+
+export const AvailableForClaimUserIsLoggedIn: Story = {
+  args: {
+    collectible: { ...pineapplePizzaHeroCard, claimStatus: ClaimStatus.AVAILABLE },
+    user: { id: 120, availableCredits: 2 },
+  },
+}
+
+export const SoldOutClaimUserIsLoggedIn: Story = {
+  args: {
+    collectible: {
+      ...pineapplePizzaHeroCard,
+      claimStatus: ClaimStatus.SOLD_OUT,
+      available_codes: 0,
+    },
+    user: { id: 120, availableCredits: 1 },
   },
 }
