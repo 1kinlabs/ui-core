@@ -4,7 +4,6 @@ import {
   Dialog as DialogBase, Card, CardContent, DialogProps,
 } from '@mui/material'
 
-import { container } from 'css/media'
 import bannerImage1Kin from '../images/banners/1Kin_banner_compressed.jpg'
 
 export type Props = Omit<DialogProps, 'onClose'> & {
@@ -17,7 +16,6 @@ export type Props = Omit<DialogProps, 'onClose'> & {
 const DialogCard = styled(Card)`
   display: flex;
   flex-direction: column;
-
   max-width: 1140px;
 `
 
@@ -28,10 +26,10 @@ const DialogCardContent = styled(CardContent)`
 const Dialog = styled(({
   className, includeBanner, open, onClose, children,
 } : Props) => (
-  <DialogBase PaperProps={{ sx: { maxWidth: 'unset' } }} className={className} open={open} onClose={() => onClose?.()} sx={{ containerType: 'inline-size', maxWidth: 'none' }}>
+  <DialogBase PaperProps={{ sx: { maxWidth: 'unset' } }} className={className} open={open} onClose={() => onClose?.()} sx={{ containerType: 'inline-size' }}>
     <DialogCard>
       { includeBanner && <Banner src={bannerImage1Kin.src} alt="1Kin banner" /> }
-      <DialogCardContent sx={{ overflowY: 'auto' }}>
+      <DialogCardContent>
         {children}
       </DialogCardContent>
     </DialogCard>
