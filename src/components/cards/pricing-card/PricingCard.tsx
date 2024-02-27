@@ -15,6 +15,5 @@ export const PricingCard = styled(({ className, children }: Props) => (
   display: flex;
   flex-direction: column;
   border: 1px solid ${({ theme }) => theme.surface.paperLight};
-  height: 483px;
   position: relative;
 `

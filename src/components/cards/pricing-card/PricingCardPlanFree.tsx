@@ -7,10 +7,9 @@ import { PricingCardHeader } from './PricingCardHeader'
 import { PricingCardList, PricingCardListItem } from './PricingCardList'
 import { PricingCardPrice } from './PricingCardPrice'
 import { PricingCardHeaderTextContainer } from './PricingCardHeaderTextContainer'
+import { PricingCardPlanProps } from './PricingCardPlanProps'
 
-type Props = {
-  isCurrent: boolean
-}
+type Props = PricingCardPlanProps
 export const PricingCardFree = styled(({ isCurrent }: Props) => {
   const btnDisabled = isCurrent ?? false
   const btnLabel = isCurrent ? 'Current' : 'Get Started'
@@ -20,9 +19,9 @@ export const PricingCardFree = styled(({ isCurrent }: Props) => {
       <PricingCardHeader>
         <OnePassLogo visibility="hidden" />
         <PricingCardHeaderTextContainer>
-          <Typography variant="h2">{'Free'}</Typography>
+          <Typography variant="h4">{'Free'}</Typography>
           <Typography variant="body1">
-            {'Get serious about your collectibles and claim all you can!'}
+            {'Find great games, and claim a little loot.'}
           </Typography>
         </PricingCardHeaderTextContainer>
       </PricingCardHeader>
