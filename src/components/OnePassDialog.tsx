@@ -1,7 +1,7 @@
 import { styled } from 'theme'
-import { DialogProps } from '@mui/material'
+import { Button, DialogActions } from '@mui/material'
 
-import Dialog from './Dialog'
+import Dialog, { Props as DialogProps } from './Dialog'
 import { OnePassPlans } from './one-pass/OnePassPlans'
 
 export type Props = DialogProps & {
@@ -13,6 +13,9 @@ const OnePassDialog = styled(({
 } : Props) => (
   <Dialog className={className} includeBanner open={open} onClose={onClose}>
     <OnePassPlans currentPlan="free" />
+    <DialogActions sx={{ placeContent: 'center' }}>
+      <Button onClick={onClose}>{'Close'}</Button>
+    </DialogActions>
   </Dialog>
 ))``
 

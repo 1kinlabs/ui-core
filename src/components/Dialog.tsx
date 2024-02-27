@@ -4,13 +4,13 @@ import {
   Dialog as DialogBase, Card, CardContent, DialogProps,
 } from '@mui/material'
 
-import { container } from 'css/media'
 import bannerImage1Kin from '../images/banners/1Kin_banner_compressed.jpg'
 
-export type Props = DialogProps & {
+export type Props = Omit<DialogProps, 'onClose'> & {
   className?: string,
   includeBanner?: boolean,
   children: React.ReactNode
+  onClose: () => void
 }
 
 const DialogCard = styled(Card)`
@@ -18,10 +18,6 @@ const DialogCard = styled(Card)`
   flex-direction: column;
 
   max-width: 1140px;
-  /* working on fixing this so that width does not need to be set */
-  ${container.desktop} {
-    width: 1140px;
-  }
 `
 
 const DialogCardContent = styled(CardContent)`
@@ -31,7 +27,7 @@ const DialogCardContent = styled(CardContent)`
 const Dialog = styled(({
   className, includeBanner, open, onClose, children,
 } : Props) => (
-  <DialogBase PaperProps={{ sx: { maxWidth: 'unset' } }} className={className} open={open} onClose={onClose} sx={{ containerType: 'inline-size', maxWidth: 'none' }}>
+  <DialogBase PaperProps={{ sx: { maxWidth: 'unset' } }} className={className} open={open} onClose={() => onClose?.()} sx={{ containerType: 'inline-size', maxWidth: 'none' }}>
     <DialogCard>
       { includeBanner && <Banner src={bannerImage1Kin.src} alt="1Kin banner" /> }
       <DialogCardContent sx={{ overflowY: 'auto' }}>

@@ -6,18 +6,21 @@ import { styled } from 'theme'
 
 const Container = styled.div`
   flex-grow: 1;
-  container-type: inline-size;
 `
 
 const PlanColumns = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: ${({ theme }) => theme.spacing(4)}; 
+  gap: ${({ theme }) => theme.spacing(4)};
+  
   ${container.mobile} {
     grid-template-columns: auto;
+    place-content: center;
   }
+
   ${container.mobileSmall} {
     grid-template-columns: auto;
+    place-content: center;
   }
 `
 
