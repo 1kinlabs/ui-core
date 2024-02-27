@@ -19,4 +19,5 @@ export const PricingInfoSideBySide = styled(({ className, price, billingFrequenc
 ))`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: ${({ theme }) => theme.spacing(2)};
 `

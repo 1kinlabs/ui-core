@@ -8,10 +8,9 @@ import { PricingCardHeader } from './PricingCardHeader'
 import { PricingCardHeaderTextContainer } from './PricingCardHeaderTextContainer'
 import { PricingInfoSideBySide } from './PricingInfoSideBySide'
 import { PlanBenefitsListPaid } from './PlanBenefitsListPaid'
+import { PricingCardPlanProps } from './PricingCardPlanProps'
 
-type Props = {
-  isCurrent: boolean
-}
+type Props = PricingCardPlanProps
 export function PricingCardYearly({ isCurrent }: Props) {
   const btnVariant = isCurrent ? 'outlined' : 'contained'
   const btnDisabled = isCurrent ?? false
