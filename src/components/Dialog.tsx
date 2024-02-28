@@ -9,7 +9,7 @@ import bannerImage1Kin from '../images/banners/1Kin_banner_compressed.jpg'
 export type Props = Omit<DialogProps, 'onClose'> & {
   className?: string,
   includeBanner?: boolean,
-  children: React.ReactNode
+  children?: React.ReactNode
   onClose: () => void
 }
 
