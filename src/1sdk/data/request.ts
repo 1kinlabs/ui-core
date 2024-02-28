@@ -1,3 +1,5 @@
+import { getStringifiedFeatureFlagOverrides } from 'flags/utils'
+
 export const BACKEND_BASE_URL = (
   typeof window !== 'undefined' && window.localStorage.getItem('BACKEND_BASE_URL')
 ) || process.env.NEXT_PUBLIC_BACKEND_URL
@@ -35,6 +37,7 @@ export async function requestPublic<T = unknown>(url: string, params: Params = {
 export async function request(url: string, params: Params = { method: 'GET' }) {
   const { method, body, headers } = params
   const auth = window.localStorage.getItem(`${process.env.NEXT_PUBLIC_LS_KEY}`)
+  const featureFlagOverrides = getStringifiedFeatureFlagOverrides()
 
   if (!auth) {
     throw new Error('No auth token found')
@@ -45,6 +48,7 @@ export async function request(url: string, params: Params = { method: 'GET' }) {
     headers: {
       Authorization: auth,
       ...headers,
+      ...(featureFlagOverrides ? { FeatureFlagOverrides: featureFlagOverrides } : {}),
     },
     body,
   })

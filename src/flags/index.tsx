@@ -5,7 +5,7 @@ import {
   asyncWithLDProvider, LDOptions, withLDConsumer, useFlags as useFlagsBase, useLDClient,
 } from 'launchdarkly-react-client-sdk'
 import { PublicUser } from 'types/PublicUser'
-import { getLocalFeatureFlags } from './utils'
+import { getFeatureFlagOverrides } from './utils'
 
 type Props = {
   clientId: string,
@@ -20,7 +20,7 @@ const defaultUser = {
 
 const useFlags = () => {
   const flags = useFlagsBase()
-  const localFlagOverrides = getLocalFeatureFlags()
+  const localFlagOverrides = getFeatureFlagOverrides()
   return {
     ...flags,
     ...localFlagOverrides,

@@ -1,38 +1,43 @@
 /* eslint-disable no-console */
 import { FeatureFlags } from 'types/FeatureFlags'
 
-export const getLocalFeatureFlags = () : FeatureFlags => {
-  const featureFlagOverrides = window.localStorage.getItem('1kin-feature-flags')
+export const FEATURE_FLAG_STORAGE_KEY = '1kin-feature-flags'
+
+export const getFeatureFlagOverrides = () : FeatureFlags => {
+  const featureFlagOverrides = window.localStorage.getItem(FEATURE_FLAG_STORAGE_KEY)
 
   return featureFlagOverrides
     ? JSON.parse(featureFlagOverrides) as FeatureFlags
     : {}
 }
 
-const setLocalFeatureFlags = (newFlags: FeatureFlags) => {
-  window.localStorage.setItem('1kin-feature-flags', JSON.stringify(newFlags))
+export const getStringifiedFeatureFlagOverrides = () : string | null => window.localStorage
+  .getItem(FEATURE_FLAG_STORAGE_KEY)
+
+const setFeatureFlagOverrides = (newFlags: FeatureFlags) => {
+  window.localStorage.setItem(FEATURE_FLAG_STORAGE_KEY, JSON.stringify(newFlags))
 }
 
 export const overrideFeatureFlag = (flagToOverride: string, value: boolean) => {
-  const localFlags = getLocalFeatureFlags()
+  const localFlags = getFeatureFlagOverrides()
 
   const updatedFlags = {
     ...localFlags,
     [flagToOverride]: value,
   }
 
-  setLocalFeatureFlags(updatedFlags)
+  setFeatureFlagOverrides(updatedFlags)
 }
 
 export const deleteFeatureFlagOverride = (flagToRemove: string): void => {
-  const localFlags = getLocalFeatureFlags()
+  const localFlags = getFeatureFlagOverrides()
 
   const { [flagToRemove]: _, ...updatedFlags } = localFlags
 
-  setLocalFeatureFlags(updatedFlags)
+  setFeatureFlagOverrides(updatedFlags)
 }
 
 export const deleteAllFeatureFlagOverrides = (): void => {
-  window.localStorage.removeItem('1kin-feature-flags')
+  window.localStorage.removeItem(FEATURE_FLAG_STORAGE_KEY)
   console.log('\n\nDeleted all feature flag overrides\n\n')
 }
