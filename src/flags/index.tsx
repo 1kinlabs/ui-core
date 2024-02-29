@@ -8,9 +8,9 @@ import { PublicUser } from 'types/PublicUser'
 import { getFeatureFlagOverrides } from './utils'
 
 type Props = {
-  clientId: string,
-  user: EndUser | PublicUser,
-  options: LDOptions,
+  clientId?: string,
+  user?: EndUser | PublicUser,
+  options?: LDOptions,
   children: ReactNode
 }
 
@@ -30,7 +30,7 @@ const useFlags = () => {
 export function FlagProvider({
   clientId, user = defaultUser, options, children,
 } : Props) {
-  const [ldProvider, setLdProvider] = useState<ReactNode | null>(null)
+  const [ldProvider, setLdProvider] = useState<JSX.Element | null>(null)
 
   usePromise(async () => {
     const LDProvider = await asyncWithLDProvider({

@@ -600,7 +600,7 @@ export const useAuth = () => useContext(AuthContext)
  *                                          Can be null.
  * @param {?any} [props.initialValue=null] - The initial value for the auth context.
  *                                           Can be any type, including null.
- * @returns {React.ReactNode} The GoogleOAuthProvider and AuthContextProvider wrapped components.
+ * @returns {JSX.Element} The GoogleOAuthProvider and AuthContextProvider wrapped components.
  */
 function AuthProvider({ children, clientId, initialValue }) {
   return (
