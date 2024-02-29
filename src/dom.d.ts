@@ -10,7 +10,7 @@ type Devkin = {
   resetBackendBaseUrl: () => void;
   setBackendBaseUrl: (env: Env) => void;
   request: (url: string, params?: Params) => Promise;
-  overrideFeatureFlag: (flagToOverride: string, value: boolean) => void;
+  setFeatureFlagOverride: (flagToOverride: string, value: boolean) => void;
   deleteFeatureFlagOverride: (flagToRemove: string) => void;
   deleteAllFeatureFlagOverrides: () => void;
 }
