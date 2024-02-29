@@ -12,7 +12,14 @@ export type Params = {
   headers?: Record<string, string>
 }
 
-export async function requestPublic<T = unknown>(url: string, params: Params = { method: 'GET' }) {
+export type ResponseError = {
+  error: {
+    status: number
+    statusText: string
+  }
+}
+
+export async function requestPublic<T = unknown>(url: string, params: Params = { method: 'GET' }): Promise<T> {
   const { method, body, headers } = params
 
   const response = await fetch(BACKEND_BASE_API_URL + url, {
@@ -27,14 +34,11 @@ export async function requestPublic<T = unknown>(url: string, params: Params = {
   if (response.ok) {
     return response.json() as T
   }
-  try {
-    return (await response.json() as { error: Record<string, string> })?.error
-  } catch (e) {
-    throw new Error(`Error making request to ${url}: ${response.status} ${response.statusText}`)
-  }
+
+  throw new Error(`Error making request to ${url}: ${response.status} ${response.statusText}`)
 }
 
-export async function request(url: string, params: Params = { method: 'GET' }) {
+export async function request<T = unknown>(url: string, params: Params = { method: 'GET' }) {
   const { method, body, headers } = params
   const auth = window.localStorage.getItem(`${process.env.NEXT_PUBLIC_LS_KEY}`)
   const featureFlagOverrides = getStringifiedFeatureFlagOverrides()
@@ -43,7 +47,7 @@ export async function request(url: string, params: Params = { method: 'GET' }) {
     throw new Error('No auth token found')
   }
 
-  return requestPublic(url, {
+  return requestPublic<T>(url, {
     method,
     headers: {
       Authorization: auth,

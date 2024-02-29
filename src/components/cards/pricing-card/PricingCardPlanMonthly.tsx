@@ -1,5 +1,9 @@
+import { useEffect } from 'react'
 import { OnePassLogo } from 'svg/1Pass'
-import { Button, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
+import { PricingPlan } from 'types/PricingPlan'
+import useCheckout from 'data/billing/useCheckout'
+import Button from 'atoms/Button'
 import { PricingCard } from './PricingCard'
 import { PricingCardContent } from './PricingCardContent'
 import { PricingCardBanner } from './PricingCardBanner'
@@ -7,11 +11,24 @@ import { PricingCardHeader } from './PricingCardHeader'
 import { PricingCardHeaderTextContainer } from './PricingCardHeaderTextContainer'
 import { PlanBenefitsListPaid } from './PlanBenefitsListPaid'
 import { PricingInfoSideBySide } from './PricingInfoSideBySide'
-import { PricingCardPlanProps } from './PricingCardPlanProps'
+import { PricingCardPlanProps } from './types'
 
 type Props = PricingCardPlanProps
 export function PricingCardMonthly({ isCurrent }: Props) {
-  const btnDisabled = isCurrent ?? false
+  const {
+    mutate,
+    isPending,
+    isSuccess,
+    data,
+  } = useCheckout(PricingPlan.monthly)
+
+  useEffect(() => {
+    if (data?.url) {
+      window.location.href = data.url
+    }
+  }, [data?.url])
+
+  const btnDisabled = isPending || (isCurrent ?? false)
   const btnLabel = isCurrent ? 'Current' : 'Get Started'
   return (
     <PricingCard>
@@ -29,7 +46,7 @@ export function PricingCardMonthly({ isCurrent }: Props) {
         <PricingInfoSideBySide price={4.99} billingFrequency="monthly" />
         <Typography variant="body2" fontSize={20}><s>{'Normally $9.99'}</s></Typography>
         <div>
-          <Button fullWidth variant="outlined" disabled={btnDisabled} color="primary">
+          <Button loading={isPending || isSuccess} fullWidth variant="outlined" disabled={btnDisabled} onClick={mutate} color="primary">
             {btnLabel}
           </Button>
           <PlanBenefitsListPaid />

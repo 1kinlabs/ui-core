@@ -7,7 +7,7 @@ import { PricingCardHeader } from './PricingCardHeader'
 import { PricingCardList, PricingCardListItem } from './PricingCardList'
 import { PricingCardPrice } from './PricingCardPrice'
 import { PricingCardHeaderTextContainer } from './PricingCardHeaderTextContainer'
-import { PricingCardPlanProps } from './PricingCardPlanProps'
+import { PricingCardPlanProps } from './types'
 
 type Props = PricingCardPlanProps
 export const PricingCardFree = styled(({ isCurrent }: Props) => {

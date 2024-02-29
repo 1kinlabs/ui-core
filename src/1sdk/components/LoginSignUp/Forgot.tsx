@@ -32,7 +32,7 @@ const Forgot = styled(({
     if (email.length < 3) return
     try {
       const response = await forgotPassword(email)
-      if (response.result !== 'Success') {
+      if (response?.result !== 'Success') {
         // a little weird but it'll work for now
         throw new Error((response as Record<string, string>).message)
       }

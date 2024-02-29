@@ -12,7 +12,7 @@ const PlanColumns = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${({ theme }) => theme.spacing(4)};
-  
+
   ${container.mobile} {
     grid-template-columns: auto;
     place-content: center;
@@ -27,6 +27,7 @@ const PlanColumns = styled.div`
 type Props = {
   currentPlan?: 'free' | 'monthly' | 'yearly'
 }
+
 export function OnePassPlans({ currentPlan }: Props) {
   return (
     <Container>
