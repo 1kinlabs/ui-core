@@ -20,12 +20,14 @@ const Button = styled((props : Props) => {
     </BaseButton>
   )
 })`
-  ${Spinner} {
+  && ${Spinner} {
     height: 100%;
     margin: 0;
     padding: 8px;
     .MuiCircularProgress-root {
       margin: 0;
+      width: 24px !important;
+      height: 24px !important;
     }
   }
 `
