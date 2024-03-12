@@ -25,14 +25,14 @@ const Login = styled(({
 }: Props) => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const { loginByEmail } = useAuth()
+  const { loginByEmail, loginError, authErrorMessage } = useAuth()
 
   const valid = email.length > 0 && password.length > 0
 
   const onLogin = async () => {
     if (valid) {
-      await loginByEmail(email, password)
-      if (window.location.pathname.startsWith('/login')) {
+      const loginSuccess = await loginByEmail(email, password)
+      if (loginSuccess && window.location.pathname.startsWith('/login')) {
         window.location.href = '/'
       }
     }
@@ -42,6 +42,13 @@ const Login = styled(({
     <Form className={className} onSubmit={onLogin}>
       <TextField fullWidth label="Email" onChange={setEmail} />
       <PasswordField onChange={setPassword} />
+      <div>
+        {loginError && (
+          <T color="error" variant="body2">
+            {authErrorMessage}
+          </T>
+        )}
+      </div>
       <Button variant="outlined" color="primary" fullWidth type="submit">
         {'Login'}
       </Button>
