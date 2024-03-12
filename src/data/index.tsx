@@ -4,6 +4,8 @@ export {
   useQuery,
   useMutation,
   useQueryClient,
+  UseQueryResult,
+  UseQueryOptions,
   UseMutationOptions,
   UseMutationResult,
 } from '@tanstack/react-query'
