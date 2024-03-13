@@ -1,7 +1,7 @@
 import TextField from 'atoms/TextField'
 import Button from 'atoms/Button'
 import {
-  Alert, Snackbar, Typography,
+  Alert, Snackbar, Tooltip, Typography,
 } from '@mui/material'
 
 import styled from 'styled-components'
@@ -9,19 +9,23 @@ import { useState } from 'react'
 
 export type Props = {
   className?: string,
-  code?: string,
+  value: string,
+  label: string,
+  disabled?: boolean
 }
 
-const ClaimCode = styled(({ className, code } : Props) => {
+const CopyInput = styled(({
+  className, value, label, disabled,
+} : Props) => {
   const [openSnackbar, setOpenSnackbar] = useState(false)
 
-  const copyCode = async () => {
-    if (!code) {
+  const copyValue = async () => {
+    if (!value) {
       return
     }
 
     try {
-      await window.navigator.clipboard.writeText(code)
+      await window.navigator.clipboard.writeText(value)
       setOpenSnackbar(true)
     } catch (e) {
       console.error(e)
@@ -30,8 +34,10 @@ const ClaimCode = styled(({ className, code } : Props) => {
 
   return (
     <div className={className}>
-      <TextField compact label="Redemption Code" value={code || '######'} />
-      <Button variant="contained" disabled={!code} onClick={copyCode}>{'Copy'}</Button>
+      <Tooltip title={value} key={value}>
+        <TextField compact label={label} value={value} disabled={disabled} />
+      </Tooltip>
+      <Button variant="contained" disabled={disabled} onClick={copyValue}>{'Copy'}</Button>
       <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={() => setOpenSnackbar(false)} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
         <Alert severity="success">
           <Typography variant="body2">
@@ -48,4 +54,4 @@ const ClaimCode = styled(({ className, code } : Props) => {
     margin-top: 8px;
 `
 
-export default ClaimCode
+export default CopyInput
