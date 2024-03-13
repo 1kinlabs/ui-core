@@ -11,11 +11,12 @@ export type Props = {
   className?: string,
   value: string,
   label: string,
+  fullWidth?: boolean,
   disabled?: boolean
 }
 
 const CopyInput = styled(({
-  className, value, label, disabled,
+  className, value, label, disabled, fullWidth,
 } : Props) => {
   const [openSnackbar, setOpenSnackbar] = useState(false)
 
@@ -35,7 +36,7 @@ const CopyInput = styled(({
   return (
     <div className={className}>
       <Tooltip title={value} key={value}>
-        <TextField compact label={label} value={value} disabled={disabled} />
+        <TextField compact label={label} value={value} disabled={disabled} fullWidth={fullWidth} />
       </Tooltip>
       <Button variant="contained" disabled={disabled} onClick={copyValue}>{'Copy'}</Button>
       <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={() => setOpenSnackbar(false)} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
@@ -52,6 +53,7 @@ const CopyInput = styled(({
     align-items: center;
     gap: 8px;
     margin-top: 8px;
+    width: 100%;
 `
 
 export default CopyInput

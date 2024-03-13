@@ -21,6 +21,14 @@ export const Default: Story = {
   },
 }
 
+export const FullWidth: Story = {
+  args: {
+    value: 'https://form.zootools.co/go/5Jk9Pau3KbMk9eyiIBLY?ref=ygCQMHjha9zEBGGP2qJx',
+    label: 'Redemption code',
+    fullWidth: true,
+  },
+}
+
 export const Disabled: Story = {
   args: {
     value: '######',
