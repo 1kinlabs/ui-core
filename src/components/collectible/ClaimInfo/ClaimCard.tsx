@@ -92,7 +92,7 @@ const ClaimCard = styled(({
           user && isAvailableOrSoldOut && flags.glassWindow && (
             <CreditsAvailable>
               <Typography variant="overline" fontWeight={600}>
-                {`Credits available: ${user.availableCredits}`}
+                {`Credits available: ${user.availableCredits ?? 0}`}
               </Typography>
             </CreditsAvailable>
           )
