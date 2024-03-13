@@ -15,6 +15,7 @@ import Button from 'atoms/Button'
 import Chip from 'atoms/Chip'
 import { ClaimStatus } from 'enums/ClaimStatus'
 import { EndUser } from 'types/EndUser'
+import { useFlags } from 'flags'
 import ClaimProgress from '../ClaimProgress'
 
 export type OnAddToCollection = (collectible: Collectible,
@@ -57,6 +58,7 @@ const ClaimCard = styled(({
   const [isLoading, setIsLoading] = useState(false)
   const isAvailableOrSoldOut = collectible.claimStatus === ClaimStatus.AVAILABLE
     || collectible.claimStatus === ClaimStatus.SOLD_OUT
+  const flags = useFlags()
 
   return (
     <Card className={className}>
@@ -82,12 +84,12 @@ const ClaimCard = styled(({
               onClick={() => onAddToCollection(collectible, setIsLoading)}
               disabled={isLoading || collectible.claimStatus === ClaimStatus.SOLD_OUT}
             >
-              {user ? 'Claim for 1 credit' : 'Add to My Collection'}
+              {user && flags.glassWindow ? 'Claim for 1 credit' : 'Add to My Collection'}
             </Button>
           )
         }
         {
-          user && isAvailableOrSoldOut && (
+          user && isAvailableOrSoldOut && flags.glassWindow && (
             <CreditsAvailable>
               <Typography variant="overline" fontWeight={600}>
                 {`Credits available: ${user.availableCredits}`}
