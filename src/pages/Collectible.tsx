@@ -34,7 +34,7 @@ const Collectible = styled(({
   const whatsIncludedList = collectible.item_details ? collectible.item_details.filter((i) => i !== '') : []
 
   const onAddToCollectionBase : OnAddToCollection = async (c, setIsLoading) => {
-    if (user && user.availableCredits === 0) {
+    if (user && !user.availableCredits) {
       setShouldDisplay1PassDialog(true)
     } else {
       await onAddToCollection(c, setIsLoading)
