@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button'
-import { PersonOutline } from '@mui/icons-material'
+import PersonOutline from '@mui/icons-material/PersonOutline'
 import { Dialog } from '@mui/material'
 import { useState } from 'react'
 

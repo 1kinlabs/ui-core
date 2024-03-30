@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Check } from '@mui/icons-material'
+import Check from '@mui/icons-material/Check'
 import {
   List, ListItem, ListItemIcon, ListItemProps, ListItemText, ListProps,
 } from '@mui/material'

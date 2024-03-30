@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useState } from 'react'
 import styled from 'styled-components'
-import { Visibility, VisibilityOff } from '@mui/icons-material'
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import TextField, { Props } from 'atoms/TextField'
 
 const PasswordField = styled(({ className, ...props }: Props) => {

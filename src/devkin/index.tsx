@@ -1,6 +1,7 @@
 import { styled } from 'theme'
 import { useDevkinWindowTools } from 'hooks/useDevkinWindowTools'
-import { Code, Flag } from '@mui/icons-material'
+import Code from '@mui/icons-material/Code'
+import Flag from '@mui/icons-material/Flag'
 import { hasFeatureFlagOverrides, deleteAllFeatureFlagOverrides, getFeatureFlagOverrides } from 'flags/utils'
 import { Tooltip } from '@mui/material'
 import { getBackendBaseUrlOverride, hasBackendBaseUrlOverride, resetBackendBaseUrl } from './backendBaseUrlUtils'
