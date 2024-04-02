@@ -5,7 +5,7 @@ type Response = {
   url: string
 }
 
-export default function useCheckout(
+export default function useBillingPortal(
   opts?: UseQueryOptions,
 ): UseQueryResult<Response, Error> {
   return useQuery<Response, Error>({
