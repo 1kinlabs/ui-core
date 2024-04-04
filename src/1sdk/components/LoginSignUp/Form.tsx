@@ -2,20 +2,22 @@
 import { FormEventHandler } from 'react'
 import styled from 'styled-components'
 
-type Props = React.HTMLProps<HTMLFormElement> & {
+type Props = {
   className?: string
   onSubmit?: FormEventHandler<HTMLFormElement>
+  children: React.ReactNode
 }
 
-const Form = styled(({ className, onSubmit, ...props }: Props) => (
+const Form = styled(({ className, onSubmit, children }: Props) => (
   <form
     className={className}
     onSubmit={(e) => {
       e.preventDefault()
       onSubmit?.(e)
     }}
-    {...props}
-  />
+  >
+    {children}
+  </form>
 ))`
   width: 100%;
   display: flex;
