@@ -116,6 +116,7 @@
     "string-width": "^4",
     "jackspeak": "^2",
     "strip-ansi": "^6",
-    "strip-ansi-cjs": "npm:strip-ansi@^6"
+    "strip-ansi-cjs": "npm:strip-ansi@^6",
+    "@types/react": "18.2.48"
   }
 }
