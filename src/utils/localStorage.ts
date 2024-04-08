@@ -11,4 +11,10 @@ export const localStorage = {
   setItem(key: string, value: string): void {
     getWindow()?.localStorage?.setItem(key, value)
   },
+  removeItem(key: string): void {
+    getWindow()?.localStorage?.removeItem(key)
+  },
+  clear(): void {
+    getWindow()?.localStorage.clear()
+  },
 }
