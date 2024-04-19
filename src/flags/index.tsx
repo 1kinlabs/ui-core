@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, ReactNode } from 'react'
 import { usePromise } from 'hooks/usePromise'
 import { EndUser } from 'types/EndUser'

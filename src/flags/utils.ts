@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { FeatureFlags } from 'types/FeatureFlags'
+import { localStorage } from 'utils/localStorage'
 
 export const FEATURE_FLAG_STORAGE_KEY = '1kin-feature-flags'
 
@@ -10,18 +11,18 @@ export const hasFeatureFlagOverrides = () : boolean => {
 }
 
 export const getFeatureFlagOverrides = () : FeatureFlags => {
-  const featureFlagOverrides = window?.localStorage?.getItem(FEATURE_FLAG_STORAGE_KEY)
+  const featureFlagOverrides = localStorage?.getItem(FEATURE_FLAG_STORAGE_KEY)
 
   return featureFlagOverrides
     ? JSON.parse(featureFlagOverrides) as FeatureFlags
     : {}
 }
 
-export const getStringifiedFeatureFlagOverrides = () : string | null => window?.localStorage
+export const getStringifiedFeatureFlagOverrides = () : string | null => localStorage
   .getItem(FEATURE_FLAG_STORAGE_KEY)
 
 const setFeatureFlagOverrides = (newFlags: FeatureFlags) => {
-  window?.localStorage.setItem(FEATURE_FLAG_STORAGE_KEY, JSON.stringify(newFlags))
+  localStorage.setItem(FEATURE_FLAG_STORAGE_KEY, JSON.stringify(newFlags))
 }
 
 export const setFeatureFlagOverride = (flagToOverride: string, value: boolean) => {
@@ -44,6 +45,6 @@ export const deleteFeatureFlagOverride = (flagToRemove: string): void => {
 }
 
 export const deleteAllFeatureFlagOverrides = (): void => {
-  window?.localStorage.removeItem(FEATURE_FLAG_STORAGE_KEY)
+  localStorage.removeItem(FEATURE_FLAG_STORAGE_KEY)
   console.log('\n\nDeleted all feature flag overrides\n\n')
 }
