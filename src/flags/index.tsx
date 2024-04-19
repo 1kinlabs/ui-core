@@ -35,8 +35,10 @@ export function FlagProvider({
   const [ldProvider, setLdProvider] = useState<JSX.Element | null>(null)
 
   usePromise(async () => {
+    // make sure we fail on prod if we don't have a client id
+    const devClientId = process.env.NODE_ENV === 'production' ? '' : '65d3ac07ed1489109567de8d'
     const LDProvider = await asyncWithLDProvider({
-      clientSideID: clientId || process.env.NEXT_PUBLIC_LAUNCHDARKLY_CLIENT_ID!,
+      clientSideID: clientId || process.env.NEXT_PUBLIC_LAUNCHDARKLY_CLIENT_ID || devClientId,
       context: {
         kind: 'user',
         key: user.id.toString(),
