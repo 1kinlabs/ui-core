@@ -40,3 +40,21 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify Slack on Success
+        if: ${{ success() }}
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          slack-message: '*ui-core* - Published to Github Packages :party-github:'
+          channel-id: ${{ secrets.SLACK_DEVKIN_DEPLOYS }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+      - name: Notify Slack on Failure
+        if: ${{ failure() }}
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          slack-message: '*ui-core* - Publish failed :mous:'
+          channel-id: ${{ secrets.SLACK_DEVKIN_DEPLOYS }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
