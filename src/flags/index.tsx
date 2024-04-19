@@ -25,7 +25,7 @@ const defaultUser = {
 const useFlags = () => {
   const flags = useFlagsBase()
   const localFlagOverrides = getFeatureFlagOverrides()
-  console.log('--- useFlags ---)
+  console.log('--- useFlags ---')
   console.log('localFlagOverrides', localFlagOverrides)
   console.log('flags', flags)
   return {
