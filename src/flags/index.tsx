@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 'use client'
 
 import { useState, ReactNode } from 'react'
@@ -23,6 +25,9 @@ const defaultUser = {
 const useFlags = () => {
   const flags = useFlagsBase()
   const localFlagOverrides = getFeatureFlagOverrides()
+  console.log('--- useFlags ---)
+  console.log('localFlagOverrides', localFlagOverrides)
+  console.log('flags', flags)
   return {
     ...flags,
     ...localFlagOverrides,
@@ -33,12 +38,16 @@ export function FlagProvider({
   clientId, user = defaultUser, options, children,
 } : Props) {
   const [ldProvider, setLdProvider] = useState<JSX.Element | null>(null)
+  console.log('--- FlagProvider ---')
 
   usePromise(async () => {
     // make sure we fail on prod if we don't have a client id
     const devClientId = process.env.NODE_ENV === 'production' ? '' : '65d3ac07ed1489109567de8d'
+    const clientSideID = clientId || process.env.NEXT_PUBLIC_LAUNCHDARKLY_CLIENT_ID || devClientId
+
+    console.log('clientId', clientSideID)
     const LDProvider = await asyncWithLDProvider({
-      clientSideID: clientId || process.env.NEXT_PUBLIC_LAUNCHDARKLY_CLIENT_ID || devClientId,
+      clientSideID,
       context: {
         kind: 'user',
         key: user.id.toString(),
@@ -46,6 +55,7 @@ export function FlagProvider({
       },
       options,
     })
+    console.log('LDProvider', LDProvider)
 
     setLdProvider(<LDProvider>{children}</LDProvider>)
   }, [clientId, user, options, children, process])
