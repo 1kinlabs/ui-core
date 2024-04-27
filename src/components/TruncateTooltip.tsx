@@ -18,10 +18,10 @@ const TruncateTooltip = styled(({ className, children, variant }: Props) => {
   const id = useId().replaceAll(':', '')
   const [tooltipProps, setTooltipProps] = useState<TooltipProps>({ title: '', disableHoverListener: true, disableFocusListener: true })
   useEffect(() => {
-    const selector = `#${id} #mission-card-name`
-    const missionCard = window.document.querySelector(selector)
+    const selector = `#${id} .truncatableText`
+    const text = window.document.querySelector(selector)
 
-    if (missionCard && missionCard.scrollWidth > missionCard.clientWidth) {
+    if (text && text.scrollWidth > text.clientWidth) {
       setTooltipProps({ title: children, disableHoverListener: false, disableFocusListener: false })
     } else {
       setTooltipProps({ title: '', disableHoverListener: true, disableFocusListener: true })
