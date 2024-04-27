@@ -18,7 +18,7 @@ const TruncateTooltip = styled(({ className, children, variant }: Props) => {
   const id = useId().replaceAll(':', '')
   const [tooltipProps, setTooltipProps] = useState<TooltipProps>({ title: '', disableHoverListener: true, disableFocusListener: true })
   useEffect(() => {
-    const selector = `#${id} .truncatableText`
+    const selector = `.truncatableText-${id}`
     const text = window.document.querySelector(selector)
 
     if (text && text.scrollWidth > text.clientWidth) {
@@ -30,8 +30,8 @@ const TruncateTooltip = styled(({ className, children, variant }: Props) => {
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <Tooltip id={id} className={className} {...tooltipProps}>
-      <Typography variant={variant} noWrap className="truncatableText">
+    <Tooltip className={className} {...tooltipProps}>
+      <Typography variant={variant} noWrap className={`truncatableText-${id}`}>
         {children}
       </Typography>
     </Tooltip>
