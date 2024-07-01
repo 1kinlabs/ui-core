@@ -19,6 +19,7 @@ export const getVariables = ({
     warning: warning.medium,
     info: info.medium,
     link: primary.medium,
+    callout: secondary.medium,
   },
   action: {
     focus: tertiary.medium,
