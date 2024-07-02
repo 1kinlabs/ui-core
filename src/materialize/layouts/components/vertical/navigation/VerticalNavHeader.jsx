@@ -2,7 +2,7 @@
 import Link from 'next/link'
 
 import { styled } from 'theme'
-import { Logo as BaseLogo } from 'components/Logo'
+import { Logos, Logo as BaseLogo } from 'components/Logo'
 
 // ** MUI Imports
 import IconButton from '@mui/material/IconButton'
@@ -13,8 +13,8 @@ import { styled as muiStyled } from '@mui/material/styles'
 import Close from 'mdi-material-ui/Close'
 
 const Logo = styled(BaseLogo)`
-  width: 64px;
-  height: 24px;
+  height: 48px;
+  width :100%;
 `
 
 // ** Styled Components
@@ -63,7 +63,7 @@ function VerticalNavHeader(props) {
         userVerticalNavMenuBranding(props)
       ) : (
         <StyledLink href="/">
-          <Logo />
+          <Logo type={Logos.terminalFlat} />
         </StyledLink>
       )}
 
