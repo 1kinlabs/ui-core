@@ -5,10 +5,11 @@ import { TerminalLogoFlat } from 'svg/TerminalLogoFlat'
 import { LogoSmall } from 'svg/LogoSmall'
 
 export enum Logos {
-  terminal,
-  terminalFlat,
+  arena,
   brand,
   brandSmall,
+  terminal,
+  terminalFlat,
 }
 
 type Props = {
