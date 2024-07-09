@@ -17,8 +17,8 @@ export const getBackendBaseUrlOverride = () : string | null => window
 
 export const setBackendBaseUrl = (env : Env) => {
   const localUrl = 'http://127.0.0.1:1337'
-  const stageUrl = 'https://api-staging.1kin.io'
-  const prodUrl = 'https://api.1kin.io'
+  const stageUrl = 'https://server-staging.gr1d.gg'
+  const prodUrl = 'https://server.gr1d.gg'
 
   const baseUrlMap = {
     localhost: localUrl,

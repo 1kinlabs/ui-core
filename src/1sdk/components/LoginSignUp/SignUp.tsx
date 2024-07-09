@@ -22,7 +22,7 @@ function Label() {
   return (
     <T variant="body2">
       {'I accept 1Kin\'s '}
-      <Link href="https://1kin.io/tos" target="_blank">{'Terms and Conditions'}</Link>
+      <Link href="https://gr1d.network/terms-and-conditions" target="_blank">{'Terms and Conditions'}</Link>
     </T>
   )
 }
