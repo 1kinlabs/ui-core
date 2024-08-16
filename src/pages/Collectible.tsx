@@ -16,6 +16,7 @@ import { OnAddToCollection } from 'components/collectible/ClaimInfo/ClaimCard'
 import { useAuth } from '1sdk/context/AuthContext'
 import { useState } from 'react'
 import OnePassDialog from 'components/OnePassDialog'
+import { useFlags } from 'flags'
 
 export type Props = {
   className?: string
@@ -29,12 +30,13 @@ const Collectible = styled(({
   className, collectible, game, claim, onAddToCollection,
 } : Props) => {
   const { user } = useAuth()
+  const flags = useFlags()
   const [shouldDisplay1PassDialog, setShouldDisplay1PassDialog] = useState(false)
   const faqList = [...(collectible.faq_list || []), ...(game.faq_list || [])]
   const whatsIncludedList = collectible.item_details ? collectible.item_details.filter((i) => i !== '') : []
 
   const onAddToCollectionBase : OnAddToCollection = async (c, setIsLoading) => {
-    if (user && !user.availableCredits) {
+    if (flags.glassWindow && user && !user.availableCredits) {
       setShouldDisplay1PassDialog(true)
     } else {
       await onAddToCollection(c, setIsLoading)
