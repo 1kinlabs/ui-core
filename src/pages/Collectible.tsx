@@ -13,30 +13,33 @@ import { Claim } from 'types/Claim'
 import { Collectible as CollectibleType } from 'types/Collectible'
 import { Game } from 'types/Game'
 import { OnAddToCollection } from 'components/collectible/ClaimInfo/ClaimCard'
-import { useAuth } from '1sdk/context/AuthContext'
 import { useState } from 'react'
 import OnePassDialog from 'components/OnePassDialog'
-import { useFlags } from 'flags'
+import { EndUser } from 'types/EndUser'
+import { SubscriptionType } from 'types/Subscription'
 
 export type Props = {
   className?: string
   collectible: CollectibleType
+  user: EndUser | null
   game: Game
   claim?: Claim | null
   onAddToCollection: OnAddToCollection
 }
 
 const Collectible = styled(({
-  className, collectible, game, claim, onAddToCollection,
+  className, user, collectible, game, claim, onAddToCollection,
 } : Props) => {
-  const { user } = useAuth()
-  const flags = useFlags()
   const [shouldDisplay1PassDialog, setShouldDisplay1PassDialog] = useState(false)
   const faqList = [...(collectible.faq_list || []), ...(game.faq_list || [])]
   const whatsIncludedList = collectible.item_details ? collectible.item_details.filter((i) => i !== '') : []
+  const doesUserHaveUnlimitedSubscription = user?.subscription?.type === SubscriptionType.UNLIMITED
+  const shouldDisplayOnePassDialog = user
+    && !doesUserHaveUnlimitedSubscription
+    && !user.availableCredits
 
   const onAddToCollectionBase : OnAddToCollection = async (c, setIsLoading) => {
-    if (flags.glassWindow && user && !user.availableCredits) {
+    if (shouldDisplayOnePassDialog) {
       setShouldDisplay1PassDialog(true)
     } else {
       await onAddToCollection(c, setIsLoading)

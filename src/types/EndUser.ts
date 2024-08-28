@@ -1,4 +1,5 @@
 import { Nullable } from './Nullable'
+import { Subscription } from './Subscription'
 
 export type EndUser = {
   id: number;
@@ -46,4 +47,5 @@ export type EndUser = {
   waitlist_position: number;
   shares: number;
   email_verification_sent: boolean;
+  subscription: Subscription
 }>>
