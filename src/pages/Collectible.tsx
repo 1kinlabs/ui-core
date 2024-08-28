@@ -12,9 +12,7 @@ import styled from 'styled-components'
 import { Claim } from 'types/Claim'
 import { Collectible as CollectibleType } from 'types/Collectible'
 import { Game } from 'types/Game'
-import { OnAddToCollection } from 'components/collectible/ClaimInfo/ClaimCard'
-import { useState } from 'react'
-import OnePassDialog from 'components/OnePassDialog'
+import { OnAddToCollection, OnAddToCollectionFail } from 'components/collectible/ClaimInfo/ClaimCard'
 import { EndUser } from 'types/EndUser'
 import { SubscriptionType } from 'types/Subscription'
 
@@ -25,12 +23,12 @@ export type Props = {
   game: Game
   claim?: Claim | null
   onAddToCollection: OnAddToCollection
+  onAddToCollectionFail: OnAddToCollectionFail
 }
 
 const Collectible = styled(({
-  className, user, collectible, game, claim, onAddToCollection,
+  className, user, collectible, game, claim, onAddToCollection, onAddToCollectionFail,
 } : Props) => {
-  const [shouldDisplay1PassDialog, setShouldDisplay1PassDialog] = useState(false)
   const faqList = [...(collectible.faq_list || []), ...(game.faq_list || [])]
   const whatsIncludedList = collectible.item_details ? collectible.item_details.filter((i) => i !== '') : []
   const doesUserHaveUnlimitedSubscription = user?.subscription?.type === SubscriptionType.UNLIMITED
@@ -40,7 +38,7 @@ const Collectible = styled(({
 
   const onAddToCollectionBase : OnAddToCollection = async (c, setIsLoading) => {
     if (shouldDisplayOnePassDialog) {
-      setShouldDisplay1PassDialog(true)
+      onAddToCollectionFail(c)
     } else {
       await onAddToCollection(c, setIsLoading)
     }
@@ -49,10 +47,6 @@ const Collectible = styled(({
   return (
     <div className={className}>
       <div className="content">
-        <OnePassDialog
-          open={shouldDisplay1PassDialog}
-          onClose={() => setShouldDisplay1PassDialog(false)}
-        />
         <ClaimInfo
           collectible={collectible}
           game={game}

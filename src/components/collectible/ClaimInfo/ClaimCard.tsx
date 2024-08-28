@@ -21,6 +21,8 @@ import ClaimProgress from '../ClaimProgress'
 export type OnAddToCollection = (collectible: Collectible,
   setIsLoading: (isLoading: boolean) => void) => Promise<void>
 
+export type OnAddToCollectionFail = (collectible: Collectible) => void
+
 type Props = {
   className?: string,
   collectible: Collectible,
