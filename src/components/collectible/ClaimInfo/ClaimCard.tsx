@@ -15,6 +15,7 @@ import Button from 'atoms/Button'
 import Chip from 'atoms/Chip'
 import { ClaimStatus } from 'enums/ClaimStatus'
 import { EndUser } from 'types/EndUser'
+import { SubscriptionType } from 'types/Subscription'
 import ClaimProgress from '../ClaimProgress'
 
 export type OnAddToCollection = (collectible: Collectible,
@@ -57,6 +58,8 @@ const ClaimCard = styled(({
   const [isLoading, setIsLoading] = useState(false)
   const isAvailableOrSoldOut = collectible.claimStatus === ClaimStatus.AVAILABLE
     || collectible.claimStatus === ClaimStatus.SOLD_OUT
+  const isUserUnlimited = user?.subscription?.type === SubscriptionType.UNLIMITED
+  const availableCredits = isUserUnlimited ? '∞' : user?.availableCredits ?? 0
 
   return (
     <Card className={className}>
@@ -90,7 +93,10 @@ const ClaimCard = styled(({
           user && isAvailableOrSoldOut && (
             <CreditsAvailable>
               <Typography variant="overline" fontWeight={600}>
-                {`Credits available: ${user.availableCredits ?? 0}`}
+                {'Credits available: '}
+              </Typography>
+              <Typography variant="overline" fontWeight={600} fontSize={isUserUnlimited ? '20px' : undefined}>
+                {availableCredits}
               </Typography>
             </CreditsAvailable>
           )
@@ -128,6 +134,10 @@ const ClaimCard = styled(({
     ${CreditsAvailable} {
       margin-top: 8px;
       text-align: center;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      gap: 4px;
     }
   }
 `

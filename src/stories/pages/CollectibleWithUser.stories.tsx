@@ -6,7 +6,7 @@ import {
 } from 'mock-data/collectible'
 import Collectible from 'pages/Collectible'
 import { ClaimStatus } from 'enums/ClaimStatus'
-import { AuthProvider } from '1sdk/context/AuthContext'
+import { SubscriptionType } from 'types/Subscription'
 
 const meta: Meta<typeof Collectible> = {
   title: 'pages/Collectible/withAuthenticatedUser',
@@ -19,18 +19,6 @@ const meta: Meta<typeof Collectible> = {
     game: pineapplePizzaHero,
   },
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <AuthProvider
-        clientId="757119649002-a1va2jck8mk3m672vn1hgutuel457bpp.apps.googleusercontent.com"
-        initialValue={{
-          user: { id: 1, availableCredits: 0 },
-        }}
-      >
-        <Story />
-      </AuthProvider>
-    ),
-  ],
 } as Meta<typeof Collectible>
 
 export default meta
@@ -39,5 +27,24 @@ type Story = StoryObj<typeof meta>
 export const AvailableWithNoCredits: Story = {
   args: {
     collectible: { ...shieldOfTheAncients, claimStatus: ClaimStatus.AVAILABLE },
+    user: { id: 1, availableCredits: 0 },
+  },
+}
+
+export const AvailableWithCredits: Story = {
+  args: {
+    collectible: { ...shieldOfTheAncients, claimStatus: ClaimStatus.AVAILABLE },
+    user: { id: 1, availableCredits: 10 },
+  },
+}
+
+export const AvailableWithUnlimitedSubscription: Story = {
+  args: {
+    collectible: { ...shieldOfTheAncients, claimStatus: ClaimStatus.AVAILABLE },
+    user: {
+      id: 1,
+      availableCredits: 10,
+      subscription: { id: 1, type: SubscriptionType.UNLIMITED },
+    },
   },
 }

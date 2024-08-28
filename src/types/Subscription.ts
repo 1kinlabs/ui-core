@@ -1,3 +1,5 @@
+import { Nullable } from './Nullable'
+
 export enum SubscriptionType {
   UNLIMITED = 'UNLIMITED',
   LIMITED = 'LIMITED',
@@ -14,6 +16,7 @@ export enum SourceType {
 
 export type Subscription = {
   id: number
+} & Partial<Nullable<{
   userId: number
   type: SubscriptionType
   frequency: SubscriptionFrequency
@@ -22,4 +25,4 @@ export type Subscription = {
   sourceId: string
   sourceType: SourceType
   sourceData: Record<string, unknown>
-}
+}>>
