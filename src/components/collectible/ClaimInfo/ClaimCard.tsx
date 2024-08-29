@@ -114,11 +114,13 @@ const ClaimCard = styled(({
     transform: translate(0, -50%);
     background-color: ${({ theme }) => theme.surface.paperAlpha};
     backdrop-filter: blur(10px);
+    max-width: 500px;
 
     ${container.tablet} {
       position: static;
       transform: none;
       background-color: ${({ theme }) => theme.surface.paper};
+      max-width: none;
     }
 
     h2 {
