@@ -59,7 +59,6 @@ const Collectible = styled(({
             <NextSteps
               claim={claim}
               collectible={collectible}
-              defaultExpanded={collectible.claimStatus === ClaimStatus.IN_PROGRESS}
             />
           )
         }

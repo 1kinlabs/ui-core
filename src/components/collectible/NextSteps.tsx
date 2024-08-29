@@ -5,7 +5,6 @@ import DangerDiv from 'atoms/DangerDiv'
 
 import { Claim } from 'types/Claim'
 import { Collectible } from 'types/Collectible'
-import { ClaimStatus } from 'enums/ClaimStatus'
 import CopyInput from '../CopyInput'
 
 export type Props = {
@@ -16,9 +15,9 @@ export type Props = {
 }
 
 const NextSteps = styled(({
-  className, collectible, claim, defaultExpanded,
+  className, collectible, claim, defaultExpanded = true,
 } : Props) => (
-  <Section className={className} title={collectible.claimStatus === ClaimStatus.COMPLETED ? 'Next Steps (completed)' : 'Next Steps'} collapsible defaultExpanded={defaultExpanded}>
+  <Section className={className} title="Next Steps" collapsible defaultExpanded={defaultExpanded}>
     <Typography variant="body2" fontWeight={600}>
       {"You've claimed your content, but you're not finished yet! Follow the instructions below in order to complete the process."}
     </Typography>
