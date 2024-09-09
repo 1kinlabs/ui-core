@@ -12,9 +12,8 @@ import styled from 'styled-components'
 import { Claim } from 'types/Claim'
 import { Collectible as CollectibleType } from 'types/Collectible'
 import { Game } from 'types/Game'
-import { OnAddToCollection, OnAddToCollectionFail } from 'components/collectible/ClaimInfo/ClaimCard'
+import { OnAddToCollection } from 'components/collectible/ClaimInfo/ClaimCard'
 import { EndUser } from 'types/EndUser'
-import { SubscriptionType } from 'types/Subscription'
 
 export type Props = {
   className?: string
@@ -23,26 +22,13 @@ export type Props = {
   game: Game
   claim?: Claim | null
   onAddToCollection: OnAddToCollection
-  onAddToCollectionFail: OnAddToCollectionFail
 }
 
 const Collectible = styled(({
-  className, user, collectible, game, claim, onAddToCollection, onAddToCollectionFail,
+  className, user, collectible, game, claim, onAddToCollection,
 } : Props) => {
   const faqList = [...(collectible.faq_list || []), ...(game.faq_list || [])]
   const whatsIncludedList = collectible.item_details ? collectible.item_details.filter((i) => i !== '') : []
-  const doesUserHaveUnlimitedSubscription = user?.subscription?.type === SubscriptionType.UNLIMITED
-  const shouldDisplayOnePassDialog = user
-    && !doesUserHaveUnlimitedSubscription
-    && !user.availableCredits
-
-  const onAddToCollectionBase : OnAddToCollection = async (c, setIsLoading) => {
-    if (shouldDisplayOnePassDialog) {
-      onAddToCollectionFail(c)
-    } else {
-      await onAddToCollection(c, setIsLoading)
-    }
-  }
 
   return (
     <div className={className}>
@@ -51,7 +37,7 @@ const Collectible = styled(({
           collectible={collectible}
           game={game}
           user={user}
-          onAddToCollection={onAddToCollectionBase}
+          onAddToCollection={onAddToCollection}
         />
         {
           (collectible.claimStatus === ClaimStatus.IN_PROGRESS
