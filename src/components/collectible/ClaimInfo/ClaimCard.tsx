@@ -62,6 +62,7 @@ const ClaimCard = styled(({
     || collectible.claimStatus === ClaimStatus.SOLD_OUT
   const isUserUnlimited = user?.subscription?.type === SubscriptionType.UNLIMITED
   const availableCredits = isUserUnlimited ? '∞' : user?.availableCredits ?? 0
+  const costInCredits = collectible.costInCredits ?? 1
 
   return (
     <Card className={className}>
@@ -87,7 +88,7 @@ const ClaimCard = styled(({
               onClick={() => onAddToCollection(collectible, setIsLoading)}
               disabled={isLoading || collectible.claimStatus === ClaimStatus.SOLD_OUT}
             >
-              {user ? 'Claim for 1 credit' : 'Add to My Collection'}
+              {user ? `Claim for ${costInCredits} ${costInCredits > 1 ? 'credits' : 'credit'}` : 'Add to My Collection'}
             </Button>
           )
         }

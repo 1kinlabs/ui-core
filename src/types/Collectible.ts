@@ -49,4 +49,5 @@ export type Collectible = {
   available_codes: number;
   claim: Claim;
   game: Game;
+  costInCredits: number;
 }>>
